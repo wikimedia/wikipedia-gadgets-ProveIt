@@ -160,6 +160,7 @@ var proveit = {
 		});
 
 		var dependencies = [
+			'jquery.cookie',
 			'jquery.textSelection',
 			'jquery.effects.highlight'
 		];
@@ -250,12 +251,15 @@ var proveit = {
 			updateButton.hide();
 			insertButton.show();
 
-			// Create an empty reference and an empty form out of it
-			var firstTemplate = Object.keys( proveit.templates )[0],
-				firstTemplateName = firstTemplate.substr( firstTemplate.indexOf( ':' ) + 1 ), // Remove the namespace
-				emptyReference = new proveit.TemplateReference({ 'template': firstTemplateName }),
-				emptyForm = emptyReference.toForm();
-			referenceFormContainer.html( emptyForm ).show();
+			// Create an dummy reference and an dummy form out of it
+			var template = $.cookie( 'proveit-last-template' );
+			if ( !template ) {
+				template = Object.keys( proveit.templates )[0];
+				template = template.substring( template.indexOf( ':' ) + 1 );
+			}
+			var dummyReference = new proveit.TemplateReference({ 'template': template }),
+				dummyForm = dummyReference.toForm();
+			referenceFormContainer.html( dummyForm ).show();
 		});
 
 		showAllParamsButton.click( function () {
@@ -424,13 +428,13 @@ var proveit = {
 	addSummary: function () {
 		var currentSummary = $( '#wpSummary' ).val(),
 			proveitSummary = proveit.getSetting( 'summary' );
-		if ( currentSummary ) {
-			if ( currentSummary.indexOf( 'ProveIt' ) === -1 ) {
-				$( '#wpSummary' ).val( currentSummary + ' - ' + proveitSummary );
-			}
-		} else {
-				$( '#wpSummary' ).val( proveitSummary );
+		if ( !proveitSummary ) {
+			return; // No summary defined
 		}
+		if ( currentSummary.indexOf( 'ProveIt' ) > -1 ) {
+			return; // Don't add it twice
+		}
+		$( '#wpSummary' ).val( currentSummary ? currentSummary + ' - ' + proveitSummary : proveitSummary );
 	},
 
 	/**
@@ -944,10 +948,9 @@ var proveit = {
 			var reference = this;
 			templateSelect.change( function ( event ) {
 				reference.template = $( event.currentTarget ).val();
-				var form = reference.toForm();
-				$( '#proveit-reference-form-container' ).html( form );
+				$.cookie( 'proveit-last-template', reference.template, { expires: 365 }); // Remember the user choice
+				$( '#proveit-reference-form-container' ).html( reference.toForm() );
 				$( '#proveit-show-all-params-button' ).show();
-
 			});
 
 			$( '#proveit-update-button' ).unbind( 'click' ).click( function () {
