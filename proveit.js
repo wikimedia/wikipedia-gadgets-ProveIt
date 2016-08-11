@@ -27,7 +27,7 @@ var proveit = {
 			'proveit-insert-button': 'Insert',
 			'proveit-update-button': 'Update',
 			'proveit-show-all-params-button': 'Show all the parameters',
-			'proveit-no-references': 'No references found',
+			'proveit-no-references': 'No references found'
 		},
 		'es': {
 			'proveit-edit-tab': 'Editar',
@@ -38,7 +38,7 @@ var proveit = {
 			'proveit-insert-button': 'Insertar',
 			'proveit-update-button': 'Actualizar',
 			'proveit-show-all-params-button': 'Mostrar todos los parámetros',
-			'proveit-no-references': 'No se han encontrado referencias',
+			'proveit-no-references': 'No se han encontrado referencias'
 		}
 	},
 
@@ -49,10 +49,12 @@ var proveit = {
 		'en': {
 			'category': 'Category:ProveIt',
 			'tag': 'ProveIt edit',
+			'summary': 'Reference edited with [[Wikipedia:ProveIt|ProveIt]]'
 		},
 		'es': {
 			'category': 'Categoría:Wikipedia:ProveIt',
 			'tag': 'ProveIt',
+			'summary': 'Referencia editada con [[Wikipedia:ProveIt|ProveIt]]'
 		}
 	},
 
@@ -393,7 +395,7 @@ var proveit = {
 	},
 
 	/**
-	 * Add the ProveIt revision tag to the edit form
+	 * Add the ProveIt revision tag
 	 *
 	 * @return {void}
 	 */
@@ -412,6 +414,23 @@ var proveit = {
 			'value': tag
 		});
 		$( '#editform' ).append( tagInput );
+	},
+
+	/**
+	 * Add the ProveIt summary
+	 *
+	 * @return {void}
+	 */
+	addSummary: function () {
+		var currentSummary = $( '#wpSummary' ).val(),
+			proveitSummary = proveit.getSetting( 'summary' );
+		if ( currentSummary ) {
+			if ( currentSummary.indexOf( 'ProveIt' ) === -1 ) {
+				$( '#wpSummary' ).val( currentSummary + ' - ' + proveitSummary );
+			}
+		} else {
+				$( '#wpSummary' ).val( proveitSummary );
+		}
 	},
 
 	/**
@@ -635,8 +654,9 @@ var proveit = {
 			this.index = text.indexOf( newString );
 			this.highlight();
 
-			// Add the tag and rescan
+			// Add the tag, the summary and rescan
 			proveit.addTag();
+			proveit.addSummary();
 			proveit.scanForReferences();
 		};
 
@@ -661,8 +681,9 @@ var proveit = {
 			this.index = textbox.val().indexOf( this.string );
 			this.highlight();
 
-			// Add the tag and rescan
+			// Add the tag, the summary and rescan
 			proveit.addTag();
+			proveit.addSummary();
 			proveit.scanForReferences();
 		};
 	},
