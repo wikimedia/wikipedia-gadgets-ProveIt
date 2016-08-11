@@ -172,6 +172,8 @@
 }
 
 #proveit-buttons {
+	border: 1px solid #ddd;
+	display: none;
 	padding: 10px;
 	text-align: right;
 }

@@ -222,8 +222,8 @@ var proveit = {
 		logo.prepend( leftBracket ).append( rightBracket );
 		header.append( logo, editTab, addTab );
 		buttons.append( showAllParamsButton, updateButton, insertButton );
-		content.append( referenceList, referenceFormContainer, buttons );
-		gui.append( header,	content );
+		content.append( referenceList, referenceFormContainer );
+		gui.append( header,	content, buttons );
 		$( document.body ).prepend( gui );
 
 		// Lastly, bind events
