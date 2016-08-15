@@ -26,7 +26,6 @@ var proveit = {
 			'proveit-template-label': 'Template',
 			'proveit-insert-button': 'Insert',
 			'proveit-update-button': 'Update',
-			'proveit-show-all-params-button': 'Show all the parameters',
 			'proveit-no-references': 'No references found'
 		},
 		'es': {
@@ -37,7 +36,6 @@ var proveit = {
 			'proveit-template-label': 'Plantilla',
 			'proveit-insert-button': 'Insertar',
 			'proveit-update-button': 'Actualizar',
-			'proveit-show-all-params-button': 'Mostrar todos los parámetros',
 			'proveit-no-references': 'No se han encontrado referencias'
 		}
 	},
@@ -71,14 +69,14 @@ var proveit = {
 	templates: {},
 
 	/**
-	 * Content language
+	 * Content language of the wiki
 	 *
 	 * @type {string}
 	 */
 	contentLanguage: '',
 
 	/**
-	 * Interface language
+	 * Interface language of the user
 	 *
 	 * @type {string}
 	 */
@@ -162,7 +160,8 @@ var proveit = {
 		var dependencies = [
 			'jquery.cookie',
 			'jquery.textSelection',
-			'jquery.effects.highlight'
+			'jquery.effects.highlight',
+			'jquery.ui.draggable'
 		];
 		mw.loader.using( dependencies, function () {
 
@@ -199,59 +198,73 @@ var proveit = {
 	 */
 	makeGUI: function () {
 
-		// First define the elements
-		var gui = $( '<div>' ).attr( 'id', 'proveit' );
-
-		// Header
-		var header = $( '<div>' ).attr( 'id', 'proveit-header' ),
+		// Define the elements
+		var gui = $( '<div>' ).attr( 'id', 'proveit' ),
+			header = $( '<div>' ).attr( 'id', 'proveit-header' ),
 			logo = $( '<span>' ).attr( 'id', 'proveit-logo' ).text( 'ProveIt' ),
 			leftBracket = $( '<span>' ).attr( 'id', 'proveit-left-bracket' ).text( '[' ),
 			rightBracket = $( '<span>' ).attr( 'id', 'proveit-right-bracket' ).text( ']' ),
-			editTab = $( '<span>' ).attr( 'id', 'proveit-edit-tab' ).addClass( 'active' ).text( proveit.getMessage( 'edit-tab' ) ),
-			addTab = $( '<span>' ).attr( 'id', 'proveit-add-tab' ).text( proveit.getMessage( 'add-tab' ) );
+			editTab = $( '<span>' ).attr( 'id', 'proveit-edit-tab' ).addClass( 'active' ).text( proveit.getMessage( 'edit-tab' ) ).hide(),
+			addTab = $( '<span>' ).attr( 'id', 'proveit-add-tab' ).text( proveit.getMessage( 'add-tab' ) ).hide(),
+			content = $( '<div>' ).attr( 'id', 'proveit-content' ).hide();
 
-		// Content
-		var content = $( '<div>' ).attr( 'id', 'proveit-content' ),
-			referenceList = $( '<ul>' ).attr( 'id', 'proveit-reference-list' ),
-			referenceFormContainer = $( '<div>' ).attr( 'id', 'proveit-reference-form-container' );
-
-		// Buttons
-		var buttons = $( '<div>' ).attr( 'id', 'proveit-buttons' ),
-			showAllParamsButton = $( '<button>' ).attr( 'id', 'proveit-show-all-params-button' ).text( proveit.getMessage( 'show-all-params-button' ) ),
-			updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
-			insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
-
-		// Then put everything together and add it to the DOM
+		// Put everything together and add it to the DOM
 		logo.prepend( leftBracket ).append( rightBracket );
 		header.append( logo, editTab, addTab );
-		buttons.append( showAllParamsButton, updateButton, insertButton );
-		content.append( referenceList, referenceFormContainer );
-		gui.append( header,	content, buttons );
+		gui.append( header,	content );
 		$( document.body ).prepend( gui );
+
+		// Make the GUI draggable
+		var dragged = false;
+		gui.draggable({
+			handle: header,
+			containment: 'window',
+			start: function ( event ) {
+				if ( event.toElement.id !== 'proveit-header' ) {
+					dragged = true;
+				}
+				gui.css({
+					'right': 'auto',
+					'bottom': 'auto'
+				});
+			}
+		});
 
 		// Lastly, bind events
 		logo.click( function () {
-			content.toggle();
+			if ( dragged ) {
+				dragged = false; // Reset the flag
+				return;
+			}
 			editTab.toggle();
 			addTab.toggle();
+			content.toggle();
+			gui.css({
+				'top': 'auto',
+				'left': 'auto',
+				'right': 0,
+				'bottom': 0
+			});
 		});
 
 		editTab.click( function () {
+			if ( dragged ) {
+				dragged = false; // Reset the flag
+				return;
+			}
 			$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
-			referenceList.show();
-			referenceFormContainer.hide();
-			buttons.hide();
+
+			proveit.scanForReferences();
 		});
 
 		addTab.click( function () {
+			if ( dragged ) {
+				dragged = false; // Reset the flag
+				return;
+			}
 			$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
-			referenceList.hide();
-			buttons.show();
-			showAllParamsButton.show();
-			updateButton.hide();
-			insertButton.show();
 
-			// Create an dummy reference and an dummy form out of it
+			// Create an dummy reference and a dummy form out of it
 			var template = $.cookie( 'proveit-last-template' );
 			if ( !template ) {
 				template = Object.keys( proveit.templates )[0];
@@ -259,28 +272,22 @@ var proveit = {
 			}
 			var dummyReference = new proveit.TemplateReference({ 'template': template }),
 				dummyForm = dummyReference.toForm();
-			referenceFormContainer.html( dummyForm ).show();
-		});
 
-		showAllParamsButton.click( function () {
-			$( this ).hide();
-			$( '#proveit-reference-form label' ).css( 'display', 'block' );
-		});
+			content.html( dummyForm );
 
-		proveit.getTextbox().change( function () {
-			proveit.scanForReferences(); // Always keep the reference list up to date
+			$( '#proveit-update-button' ).hide();
 		});
 	},
 
 	/**
-	 * Scan for references in the textbox, make a list item for each and fill the reference list with them
+	 * Scan for references in the textbox, make a list and fill the content
 	 *
 	 * @return {boolean} Whether the scan succeeded and found at least one reference
 	 */
 	scanForReferences: function () {
 
 		// First empty the previous list
-		$( '#proveit-reference-list' ).children().remove();
+		var referenceList = $( '<ul>' ).attr( 'id', 'proveit-reference-list' );
 
 		// Second, look for all the citations and store them in an array for later
 		var text = proveit.getTextbox().val(),
@@ -299,7 +306,7 @@ var proveit = {
 
 		if ( !matches ) {
 			var noReferencesMessage = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) );
-			$( '#proveit-reference-list' ).append( noReferencesMessage );
+			referenceList.append( noReferencesMessage );
 			return false;
 		}
 
@@ -318,9 +325,10 @@ var proveit = {
 
 			// Finally, turn all the references into list items and insert them into the reference list
 			referenceItem = reference.toListItem();
-			$( '#proveit-reference-list' ).append( referenceItem );
+			referenceList.append( referenceItem );
 		}
-		return true;
+
+		$( '#proveit-content' ).html( referenceList );
 	},
 
 	/**
@@ -551,32 +559,28 @@ var proveit = {
 		 */
 		this.toListItem = function () {
 
-			var item = $( '<li>' ).attr( 'class', 'proveit-reference-item' ).text( this.text ),
-				citations = $( '<span>' ).attr( 'class', 'proveit-citations' );
+			var item = $( '<li>' ).addClass( 'proveit-reference-item' ).text( this.text ),
+				citations = $( '<span>' ).addClass( 'proveit-citations' );
 
 			for ( var i = 0; i < this.citations.length; i++ ) {
-				citations.append( $( '<a>' ).attr({ 'class': 'proveit-citation' }).text( i + 1 ) );
+				citations.append( $( '<a>' ).addClass( 'proveit-citation' ).text( i + 1 ) );
 			}
 
 			item.append( citations );
 
 			// Bind events
 			var reference = this;
-			item.click( function () {
+			item.click( function ( event ) {
 				reference.highlight();
 				var form = reference.toForm();
-				$( '#proveit-reference-form-container' ).html( form ).show();
-				$( '#proveit-reference-list' ).hide();
-				$( '#proveit-buttons' ).show();
-				$( '#proveit-show-all-params-button' ).hide();
-				$( '#proveit-update-button' ).show();
+				$( '#proveit-content' ).html( form );
 				$( '#proveit-insert-button' ).hide();
 			});
 
 			item.find( 'a.proveit-citation' ).click( function ( event ) {
 				event.stopPropagation();
-				var i = parseInt( $( this ).text(), 10 ) - 1;
-				var citation = reference.citations[ i ];
+				var i = parseInt( $( this ).text(), 10 ) - 1,
+					citation = reference.citations[ i ];
 				citation.highlight();
 				return false;
 			});
@@ -591,35 +595,41 @@ var proveit = {
 		 */
 		this.toForm = function () {
 
-			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' );
+			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ),
+				table = $( '<table>' );
 
 			// Insert the <ref> name field
-			var referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
-				referenceNameInput = $( '<input>' ).attr({ 'name': 'reference-name', 'value': this.name });
-			referenceNameLabel.append( referenceNameInput );
-			form.append( referenceNameLabel );
+			var referenceNameRow = $( '<tr>' ),
+				referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
+				referenceNameInput = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name );
+			referenceNameRow.append( referenceNameLabel, referenceNameInput );
+			table.append( referenceNameRow );
 
 			// Insert the textarea
-			var referenceTextLabel = $( '<label>' ).text( proveit.getMessage( 'reference-text-label' ) ),
+			var referenceTextRow = $( '<tr>' ),
+				referenceTextLabel = $( '<label>' ).text( proveit.getMessage( 'reference-text-label' ) ),
 				referenceTextArea = $( '<textarea>' ).attr( 'name', 'reference-text' ).val( this.text );
-			referenceTextLabel.append( referenceTextArea );
-			form.append( referenceTextLabel );
+			referenceTextRow.append( referenceTextLabel, referenceTextArea );
+			table.append( referenceTextRow );
+
+			// Insert the buttons
+			var buttons = $( '<div>' ).attr( 'id', 'proveit-buttons' ),
+				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
+				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
+			buttons.append( updateButton, insertButton );
+			form.append( table, buttons );
 
 			// Bind events
-			var reference = this;
-			referenceTextArea.change( function ( event ) {
-				reference.text = $( event.currentTarget ).val();
-				var form = reference.toForm();
-				$( '#proveit-reference-form-container' ).html( form );
-				$( '#proveit-show-all-params-button' ).hide();
-
+			form.submit( function () {
+				return false;
 			});
 
-			$( '#proveit-update-button' ).unbind( 'click' ).click( function () {
+			var reference = this;
+			updateButton.click( function () {
 				reference.update();
 			});
 
-			$( '#proveit-insert-button' ).unbind( 'click' ).click( function () {
+			insertButton.click( function () {
 				reference.insert();
 			});
 
@@ -661,7 +671,6 @@ var proveit = {
 			// Add the tag, the summary and rescan
 			proveit.addTag();
 			proveit.addSummary();
-			proveit.scanForReferences();
 		};
 
 		/**
@@ -688,7 +697,6 @@ var proveit = {
 			// Add the tag, the summary and rescan
 			proveit.addTag();
 			proveit.addSummary();
-			proveit.scanForReferences();
 		};
 	},
 
@@ -818,9 +826,9 @@ var proveit = {
 		 */
 		this.toListItem = function () {
 
-			var item = $( '<li>' ).attr( 'class', 'proveit-reference-item' );
+			var item = $( '<li>' ).addClass( 'proveit-reference-item' );
 
-			item.append( $( '<span>' ).attr( 'class', 'proveit-template' ).text( this.template ) );
+			item.append( $( '<span>' ).addClass( 'proveit-template' ).text( this.template ) );
 			var requiredParams = this.getRequiredParams(),
 				requiredParam,
 				label,
@@ -828,28 +836,24 @@ var proveit = {
 			for ( requiredParam in requiredParams ) {
 				label = requiredParams[ requiredParam ].label[ proveit.userLanguage ];
 				value = this.params[ requiredParam ];
-				item.append( $( '<span>' ).attr( 'class', 'proveit-label' ).text( label ) );
-				item.append( ': ', $( '<span>' ).attr( 'class', 'proveit-value' ).text( value ) );
+				item.append( $( '<span>' ).addClass( 'proveit-label' ).text( label ) );
+				item.append( ': ', $( '<span>' ).addClass( 'proveit-value' ).text( value ) );
 			}
 
-			var citations = $( '<span>' ).attr( 'class', 'proveit-citations' );
+			var citations = $( '<span>' ).addClass( 'proveit-citations' );
 
 			for ( var i = 0; i < this.citations.length; i++ ) {
-				citations.append( $( '<a>' ).attr({ 'class': 'proveit-citation' }).text( i + 1 ) );
+				citations.append( $( '<a>' ).addClass( 'proveit-citation' ).text( i + 1 ) );
 			}
 
 			item.append( citations );
 
 			// Bind events
 			var reference = this;
-			item.click( function () {
+			item.click( function ( event ) {
 				reference.highlight();
 				var form = reference.toForm();
-				$( '#proveit-reference-form-container' ).html( form ).show();
-				$( '#proveit-reference-list' ).hide();
-				$( '#proveit-buttons' ).show();
-				$( '#proveit-show-all-params-button' ).show();
-				$( '#proveit-update-button' ).show();
+				$( '#proveit-content' ).html( form );
 				$( '#proveit-insert-button' ).hide();
 			});
 
@@ -871,16 +875,19 @@ var proveit = {
 		 */
 		this.toForm = function () {
 
-			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ), pair;
+			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ),
+				table = $( '<table>' );
 
 			// Insert the <ref> name field
-			var referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
-				referenceNameInput = $( '<input>' ).attr({ 'name': 'reference-name', 'value': this.name });
-			referenceNameLabel.append( referenceNameInput );
-			form.append( referenceNameLabel );
+			var referenceNameRow = $( '<tr>' ),
+				referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
+				referenceNameInput = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name );
+			referenceNameRow.append( referenceNameLabel, referenceNameInput );
+			table.append( referenceNameRow );
 
 			// Insert the dropdown menu
-			var templateLabel = $( '<label>' ).text( proveit.getMessage( 'template-label' ) ),
+			var templateRow = $( '<tr>' ),
+				templateLabel = $( '<label>' ).text( proveit.getMessage( 'template-label' ) ),
 				templateSelect = $( '<select>' ).attr( 'name', 'template' ),
 				templateName,
 				templateOption;
@@ -893,11 +900,11 @@ var proveit = {
 				}
 				templateSelect.append( templateOption );
 			}
-			templateLabel.append( templateSelect );
-			form.append( templateLabel );
+			templateRow.append( templateLabel, templateSelect );
+			table.append( templateRow );
 
 			// The insert all the other fields
-			var paramName, registeredParam, paramLabel, paramType, paramDescription, paramValue, label, paramNameInput, paramValueInput,
+			var paramName, registeredParam, paramLabel, paramType, paramDescription, paramValue, row, label, paramNameInput, paramValueInput,
 				registeredParams = this.getRegisteredParams(),
 				requiredParams = this.getRequiredParams();
 				optionalParams = this.getOptionalParams();
@@ -926,39 +933,52 @@ var proveit = {
 					paramValue = this.params[ paramName ];
 				}
 
-				label = $( '<label>' ).attr({ 'class': 'proveit-param-pair', 'title': paramDescription }).text( paramLabel );
-				paramNameInput = $( '<input>' ).attr({ 'type': 'hidden', 'class': 'proveit-param-name', 'value': paramName });
-				paramValueInput = $( '<input>' ).attr({ 'type': paramType, 'class': 'proveit-param-value', 'value': paramValue });
+				row = $( '<tr>' ).addClass( 'proveit-param-pair' );
+				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
+				paramNameInput = $( '<input>' ).attr( 'type', 'hidden' ).addClass( 'proveit-param-name' ).val( paramName );
+				paramValueInput = $( '<input>' ).attr( 'type', paramType ).addClass( 'proveit-param-value' ).val( paramValue );
 
 				// Mark the required parameters as such
 				if ( paramName in requiredParams ) {
-					label.addClass( 'proveit-required' );
+					row.addClass( 'proveit-required' );
 				}
 
 				// Hide the optional parameters, unless they are filled
 				if ( ( paramName in optionalParams ) && !paramValue ) {
-					label.addClass( 'proveit-hidden' );
+					row.addClass( 'proveit-optional' );
 				}
 
-				label.prepend( paramValueInput ).append( paramNameInput );
-				form.append( label );
+				row.append( label, paramValueInput, paramNameInput );
+				table.append( row );
 			}
+
+			// Insert the buttons
+			var buttons = $( '<div>' ).attr( 'id', 'proveit-buttons' ),
+				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
+				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
+			buttons.append( updateButton, insertButton );
+			form.append( table, buttons );
 
 			// Bind events
 			var reference = this;
 			templateSelect.change( function ( event ) {
 				reference.template = $( event.currentTarget ).val();
-				$.cookie( 'proveit-last-template', reference.template, { expires: 365 }); // Remember the user choice
-				$( '#proveit-reference-form-container' ).html( reference.toForm() );
-				$( '#proveit-show-all-params-button' ).show();
+				$.cookie( 'proveit-last-template', reference.template ); // Remember the user choice
+				var form = reference.toForm();
+				$( '#proveit-content' ).html( form );
+				insertButton.hide();
 			});
 
-			$( '#proveit-update-button' ).unbind( 'click' ).click( function () {
-				reference.update();
+			form.submit( function () {
+				return false;
 			});
 
-			$( '#proveit-insert-button' ).unbind( 'click' ).click( function () {
+			insertButton.click( function () {
 				reference.insert();
+			});
+
+			updateButton.click( function () {
+				reference.update();
 			});
 
 			return form;

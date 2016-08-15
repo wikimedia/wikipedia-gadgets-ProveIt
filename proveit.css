@@ -1,23 +1,19 @@
 #proveit {
 	background: white;
+	border: 1px solid #ddd;
 	font-size: 14px;
 	position: fixed;
-	right: 10px;
+	right: 0;
 	bottom: 0;
-	z-index: 99999999;
-}
-
-#proveit-header {
-	border: 1px solid #ddd;
-	overflow: hidden;
+	z-index: 2147483647; /* Max value */
 }
 
 #proveit-logo {
 	background: black;
-	cursor: pointer;
 	color: white;
-	font-weight: bold;
+	cursor: pointer;
 	float: right;
+	font-weight: bold;
 	padding: 15px;
 }
 
@@ -25,6 +21,7 @@
 	color: yellow;
 	margin-right: 5px;
 }
+
 #proveit-right-bracket {
 	color: yellow;
 	margin-left: 5px;
@@ -32,10 +29,9 @@
 
 #proveit-edit-tab,
 #proveit-add-tab {
-	cursor: pointer;
 	color: black;
-	display: none;
-	float: left;
+	cursor: pointer;
+	display: inline-block;
 	outline: none;
 	padding: 15px;
 }
@@ -47,14 +43,12 @@
 
 #proveit-content {
 	background: #f4f4f4;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	display: none;
-	height: 280px;
-	overflow: scroll;
+	border-top: 1px solid #ddd;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	width: 700px;
+	height: 300px;
+	resize: both;
 }
 
 #proveit-reference-list {
@@ -110,88 +104,71 @@
 }
 
 #proveit-reference-form {
-	overflow: hidden;
+	margin-bottom: 50px;
 }
 
-#proveit-reference-form label {
-	box-sizing: border-box;
-	display: block;
-	line-height: 27px; /* This must be the same as the height of the input fields, so that the pair is perfectly aligned */
-	margin: 0;
-	padding: 10px 10px 0 10px;
+#proveit-reference-form table {
+	border-spacing: 2px;
 	width: 100%;
 }
 
-#proveit-reference-form label.proveit-required {
+#proveit-reference-form label {
+	border: 1px solid transparent;
+	box-sizing: border-box;
+	display: table-cell;
+	padding: 5px;
+	vertical-align: top;
+	width: 200px;
+}
+
+#proveit-reference-form .proveit-required label {
 	text-decoration: underline;
 }
 
-#proveit-reference-form label.proveit-hidden {
+#proveit-reference-form .proveit-optional {
 	display: none;
 }
 
 #proveit-reference-form input,
-#proveit-reference-form select {
+#proveit-reference-form select,
+#proveit-reference-form textarea {
 	-webkit-appearance: none;
 	background: white;
 	border: 1px solid #ddd;
 	border-radius: 0;
-	box-sizing: content-box;
-	float: right;
+	box-sizing: border-box;
+	display: table-cell;
 	font: inherit;
-	line-height: 15px;
-	margin: 0;
 	outline: none;
 	padding: 5px;
-	width: 500px;
-	height: 15px; /* Set the height because else Chrome makes the date fields higher */
+	width: 100%;
 }
 
 #proveit-reference-form textarea {
-	background: white;
-	border: 1px solid #ddd;
-	border-radius: 0;
-	box-sizing: content-box;
-	float: right;
-	font: inherit;
-	line-height: 15px;
-	margin: 0;
-	outline: none;
-	padding: 5px;
-	width: 500px;
-	height: 100px
-}
-
-#proveit-reference-form option {
-	height: 15px;
-}
-
-#proveit-reference-form input.proveit-param-name {
-	float: none;
-	width: 130px;
+	height: 100px;
+	resize: vertical;
 }
 
 #proveit-buttons {
-	border: 1px solid #ddd;
-	display: none;
+	background: white;
+	border-spacing: 0;
+	border-top: 1px solid #ddd;
+	box-sizing: border-box;
+	margin: 0;
 	padding: 10px;
+	pointer-events: none;
+	position: absolute;
+	bottom: 0;
 	text-align: right;
+	width: 100%;
 }
 
 #proveit-buttons button {
+	background: #a7dcff;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	cursor: pointer;
 	font: inherit;
-	margin: 0 0 0 10px;
-	padding: 5px 10px 5px 10px;
-}
-
-#proveit-show-all-params-button {
-	background: #eee;
-}
-
-#proveit-insert-button,
-#proveit-update-button {
-	background: #a7dcff;
+	padding: 5px;
+	pointer-events: all;
 }
