@@ -693,7 +693,7 @@ var proveit = {
 				registeredParams = this.getRegisteredParams();
 			for ( var registeredParam in registeredParams ) {
 				if ( registeredParams[ registeredParam ].suggested ) {
-					suggestedParams[ registeredParam ] = suggestedParams[ registeredParam ];
+					suggestedParams[ registeredParam ] = registeredParams[ registeredParam ];
 				}
 			}
 			return suggestedParams;
@@ -713,6 +713,18 @@ var proveit = {
 				}
 			}
 			return optionalParams;
+		};
+
+		/**
+		 * Get the registered params but sorted by required first, suggested later, optional last
+		 *
+		 * @return {object}
+		 */
+		this.getSortedParams = function () {
+			var requiredParams = this.getRequiredParams(),
+				suggestedParams = this.getSuggestedParams(),
+				optionalParams = this.getOptionalParams();
+			return $.extend( requiredParams, suggestedParams, optionalParams );
 		};
 
 		/**
@@ -813,7 +825,7 @@ var proveit = {
 				templateOption;
 
 			for ( templateName in proveit.templates ) {
-				templateName = templateName.substr( templateName.indexOf( ':' ) + 1 ), // Remove the namespace
+				templateName = templateName.substr( templateName.indexOf( ':' ) + 1 ); // Remove the namespace
 				templateOption = $( '<option>' ).text( templateName ).val( templateName );
 				if ( this.template === templateName ) {
 					templateOption.attr( 'selected', 'selected' );
@@ -824,14 +836,14 @@ var proveit = {
 			table.append( templateRow );
 
 			// The insert all the other fields
-			var paramName, registeredParam, paramLabel, paramType, paramDescription, paramValue, row, label, paramNameInput, paramValueInput,
-				registeredParams = this.getRegisteredParams(),
+			var paramName, param, paramLabel, paramPlaceholder, paramDescription, paramValue, row, label, paramNameInput, paramValueInput,
+				sortedParams = this.getSortedParams(),
 				requiredParams = this.getRequiredParams(),
 				optionalParams = this.getOptionalParams();
 
-			for ( paramName in registeredParams ) {
+			for ( paramName in sortedParams ) {
 
-				registeredParam = registeredParams[ paramName ];
+				param = sortedParams[ paramName ];
 
 				// Defaults
 				paramLabel = paramName;
@@ -840,18 +852,18 @@ var proveit = {
 				paramValue = '';
 
 				// Override with template data
-				if ( registeredParam.label ) {
-					paramLabel = registeredParam.label[ proveit.userLanguage ];
+				if ( param.label ) {
+					paramLabel = param.label[ proveit.userLanguage ];
 				}
-				if ( registeredParam.type === 'date' ) {
+				if ( param.type === 'date' ) {
 					var date = new Date(),
 						yyyy = date.getFullYear(),
 						mm = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ),
-						dd = ( '0' + date.getDate() ).slice( -2 )
+						dd = ( '0' + date.getDate() ).slice( -2 );
 					paramPlaceholder = yyyy + '-' + mm + '-' + dd;
 				}
-				if ( registeredParam.description ) {
-					paramDescription = registeredParam.description[ proveit.userLanguage ];
+				if ( param.description ) {
+					paramDescription = param.description[ proveit.userLanguage ];
 				}
 				if ( paramName in this.params ) {
 					paramValue = this.params[ paramName ];
