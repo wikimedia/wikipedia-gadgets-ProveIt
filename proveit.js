@@ -351,7 +351,7 @@ var proveit = {
 			'name': 'wpChangeTags',
 			'value': tag
 		});
-		$( '#editform' ).append( tagInput );
+		$( '#editform' ).prepend( tagInput );
 	},
 
 	/**
@@ -662,7 +662,7 @@ var proveit = {
 		 * @return {object}
 		 */
 		this.getRegisteredParams = function () {
-			var formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
+			var formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
 				templateNamespace = formattedNamespaces[10];
 			return proveit.templates[ templateNamespace + ':' + this.template ];
 		};

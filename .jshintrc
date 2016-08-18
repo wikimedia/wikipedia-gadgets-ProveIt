@@ -1,0 +1,22 @@
+{
+	// Enforcing
+	"bitwise": true,
+	"eqeqeq": true,
+	"esversion": 3,
+	"freeze": true,
+	"futurehostile": true,
+	"latedef": "nofunc",
+	"noarg": true,
+	"nonew": true,
+	"strict": false,
+	"undef": true,
+	"unused": true,
+
+	// Environment
+	"browser": true,
+
+	"globals": {
+		"mediaWiki": false,
+		"jQuery": false
+	}
+}
