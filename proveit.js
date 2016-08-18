@@ -1,5 +1,6 @@
 /**
- * ProveIt is a powerful GUI tool to find, edit, add and cite references in Wikipedia
+ * ProveIt is a powerful GUI tool to find, edit, add and cite references in any MediaWiki wiki
+ * Full documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
  * Copyright 2011- Matthew Flaschen
@@ -41,61 +42,34 @@ var proveit = {
 	},
 
 	/**
-	 * Wiki-specific settings
-	 */
-	settings: {
-		'en': {
-			'category': 'Category:ProveIt',
-			'tag': 'ProveIt edit',
-			'summary': 'Reference edited with [[Wikipedia:ProveIt|ProveIt]]'
-		},
-		'es': {
-			'category': 'Categoría:Wikipedia:ProveIt',
-			'tag': 'ProveIt',
-			'summary': 'Referencia editada con [[Wikipedia:ProveIt|ProveIt]]'
-		}
-	},
-
-	/**
-	 * URL of the ProveIt icon hosted at Commons
-	 */
-	ICON: '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/ProveIt_logo_for_user_boxes.svg/22px-ProveIt_logo_for_user_boxes.svg.png',
-
-	/**
-	 * Template data retrieved from Wikipedia
+	 * Template data retrieved from the wiki
 	 *
 	 * @type {object}
 	 */
 	templates: {},
 
 	/**
-	 * Content language of the wiki
-	 *
-	 * @type {string}
-	 */
-	contentLanguage: '',
-
-	/**
-	 * Interface language of the user
+	 * Interface language
+	 * The default or fallback language is English
 	 *
 	 * @type {string}
 	 */
 	userLanguage: 'en',
 
 	/**
-	 * Convenience method to get a setting
+	 * Convenience method to get a ProveIt option
 	 *
-	 * @param {string} setting key
-	 * @return {string} setting value
+	 * @param {string} option key without the "proveit-" prefix
+	 * @return {string} option value
 	 */
-	getSetting: function ( key ) {
-		return proveit.settings[ proveit.contentLanguage ][ key ];
+	getOption: function ( key ) {
+		return mw.config.get( 'proveit-' + key );
 	},
 
 	/**
-	 * Convenience method to get a message
+	 * Convenience method to get a ProveIt message
 	 *
-	 * @param {string} message key
+	 * @param {string} message key without the "proveit-" prefix
 	 * @return {string} message value
 	 */
 	getMessage: function ( key ) {
@@ -118,18 +92,6 @@ var proveit = {
 	 */
 	init: function () {
 
-		// Initialize only when editing
-		var action = mw.config.get( 'wgAction' );
-		if ( action !== 'edit' && action !== 'submit' ) {
-			return;
-		}
-
-		// Set the content language
-		proveit.contentLanguage = mw.config.get( 'wgContentLanguage' );
-		if ( !( proveit.contentLanguage in proveit.settings ) ) {
-			return; // Language not supported
-		}
-
 		// Set the interface language
 		var userLanguage = mw.config.get( 'wgUserLanguage' );
 		if ( userLanguage in proveit.messages ) {
@@ -137,82 +99,46 @@ var proveit = {
 		}
 		mw.messages.set( proveit.messages[ userLanguage ] );
 
-		// Get the templates data
-		var api = new mw.Api();
-		api.get({
+		// Build the interface
+		proveit.build();
+
+		// Get the template data from the wiki
+		new mw.Api().get({
 			'action': 'templatedata',
-			'generator': 'categorymembers',
-			'gcmtitle': proveit.getSetting( 'category' ),
-			'gcmlimit': 500,
-			'gcmnamespace': 10,
+			'titles': proveit.getOption( 'templates' ).join( '|' ),
 			'format': 'json'
 		}).done( function ( data ) {
 			//console.log( data );
-			proveit.templates = {};
 			for ( var page in data.pages ) {
 				page = data.pages[ page ];
-				proveit.templates[ page.title ] = page.params; // Replace the templates with the template data
+				proveit.templates[ page.title ] = page.params; // Set the template data
 			}
-			//console.log( proveit.templates );
 			proveit.scanForReferences();
-		});
-
-		var dependencies = [
-			'jquery.cookie',
-			'jquery.textSelection',
-			'jquery.effects.highlight',
-			'jquery.ui.draggable'
-		];
-		mw.loader.using( dependencies, function () {
-
-			// Replace the references button for the ProveIt button
-			proveit.getTextbox().bind( 'wikiEditor-toolbar-buildSection-main', function ( event, section ) {
-				delete section.groups.insert.tools.reference;
-				section.groups.insert.tools.proveit = {
-					label: 'ProveIt',
-					type: 'button',
-					icon: proveit.ICON,
-					action: {
-						type: 'callback',
-						execute: function () {
-							$( '#proveit' ).toggle();
-						}
-					}
-				};
-			});
-
-			proveit.makeGUI();
-
-			// Only initialize visible for mainspace and user namespaces
-			var namespace = mw.config.get( 'wgNamespaceNumber' );
-			if ( namespace !== 0 && namespace !== 2 ) {
-				$( '#proveit' ).hide();
-			}
 		});
 	},
 
 	/**
-	 * Generate the interface and insert it into the DOM
+	 * Build the GUI and insert it into the DOM
 	 *
 	 * @return {void}
 	 */
-	makeGUI: function () {
+	build: function () {
 
-		// Define the elements
+		// Define the basic elements
 		var gui = $( '<div>' ).attr( 'id', 'proveit' ),
 			header = $( '<div>' ).attr( 'id', 'proveit-header' ),
 			logo = $( '<span>' ).attr( 'id', 'proveit-logo' ).text( 'ProveIt' ),
 			leftBracket = $( '<span>' ).attr( 'id', 'proveit-left-bracket' ).text( '[' ),
 			rightBracket = $( '<span>' ).attr( 'id', 'proveit-right-bracket' ).text( ']' ),
-			editTab = $( '<span>' ).attr( 'id', 'proveit-edit-tab' ).addClass( 'active' ).text( proveit.getMessage( 'edit-tab' ) ).hide(),
-			addTab = $( '<span>' ).attr( 'id', 'proveit-add-tab' ).text( proveit.getMessage( 'add-tab' ) ).hide(),
-			content = $( '<div>' ).attr( 'id', 'proveit-content' ).hide();
+			editTab = $( '<span>' ).attr( 'id', 'proveit-edit-tab' ).addClass( 'active' ).text( proveit.getMessage( 'edit-tab' ) ),
+			addTab = $( '<span>' ).attr( 'id', 'proveit-add-tab' ).text( proveit.getMessage( 'add-tab' ) ),
+			content = $( '<div>' ).attr( 'id', 'proveit-content' );
 
 		// Put everything together and add it to the DOM
 		logo.prepend( leftBracket ).append( rightBracket );
 		header.append( logo, editTab, addTab );
 		gui.append( header,	content );
-		$( document.body ).prepend( gui );
+		$( 'body' ).prepend( gui );
 
 		// Make the GUI draggable
 		var dragged = false;
@@ -245,7 +171,7 @@ var proveit = {
 				'right': 0,
 				'bottom': 0
 			});
-		});
+		}).click(); // Click the logo to hide the gadget by default
 
 		editTab.click( function () {
 			if ( dragged ) {
@@ -280,29 +206,29 @@ var proveit = {
 	},
 
 	/**
-	 * Scan for references in the textbox, make a list and fill the content
+	 * Scan for references in the textbox and display them
 	 *
 	 * @return {boolean} Whether the scan succeeded and found at least one reference
 	 */
 	scanForReferences: function () {
 
-		// First empty the previous list
+		// First define the list element
 		var referenceList = $( '<ul>' ).attr( 'id', 'proveit-reference-list' );
 
-		// Second, look for all the citations and store them in an array for later
-		var text = proveit.getTextbox().val(),
+		// Second, look for all the citations in the wikitext and store them in an array for later
+		var wikitext = proveit.getTextbox().val(),
 			citations = [],
 			citationsRegExp = /<\s*ref\s+name\s*=\s*["|']?\s*([^"'\s]+)\s*["|']?\s*\/\s*>/ig, // Three possibilities: <ref name="foo" />, <ref name='foo' /> and <ref name=foo />
 			match,
 			citation;
 
-		while ( ( match = citationsRegExp.exec( text ) ) ) {
+		while ( ( match = citationsRegExp.exec( wikitext ) ) ) {
 			citation = new proveit.Citation({ 'name': match[1], 'index': match.index, 'string': match[0] });
 			citations.push( citation );
 		}
 
 		// Third, look for all the raw and template references
-		var matches = text.match( /<\s*ref[^\/]*>[\s\S]*?<\s*\/\s*ref\s*>/ig );
+		var matches = wikitext.match( /<\s*ref[^\/]*>[\s\S]*?<\s*\/\s*ref\s*>/ig );
 
 		if ( !matches ) {
 			var noReferencesMessage = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) );
@@ -335,7 +261,7 @@ var proveit = {
 	 * Make a reference object out of a reference string
 	 *
 	 * @param {string} Wikitext of the reference
-	 * @return {Citation|RawReference|TemplateReference} Reference object
+	 * @return {Citation|RawReference|TemplateReference} Reference object of the appropriate class
 	 */
 	makeReference: function ( referenceString ) {
 
@@ -412,7 +338,7 @@ var proveit = {
 	 * @return {void}
 	 */
 	addTag: function () {
-		var tag = proveit.getSetting( 'tag' );
+		var tag = proveit.getOption( 'tag' );
 		if ( !tag ) {
 			return; // No tag defined
 		}
@@ -429,13 +355,13 @@ var proveit = {
 	},
 
 	/**
-	 * Add the ProveIt summary
+	 * Add the ProveIt edit summary
 	 *
 	 * @return {void}
 	 */
 	addSummary: function () {
 		var currentSummary = $( '#wpSummary' ).val(),
-			proveitSummary = proveit.getSetting( 'summary' );
+			proveitSummary = proveit.getOption( 'summary' );
 		if ( !proveitSummary ) {
 			return; // No summary defined
 		}
@@ -497,7 +423,7 @@ var proveit = {
 
 			// Highlight the string
 			var start = this.index,
-				end = this.index + this.string.length;
+				end = start + this.string.length;
 			$( textbox ).focus().textSelection( 'setSelection', { 'start': start, 'end': end } );
 		};
 	},
@@ -570,7 +496,7 @@ var proveit = {
 
 			// Bind events
 			var reference = this;
-			item.click( function ( event ) {
+			item.click( function () {
 				reference.highlight();
 				var form = reference.toForm();
 				$( '#proveit-content' ).html( form );
@@ -620,18 +546,11 @@ var proveit = {
 			form.append( table, buttons );
 
 			// Bind events
-			form.submit( function () {
-				return false;
-			});
+			form.submit( false );
 
-			var reference = this;
-			updateButton.click( function () {
-				reference.update();
-			});
+			updateButton.click( this, this.update );
 
-			insertButton.click( function () {
-				reference.insert();
-			});
+			insertButton.click( this, this.insert );
 
 			return form;
 		};
@@ -652,10 +571,12 @@ var proveit = {
 		 *
 		 * @return {void}
 		 */
-		this.update = function () {
-			var oldString = this.string;
-			this.loadFromForm();
-			var newString = this.string;
+		this.update = function ( event ) {
+			var reference = event.data;
+
+			var oldString = reference.string;
+			reference.loadFromForm();
+			var newString = reference.string;
 
 			// Replace the old reference
 			var textbox = proveit.getTextbox(),
@@ -665,8 +586,8 @@ var proveit = {
 
 			// Update the index and highlight the reference
 			text = textbox.val();
-			this.index = text.indexOf( newString );
-			this.highlight();
+			reference.index = text.indexOf( newString );
+			reference.highlight();
 
 			// Add the tag, the summary and rescan
 			proveit.addTag();
@@ -678,11 +599,13 @@ var proveit = {
 		 *
 		 * @return {void}
 		 */
-		this.insert = function () {
-			this.loadFromForm();
+		this.insert = function ( event ) {
+			var reference = event.data;
+
+			reference.loadFromForm();
 
 			// Replace the existing selection (if any)
-			var string = this.string,
+			var string = reference.string,
 				textbox = proveit.getTextbox();
 
 			textbox.textSelection( 'encapsulateSelection', {
@@ -691,8 +614,8 @@ var proveit = {
 			});
 
 			// Update the index and highlight the reference
-			this.index = textbox.val().indexOf( this.string );
-			this.highlight();
+			reference.index = textbox.val().indexOf( reference.string );
+			reference.highlight();
 
 			// Add the tag, the summary and rescan
 			proveit.addTag();
@@ -818,7 +741,7 @@ var proveit = {
 		};
 
 		/**
-		 * Convert this reference to a list item ready to be inserted into the reference list
+		 * Convert this reference to a list item
 		 *
 		 * Overrides the toListItem() method of the RawReference class.
 		 *
@@ -831,13 +754,10 @@ var proveit = {
 			item.append( $( '<span>' ).addClass( 'proveit-template' ).text( this.template ) );
 			var requiredParams = this.getRequiredParams(),
 				requiredParam,
-				label,
-				value;
+				requiredParamValue;
 			for ( requiredParam in requiredParams ) {
-				label = requiredParams[ requiredParam ].label[ proveit.userLanguage ];
-				value = this.params[ requiredParam ];
-				item.append( $( '<span>' ).addClass( 'proveit-label' ).text( label ) );
-				item.append( ': ', $( '<span>' ).addClass( 'proveit-value' ).text( value ) );
+				requiredParamValue = this.params[ requiredParam ];
+				item.append( $( '<span>' ).addClass( 'proveit-required-value' ).text( requiredParamValue ) );
 			}
 
 			var citations = $( '<span>' ).addClass( 'proveit-citations' );
@@ -850,7 +770,7 @@ var proveit = {
 
 			// Bind events
 			var reference = this;
-			item.click( function ( event ) {
+			item.click( function () {
 				reference.highlight();
 				var form = reference.toForm();
 				$( '#proveit-content' ).html( form );
@@ -859,8 +779,8 @@ var proveit = {
 
 			item.find( 'a.proveit-citation' ).click( function ( event ) {
 				event.stopPropagation();
-				var i = parseInt( $( this ).text(), 10 ) - 1;
-				var citation = reference.citations[ i ];
+				var i = parseInt( $( this ).text(), 10 ) - 1,
+					citation = reference.citations[ i ];
 				citation.highlight();
 				return false;
 			});
@@ -906,7 +826,7 @@ var proveit = {
 			// The insert all the other fields
 			var paramName, registeredParam, paramLabel, paramType, paramDescription, paramValue, row, label, paramNameInput, paramValueInput,
 				registeredParams = this.getRegisteredParams(),
-				requiredParams = this.getRequiredParams();
+				requiredParams = this.getRequiredParams(),
 				optionalParams = this.getOptionalParams();
 
 			for ( paramName in registeredParams ) {
@@ -969,17 +889,11 @@ var proveit = {
 				insertButton.hide();
 			});
 
-			form.submit( function () {
-				return false;
-			});
+			form.submit( false );
 
-			insertButton.click( function () {
-				reference.insert();
-			});
+			updateButton.click( this, this.update );
 
-			updateButton.click( function () {
-				reference.update();
-			});
+			insertButton.click( this, this.insert );
 
 			return form;
 		};

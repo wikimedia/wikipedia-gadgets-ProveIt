@@ -3,8 +3,6 @@
 	border: 1px solid #ddd;
 	font-size: 14px;
 	position: fixed;
-	right: 0;
-	bottom: 0;
 	z-index: 2147483647; /* Max value */
 }
 
@@ -78,15 +76,10 @@
 
 #proveit-reference-list .proveit-reference-item .proveit-template {
 	font-weight: bold;
-	margin-right: 10px;
 }
 
-#proveit-reference-list .proveit-reference-item .proveit-label {
-	text-decoration: underline;
-}
-
-#proveit-reference-list .proveit-reference-item .proveit-value {
-	margin-right: 10px;
+#proveit-reference-list .proveit-reference-item .proveit-required-value {
+	margin-left: 10px;
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-citations {
@@ -122,11 +115,7 @@
 }
 
 #proveit-reference-form .proveit-required label {
-	text-decoration: underline;
-}
-
-#proveit-reference-form .proveit-optional {
-	display: none;
+	font-weight: bold;
 }
 
 #proveit-reference-form input,
