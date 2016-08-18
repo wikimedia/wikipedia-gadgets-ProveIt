@@ -835,7 +835,7 @@ var proveit = {
 
 				// Defaults
 				paramLabel = paramName;
-				paramType = 'text';
+				paramPlaceholder = '';
 				paramDescription = '';
 				paramValue = '';
 
@@ -843,8 +843,12 @@ var proveit = {
 				if ( registeredParam.label ) {
 					paramLabel = registeredParam.label[ proveit.userLanguage ];
 				}
-				if ( registeredParam.type ) {
-					paramType = registeredParam.type;
+				if ( registeredParam.type === 'date' ) {
+					var date = new Date(),
+						yyyy = date.getFullYear(),
+						mm = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ),
+						dd = ( '0' + date.getDate() ).slice( -2 )
+					paramPlaceholder = yyyy + '-' + mm + '-' + dd;
 				}
 				if ( registeredParam.description ) {
 					paramDescription = registeredParam.description[ proveit.userLanguage ];
@@ -856,7 +860,7 @@ var proveit = {
 				row = $( '<tr>' ).addClass( 'proveit-param-pair' );
 				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
 				paramNameInput = $( '<input>' ).attr( 'type', 'hidden' ).addClass( 'proveit-param-name' ).val( paramName );
-				paramValueInput = $( '<input>' ).attr( 'type', paramType ).addClass( 'proveit-param-value' ).val( paramValue );
+				paramValueInput = $( '<input>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
 
 				// Mark the required parameters as such
 				if ( paramName in requiredParams ) {
