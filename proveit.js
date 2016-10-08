@@ -16,6 +16,11 @@
 var proveit = {
 
 	/**
+	 * URL of the ProveIt icon hosted at Commons
+	 */
+	ICON: '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/ProveIt_logo_for_user_boxes.svg/22px-ProveIt_logo_for_user_boxes.svg.png',
+
+	/**
 	 * Interface messages
 	 */
 	messages: {
@@ -23,20 +28,32 @@ var proveit = {
 			'proveit-edit-tab': 'Edit',
 			'proveit-add-tab': 'Add',
 			'proveit-reference-name-label': 'Reference name',
-			'proveit-reference-text-label': 'Reference text',
-			'proveit-template-label': 'Template',
+			'proveit-reference-content-label': 'Reference content',
+			'proveit-reference-template-label': 'Main template',
+			'proveit-params-button': 'Show all parameters',
+			'proveit-cite-button': 'Cite',
+			'proveit-remove-button': 'Remove',
 			'proveit-insert-button': 'Insert',
 			'proveit-update-button': 'Update',
+			'proveit-prompt-name': 'The reference needs a name in order to be cited:',
+			'proveit-confirm-remove': 'This will remove the reference and all of its citations. Are you sure?',
+			'proveit-no-template': 'No template',
 			'proveit-no-references': 'No references found'
 		},
 		'es': {
 			'proveit-edit-tab': 'Editar',
 			'proveit-add-tab': 'Agregar',
 			'proveit-reference-name-label': 'Nombre de la referencia',
-			'proveit-reference-text-label': 'Texto de la referencia',
-			'proveit-template-label': 'Plantilla',
+			'proveit-reference-content-label': 'Contenido de la referencia',
+			'proveit-reference-template-label': 'Plantilla principal',
+			'proveit-params-button': 'Ver todos los parámetros',
+			'proveit-cite-button': 'Citar',
+			'proveit-remove-button': 'Borrar',
 			'proveit-insert-button': 'Insertar',
 			'proveit-update-button': 'Actualizar',
+			'proveit-prompt-name': 'La referencia necesita un nombre para ser citada:',
+			'proveit-confirm-remove': 'Esto borrará la referencia y todas sus citas. ¿Estás seguro?',
+			'proveit-no-template': 'Sin plantilla',
 			'proveit-no-references': 'No se han encontrado referencias'
 		}
 	},
@@ -49,10 +66,9 @@ var proveit = {
 	templates: {},
 
 	/**
-	 * Interface language
-	 * The default or fallback language is English
+	 * Interface language (may be different from the content language)
 	 *
-	 * @type {string}
+	 * @type {string} defaults to English
 	 */
 	userLanguage: 'en',
 
@@ -79,7 +95,7 @@ var proveit = {
 	/**
 	 * Convenience method to get the edit textbox
 	 *
-	 * @return {jQuery} Edit textbox
+	 * @return {jQuery} edit textbox
 	 */
 	getTextbox: function () {
 		return $( '#wpTextbox1' );
@@ -103,22 +119,47 @@ var proveit = {
 		proveit.build();
 
 		// Get the template data from the wiki
+		var templates = proveit.getOption( 'templates' );
 		new mw.Api().get({
 			'action': 'templatedata',
-			'titles': proveit.getOption( 'templates' ).join( '|' ),
+			'titles': templates ? templates.join( '|' ) : null,
 			'format': 'json'
 		}).done( function ( data ) {
 			//console.log( data );
 			for ( var page in data.pages ) {
 				page = data.pages[ page ];
-				proveit.templates[ page.title ] = page.params; // Set the template data
+				proveit.templates[ page.title ] = page.params;
 			}
 			proveit.scanForReferences();
+		});
+
+		// Replace the reference button for the ProveIt button
+		proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
+			'section': 'main',
+			'group': 'insert',
+			'tool': 'reference'
+		});
+		proveit.getTextbox().wikiEditor( 'addToToolbar', {
+			'section': 'main',
+			'group': 'insert',
+			'tools': {
+				'proveit': {
+					'label': 'ProveIt',
+					'type': 'button',
+					'icon': proveit.ICON,
+					'action': {
+						'type': 'callback',
+						'execute': function () {
+							$( '#proveit' ).toggle();
+						}
+					}
+				}
+			}
 		});
 	},
 
 	/**
-	 * Build the GUI and insert it into the DOM
+	 * Build the GUI and add it to the DOM
 	 *
 	 * @return {void}
 	 */
@@ -142,18 +183,20 @@ var proveit = {
 
 		// Make the GUI draggable
 		var dragged = false;
-		gui.draggable({
-			handle: header,
-			containment: 'window',
-			start: function ( event ) {
-				if ( event.toElement.id !== 'proveit-header' ) {
-					dragged = true;
+		mw.loader.using( 'jquery.ui.draggable' ).then( function () {
+			gui.draggable({
+				handle: header,
+				containment: 'window',
+				start: function ( event ) {
+					if ( event.toElement.id !== 'proveit-header' ) {
+						dragged = true;
+					}
+					gui.css({
+						'right': 'auto',
+						'bottom': 'auto'
+					});
 				}
-				gui.css({
-					'right': 'auto',
-					'bottom': 'auto'
-				});
-			}
+			});
 		});
 
 		// Lastly, bind events
@@ -188,27 +231,24 @@ var proveit = {
 				dragged = false; // Reset the flag
 				return;
 			}
-			$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
-
-			// Create an dummy reference and a dummy form out of it
-			var template = $.cookie( 'proveit-last-template' );
-			if ( !template ) {
-				template = Object.keys( proveit.templates )[0];
-				template = template.substring( template.indexOf( ':' ) + 1 );
-			}
-			var dummyReference = new proveit.TemplateReference({ 'template': template }),
+			// Create a dummy reference and a dummy form out of it
+			var template = $.cookie( 'proveit-last-template' ), // Remember the user choice
+				dummyReference = new proveit.Reference({ 'template': template }),
 				dummyForm = dummyReference.toForm();
 
 			content.html( dummyForm );
 
-			$( '#proveit-update-button' ).hide();
+			// Switch the GUI to add mode
+			$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
+			$( '#proveit-insert-button' ).show();
+			$( '#proveit-cite-button, #proveit-remove-button, #proveit-update-button' ).hide();
 		});
 	},
 
 	/**
 	 * Scan for references in the textbox and display them
 	 *
-	 * @return {boolean} Whether the scan succeeded and found at least one reference
+	 * @return {void}
 	 */
 	scanForReferences: function () {
 
@@ -218,7 +258,7 @@ var proveit = {
 		// Second, look for all the citations in the wikitext and store them in an array for later
 		var wikitext = proveit.getTextbox().val(),
 			citations = [],
-			citationsRegExp = /<\s*ref\s+name\s*=\s*["|']?\s*([^"'\s]+)\s*["|']?\s*\/\s*>/ig, // Three possibilities: <ref name="foo" />, <ref name='foo' /> and <ref name=foo />
+			citationsRegExp = /<\s*ref\s+name\s*=\s*["|']?\s*([^"'\s]+)\s*["|']?\s*\/\s*>/ig, // Three patterns: <ref name="foo" />, <ref name='foo' /> and <ref name=foo />
 			match,
 			citation;
 
@@ -228,65 +268,78 @@ var proveit = {
 		}
 
 		// Third, look for all the raw and template references
-		var matches = wikitext.match( /<\s*ref[^\/]*>[\s\S]*?<\s*\/\s*ref\s*>/ig );
+		var matches = wikitext.match( /<\s*ref[^\/]*>[\s\S]*?<\s*\/\s*ref\s*>/ig ); // We use [\s\S]* instead of .* to match newlines
 
-		if ( !matches ) {
-			var noReferencesMessage = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) );
-			referenceList.append( noReferencesMessage );
-			return false;
-		}
+		if ( matches ) {
+			var i, j, reference, referenceItem;
+			for ( i = 0; i < matches.length; i++ ) {
+				// Turn all the matches into reference objects
+				reference = proveit.makeReference( matches[ i ] );
 
-		var i, j, reference, referenceItem;
-		for ( i = 0; i < matches.length; i++ ) {
-			// Turn all the matches into reference objects
-			reference = proveit.makeReference( matches[ i ] );
-
-			// For each reference, check the citations array for citations to it
-			for ( j = 0; j < citations.length; j++ ) {
-				citation = citations[ j ];
-				if ( reference.name === citation.name ) {
-					reference.citations.push( citation );
+				// For each reference, check the citations array for citations to it
+				for ( j = 0; j < citations.length; j++ ) {
+					citation = citations[ j ];
+					if ( reference.name === citation.name ) {
+						reference.citations.push( citation );
+					}
 				}
+
+				// Finally, turn all the references into list items and insert them into the reference list
+				referenceItem = reference.toListItem();
+				referenceList.append( referenceItem );
 			}
 
-			// Finally, turn all the references into list items and insert them into the reference list
-			referenceItem = reference.toListItem();
-			referenceList.append( referenceItem );
+			$( '#proveit-content' ).html( referenceList );
+		} else {
+			$( '#proveit-content' ).html( $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) ) );
 		}
-
-		$( '#proveit-content' ).html( referenceList );
 	},
 
 	/**
 	 * Make a reference object out of a reference string
 	 *
-	 * @param {string} Wikitext of the reference
-	 * @return {Citation|RawReference|TemplateReference} Reference object of the appropriate class
+	 * @param {string} wikitext of the reference
+	 * @return {object} reference object
 	 */
 	makeReference: function ( referenceString ) {
+		// Extract the name, if any
+		// Three patterns: <ref name="foo">, <ref name='foo'> and <ref name=foo>
+		var referenceName = null,
+			match = referenceString.match( /<[\s]*ref[\s]*name[\s]*=[\s]*(?:(?:\"(.*?)\")|(?:\'(.*?)\')|(?:(.*?)))[\s]*>/i );
+		if ( match ) {
+			referenceName = match[1] || match[2] || match[3];
+		}
 
-		// First we need to determine what kind of reference we're dealing with
-		// So we get all the template names and search for a match
-		var registeredTemplate,
-			registeredTemplatesArray = [];
-		for ( registeredTemplate in proveit.templates ) {
+		// Extract the index
+		var referenceIndex = proveit.getTextbox().val().indexOf( referenceString );
+
+		// Extract the content
+		var referenceContent = referenceString.match( />([\s\S]*)<\s*\/\s*ref\s*>/i )[1]; // We use [\s\S]* instead of .* to match newlines
+
+		// Build the basic reference
+		var reference = new proveit.Reference({
+			'name': referenceName,
+			'index': referenceIndex,
+			'string': referenceString,
+			'content': referenceContent
+		});
+
+		// Determine if the reference uses a template by getting all the registered template names and searching for a match
+		var registeredTemplatesArray = [];
+		for ( var registeredTemplate in proveit.templates ) {
 			registeredTemplate = registeredTemplate.substring( registeredTemplate.indexOf( ':' ) + 1 ); // Remove the namespace
 			registeredTemplatesArray.push( registeredTemplate );
 		}
 		var registeredTemplatesDisjunction = registeredTemplatesArray.join( '|' ),
-			regExp = new RegExp( '{{(' + registeredTemplatesDisjunction + ')([\\s\\S]*)}}', 'i' ),
-			match = referenceString.match( regExp ),
-			referenceText,
-			reference;
+			regExp = new RegExp( '{{(' + registeredTemplatesDisjunction + ')([\\s\\S]*)}}', 'i' ), // We use [\s\S]* instead of .* to match newlines
+			match = referenceContent.match( regExp );
 
+		// If there's a match, add the template data to the reference
 		if ( match ) {
-			referenceText = match[2];
-			reference = new proveit.TemplateReference({ 'string': referenceString, 'text': referenceText });
+			reference.templateString = match[0];
 
-			// Extract the name of the template
+			// Extract and the template name and normalize it
 			var template = match[1];
-
-			// Normalize it
 			registeredTemplatesArray.forEach( function ( registeredTemplate ) {
 				if ( template.toLowerCase() === registeredTemplate.toLowerCase() ) {
 					template = registeredTemplate;
@@ -294,11 +347,11 @@ var proveit = {
 			});
 			reference.template = template;
 
-			// Next, extract the parameters
-			var paramsArray = referenceText.split( '|' ),
+			// Extract the parameters and normalize them
+			var paramsArray = match[2].split( '|' ),
 				paramString, paramNameAndValue, paramName, paramValue;
 
-			paramsArray.shift(); // Remove everything before the fist pipe
+			paramsArray.shift(); // The first element is always empty
 
 			for ( paramString in paramsArray ) {
 
@@ -312,21 +365,6 @@ var proveit = {
 
 				reference.params[ paramName ] = paramValue;
 			}
-		} else {
-			referenceText = referenceString.match( />([\s\S]*)<\s*\/\s*ref\s*>/i )[1];
-			reference = new proveit.RawReference({ 'string': referenceString, 'text': referenceText });
-		}
-
-		// Now set the starting index of the reference
-		var text = proveit.getTextbox().val();
-		reference.index = text.indexOf( referenceString );
-
-		// Lastly, extract the name of the reference, if any
-		// Three possibilities: <ref name="foo">, <ref name='foo'> and <ref name=foo>
-		regExp = /<[\s]*ref[\s]*name[\s]*=[\s]*(?:(?:\"(.*?)\")|(?:\'(.*?)\')|(?:(.*?)))[\s]*>/i;
-		match = referenceString.match( regExp );
-		if ( match ) {
-			reference.name = match[1] || match[2] || match[3];
 		}
 
 		return reference;
@@ -372,38 +410,49 @@ var proveit = {
 	},
 
 	/**
-	 * Class for citations: <ref name="some-reference" />
+	 * Citation class
 	 *
-	 * The citation class is the base class. It has the properties and methods common to all references.
-	 *
-	 * @param {object} Data for constructing the object
+	 * @param {object} data for constructing the object
 	 */
 	Citation: function ( data ) {
 
 		/**
-		 * Name of the class
+		 * Citation name
 		 */
-		this.type = 'Citation';
+		this.name = data.name ? data.name : '';
 
 		/**
-		 * Name of the reference
+		 * Citation location in the edit textbox
+		 */
+		this.index = data.index ? data.index : 0;
+
+		/**
+		 * Citation wikitext
 		 *
-		 * This is the value of the "name" parameter of the <ref> tag: <ref name="abc" />
+		 * Example: <ref name="abc" />
 		 */
-		this.name = data.name;
+		this.string = data.string ? data.string : '';
 
 		/**
-		 * Location of this reference in the edit textbox
+		 * Convert this citation to wikitext
 		 */
-		this.index = data.index;
+		this.toString = function () {
+			return '<ref name="' + this.name + '" />';
+		};
 
 		/**
-		 * Wikitext for this reference.
+		 * Insert this citation into the textbox
 		 */
-		this.string = data.string;
+		this.insert = function () {
+			var textbox = proveit.getTextbox();
+			textbox.textSelection( 'encapsulateSelection', {
+				'peri': this.toString(),
+				'replace': true
+			});
+		};
 
 		/**
-		 * Highlight the string in the textbox and scroll it to view
+		 * Highlight the citation in the textbox and scroll it to view
 		 *
 		 * @return {void}
 		 */
@@ -429,12 +478,11 @@ var proveit = {
 	},
 
 	/**
-	 * Class for raw references: <ref>This is a raw reference, it uses no templates.</ref>
+	 * Reference class
 	 *
-	 * @extends Citation
 	 * @param {object} Data for constructing the object
 	 */
-	RawReference: function ( data ) {
+	Reference: function ( data ) {
 
 		/**
 		 * Extend the Citation class
@@ -442,11 +490,11 @@ var proveit = {
 		proveit.Citation.call( this, data );
 
 		/**
-		 * Name of the class
+		 * Reference content (without the <ref> tags)
 		 *
-		 * Overrides the value inherited from the Citation class.
+		 * Example: Second chapter of {{Cite book |first=Charles |last=Darwin |title=On the Origin of Species}}
 		 */
-		this.type = 'RawReference';
+		this.content = data.content ? data.content : '';
 
 		/**
 		 * Array of citations to this reference
@@ -454,134 +502,144 @@ var proveit = {
 		this.citations = [];
 
 		/**
-		 * String inside the <ref> tags
+		 * Name of the main template of this reference, if any
+		 *
+		 * Example: Cite book
 		 */
-		this.text = data.text;
+		this.template = data.template ? data.template : null;
 
 		/**
-		 * Convert this reference to wikitext
+		 * Wikitext of the main template, if any
 		 *
-		 * This method is trivial, but it needs to exist because it isn't trivial in the TemplateReference class,
-		 * and sometimes we call it on a reference object without knowing if it's a raw reference or a template reference.
-		 *
-		 * @return {string} wikitext for this reference
+		 * Example: {{Cite book |first=Charles |last=Darwin |title=On the Origin of Species}}
 		 */
-		this.toString = function () {
-			var string = '<ref';
-
-			if ( this.name ) {
-				string += ' name="' + this.name + '"';
-			}
-
-			string += '>' + this.text + '</ref>';
-
-			return string;
-		};
+		this.templateString = data.templateString ? data.templateString : '';
 
 		/**
-		 * Convert this reference to a list item ready to be inserted into the reference list
+		 * Object mapping the parameter names of this reference to their values
 		 *
-		 * @return {jQuery} jQuery-wrapped <li>
+		 * This object is constructed directly out of the wikitext, so it doesn't include
+		 * any information about the parameters other than their names and values.
 		 */
-		this.toListItem = function () {
-
-			var item = $( '<li>' ).addClass( 'proveit-reference-item' ).text( this.text ),
-				citations = $( '<span>' ).addClass( 'proveit-citations' );
-
-			for ( var i = 0; i < this.citations.length; i++ ) {
-				citations.append( $( '<a>' ).addClass( 'proveit-citation' ).text( i + 1 ) );
-			}
-
-			item.append( citations );
-
-			// Bind events
-			var reference = this;
-			item.click( function () {
-				reference.highlight();
-				var form = reference.toForm();
-				$( '#proveit-content' ).html( form );
-				$( '#proveit-insert-button' ).hide();
-			});
-
-			item.find( 'a.proveit-citation' ).click( function ( event ) {
-				event.stopPropagation();
-				var i = parseInt( $( this ).text(), 10 ) - 1,
-					citation = reference.citations[ i ];
-				citation.highlight();
-				return false;
-			});
-
-			return item;
-		};
+		this.params = {};
 
 		/**
-		 * Convert this reference into a HTML form filled with its data
-		 *
-		 * @return {jQuery} jQuery-wrapped <form>
-		 */
-		this.toForm = function () {
-
-			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ),
-				table = $( '<table>' );
-
-			// Insert the <ref> name field
-			var referenceNameRow = $( '<tr>' ),
-				referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
-				referenceNameInput = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name );
-			referenceNameRow.append( referenceNameLabel, referenceNameInput );
-			table.append( referenceNameRow );
-
-			// Insert the textarea
-			var referenceTextRow = $( '<tr>' ),
-				referenceTextLabel = $( '<label>' ).text( proveit.getMessage( 'reference-text-label' ) ),
-				referenceTextArea = $( '<textarea>' ).attr( 'name', 'reference-text' ).val( this.text );
-			referenceTextRow.append( referenceTextLabel, referenceTextArea );
-			table.append( referenceTextRow );
-
-			// Insert the buttons
-			var buttons = $( '<div>' ).attr( 'id', 'proveit-buttons' ),
-				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
-				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
-			buttons.append( updateButton, insertButton );
-			form.append( table, buttons );
-
-			// Bind events
-			form.submit( false );
-
-			updateButton.click( this, this.update );
-
-			insertButton.click( this, this.insert );
-
-			return form;
-		};
-
-		/**
-		 * Update the data of this reference with the content of the reference form
+		 * Show all the hidden optional parameters
 		 *
 		 * @return {void}
 		 */
-		this.loadFromForm = function () {
-			this.name = $( '#proveit-reference-form input[name="reference-name"]' ).val();
-			this.text = $( '#proveit-reference-form textarea[name="reference-text"]' ).val();
-			this.string = this.toString();
+		this.showAllParams = function () {
+			var button = $( this ),
+				form = button.closest( 'form' ),
+				rows = $( 'tr', form );
+			rows.show();
+			button.hide();
+		};
+
+		/**
+		 * Insert a citation to this reference
+		 *
+		 * @return {void}
+		 */
+		this.cite = function ( event ) {
+			var reference = event.data;
+
+			// If the reference has no name, ask the user for one
+			// @todo check if the name is unique?
+			// @todo autogenerate names?
+			if ( !reference.name ) {
+				reference.name = prompt( proveit.getMessage( 'prompt-name' ) );
+				if ( !reference.name ) {
+					return;
+				}
+				var table = reference.toTable();
+				$( '#proveit-reference-table' ).replaceWith( table );
+
+				var oldString = reference.string;
+				reference.loadFromForm();
+				var newString = reference.string;
+
+				// Replace the old reference
+				var textbox = proveit.getTextbox(),
+					text = textbox.val().replace( oldString, newString );
+				textbox.val( text );
+			}
+
+			// Add the citation
+			var citation = new proveit.Citation({ 'name': reference.name });
+			citation.insert();
+		};
+
+		/**
+		 * Remove this reference and all its citations
+		 *
+		 * @param {object} click event, with the reference as data
+		 * @return {void}
+		 */
+		this.remove = function ( event ) {
+			var reference = event.data;
+
+			// Make sure the user understands that the citations will also be removed
+			if ( confirm( proveit.getMessage( 'confirm-remove' ) ) ) {
+
+				// Remove the reference
+				var textbox = proveit.getTextbox(),
+					text = textbox.val();
+				text = text.replace( reference.string, '' );
+
+				// Remove all the citations
+				// @todo citation.remove()
+				reference.citations.forEach( function ( citation ) {
+					text = text.replace( citation.string, '' );
+				});
+
+				// Update the textbox
+				textbox.val( text );
+
+				// Add the tag and summary
+				proveit.addTag();
+				proveit.addSummary();
+
+				// Switch to add mode
+				$( '#proveit-add-tab' ).addClass( 'active' ).siblings().removeClass( 'active' );
+				$( '#proveit-insert-button' ).show();
+				$( '#proveit-cite-button, #proveit-remove-button, #proveit-update-button' ).hide();
+			}
 		};
 
 		/**
 		 * Update the wikitext in the textbox with the current data of this reference
 		 *
+		 * @param {object} click event, with the reference as data
 		 * @return {void}
 		 */
 		this.update = function ( event ) {
 			var reference = event.data;
 
-			var oldString = reference.string;
+			var oldName = reference.name,
+				oldString = reference.string;
 			reference.loadFromForm();
-			var newString = reference.string;
+			var newName = reference.name,
+				newString = reference.string;
 
 			// Replace the old reference
 			var textbox = proveit.getTextbox(),
-				text = textbox.val().replace( oldString, newString );
+				text = textbox.val();
+			text = text.replace( oldString, newString );
 
+			// If the name changed, update the citations
+			// @todo citation.update()
+			if ( oldName !== newName && reference.citations ) {
+				var oldCitationString, newCitationString;
+				reference.citations.forEach( function ( citation ) {
+					oldCitationString = citation.toString();
+					citation.name = newName;
+					newCitationString = citation.toString();
+					text = text.replace( oldCitationString, newCitationString );
+				});
+			}
+
+			// Update the textbox
 			textbox.val( text );
 
 			// Update the index and highlight the reference
@@ -589,7 +647,10 @@ var proveit = {
 			reference.index = text.indexOf( newString );
 			reference.highlight();
 
-			// Add the tag, the summary and rescan
+			// Update the GUI
+			$( '#proveit-reference-table' ).replaceWith( reference.toTable() );
+
+			// Add the tag and summary
 			proveit.addTag();
 			proveit.addSummary();
 		};
@@ -597,6 +658,7 @@ var proveit = {
 		/**
 		 * Insert this reference into the textbox
 		 *
+		 * @param {object} click event, with the reference as data
 		 * @return {void}
 		 */
 		this.insert = function ( event ) {
@@ -613,53 +675,23 @@ var proveit = {
 				'replace': true
 			});
 
-			// Update the index and highlight the reference
+			// Update the index
 			reference.index = textbox.val().indexOf( reference.string );
-			reference.highlight();
 
-			// Add the tag, the summary and rescan
+			// Switch to edit mode
+			$( '#proveit-edit-tab' ).addClass( 'active' ).siblings().removeClass( 'active' );
+			$( '#proveit-reference-table' ).replaceWith( reference.toTable() );
+			$( '#proveit-insert-button' ).hide().siblings().show();
+
+			// Add the tag and summary
 			proveit.addTag();
 			proveit.addSummary();
 		};
-	},
-
-	/**
-	 * Class for template references: <ref>{{Cite book |first=Charles |last=Darwin |title=The Origin of Species}}</ref>
-	 *
-	 * @extends RawReference
-	 * @param {object} Data for constructing the object
-	 */
-	TemplateReference: function ( data ) {
-
-		/**
-		 * Extend the RawReference class
-		 */
-		proveit.RawReference.call( this, data );
-
-		/**
-		 * Name of the class
-		 *
-		 * Overrides the value inherited from the RawReference class.
-		 */
-		this.type = 'TemplateReference';
-
-		/**
-		 * Name of the template used by this reference.
-		 */
-		this.template = data.template;
-
-		/**
-		 * Object mapping the parameter names of this reference to their values
-		 *
-		 * This object is constructed directly out of the wikitext, so it doesn't include
-		 * any information about the parameters other than their names and values,
-		 */
-		this.params = {};
 
 		/**
 		 * Get the registered parameters for this reference
 		 *
-		 * @return {object}
+		 * @return {object} TemplateData of the registered parameters
 		 */
 		this.getRegisteredParams = function () {
 			var formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
@@ -670,7 +702,7 @@ var proveit = {
 		/**
 		 * Get the required parameters for this reference
 		 *
-		 * @return {object}
+		 * @return {object} TemplateData of the required parameters
 		 */
 		this.getRequiredParams = function () {
 			var requiredParams = {},
@@ -686,7 +718,7 @@ var proveit = {
 		/**
 		 * Get the suggested parameters for this reference
 		 *
-		 * @return {object}
+		 * @return {object} TemplateData of the suggested parameters
 		 */
 		this.getSuggestedParams = function () {
 			var suggestedParams = {},
@@ -702,7 +734,7 @@ var proveit = {
 		/**
 		 * Get the optional parameters for this reference
 		 *
-		 * @return {object}
+		 * @return {object} TemplateData of the optional parameters
 		 */
 		this.getOptionalParams = function () {
 			var optionalParams = {},
@@ -718,7 +750,7 @@ var proveit = {
 		/**
 		 * Get the registered params but sorted by required first, suggested later, optional last
 		 *
-		 * @return {object}
+		 * @return {object} TemplateData of the sorted parameters
 		 */
 		this.getSortedParams = function () {
 			var requiredParams = this.getRequiredParams(),
@@ -730,100 +762,116 @@ var proveit = {
 		/**
 		 * Convert this reference to wikitext
 		 *
-		 * Overrides the toString() method of the RawReference class.
-		 *
-		 * @return {string} Wikitext for this reference
+		 * @return {string} wikitext for this reference
 		 */
 		this.toString = function () {
+			// Build the opening ref tag
 			var string = '<ref';
-
 			if ( this.name ) {
 				string += ' name="' + this.name + '"';
 			}
+			string += '>';
 
-			string += '>{{' + this.template;
-
-			for ( var name in this.params ) {
-				string += ' |' + name + '=' + this.params[ name ];
+			// Build the template string
+			if ( this.template ) {
+				var templateString = '{{' + this.template;
+				for ( var name in this.params ) {
+					templateString += ' |' + name + '=' + this.params[ name ];
+				}
+				templateString += '}}';
+				// Build the content string by replacing the old template string with the new
+				// By doing this we keep any content that before or after the template string
+				this.content = this.content.replace( this.templateString, templateString );
+				this.templateString = templateString;
 			}
+			// Add the content
+			string += this.content;
 
-			string += '}}</ref>';
-
+			// Close and return the reference
+			string += '</ref>';
 			return string;
 		};
 
 		/**
 		 * Convert this reference to a list item
 		 *
-		 * Overrides the toListItem() method of the RawReference class.
-		 *
-		 * @return {jQuery} jQuery-wrapped node for reference list
+		 * @return {jQuery} list item
 		 */
 		this.toListItem = function () {
-
 			var item = $( '<li>' ).addClass( 'proveit-reference-item' );
 
-			item.append( $( '<span>' ).addClass( 'proveit-template' ).text( this.template ) );
-			var requiredParams = this.getRequiredParams(),
-				requiredParam,
-				requiredParamValue;
-			for ( requiredParam in requiredParams ) {
-				requiredParamValue = this.params[ requiredParam ];
-				item.append( $( '<span>' ).addClass( 'proveit-required-value' ).text( requiredParamValue ) );
+			// Add the main content
+			if ( this.template ) {
+				var templateSpan = $( '<span>' ).addClass( 'proveit-reference-template' ).text( this.template ),
+					requiredParams = this.getRequiredParams(),
+					requiredParamName, requiredParamValue, requiredParamSpan;
+				item.html( templateSpan );
+				for ( requiredParamName in requiredParams ) {
+					requiredParamValue = this.params[ requiredParamName ];
+					requiredParamSpan = $( '<span>' ).addClass( 'proveit-required-param-value' ).text( requiredParamValue );
+					item.append( requiredParamSpan );
+				}
+			} else {
+				item.text( this.content );
 			}
 
+			// Add the citations
 			var citations = $( '<span>' ).addClass( 'proveit-citations' );
-
-			for ( var i = 0; i < this.citations.length; i++ ) {
-				citations.append( $( '<a>' ).addClass( 'proveit-citation' ).text( i + 1 ) );
+			for ( var i = 1; i <= this.citations.length; i++ ) {
+				citations.append( $( '<a>' ).addClass( 'proveit-citation' ).text( i ) );
 			}
-
 			item.append( citations );
 
 			// Bind events
-			var reference = this;
-			item.click( function () {
+			item.click( this, function ( event ) {
+				var reference = event.data,
+					form = reference.toForm();
 				reference.highlight();
-				var form = reference.toForm();
 				$( '#proveit-content' ).html( form );
-				$( '#proveit-insert-button' ).hide();
+				$( '#proveit-insert-button' ).hide().siblings().show();
 			});
 
-			item.find( 'a.proveit-citation' ).click( function ( event ) {
-				event.stopPropagation();
-				var i = parseInt( $( this ).text(), 10 ) - 1,
+			$( '.proveit-citation', item ).click( this, function ( event ) {
+				var reference = event.data,
+					i = parseInt( $( this ).text(), 10 ) - 1,
 					citation = reference.citations[ i ];
 				citation.highlight();
-				return false;
+				event.stopPropagation();
 			});
 
 			return item;
 		};
 
 		/**
-		 * Convert this reference into a HTML form filled with its data
+		 * Convert this reference into a HTML table
 		 *
-		 * @return {jQuery} jQuery-wrapped <form>
+		 * @return {jQuery} table
 		 */
-		this.toForm = function () {
+		this.toTable = function () {
+			var table = $( '<table>' ).attr( 'id', 'proveit-reference-table' );
 
-			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ),
-				table = $( '<table>' );
-
-			// Insert the <ref> name field
+			// Add the reference name field
 			var referenceNameRow = $( '<tr>' ),
 				referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
 				referenceNameInput = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name );
 			referenceNameRow.append( referenceNameLabel, referenceNameInput );
 			table.append( referenceNameRow );
 
-			// Insert the dropdown menu
-			var templateRow = $( '<tr>' ),
-				templateLabel = $( '<label>' ).text( proveit.getMessage( 'template-label' ) ),
-				templateSelect = $( '<select>' ).attr( 'name', 'template' ),
-				templateName,
-				templateOption;
+			// Add the reference content area
+			var referenceContentRow = $( '<tr>' ),
+				referenceContentLabel = $( '<label>' ).text( proveit.getMessage( 'reference-content-label' ) ),
+				referenceContentTextarea = $( '<textarea>' ).attr( 'name', 'reference-content' ).val( this.content );
+			referenceContentRow.append( referenceContentLabel, referenceContentTextarea );
+			table.append( referenceContentRow );
 
+			// Add the template dropdown menu
+			var templateRow = $( '<tr>' ),
+				templateLabel = $( '<label>' ).text( proveit.getMessage( 'reference-template-label' ) ),
+				templateSelect = $( '<select>' ).attr( 'name', 'reference-template' ),
+				templateName = proveit.getMessage( 'no-template' ),
+				templateOption = $( '<option>' ).text( templateName ).val( '' );
+			templateSelect.append( templateOption );
+			templateRow.append( templateLabel, templateSelect );
 			for ( templateName in proveit.templates ) {
 				templateName = templateName.substr( templateName.indexOf( ':' ) + 1 ); // Remove the namespace
 				templateOption = $( '<option>' ).text( templateName ).val( templateName );
@@ -835,15 +883,15 @@ var proveit = {
 			templateRow.append( templateLabel, templateSelect );
 			table.append( templateRow );
 
-			// The insert all the other fields
-			var paramName, param, paramLabel, paramPlaceholder, paramDescription, paramValue, row, label, paramNameInput, paramValueInput,
-				sortedParams = this.getSortedParams(),
+			// Add the parameter fields
+			var sortedParams = this.getSortedParams(),
 				requiredParams = this.getRequiredParams(),
-				optionalParams = this.getOptionalParams();
+				optionalParams = this.getOptionalParams(),
+				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramValue, row, label, paramNameInput, paramValueInput;
 
 			for ( paramName in sortedParams ) {
 
-				param = sortedParams[ paramName ];
+				paramData = sortedParams[ paramName ];
 
 				// Defaults
 				paramLabel = paramName;
@@ -852,63 +900,86 @@ var proveit = {
 				paramValue = '';
 
 				// Override with template data
-				if ( param.label ) {
-					paramLabel = param.label[ proveit.userLanguage ];
+				if ( paramData.label ) {
+					paramLabel = paramData.label[ proveit.userLanguage ];
 				}
-				if ( param.type === 'date' ) {
+				// If the parameter is a date, put the current date as a placeholder
+				// @todo find a better solution
+				if ( paramData.type === 'date' ) {
 					var date = new Date(),
 						yyyy = date.getFullYear(),
 						mm = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ),
 						dd = ( '0' + date.getDate() ).slice( -2 );
 					paramPlaceholder = yyyy + '-' + mm + '-' + dd;
 				}
-				if ( param.description ) {
-					paramDescription = param.description[ proveit.userLanguage ];
+				if ( paramData.description ) {
+					paramDescription = paramData.description[ proveit.userLanguage ];
 				}
 				if ( paramName in this.params ) {
 					paramValue = this.params[ paramName ];
 				}
 
+				// Build the table row
 				row = $( '<tr>' ).addClass( 'proveit-param-pair' );
 				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
 				paramNameInput = $( '<input>' ).attr( 'type', 'hidden' ).addClass( 'proveit-param-name' ).val( paramName );
 				paramValueInput = $( '<input>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
 
-				// Mark the required parameters as such
+				// Mark the required parameters
 				if ( paramName in requiredParams ) {
 					row.addClass( 'proveit-required' );
 				}
 
 				// Hide the optional parameters, unless they are filled
 				if ( ( paramName in optionalParams ) && !paramValue ) {
-					row.addClass( 'proveit-optional' );
+					row.hide();
 				}
 
+				// Put it all together and add it to the table
 				row.append( label, paramValueInput, paramNameInput );
 				table.append( row );
 			}
 
-			// Insert the buttons
+			// Show the params button
+			$( '#proveit-params-button' ).show();
+
+			// Bind events
+			templateSelect.change( this, function ( event ) {
+				var reference = event.data;
+				reference.template = $( this ).val();
+				$.cookie( 'proveit-last-template', reference.template ); // Remember the user choice
+				table.replaceWith( reference.toTable() );
+			});
+
+			return table;
+		};
+
+		/**
+		 * Convert this reference to an HTML form filled with its data
+		 *
+		 * @return {jQuery} form
+		 */
+		this.toForm = function () {
+
+			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ),
+				table = this.toTable();
+
+			// Add the buttons
 			var buttons = $( '<div>' ).attr( 'id', 'proveit-buttons' ),
+				paramsButton = $( '<button>' ).attr( 'id', 'proveit-params-button' ).text( proveit.getMessage( 'params-button' ) ),
+				citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( proveit.getMessage( 'cite-button' ) ),
+				removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( proveit.getMessage( 'remove-button' ) ),
 				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
 				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
-			buttons.append( updateButton, insertButton );
+			buttons.append( paramsButton, citeButton, removeButton, updateButton, insertButton );
 			form.append( table, buttons );
 
 			// Bind events
-			var reference = this;
-			templateSelect.change( function ( event ) {
-				reference.template = $( event.currentTarget ).val();
-				$.cookie( 'proveit-last-template', reference.template ); // Remember the user choice
-				var form = reference.toForm();
-				$( '#proveit-content' ).html( form );
-				insertButton.hide();
-			});
-
 			form.submit( false );
-
+			paramsButton.click( this.showAllParams );
+			citeButton.click( this, this.cite );
+			removeButton.click( this, this.remove );
 			updateButton.click( this, this.update );
-
 			insertButton.click( this, this.insert );
 
 			return form;
@@ -920,21 +991,24 @@ var proveit = {
 		 * @return {void}
 		 */
 		this.loadFromForm = function () {
+
 			this.name = $( '#proveit-reference-form input[name="reference-name"]' ).val();
-			this.template = $( '#proveit-reference-form select[name="template"]' ).val();
+
+			this.content = $( '#proveit-reference-form textarea[name="reference-content"]' ).val();
+
+			this.template = $( '#proveit-reference-form select[name="reference-template"]' ).val();
 
 			// Load all the parameter key-value pairs
-			this.params = {};
-			var pairs = $( '#proveit-reference-form .proveit-param-pair' ),
-				pair, paramName, paramValue;
-			for ( var i = 0; i < pairs.length; i++ ) {
-				pair =  pairs[ i ];
-				paramName = $( 'input.proveit-param-name', pair ).val();
-				paramValue = $( 'input.proveit-param-value', pair ).val();
-				if ( paramName !== '' && paramValue !== '' ) {
-					this.params[ paramName ] = paramValue;
+			var params = {}, name, value;
+			$( '.proveit-param-pair' ).each( function () {
+				name = $( '.proveit-param-name', this ).val();
+				value = $( '.proveit-param-value', this ).val();
+				if ( name !== '' && value !== '' ) {
+					params[ name ] = value;
 				}
-			}
+			});
+			this.params = params;
+
 			this.string = this.toString();
 		};
 	}

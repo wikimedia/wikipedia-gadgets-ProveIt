@@ -74,11 +74,11 @@
 	cursor: pointer;
 }
 
-#proveit-reference-list .proveit-reference-item .proveit-template {
+#proveit-reference-list .proveit-reference-item .proveit-reference-template {
 	font-weight: bold;
 }
 
-#proveit-reference-list .proveit-reference-item .proveit-required-value {
+#proveit-reference-list .proveit-reference-item .proveit-required-param-value {
 	margin-left: 10px;
 }
 
@@ -134,7 +134,7 @@
 }
 
 #proveit-reference-form textarea {
-	height: 100px;
+	height: 60px;
 	resize: vertical;
 }
 
@@ -158,6 +158,13 @@
 	border-radius: 3px;
 	cursor: pointer;
 	font: inherit;
+	margin-left: 10px;
 	padding: 5px;
 	pointer-events: all;
+}
+
+#proveit-buttons #proveit-cite-button,
+#proveit-buttons #proveit-remove-button,
+#proveit-buttons #proveit-params-button {
+	background: none;
 }
