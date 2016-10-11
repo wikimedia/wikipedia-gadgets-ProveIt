@@ -55,6 +55,22 @@ var proveit = {
 			'proveit-confirm-remove': 'Esto borrará la referencia y todas sus citas. ¿Estás seguro?',
 			'proveit-no-template': 'Sin plantilla',
 			'proveit-no-references': 'No se han encontrado referencias'
+		},
+		'ru': {
+			'proveit-edit-tab': 'Править',
+			'proveit-add-tab': 'Добавить',
+			'proveit-reference-name-label': 'Имя сноски',
+			'proveit-reference-content-label': 'Содержание сноски',
+			'proveit-reference-template-label': 'Основной шаблон',
+			'proveit-params-button': 'Показать все параметры',
+			'proveit-cite-button': 'Цитировать',
+			'proveit-remove-button': 'Удалить',
+			'proveit-insert-button': 'Вставить',
+			'proveit-update-button': 'Обновить',
+			'proveit-prompt-name': 'Источнику нужно задать имя, чтобы его процитировать:',
+			'proveit-confirm-remove': 'Будет удален источник и все его цитаты. Вы уверены?',
+			'proveit-no-template': 'Нет шаблона',
+			'proveit-no-references': 'Источники не найдены'
 		}
 	},
 
@@ -331,8 +347,8 @@ var proveit = {
 			registeredTemplatesArray.push( registeredTemplate );
 		}
 		var registeredTemplatesDisjunction = registeredTemplatesArray.join( '|' ),
-			regExp = new RegExp( '{{(' + registeredTemplatesDisjunction + ')([\\s\\S]*)}}', 'i' ), // We use [\s\S]* instead of .* to match newlines
-			match = referenceContent.match( regExp );
+			regExp = new RegExp( '{{(' + registeredTemplatesDisjunction + ')([\\s\\S]*)}}', 'i' ); // We use [\s\S]* instead of .* to match newlines
+		match = referenceContent.match( regExp );
 
 		// If there's a match, add the template data to the reference
 		if ( match ) {
