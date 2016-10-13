@@ -25,7 +25,7 @@ var proveit = {
 	 */
 	messages: {
 		'en': {
-			'proveit-edit-tab': 'Edit',
+			'proveit-list-tab': 'List',
 			'proveit-add-tab': 'Add',
 			'proveit-reference-name-label': 'Reference name',
 			'proveit-reference-content-label': 'Reference content',
@@ -41,7 +41,7 @@ var proveit = {
 			'proveit-no-references': 'No references found'
 		},
 		'es': {
-			'proveit-edit-tab': 'Editar',
+			'proveit-list-tab': 'Lista',
 			'proveit-add-tab': 'Agregar',
 			'proveit-reference-name-label': 'Nombre de la referencia',
 			'proveit-reference-content-label': 'Contenido de la referencia',
@@ -57,7 +57,7 @@ var proveit = {
 			'proveit-no-references': 'No se han encontrado referencias'
 		},
 		'ru': {
-			'proveit-edit-tab': 'Править',
+			'proveit-list-tab': 'Список',
 			'proveit-add-tab': 'Добавить',
 			'proveit-reference-name-label': 'Имя сноски',
 			'proveit-reference-content-label': 'Содержание сноски',
@@ -187,13 +187,13 @@ var proveit = {
 			logo = $( '<span>' ).attr( 'id', 'proveit-logo' ).text( 'ProveIt' ),
 			leftBracket = $( '<span>' ).attr( 'id', 'proveit-left-bracket' ).text( '[' ),
 			rightBracket = $( '<span>' ).attr( 'id', 'proveit-right-bracket' ).text( ']' ),
-			editTab = $( '<span>' ).attr( 'id', 'proveit-edit-tab' ).addClass( 'active' ).text( proveit.getMessage( 'edit-tab' ) ),
+			listTab = $( '<span>' ).attr( 'id', 'proveit-list-tab' ).addClass( 'active' ).text( proveit.getMessage( 'list-tab' ) ),
 			addTab = $( '<span>' ).attr( 'id', 'proveit-add-tab' ).text( proveit.getMessage( 'add-tab' ) ),
 			content = $( '<div>' ).attr( 'id', 'proveit-content' );
 
 		// Put everything together and add it to the DOM
 		logo.prepend( leftBracket ).append( rightBracket );
-		header.append( logo, editTab, addTab );
+		header.append( logo, listTab, addTab );
 		gui.append( header,	content );
 		$( 'body' ).prepend( gui );
 
@@ -221,7 +221,7 @@ var proveit = {
 				dragged = false; // Reset the flag
 				return;
 			}
-			editTab.toggle();
+			listTab.toggle();
 			addTab.toggle();
 			content.toggle();
 			gui.css({
@@ -232,7 +232,7 @@ var proveit = {
 			});
 		}).click(); // Click the logo to hide the gadget by default
 
-		editTab.click( function () {
+		listTab.click( function () {
 			if ( dragged ) {
 				dragged = false; // Reset the flag
 				return;
@@ -422,7 +422,7 @@ var proveit = {
 		if ( currentSummary.indexOf( 'ProveIt' ) > -1 ) {
 			return; // Don't add it twice
 		}
-		$( '#wpSummary' ).val( currentSummary ? currentSummary + ' - ' + proveitSummary : proveitSummary );
+		$( '#wpSummary' ).val( currentSummary ? currentSummary + proveitSummary : proveitSummary );
 	},
 
 	/**
@@ -536,6 +536,7 @@ var proveit = {
 		 *
 		 * This object is constructed directly out of the wikitext, so it doesn't include
 		 * any information about the parameters other than their names and values.
+		 * Also the parameter names here may be aliases.
 		 */
 		this.params = {};
 
@@ -695,7 +696,7 @@ var proveit = {
 			reference.index = textbox.val().indexOf( reference.string );
 
 			// Switch to edit mode
-			$( '#proveit-edit-tab' ).addClass( 'active' ).siblings().removeClass( 'active' );
+			$( '#proveit-list-tab' ).addClass( 'active' ).siblings().removeClass( 'active' );
 			$( '#proveit-reference-table' ).replaceWith( reference.toTable() );
 			$( '#proveit-insert-button' ).hide().siblings().show();
 
@@ -903,9 +904,9 @@ var proveit = {
 			var sortedParams = this.getSortedParams(),
 				requiredParams = this.getRequiredParams(),
 				optionalParams = this.getOptionalParams(),
-				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramValue, row, label, paramNameInput, paramValueInput;
+				paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
 
-			for ( paramName in sortedParams ) {
+			for ( var paramName in sortedParams ) {
 
 				paramData = sortedParams[ paramName ];
 
@@ -919,6 +920,7 @@ var proveit = {
 				if ( paramData.label ) {
 					paramLabel = paramData.label[ proveit.userLanguage ];
 				}
+
 				// If the parameter is a date, put the current date as a placeholder
 				// @todo find a better solution
 				if ( paramData.type === 'date' ) {
@@ -928,11 +930,21 @@ var proveit = {
 						dd = ( '0' + date.getDate() ).slice( -2 );
 					paramPlaceholder = yyyy + '-' + mm + '-' + dd;
 				}
+
 				if ( paramData.description ) {
 					paramDescription = paramData.description[ proveit.userLanguage ];
 				}
+
 				if ( paramName in this.params ) {
 					paramValue = this.params[ paramName ];
+				} else {
+					for ( var i = 0; i < paramData.aliases.length; i++ ) {
+						paramAlias = paramData.aliases[ i ];
+						paramAlias = $.trim( paramAlias );
+						if ( paramAlias in this.params ) {
+							paramValue = this.params[ paramAlias ];
+						}
+					}
 				}
 
 				// Build the table row
