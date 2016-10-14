@@ -30,7 +30,6 @@ var proveit = {
 			'proveit-reference-name-label': 'Reference name',
 			'proveit-reference-content-label': 'Reference content',
 			'proveit-reference-template-label': 'Main template',
-			'proveit-params-button': 'Show all parameters',
 			'proveit-cite-button': 'Cite',
 			'proveit-remove-button': 'Remove',
 			'proveit-insert-button': 'Insert',
@@ -46,7 +45,6 @@ var proveit = {
 			'proveit-reference-name-label': 'Nombre de la referencia',
 			'proveit-reference-content-label': 'Contenido de la referencia',
 			'proveit-reference-template-label': 'Plantilla principal',
-			'proveit-params-button': 'Ver todos los parámetros',
 			'proveit-cite-button': 'Citar',
 			'proveit-remove-button': 'Borrar',
 			'proveit-insert-button': 'Insertar',
@@ -62,7 +60,6 @@ var proveit = {
 			'proveit-reference-name-label': 'Имя сноски',
 			'proveit-reference-content-label': 'Содержание сноски',
 			'proveit-reference-template-label': 'Основной шаблон',
-			'proveit-params-button': 'Показать все параметры',
 			'proveit-cite-button': 'Цитировать',
 			'proveit-remove-button': 'Удалить',
 			'proveit-insert-button': 'Вставить',
@@ -541,19 +538,6 @@ var proveit = {
 		this.params = {};
 
 		/**
-		 * Show all the hidden optional parameters
-		 *
-		 * @return {void}
-		 */
-		this.showAllParams = function () {
-			var button = $( this ),
-				form = button.closest( 'form' ),
-				rows = $( 'tr', form );
-			rows.show();
-			button.hide();
-		};
-
-		/**
 		 * Insert a citation to this reference
 		 *
 		 * @return {void}
@@ -819,14 +803,38 @@ var proveit = {
 
 			// Add the main content
 			if ( this.template ) {
-				var templateSpan = $( '<span>' ).addClass( 'proveit-reference-template' ).text( this.template ),
-					requiredParams = this.getRequiredParams(),
-					requiredParamName, requiredParamValue, requiredParamSpan;
+				// First add the template name
+				var templateSpan = $( '<span>' ).addClass( 'proveit-reference-template' ).text( this.template );
 				item.html( templateSpan );
-				for ( requiredParamName in requiredParams ) {
-					requiredParamValue = this.params[ requiredParamName ];
-					requiredParamSpan = $( '<span>' ).addClass( 'proveit-required-param-value' ).text( requiredParamValue );
-					item.append( requiredParamSpan );
+
+				// Search the values of the first three parameters and add them to the list item
+				// We search for the first three values rather than the required ones because
+				// some tempalates (like Template:Citation) don't have any required parameters
+				// but we sort the parameters to give priority to the required parameters
+				var sortedParams = this.getSortedParams(),
+					paramCount = 0, paramValue, paramData, paramAlias, paramSpan;
+				for ( var paramName in sortedParams ) {
+					paramValue = '';
+					if ( paramName in this.params ) {
+						paramValue = this.params[ paramName ];
+					} else {
+						paramData = sortedParams[ paramName ];
+						for ( var i = 0; i < paramData.aliases.length; i++ ) {
+							paramAlias = paramData.aliases[ i ];
+							paramAlias = $.trim( paramAlias );
+							if ( paramAlias in this.params ) {
+								paramValue = this.params[ paramAlias ];
+							}
+						}
+					}
+					if ( paramValue ) {
+						paramSpan = $( '<span>' ).addClass( 'proveit-param-value' ).text( paramValue );
+						item.append( paramSpan );
+						paramCount++;
+						if ( paramCount === 3 ) {
+							break;
+						}
+					}
 				}
 			} else {
 				item.text( this.content );
@@ -903,7 +911,6 @@ var proveit = {
 			// Add the parameter fields
 			var sortedParams = this.getSortedParams(),
 				requiredParams = this.getRequiredParams(),
-				optionalParams = this.getOptionalParams(),
 				paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
 
 			for ( var paramName in sortedParams ) {
@@ -935,6 +942,7 @@ var proveit = {
 					paramDescription = paramData.description[ proveit.userLanguage ];
 				}
 
+				// Extract the parameter value
 				if ( paramName in this.params ) {
 					paramValue = this.params[ paramName ];
 				} else {
@@ -958,18 +966,10 @@ var proveit = {
 					row.addClass( 'proveit-required' );
 				}
 
-				// Hide the optional parameters, unless they are filled
-				if ( ( paramName in optionalParams ) && !paramValue ) {
-					row.hide();
-				}
-
 				// Put it all together and add it to the table
 				row.append( label, paramValueInput, paramNameInput );
 				table.append( row );
 			}
-
-			// Show the params button
-			$( '#proveit-params-button' ).show();
 
 			// Bind events
 			templateSelect.change( this, function ( event ) {
@@ -994,17 +994,15 @@ var proveit = {
 
 			// Add the buttons
 			var buttons = $( '<div>' ).attr( 'id', 'proveit-buttons' ),
-				paramsButton = $( '<button>' ).attr( 'id', 'proveit-params-button' ).text( proveit.getMessage( 'params-button' ) ),
 				citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( proveit.getMessage( 'cite-button' ) ),
 				removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( proveit.getMessage( 'remove-button' ) ),
 				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
 				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
-			buttons.append( paramsButton, citeButton, removeButton, updateButton, insertButton );
+			buttons.append( citeButton, removeButton, updateButton, insertButton );
 			form.append( table, buttons );
 
 			// Bind events
 			form.submit( false );
-			paramsButton.click( this.showAllParams );
 			citeButton.click( this, this.cite );
 			removeButton.click( this, this.remove );
 			updateButton.click( this, this.update );
