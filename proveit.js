@@ -266,7 +266,7 @@ var proveit = {
 	scanForReferences: function () {
 
 		// First define the list element
-		var referenceList = $( '<ul>' ).attr( 'id', 'proveit-reference-list' );
+		var referenceList = $( '<ol>' ).attr( 'id', 'proveit-reference-list' );
 
 		// Second, look for all the citations in the wikitext and store them in an array for later
 		var wikitext = proveit.getTextbox().val(),
@@ -299,6 +299,12 @@ var proveit = {
 
 				// Finally, turn all the references into list items and insert them into the reference list
 				referenceItem = reference.toListItem();
+
+				// Add the reference number
+				// We don't use the <ol> numbers because of stying reasons
+				referenceItem.prepend( $( '<span>' ).addClass( 'proveit-reference-number' ).text( i + 1 ) );
+
+				// Add the item to the list
 				referenceList.append( referenceItem );
 			}
 
@@ -803,6 +809,7 @@ var proveit = {
 
 			// Add the main content
 			if ( this.template ) {
+
 				// First add the template name
 				var templateSpan = $( '<span>' ).addClass( 'proveit-reference-template' ).text( this.template );
 				item.html( templateSpan );

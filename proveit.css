@@ -50,7 +50,6 @@
 }
 
 #proveit-reference-list {
-	list-style: none;
 	margin: 0;
 	padding: 0;
 }
@@ -72,6 +71,10 @@
 #proveit-reference-list .proveit-reference-item:hover {
 	background: #a7dcff;
 	cursor: pointer;
+}
+
+#proveit-reference-list .proveit-reference-item .proveit-reference-number {
+	margin-right: 10px;
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-reference-template {
