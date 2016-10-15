@@ -86,6 +86,13 @@ var proveit = {
 	userLanguage: 'en',
 
 	/**
+	 * Content language (may be different from the user language)
+	 *
+	 * @type {string} defaults to English
+	 */
+	contentLanguage: 'en',
+
+	/**
 	 * Convenience method to get a ProveIt option
 	 *
 	 * @param {string} option key without the "proveit-" prefix
@@ -126,7 +133,13 @@ var proveit = {
 		if ( userLanguage in proveit.messages ) {
 			proveit.userLanguage = userLanguage;
 		}
-		mw.messages.set( proveit.messages[ userLanguage ] );
+		mw.messages.set( proveit.messages[ proveit.userLanguage ] );
+
+		// Set the content language
+		var contentLanguage = mw.config.get( 'wgContentLanguage' );
+		if ( contentLanguage ) {
+			proveit.contentLanguage = contentLanguage;
+		}
 
 		// Build the interface
 		proveit.build();
@@ -932,7 +945,7 @@ var proveit = {
 
 				// Override with template data
 				if ( paramData.label ) {
-					paramLabel = paramData.label[ proveit.userLanguage ];
+					paramLabel = paramData.label[ proveit.contentLanguage ];
 				}
 
 				// If the parameter is a date, put the current date as a placeholder
@@ -946,7 +959,7 @@ var proveit = {
 				}
 
 				if ( paramData.description ) {
-					paramDescription = paramData.description[ proveit.userLanguage ];
+					paramDescription = paramData.description[ proveit.contentLanguage ];
 				}
 
 				// Extract the parameter value

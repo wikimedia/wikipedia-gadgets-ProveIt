@@ -74,15 +74,18 @@
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-reference-number {
+	font-weight: bold;
 	margin-right: 10px;
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-reference-template {
 	font-weight: bold;
+	margin-right: 10px;
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-param-value {
-	margin-left: 10px;
+	display: inline-block;
+	margin-right: 10px;
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-citations {
