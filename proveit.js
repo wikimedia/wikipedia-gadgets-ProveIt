@@ -54,6 +54,21 @@ var proveit = {
 			'proveit-no-template': 'Sin plantilla',
 			'proveit-no-references': 'No se han encontrado referencias'
 		},
+		'fr': {
+			'proveit-list-tab': 'Lister',
+			'proveit-add-tab': 'Ajouter',
+			'proveit-reference-name-label': 'Nom de la référence',
+			'proveit-reference-content-label': 'Contenu de la référence',
+			'proveit-reference-template-label': 'Modèle de présentation',
+			'proveit-cite-button': 'Réutiliser',
+			'proveit-remove-button': 'Supprimer',
+			'proveit-insert-button': 'Insérer',
+			'proveit-update-button': 'Mettre à jour',
+			'proveit-prompt-name': "La référence a besoin d'un nom pour être réutilisée:",
+			'proveit-confirm-remove': "Cela supprimera la référence dans tout l'article. Êtes-vous sûr?",
+			'proveit-no-template': 'Aucun modèle',
+			'proveit-no-references': 'Aucune référence trouvée'
+		},
 		'ru': {
 			'proveit-list-tab': 'Список',
 			'proveit-add-tab': 'Добавить',
