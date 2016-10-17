@@ -57,7 +57,7 @@
 #proveit-reference-list .proveit-reference-item {
 	margin: 0;
 	overflow: hidden;
-	padding: 10px;
+	padding: 5px 10px;
 }
 
 #proveit-reference-list .proveit-reference-item:nth-child(even) {
