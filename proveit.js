@@ -25,7 +25,7 @@ var proveit = {
 	 */
 	messages: {
 		'en': {
-			'proveit-list-tab': 'List',
+			'proveit-list-tab': 'List ($1)',
 			'proveit-add-tab': 'Add',
 			'proveit-reference-name-label': 'Reference name',
 			'proveit-reference-content-label': 'Reference content',
@@ -40,7 +40,7 @@ var proveit = {
 			'proveit-no-references': 'No references found'
 		},
 		'es': {
-			'proveit-list-tab': 'Lista',
+			'proveit-list-tab': 'Lista ($1)',
 			'proveit-add-tab': 'Agregar',
 			'proveit-reference-name-label': 'Nombre de la referencia',
 			'proveit-reference-content-label': 'Contenido de la referencia',
@@ -55,7 +55,7 @@ var proveit = {
 			'proveit-no-references': 'No se han encontrado referencias'
 		},
 		'fr': {
-			'proveit-list-tab': 'Lister',
+			'proveit-list-tab': 'Lister ($1)',
 			'proveit-add-tab': 'Ajouter',
 			'proveit-reference-name-label': 'Nom de la référence',
 			'proveit-reference-content-label': 'Contenu de la référence',
@@ -70,7 +70,7 @@ var proveit = {
 			'proveit-no-references': 'Aucune référence trouvée'
 		},
 		'ru': {
-			'proveit-list-tab': 'Список',
+			'proveit-list-tab': 'Список ($1)',
 			'proveit-add-tab': 'Добавить',
 			'proveit-reference-name-label': 'Имя сноски',
 			'proveit-reference-content-label': 'Содержание сноски',
@@ -121,10 +121,11 @@ var proveit = {
 	 * Convenience method to get a ProveIt message
 	 *
 	 * @param {string} message key without the "proveit-" prefix
+	 * @param {int} number of references
 	 * @return {string} message value
 	 */
-	getMessage: function ( key ) {
-		return mw.message( 'proveit-' + key ).text();
+	getMessage: function ( key, param ) {
+		return mw.message( 'proveit-' + key, param );
 	},
 
 	/**
@@ -212,7 +213,7 @@ var proveit = {
 			logo = $( '<span>' ).attr( 'id', 'proveit-logo' ).text( 'ProveIt' ),
 			leftBracket = $( '<span>' ).attr( 'id', 'proveit-left-bracket' ).text( '[' ),
 			rightBracket = $( '<span>' ).attr( 'id', 'proveit-right-bracket' ).text( ']' ),
-			listTab = $( '<span>' ).attr( 'id', 'proveit-list-tab' ).addClass( 'active' ).text( proveit.getMessage( 'list-tab' ) ),
+			listTab = $( '<span>' ).attr( 'id', 'proveit-list-tab' ).addClass( 'active' ).text( proveit.getMessage( 'list-tab', 0 ) ),
 			addTab = $( '<span>' ).attr( 'id', 'proveit-add-tab' ).text( proveit.getMessage( 'add-tab' ) ),
 			content = $( '<div>' ).attr( 'id', 'proveit-content' );
 
@@ -335,9 +336,10 @@ var proveit = {
 				// Add the item to the list
 				referenceList.append( referenceItem );
 			}
-
+			$( '#proveit-list-tab' ).text( proveit.getMessage( 'list-tab', i ) );
 			$( '#proveit-content' ).html( referenceList );
 		} else {
+			$( '#proveit-list-tab' ).text( proveit.getMessage( 'list-tab', 0 ) );
 			$( '#proveit-content' ).html( $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) ) );
 		}
 	},
@@ -995,6 +997,11 @@ var proveit = {
 				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
 				paramNameInput = $( '<input>' ).attr( 'type', 'hidden' ).addClass( 'proveit-param-name' ).val( paramName );
 				paramValueInput = $( '<input>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
+
+				// Exception
+				if ( paramName === 'quote' || paramName === 'cita' ) {
+					paramValueInput = $( '<textarea>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
+				}
 
 				// Mark the required parameters
 				if ( paramName in requiredParams ) {

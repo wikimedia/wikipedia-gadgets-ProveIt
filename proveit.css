@@ -60,10 +60,6 @@
 	padding: 10px;
 }
 
-#proveit-reference-list .proveit-reference-item:nth-child(odd) {
-	background: #f4f4f4;
-}
-
 #proveit-reference-list .proveit-reference-item:nth-child(even) {
 	background: #fff;
 }
@@ -117,7 +113,7 @@
 	display: table-cell;
 	padding: 5px;
 	vertical-align: top;
-	width: 200px;
+	width: 180px;
 }
 
 #proveit-reference-form .proveit-required label {
