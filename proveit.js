@@ -69,6 +69,21 @@ var proveit = {
 			'proveit-no-template': 'Aucun modèle',
 			'proveit-no-references': 'Aucune référence trouvée'
 		},
+		'it': {
+			'proveit-list-tab': 'Lista ($1)',
+			'proveit-add-tab': 'Aggiungere',
+			'proveit-reference-name-label': 'Nome di riferimento',
+			'proveit-reference-content-label': 'Contenuti di riferimento',
+			'proveit-reference-template-label': 'Template principale',
+			'proveit-cite-button': 'Citare',
+			'proveit-remove-button': 'Cancellare',
+			'proveit-insert-button': 'Inserire',
+			'proveit-update-button': 'Aggiornare',
+			'proveit-prompt-name': 'Il riferimento ha bisogno di un nome per essere citati:',
+			'proveit-confirm-remove': 'Questo elimina il riferimento e tutti gli citazione. Sei sicuro?',
+			'proveit-no-template': 'Senza template',
+			'proveit-no-references': 'Nessun riferimento trovato'
+		},
 		'ru': {
 			'proveit-list-tab': 'Список ($1)',
 			'proveit-add-tab': 'Добавить',
