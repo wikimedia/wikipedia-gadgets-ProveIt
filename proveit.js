@@ -24,6 +24,21 @@ var proveit = {
 	 * Interface messages
 	 */
 	messages: {
+		'de': {
+			'proveit-list-tab': 'Liste ($1)',
+			'proveit-add-tab': 'Hinzufügen',
+			'proveit-reference-name-label': 'Referenzname',
+			'proveit-reference-content-label': 'Referenzinhalt',
+			'proveit-reference-template-label': 'Hauptvorlage',
+			'proveit-cite-button': 'Zitieren',
+			'proveit-remove-button': 'Entfernen',
+			'proveit-insert-button': 'Einfügen',
+			'proveit-update-button': 'Aktualisieren',
+			'proveit-prompt-name': 'Die Referenz benötigt einen Namen, um zitiert zu werden:',
+			'proveit-confirm-remove': 'Dies wird die Referenz und alle ihre Zitate zu entfernen. Bist du sicher?',
+			'proveit-no-template': 'Keine Vorlage',
+			'proveit-no-references': 'Keine Referenzen gefunden'
+		},
 		'en': {
 			'proveit-list-tab': 'List ($1)',
 			'proveit-add-tab': 'Add',
