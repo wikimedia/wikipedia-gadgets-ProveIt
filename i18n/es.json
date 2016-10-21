@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe Schenone"
+		]
+	},
+	"proveit-list-tab": "Lista ($1)",
+	"proveit-add-tab": "Agregar",
+	"proveit-reference-name-label": "Nombre de la referencia",
+	"proveit-reference-content-label": "Contenido de la referencia",
+	"proveit-reference-template-label": "Plantilla principal",
+	"proveit-cite-button": "Citar",
+	"proveit-remove-button": "Borrar",
+	"proveit-insert-button": "Insertar",
+	"proveit-update-button": "Actualizar",
+	"proveit-prompt-name": "La referencia necesita un nombre para ser citada:",
+	"proveit-confirm-remove": "Esto borrará la referencia y todas sus citas. ¿Estás seguro?",
+	"proveit-no-template": "Sin plantilla",
+	"proveit-no-references": "No se han encontrado referencias"
+}

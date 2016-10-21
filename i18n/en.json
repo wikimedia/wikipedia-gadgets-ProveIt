@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe Schenone"
+		]
+	},
+	"proveit-list-tab": "List ($1)",
+	"proveit-add-tab": "Add",
+	"proveit-reference-name-label": "Reference name",
+	"proveit-reference-content-label": "Reference content",
+	"proveit-reference-template-label": "Main template",
+	"proveit-cite-button": "Cite",
+	"proveit-remove-button": "Remove",
+	"proveit-insert-button": "Insert",
+	"proveit-update-button": "Update",
+	"proveit-prompt-name": "The reference needs a name in order to be cited:",
+	"proveit-confirm-remove": "This will remove the reference and all of its citations. Are you sure?",
+	"proveit-no-template": "No template",
+	"proveit-no-references": "No references found"
+}

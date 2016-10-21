@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Iniquity"
+		]
+	},
+	"proveit-list-tab": "Список ($1)",
+	"proveit-add-tab": "Добавить",
+	"proveit-reference-name-label": "Имя сноски",
+	"proveit-reference-content-label": "Содержание сноски",
+	"proveit-reference-template-label": "Основной шаблон",
+	"proveit-cite-button": "Цитировать",
+	"proveit-remove-button": "Удалить",
+	"proveit-insert-button": "Вставить",
+	"proveit-update-button": "Обновить",
+	"proveit-prompt-name": "Источнику нужно задать имя, чтобы его процитировать:",
+	"proveit-confirm-remove": "Будет удален источник и все его цитаты. Вы уверены?",
+	"proveit-no-template": "Нет шаблона",
+	"proveit-no-references": "Источники не найдены"
+}

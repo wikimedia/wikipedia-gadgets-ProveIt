@@ -21,114 +21,11 @@ var proveit = {
 	ICON: '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/ProveIt_logo_for_user_boxes.svg/22px-ProveIt_logo_for_user_boxes.svg.png',
 
 	/**
-	 * Interface messages
-	 */
-	messages: {
-		'de': {
-			'proveit-list-tab': 'Liste ($1)',
-			'proveit-add-tab': 'Hinzufügen',
-			'proveit-reference-name-label': 'Referenzname',
-			'proveit-reference-content-label': 'Referenzinhalt',
-			'proveit-reference-template-label': 'Hauptvorlage',
-			'proveit-cite-button': 'Zitieren',
-			'proveit-remove-button': 'Entfernen',
-			'proveit-insert-button': 'Einfügen',
-			'proveit-update-button': 'Aktualisieren',
-			'proveit-prompt-name': 'Die Referenz benötigt einen Namen, um zitiert zu werden:',
-			'proveit-confirm-remove': 'Dies wird die Referenz und alle ihre Zitate zu entfernen. Bist du sicher?',
-			'proveit-no-template': 'Keine Vorlage',
-			'proveit-no-references': 'Keine Referenzen gefunden'
-		},
-		'en': {
-			'proveit-list-tab': 'List ($1)',
-			'proveit-add-tab': 'Add',
-			'proveit-reference-name-label': 'Reference name',
-			'proveit-reference-content-label': 'Reference content',
-			'proveit-reference-template-label': 'Main template',
-			'proveit-cite-button': 'Cite',
-			'proveit-remove-button': 'Remove',
-			'proveit-insert-button': 'Insert',
-			'proveit-update-button': 'Update',
-			'proveit-prompt-name': 'The reference needs a name in order to be cited:',
-			'proveit-confirm-remove': 'This will remove the reference and all of its citations. Are you sure?',
-			'proveit-no-template': 'No template',
-			'proveit-no-references': 'No references found'
-		},
-		'es': {
-			'proveit-list-tab': 'Lista ($1)',
-			'proveit-add-tab': 'Agregar',
-			'proveit-reference-name-label': 'Nombre de la referencia',
-			'proveit-reference-content-label': 'Contenido de la referencia',
-			'proveit-reference-template-label': 'Plantilla principal',
-			'proveit-cite-button': 'Citar',
-			'proveit-remove-button': 'Borrar',
-			'proveit-insert-button': 'Insertar',
-			'proveit-update-button': 'Actualizar',
-			'proveit-prompt-name': 'La referencia necesita un nombre para ser citada:',
-			'proveit-confirm-remove': 'Esto borrará la referencia y todas sus citas. ¿Estás seguro?',
-			'proveit-no-template': 'Sin plantilla',
-			'proveit-no-references': 'No se han encontrado referencias'
-		},
-		'fr': {
-			'proveit-list-tab': 'Lister ($1)',
-			'proveit-add-tab': 'Ajouter',
-			'proveit-reference-name-label': 'Nom de la référence',
-			'proveit-reference-content-label': 'Contenu de la référence',
-			'proveit-reference-template-label': 'Modèle de présentation',
-			'proveit-cite-button': 'Réutiliser',
-			'proveit-remove-button': 'Supprimer',
-			'proveit-insert-button': 'Insérer',
-			'proveit-update-button': 'Mettre à jour',
-			'proveit-prompt-name': "La référence a besoin d'un nom pour être réutilisée:",
-			'proveit-confirm-remove': "Cela supprimera la référence dans tout l'article. Êtes-vous sûr?",
-			'proveit-no-template': 'Aucun modèle',
-			'proveit-no-references': 'Aucune référence trouvée'
-		},
-		'it': {
-			'proveit-list-tab': 'Lista ($1)',
-			'proveit-add-tab': 'Aggiungere',
-			'proveit-reference-name-label': 'Nome di riferimento',
-			'proveit-reference-content-label': 'Contenuti di riferimento',
-			'proveit-reference-template-label': 'Template principale',
-			'proveit-cite-button': 'Citare',
-			'proveit-remove-button': 'Cancellare',
-			'proveit-insert-button': 'Inserire',
-			'proveit-update-button': 'Aggiornare',
-			'proveit-prompt-name': 'Il riferimento ha bisogno di un nome per essere citati:',
-			'proveit-confirm-remove': 'Questo elimina il riferimento e tutti gli citazione. Sei sicuro?',
-			'proveit-no-template': 'Senza template',
-			'proveit-no-references': 'Nessun riferimento trovato'
-		},
-		'ru': {
-			'proveit-list-tab': 'Список ($1)',
-			'proveit-add-tab': 'Добавить',
-			'proveit-reference-name-label': 'Имя сноски',
-			'proveit-reference-content-label': 'Содержание сноски',
-			'proveit-reference-template-label': 'Основной шаблон',
-			'proveit-cite-button': 'Цитировать',
-			'proveit-remove-button': 'Удалить',
-			'proveit-insert-button': 'Вставить',
-			'proveit-update-button': 'Обновить',
-			'proveit-prompt-name': 'Источнику нужно задать имя, чтобы его процитировать:',
-			'proveit-confirm-remove': 'Будет удален источник и все его цитаты. Вы уверены?',
-			'proveit-no-template': 'Нет шаблона',
-			'proveit-no-references': 'Источники не найдены'
-		}
-	},
-
-	/**
 	 * Template data retrieved from the wiki
 	 *
 	 * @type {object}
 	 */
 	templates: {},
-
-	/**
-	 * Interface language (may be different from the content language)
-	 *
-	 * @type {string} defaults to English
-	 */
-	userLanguage: 'en',
 
 	/**
 	 * Content language (may be different from the user language)
@@ -174,38 +71,54 @@ var proveit = {
 	 */
 	init: function () {
 
-		// Set the interface language
-		var userLanguage = mw.config.get( 'wgUserLanguage' );
-		if ( userLanguage in proveit.messages ) {
-			proveit.userLanguage = userLanguage;
-		}
-		mw.messages.set( proveit.messages[ proveit.userLanguage ] );
-
 		// Set the content language
-		var contentLanguage = mw.config.get( 'wgContentLanguage' );
-		if ( contentLanguage ) {
-			proveit.contentLanguage = contentLanguage;
-		}
+		proveit.contentLanguage = mw.config.get( 'wgContentLanguage' );
 
-		// Build the interface
-		proveit.build();
-
-		// Get the template data from the wiki
-		var templates = proveit.getOption( 'templates' );
-		new mw.Api().get({
-			'action': 'templatedata',
-			'titles': templates ? templates.join( '|' ) : null,
+		// Load the appropriate interface messages from Commons
+		var userLanguage = mw.config.get( 'wgUserLanguage' );
+		new mw.ForeignApi( '//commons.wikimedia.org/w/api.php' ).get({
+			'titles': 'MediaWiki:Gadget-ProveIt-' + userLanguage + '.json|MediaWiki:Gadget-ProveIt-en.json', // Fallback to English
+			'action': 'query',
+			'prop': 'revisions',
+			'rvprop': 'content',
 			'format': 'json'
 		}).done( function ( data ) {
 			//console.log( data );
-			for ( var page in data.pages ) {
-				page = data.pages[ page ];
-				proveit.templates[ page.title ] = page.params;
+			var page, enMessages, userLanguageMessages;
+			for ( page in data.query.pages ) {
+				page = data.query.pages[ page ];
+				if ( page.title === 'MediaWiki:Gadget-ProveIt-en.json' ) {
+					enMessages = JSON.parse( page.revisions[0]['*'] );
+				} else if ( 'revisions' in page ) {
+					userLanguageMessages = JSON.parse( page.revisions[0]['*'] );
+				}
 			}
-			proveit.scanForReferences();
+			if ( userLanguageMessages ) {
+				mw.messages.set( userLanguageMessages );
+			} else {
+				mw.messages.set( enMessages ); // Fallback to English
+			}
+	
+			// Build the interface
+			proveit.build();
+	
+			// Get the template data from the wiki
+			var templates = proveit.getOption( 'templates' );
+			new mw.Api().get({
+				'action': 'templatedata',
+				'titles': templates ? templates.join( '|' ) : null,
+				'format': 'json'
+			}).done( function ( data ) {
+				//console.log( data );
+				for ( var page in data.pages ) {
+					page = data.pages[ page ];
+					proveit.templates[ page.title ] = page.params;
+				}
+				proveit.scanForReferences();
+			});
 		});
 
-		// Replace the reference button for the ProveIt button
+		// Replace the Reference button for the ProveIt button
 		proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
 			'section': 'main',
 			'group': 'insert',
