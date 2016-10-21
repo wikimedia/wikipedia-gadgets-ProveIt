@@ -76,12 +76,13 @@ var proveit = {
 
 		// Load the appropriate interface messages from Commons
 		var userLanguage = mw.config.get( 'wgUserLanguage' );
-		new mw.ForeignApi( '//commons.wikimedia.org/w/api.php' ).get({
+		$.get( '//commons.wikimedia.org/w/api.php', {
 			'titles': 'MediaWiki:Gadget-ProveIt-' + userLanguage + '.json|MediaWiki:Gadget-ProveIt-en.json', // Fallback to English
 			'action': 'query',
 			'prop': 'revisions',
 			'rvprop': 'content',
-			'format': 'json'
+			'format': 'json',
+			'origin': '*' // Allow requests from any origin so that ProveIt can be used on non-Wikimedia sites
 		}).done( function ( data ) {
 			//console.log( data );
 			var page, enMessages, userLanguageMessages;
