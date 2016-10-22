@@ -28,7 +28,7 @@ var proveit = {
 	templates: {},
 
 	/**
-	 * Content language (may be different from the user language)
+	 * Content language of the wiki
 	 *
 	 * @type {string} defaults to English
 	 */
@@ -74,10 +74,10 @@ var proveit = {
 		// Set the content language
 		proveit.contentLanguage = mw.config.get( 'wgContentLanguage' );
 
-		// Load the appropriate interface messages from Commons
+		// Get the interface messages from Commons
 		var userLanguage = mw.config.get( 'wgUserLanguage' );
 		$.get( '//commons.wikimedia.org/w/api.php', {
-			'titles': 'MediaWiki:Gadget-ProveIt-' + userLanguage + '.json|MediaWiki:Gadget-ProveIt-en.json', // Fallback to English
+			'titles': 'MediaWiki:Gadget-ProveIt-' + userLanguage + '.json|MediaWiki:Gadget-ProveIt-en.json', // Get the English messages as fallback
 			'action': 'query',
 			'prop': 'revisions',
 			'rvprop': 'content',
@@ -99,10 +99,10 @@ var proveit = {
 			} else {
 				mw.messages.set( enMessages ); // Fallback to English
 			}
-	
+
 			// Build the interface
 			proveit.build();
-	
+
 			// Get the template data from the wiki
 			var templates = proveit.getOption( 'templates' );
 			new mw.Api().get({
@@ -346,9 +346,16 @@ var proveit = {
 
 			paramsArray.shift(); // The first element is always empty
 
-			for ( paramString in paramsArray ) {
-
-				paramNameAndValue = paramsArray[ paramString ].split( '=' );
+			for ( var i = 0; i < paramsArray.length; i++ ) {
+				paramString = $.trim( paramsArray[ i ] );
+				// If there's no = sign, it means we matched a pipe inside a link or template in the previous run of the loop
+				// For example |param=[[Joe|Doe]] or |param={{Some|template}}
+				// So we append the current paramString to the PREVIOUS paramValue
+				if ( paramString.indexOf( '=' ) === -1 ) {
+					reference.params[ paramName ] += '|' + paramString;
+					continue;
+				}
+				paramNameAndValue = paramString.split( '=' );
 				paramName = $.trim( paramNameAndValue[0] );
 				paramValue = $.trim( paramNameAndValue[1] );
 
@@ -396,7 +403,7 @@ var proveit = {
 		if ( !proveitSummary ) {
 			return; // No summary defined
 		}
-		if ( currentSummary.indexOf( 'ProveIt' ) > -1 ) {
+		if ( currentSummary.indexOf( proveitSummary ) > -1 ) {
 			return; // Don't add it twice
 		}
 		$( '#wpSummary' ).val( currentSummary ? currentSummary + proveitSummary : proveitSummary );
