@@ -23,9 +23,9 @@ var proveit = {
 	/**
 	 * Template data retrieved from the wiki
 	 *
-	 * @type {object}
+	 * @type {object} mapping template name to templateData
 	 */
-	templates: {},
+	templateData: {},
 
 	/**
 	 * Content language of the wiki
@@ -113,7 +113,7 @@ var proveit = {
 				//console.log( data );
 				for ( var page in data.pages ) {
 					page = data.pages[ page ];
-					proveit.templates[ page.title ] = page.params;
+					proveit.templateData[ page.title ] = page;
 				}
 				proveit.scanForReferences();
 			});
@@ -319,7 +319,7 @@ var proveit = {
 
 		// Determine if the reference uses a template by getting all the registered template names and searching for a match
 		var registeredTemplatesArray = [];
-		for ( var registeredTemplate in proveit.templates ) {
+		for ( var registeredTemplate in proveit.templateData ) {
 			registeredTemplate = registeredTemplate.substring( registeredTemplate.indexOf( ':' ) + 1 ); // Remove the namespace
 			registeredTemplatesArray.push( registeredTemplate );
 		}
@@ -677,14 +677,61 @@ var proveit = {
 		};
 
 		/**
+		 * Get the full template name, like "Template:Cite book"
+		 *
+		 * @return {string} full template name
+		 */
+		this.getTemplateName = function () {
+			var formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
+				templateNamespace = formattedNamespaces[10];
+				templateName = templateNamespace + ':' + this.template;
+			return templateName;
+		};
+
+		/**
+		 * Get the template data for this reference
+		 *
+		 * @return {object}
+		 */
+		this.getTemplateData = function () {
+			var templateName = this.getTemplateName();
+				templateData = proveit.templateData[ templateName ]
+			return templateData;
+		};
+
+		/**
 		 * Get the registered parameters for this reference
 		 *
 		 * @return {object} TemplateData of the registered parameters
 		 */
 		this.getRegisteredParams = function () {
-			var formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
-				templateNamespace = formattedNamespaces[10];
-			return proveit.templates[ templateNamespace + ':' + this.template ];
+			var templateData = this.getTemplateData(),
+				paramsData = templateData.params;
+			return paramsData;
+		};
+
+		/**
+		 * Get the value of the main parameter for this reference
+		 *
+		 * @return {string} value of the main parameter for this reference
+		 */
+		this.getMainValue = function () {
+			// Return the value of the parameter marked as "main", if any
+			var templateMap = this.getTemplateMap();
+			if ( 'main' in templateMap ) {
+				var mainParam = templateMap.main;
+				if ( mainParam in this.params ) {
+					return this.params[ mainParam ];
+				}
+			}
+			// Else return the first param that has a value,
+			// starting with the required, then suggested, last optional
+			var sortedParams = this.getSortedParams()
+			for ( var param in sortedParams ) {
+				if ( param in this.params ) {
+					return this.params[ param ];
+				}
+			}
 		};
 
 		/**
@@ -748,6 +795,20 @@ var proveit = {
 		};
 
 		/**
+		 * Get the Map object for ProveIt from the template data
+		 *
+		 * @return {object} TemplateData of the sorted parameters
+		 */
+		this.getTemplateMap = function () {
+			var templateMap = {},
+				templateData = this.getTemplateData();
+			if ( 'maps' in templateData && 'proveit' in templateData.maps ) {
+				templateMap = templateData.maps.proveit;
+			}
+			return templateMap;
+		};
+
+		/**
 		 * Convert this reference to wikitext
 		 *
 		 * @return {string} wikitext for this reference
@@ -795,35 +856,11 @@ var proveit = {
 				var templateSpan = $( '<span>' ).addClass( 'proveit-reference-template' ).text( this.template );
 				item.html( templateSpan );
 
-				// Search the values of the first three parameters and add them to the list item
-				// We search for the first three values rather than the required ones because
-				// some tempalates (like Template:Citation) don't have any required parameters
-				// but we sort the parameters to give priority to the required parameters
-				var sortedParams = this.getSortedParams(),
-					paramCount = 0, paramValue, paramData, paramAlias, paramSpan;
-				for ( var paramName in sortedParams ) {
-					paramValue = '';
-					if ( paramName in this.params ) {
-						paramValue = this.params[ paramName ];
-					} else {
-						paramData = sortedParams[ paramName ];
-						for ( var i = 0; i < paramData.aliases.length; i++ ) {
-							paramAlias = paramData.aliases[ i ];
-							paramAlias = $.trim( paramAlias );
-							if ( paramAlias in this.params ) {
-								paramValue = this.params[ paramAlias ];
-							}
-						}
-					}
-					if ( paramValue ) {
-						paramSpan = $( '<span>' ).addClass( 'proveit-param-value' ).text( paramValue );
-						item.append( paramSpan );
-						paramCount++;
-						if ( paramCount === 3 ) {
-							break;
-						}
-					}
-				}
+				// Then add the main value of the reference (usually the title)
+				var mainValue = this.getMainValue(),
+					mainValueSpan = $( '<span>' ).addClass( 'proveit-main-value' ).text( mainValue );
+				item.append( mainValueSpan );
+
 			} else {
 				item.text( this.content );
 			}
@@ -885,7 +922,7 @@ var proveit = {
 				templateOption = $( '<option>' ).text( templateName ).val( '' );
 			templateSelect.append( templateOption );
 			templateRow.append( templateLabel, templateSelect );
-			for ( templateName in proveit.templates ) {
+			for ( templateName in proveit.templateData ) {
 				templateName = templateName.substr( templateName.indexOf( ':' ) + 1 ); // Remove the namespace
 				templateOption = $( '<option>' ).text( templateName ).val( templateName );
 				if ( this.template === templateName ) {
@@ -897,8 +934,9 @@ var proveit = {
 			table.append( templateRow );
 
 			// Add the parameter fields
-			var sortedParams = this.getSortedParams(),
-				requiredParams = this.getRequiredParams(),
+			var templateData = this.getTemplateData(),
+				templateMap = this.getTemplateMap(),
+				sortedParams = this.getSortedParams(),
 				paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
 
 			for ( var paramName in sortedParams ) {
@@ -949,13 +987,13 @@ var proveit = {
 				paramNameInput = $( '<input>' ).attr( 'type', 'hidden' ).addClass( 'proveit-param-name' ).val( paramName );
 				paramValueInput = $( '<input>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
 
-				// Exception
-				if ( paramName === 'quote' || paramName === 'cita' ) {
+				// Check if the parameter should be shown as a textarea
+				if ( 'textarea' in templateMap && ( templateMap.textarea === paramName || templateMap.textarea.indexOf( paramName ) > -1 ) ) {
 					paramValueInput = $( '<textarea>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
 				}
 
 				// Mark the required parameters
-				if ( paramName in requiredParams ) {
+				if ( 'required' in paramData && paramData.required ) {
 					row.addClass( 'proveit-required' );
 				}
 
