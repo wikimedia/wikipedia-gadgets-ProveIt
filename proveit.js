@@ -677,7 +677,7 @@ var proveit = {
 		};
 
 		/**
-		 * Get the full template name, like "Template:Cite book"
+		 * Get the template title, like "Template:Cite book"
 		 *
 		 * @return {string} full template name
 		 */
@@ -694,15 +694,31 @@ var proveit = {
 		/**
 		 * Get the template data for this reference
 		 *
-		 * @return {object}
+		 * @return {object} Template data
 		 */
 		this.getTemplateData = function () {
-			var templateData = {},
-				templateTitle = this.getTemplateTitle();
-			if ( templateTitle in proveit.templateData ) {
+			var templateData = {};
+			if ( this.template ) {
+				var templateTitle = this.getTemplateTitle();
 				templateData = proveit.templateData[ templateTitle ];
 			}
 			return templateData;
+		};
+
+		/**
+		 * Get the Map object for ProveIt from the template data
+		 *
+		 * @return {object} Map object
+		 */
+		this.getTemplateMap = function () {
+			var templateMap = {};
+			if ( this.template ) {
+				var templateData = this.getTemplateData();
+				if ( 'maps' in templateData && 'proveit' in templateData.maps ) {
+					templateMap = templateData.maps.proveit;
+				}
+			}
+			return templateMap;
 		};
 
 		/**
@@ -711,10 +727,12 @@ var proveit = {
 		 * @return {object} TemplateData of the registered parameters
 		 */
 		this.getRegisteredParams = function () {
-			var registeredParams = {},
-				templateData = this.getTemplateData();
-			if ( 'params' in templateData ) {
-				registeredParams = templateData.params;
+			var registeredParams = {};
+			if ( this.template ) {
+				var templateData = this.getTemplateData();
+				templateData.paramOrder.forEach( function ( paramName ) {
+					registeredParams[ paramName ] = templateData.params[ paramName ];
+				});
 			}
 			return registeredParams;
 		};
@@ -725,96 +743,21 @@ var proveit = {
 		 * @return {string} value of the main parameter for this reference
 		 */
 		this.getMainValue = function () {
-			// Return the value of the parameter marked as "main", if any
-			var templateMap = this.getTemplateMap();
-			if ( 'main' in templateMap ) {
-				var mainParam = templateMap.main;
-				if ( mainParam in this.params ) {
-					return this.params[ mainParam ];
+			var mainValue = this.content;
+			if ( this.template ) {
+				var templateMap = this.getTemplateMap();
+				if ( 'main' in templateMap && templateMap.main in this.params ) {
+					mainValue = this.params[ templateMap.main ];
+				} else {
+					var registeredParams = this.getRegisteredParams();
+					for ( var param in registeredParams ) {
+						if ( param in this.params ) {
+							mainValue = this.params[ param ];
+						}
+					}
 				}
 			}
-			// Else return the first param that has a value,
-			// starting with the required, then suggested, last optional
-			var sortedParams = this.getSortedParams()
-			for ( var param in sortedParams ) {
-				if ( param in this.params ) {
-					return this.params[ param ];
-				}
-			}
-		};
-
-		/**
-		 * Get the required parameters for this reference
-		 *
-		 * @return {object} TemplateData of the required parameters
-		 */
-		this.getRequiredParams = function () {
-			var requiredParams = {},
-				registeredParams = this.getRegisteredParams();
-			for ( var registeredParam in registeredParams ) {
-				if ( registeredParams[ registeredParam ].required ) {
-					requiredParams[ registeredParam ] = registeredParams[ registeredParam ];
-				}
-			}
-			return requiredParams;
-		};
-
-		/**
-		 * Get the suggested parameters for this reference
-		 *
-		 * @return {object} TemplateData of the suggested parameters
-		 */
-		this.getSuggestedParams = function () {
-			var suggestedParams = {},
-				registeredParams = this.getRegisteredParams();
-			for ( var registeredParam in registeredParams ) {
-				if ( registeredParams[ registeredParam ].suggested ) {
-					suggestedParams[ registeredParam ] = registeredParams[ registeredParam ];
-				}
-			}
-			return suggestedParams;
-		};
-
-		/**
-		 * Get the optional parameters for this reference
-		 *
-		 * @return {object} TemplateData of the optional parameters
-		 */
-		this.getOptionalParams = function () {
-			var optionalParams = {},
-				registeredParams = this.getRegisteredParams();
-			for ( var registeredParam in registeredParams ) {
-				if ( !registeredParams[ registeredParam ].required && !registeredParams[ registeredParam ].suggested ) {
-					optionalParams[ registeredParam ] = registeredParams[ registeredParam ];
-				}
-			}
-			return optionalParams;
-		};
-
-		/**
-		 * Get the registered params but sorted by required first, suggested later, optional last
-		 *
-		 * @return {object} TemplateData of the sorted parameters
-		 */
-		this.getSortedParams = function () {
-			var requiredParams = this.getRequiredParams(),
-				suggestedParams = this.getSuggestedParams(),
-				optionalParams = this.getOptionalParams();
-			return $.extend( requiredParams, suggestedParams, optionalParams );
-		};
-
-		/**
-		 * Get the Map object for ProveIt from the template data
-		 *
-		 * @return {object} TemplateData of the sorted parameters
-		 */
-		this.getTemplateMap = function () {
-			var templateMap = {},
-				templateData = this.getTemplateData();
-			if ( templateData && 'maps' in templateData && 'proveit' in templateData.maps ) {
-				templateMap = templateData.maps.proveit;
-			}
-			return templateMap;
+			return mainValue;
 		};
 
 		/**
@@ -858,20 +801,15 @@ var proveit = {
 		this.toListItem = function () {
 			var item = $( '<li>' ).addClass( 'proveit-reference-item' );
 
-			// Add the main content
+			// Add the main template, if any
 			if ( this.template ) {
-
-				// First add the template name
 				var templateSpan = $( '<span>' ).addClass( 'proveit-reference-template' ).text( this.template );
 				item.html( templateSpan );
-
-				// Then add the main value of the reference (usually the title)
-				var mainValue = this.getMainValue();
-				item.append( mainValue );
-
-			} else {
-				item.text( this.content );
 			}
+
+			// Add the main value of the reference
+			var mainValue = this.getMainValue();
+			item.append( mainValue );
 
 			// Add the citations
 			var citations = $( '<span>' ).addClass( 'proveit-citations' );
@@ -944,12 +882,12 @@ var proveit = {
 			// Add the parameter fields
 			var templateData = this.getTemplateData(),
 				templateMap = this.getTemplateMap(),
-				sortedParams = this.getSortedParams(),
+				registeredParams = this.getRegisteredParams(),
 				paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
 
-			for ( var paramName in sortedParams ) {
+			for ( var paramName in registeredParams ) {
 
-				paramData = sortedParams[ paramName ];
+				paramData = registeredParams[ paramName ];
 
 				// Defaults
 				paramLabel = paramName;
@@ -1001,7 +939,7 @@ var proveit = {
 				}
 
 				// Mark the required parameters
-				if ( 'required' in paramData && paramData.required ) {
+				if ( paramData.required ) {
 					row.addClass( 'proveit-required' );
 				}
 
