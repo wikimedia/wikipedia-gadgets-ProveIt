@@ -1,5 +1,5 @@
 /**
- * ProveIt is a powerful GUI tool to find, edit, add and cite references in any MediaWiki wiki
+ * ProveIt is a Wikipedia gadget that makes it easy to find, edit, add and delete references when editing Wikipedia articles.
  * Full documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
@@ -857,9 +857,8 @@ var proveit = {
 				item.html( templateSpan );
 
 				// Then add the main value of the reference (usually the title)
-				var mainValue = this.getMainValue(),
-					mainValueSpan = $( '<span>' ).addClass( 'proveit-main-value' ).text( mainValue );
-				item.append( mainValueSpan );
+				var mainValue = this.getMainValue();
+				item.append( mainValue );
 
 			} else {
 				item.text( this.content );
