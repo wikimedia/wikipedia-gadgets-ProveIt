@@ -681,11 +681,14 @@ var proveit = {
 		 *
 		 * @return {string} full template name
 		 */
-		this.getTemplateName = function () {
-			var formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
-				templateNamespace = formattedNamespaces[10];
-				templateName = templateNamespace + ':' + this.template;
-			return templateName;
+		this.getTemplateTitle = function () {
+			var templateTitle = '';
+			if ( this.template ) {
+				var formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
+					templateNamespace = formattedNamespaces[10];
+				templateTitle = templateNamespace + ':' + this.template;
+			}
+			return templateTitle;
 		};
 
 		/**
@@ -694,8 +697,11 @@ var proveit = {
 		 * @return {object}
 		 */
 		this.getTemplateData = function () {
-			var templateName = this.getTemplateName();
-				templateData = proveit.templateData[ templateName ]
+			var templateData = {},
+				templateTitle = this.getTemplateTitle();
+			if ( templateTitle in proveit.templateData ) {
+				templateData = proveit.templateData[ templateTitle ];
+			}
 			return templateData;
 		};
 
@@ -705,9 +711,12 @@ var proveit = {
 		 * @return {object} TemplateData of the registered parameters
 		 */
 		this.getRegisteredParams = function () {
-			var templateData = this.getTemplateData(),
-				paramsData = templateData.params;
-			return paramsData;
+			var registeredParams = {},
+				templateData = this.getTemplateData();
+			if ( 'params' in templateData ) {
+				registeredParams = templateData.params;
+			}
+			return registeredParams;
 		};
 
 		/**
@@ -802,7 +811,7 @@ var proveit = {
 		this.getTemplateMap = function () {
 			var templateMap = {},
 				templateData = this.getTemplateData();
-			if ( 'maps' in templateData && 'proveit' in templateData.maps ) {
+			if ( templateData && 'maps' in templateData && 'proveit' in templateData.maps ) {
 				templateMap = templateData.maps.proveit;
 			}
 			return templateMap;
@@ -921,8 +930,8 @@ var proveit = {
 				templateOption = $( '<option>' ).text( templateName ).val( '' );
 			templateSelect.append( templateOption );
 			templateRow.append( templateLabel, templateSelect );
-			for ( templateName in proveit.templateData ) {
-				templateName = templateName.substr( templateName.indexOf( ':' ) + 1 ); // Remove the namespace
+			for ( var templateTitle in proveit.templateData ) {
+				templateName = templateTitle.substr( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
 				templateOption = $( '<option>' ).text( templateName ).val( templateName );
 				if ( this.template === templateName ) {
 					templateOption.attr( 'selected', 'selected' );
