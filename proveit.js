@@ -115,7 +115,7 @@ var proveit = {
 					page = data.pages[ page ];
 					proveit.templateData[ page.title ] = page;
 				}
-				proveit.scanForReferences();
+				proveit.parse();
 			});
 		});
 
@@ -209,7 +209,7 @@ var proveit = {
 			}
 			$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
 
-			proveit.scanForReferences();
+			proveit.parse();
 		});
 
 		addTab.click( function () {
@@ -232,11 +232,11 @@ var proveit = {
 	},
 
 	/**
-	 * Scan for references in the textbox and display them
+	 * Parse the textbox for references and display them
 	 *
 	 * @return {void}
 	 */
-	scanForReferences: function () {
+	parse: function () {
 
 		// First define the list element
 		var referenceList = $( '<ol>' ).attr( 'id', 'proveit-reference-list' );
@@ -342,25 +342,27 @@ var proveit = {
 
 			// Extract the parameters and normalize them
 			var paramsArray = match[2].split( '|' ),
-				paramString, paramNameAndValue, paramName, paramValue;
+				paramString, indexOfEqual, paramName, paramValue;
 
 			paramsArray.shift(); // The first element is always empty
 
 			for ( var i = 0; i < paramsArray.length; i++ ) {
 				paramString = $.trim( paramsArray[ i ] );
+				indexOfEqual = paramString.indexOf( '=' );
+
 				// If there's no = sign, it means we matched a pipe inside a link or template in the previous run of the loop
-				// For example |param=[[Joe|Doe]] or |param={{Some|template}}
-				// So we append the current paramString to the PREVIOUS paramValue
-				if ( paramString.indexOf( '=' ) === -1 ) {
+				// for example |param=[[Joe|Doe]] or |param={{Some|template}}
+				// so we append the current paramString to the PREVIOUS paramValue
+				if ( indexOfEqual === -1 ) {
 					reference.params[ paramName ] += '|' + paramString;
 					continue;
 				}
-				paramNameAndValue = paramString.split( '=' );
-				paramName = $.trim( paramNameAndValue[0] );
-				paramValue = $.trim( paramNameAndValue[1] );
+
+				paramName = $.trim( paramString.substring( 0, indexOfEqual ) );
+				paramValue = $.trim( paramString.substring( indexOfEqual + 1 ) );
 
 				if ( !paramName || !paramValue ) {
-					continue;
+					continue; // Malformed param, maybe "|foo=" or "|=bar"
 				}
 
 				reference.params[ paramName ] = paramValue;
