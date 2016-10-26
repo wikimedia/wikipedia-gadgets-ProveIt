@@ -724,19 +724,17 @@ var proveit = {
 		};
 
 		/**
-		 * Get the registered parameters for this reference
+		 * Get the parameter order from the template data
 		 *
-		 * @return {object} TemplateData of the registered parameters
+		 * @return {array}
 		 */
-		this.getRegisteredParams = function () {
-			var registeredParams = {};
+		this.getParamOrder = function () {
+			var paramOrder = [];
 			if ( this.template ) {
 				var templateData = this.getTemplateData();
-				templateData.paramOrder.forEach( function ( paramName ) {
-					registeredParams[ paramName ] = templateData.params[ paramName ];
-				});
+				paramOrder = templateData.paramOrder;
 			}
-			return registeredParams;
+			return paramOrder;
 		};
 
 		/**
@@ -751,10 +749,10 @@ var proveit = {
 				if ( 'main' in templateMap && templateMap.main in this.params ) {
 					mainValue = this.params[ templateMap.main ];
 				} else {
-					var registeredParams = this.getRegisteredParams();
-					for ( var param in registeredParams ) {
-						if ( param in this.params ) {
-							mainValue = this.params[ param ];
+					var templateData = this.getTemplateData();
+					for ( var paramName in templateData.params ) {
+						if ( paramName in this.params ) {
+							mainValue = this.params[ paramName ];
 						}
 					}
 				}
@@ -884,12 +882,12 @@ var proveit = {
 			// Add the parameter fields
 			var templateData = this.getTemplateData(),
 				templateMap = this.getTemplateMap(),
-				registeredParams = this.getRegisteredParams(),
-				paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
+				paramOrder = this.getParamOrder(),
+				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
 
-			for ( var paramName in registeredParams ) {
-
-				paramData = registeredParams[ paramName ];
+			for ( var i = 0; i < paramOrder.length; i++ ) {
+				paramName = paramOrder[ i ];
+				paramData = templateData.params[ paramName ];
 
 				// Defaults
 				paramLabel = paramName;
@@ -920,8 +918,8 @@ var proveit = {
 				if ( paramName in this.params ) {
 					paramValue = this.params[ paramName ];
 				} else {
-					for ( var i = 0; i < paramData.aliases.length; i++ ) {
-						paramAlias = paramData.aliases[ i ];
+					for ( var j = 0; j < paramData.aliases.length; j++ ) {
+						paramAlias = paramData.aliases[ j ];
 						paramAlias = $.trim( paramAlias );
 						if ( paramAlias in this.params ) {
 							paramValue = this.params[ paramAlias ];
