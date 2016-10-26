@@ -340,29 +340,57 @@ var proveit = {
 			});
 			reference.template = template;
 
-			// Extract the parameters and normalize them
-			var paramsArray = match[2].split( '|' ),
-				paramString, indexOfEqual, paramName, paramValue;
+			/**
+			 * Now it's time to parse the parameters:
+			 * {{Cite book
+			 * |value1
+			 * |param1 = value2
+			 * |param2 = [[Some|link]]
+			 * |param3 = {{Subtemplate |foo |bar=baz}}
+			 * }}
+			 */
 
-			paramsArray.shift(); // The first element is always empty
+			// We split by pipe, knowing that we may match pipes inside links and subtemplates
+			var paramArray = match[2].split( '|' ),
+				paramString, inLink = 0, inSubtemplate = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
 
-			for ( var i = 0; i < paramsArray.length; i++ ) {
-				paramString = $.trim( paramsArray[ i ] );
-				indexOfEqual = paramString.indexOf( '=' );
+			paramArray.shift(); // Get rid of the stuff before the first pipe
 
-				// If there's no = sign, it means we matched a pipe inside a link or template in the previous run of the loop
-				// for example |param=[[Joe|Doe]] or |param={{Some|template}}
-				// so we append the current paramString to the PREVIOUS paramValue
-				if ( indexOfEqual === -1 ) {
+			for ( var i = 0; i < paramArray.length; i++ ) {
+				paramString = $.trim( paramArray[ i ] );
+
+				// If we're in a link or subtemplate, we append the current paramString to the previous paramValue
+				if ( inLink || inSubtemplate ) {
 					reference.params[ paramName ] += '|' + paramString;
+					if ( paramString.indexOf( ']]' ) > -1 ) {
+						inLink--;
+					}
+					if ( paramString.indexOf( '}}' ) > -1 ) {
+						inSubtemplate--;
+					}
+					continue;
+				}
+
+				// If there's no = sign, it's an anonymous parameter
+				indexOfEqual = paramString.indexOf( '=' );
+				if ( indexOfEqual === -1 ) {
+					paramNumber++;
+					paramName = paramNumber;
+					paramValue = paramString;
 					continue;
 				}
 
 				paramName = $.trim( paramString.substring( 0, indexOfEqual ) );
 				paramValue = $.trim( paramString.substring( indexOfEqual + 1 ) );
 
-				if ( !paramName || !paramValue ) {
-					continue; // Malformed param, maybe "|foo=" or "|=bar"
+				// If we find "[[" or "{{" in the paramValue, it means there's a link or subtemplate
+				// so we flag it to ignore all pipes and equal signs in future runs of the loop
+				// until all links and subtemplates are closed
+				if ( paramValue.indexOf( '[[' ) > -1 ) {
+					inLink++;
+				}
+				if ( paramValue.indexOf( '{{' ) > -1 ) {
+					inSubtemplate++;
 				}
 
 				reference.params[ paramName ] = paramValue;
@@ -749,10 +777,13 @@ var proveit = {
 				if ( 'main' in templateMap && templateMap.main in this.params ) {
 					mainValue = this.params[ templateMap.main ];
 				} else {
-					var templateData = this.getTemplateData();
-					for ( var paramName in templateData.params ) {
+					var templateData = this.getTemplateData(),
+						paramName;
+					for ( var i = 0; i < templateData.paramOrder.length; i++ ) {
+						paramName = templateData.paramOrder[ i ];
 						if ( paramName in this.params ) {
 							mainValue = this.params[ paramName ];
+							break;
 						}
 					}
 				}
