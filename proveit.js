@@ -82,7 +82,7 @@ var proveit = {
 			'prop': 'revisions',
 			'rvprop': 'content',
 			'format': 'json',
-			'origin': '*' // Allow requests from any origin so that ProveIt can be used on non-Wikimedia sites
+			'origin': '*' // Allow requests from any origin so that ProveIt can be used on localhost and non-Wikimedia sites
 		}).done( function ( data ) {
 			//console.log( data );
 			var page, enMessages, userLanguageMessages;
@@ -232,7 +232,7 @@ var proveit = {
 	},
 
 	/**
-	 * Parse the textbox for references and display them
+	 * Parse the textbox for references and add them to the GUI
 	 *
 	 * @return {void}
 	 */
@@ -253,7 +253,7 @@ var proveit = {
 			citations.push( citation );
 		}
 
-		// Third, look for all the raw and template references
+		// Third, look for all the references
 		var matches = wikitext.match( /<\s*ref[^\/]*>[\s\S]*?<\s*\/\s*ref\s*>/ig ); // We use [\s\S]* instead of .* to match newlines
 
 		if ( matches ) {
@@ -280,8 +280,10 @@ var proveit = {
 				// Add the item to the list
 				referenceList.append( referenceItem );
 			}
+
 			$( '#proveit-list-tab' ).text( proveit.getMessage( 'list-tab', i ) );
 			$( '#proveit-content' ).html( referenceList );
+
 		} else {
 			$( '#proveit-list-tab' ).text( proveit.getMessage( 'list-tab', 0 ) );
 			$( '#proveit-content' ).html( $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) ) );
@@ -341,12 +343,13 @@ var proveit = {
 			reference.template = template;
 
 			/**
-			 * Now it's time to parse the parameters:
+			 * Now it's time to parse the parameters, knowing they can contain pipes | and equal = signs:
 			 * {{Cite book
-			 * |value1
-			 * |param1 = value2
-			 * |param2 = [[Some|link]]
-			 * |param3 = {{Subtemplate |foo |bar=baz}}
+			 * |anonymous parameter
+			 * |param1 = value1
+			 * |param2 = http://example.com?query=string
+			 * |param3 = [[Some|link]]
+			 * |param4 = {{Subtemplate |anon |param=value}}
 			 * }}
 			 */
 
@@ -359,7 +362,7 @@ var proveit = {
 			for ( var i = 0; i < paramArray.length; i++ ) {
 				paramString = $.trim( paramArray[ i ] );
 
-				// If we're in a link or subtemplate, we append the current paramString to the previous paramValue
+				// If we're inside a link or subtemplate, we append the current paramString to the previous paramValue and continue
 				if ( inLink || inSubtemplate ) {
 					reference.params[ paramName ] += '|' + paramString;
 					if ( paramString.indexOf( ']]' ) > -1 ) {
@@ -371,7 +374,7 @@ var proveit = {
 					continue;
 				}
 
-				// If there's no = sign, it's an anonymous parameter
+				// If we reach this point and there's no equal sign, it's an anonymous parameter
 				indexOfEqual = paramString.indexOf( '=' );
 				if ( indexOfEqual === -1 ) {
 					paramNumber++;
@@ -384,12 +387,11 @@ var proveit = {
 				paramValue = $.trim( paramString.substring( indexOfEqual + 1 ) );
 
 				// If we find "[[" or "{{" in the paramValue, it means there's a link or subtemplate
-				// so we flag it to ignore all pipes and equal signs in future runs of the loop
-				// until all links and subtemplates are closed
-				if ( paramValue.indexOf( '[[' ) > -1 ) {
+				// so we flag it to ignore future pipes and equal signs until all links and subtemplates are closed
+				if ( paramValue.indexOf( '[[' ) > -1 && paramValue.indexOf( ']]' ) === -1 ) {
 					inLink++;
 				}
-				if ( paramValue.indexOf( '{{' ) > -1 ) {
+				if ( paramValue.indexOf( '{{' ) > -1 && paramValue.indexOf( '}}' ) === -1 ) {
 					inSubtemplate++;
 				}
 
