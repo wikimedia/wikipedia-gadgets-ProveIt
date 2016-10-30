@@ -1,7 +1,7 @@
 #proveit {
 	background: white;
 	border: 1px solid #ddd;
-	font-size: 14px;
+	font-size: 0.8em;
 	position: fixed;
 	z-index: 2147483647; /* Max value */
 }
@@ -36,7 +36,12 @@
 
 #proveit-list-tab.active,
 #proveit-add-tab.active {
-	background: #a7dcff;
+	background: #ccc;
+}
+
+#proveit-header span:not(.active):not(#proveit-logo):hover {
+	display: inline-block;
+	background: #eee;
 }
 
 #proveit-content {
@@ -65,7 +70,7 @@
 }
 
 #proveit-reference-list .proveit-reference-item:hover {
-	background: #a7dcff;
+	background: #ccc;
 	cursor: pointer;
 }
 
@@ -98,17 +103,13 @@
 }
 
 #proveit-reference-form table {
-	border-spacing: 2px;
+	border-spacing: 0;
 	width: 100%;
 }
 
-#proveit-reference-form label {
-	border: 1px solid transparent;
-	box-sizing: border-box;
-	display: table-cell;
-	padding: 5px;
-	vertical-align: top;
-	width: 180px;
+#proveit-reference-form td:first-child {
+	width: 20%;
+	padding-left: 5px;
 }
 
 #proveit-reference-form .proveit-required label {
@@ -118,15 +119,15 @@
 #proveit-reference-form input,
 #proveit-reference-form select,
 #proveit-reference-form textarea {
+	-moz-appearance:none;
 	-webkit-appearance: none;
 	background: white;
 	border: 1px solid #ddd;
 	border-radius: 0;
 	box-sizing: border-box;
-	display: table-cell;
 	font: inherit;
 	outline: none;
-	padding: 5px;
+	padding: 0.4em;
 	width: 100%;
 }
 
@@ -136,12 +137,12 @@
 }
 
 #proveit-buttons {
-	background: white;
+	background: #f0f0f0;
 	border-spacing: 0;
 	border-top: 1px solid #ddd;
 	box-sizing: border-box;
 	margin: 0;
-	padding: 10px;
+	padding: 0.3em;
 	pointer-events: none;
 	position: absolute;
 	bottom: 0;
@@ -150,18 +151,14 @@
 }
 
 #proveit-buttons button {
-	background: #a7dcff;
 	border: 1px solid #ccc;
-	border-radius: 3px;
 	cursor: pointer;
 	font: inherit;
-	margin-left: 10px;
-	padding: 5px;
+	margin: 0 0.2em;
+	padding: 0.6em;
 	pointer-events: all;
 }
 
-#proveit-buttons #proveit-cite-button,
-#proveit-buttons #proveit-remove-button,
-#proveit-buttons #proveit-params-button {
-	background: none;
+#proveit-buttons button:hover {
+	background: #eee;
 }

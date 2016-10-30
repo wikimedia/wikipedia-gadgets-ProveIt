@@ -880,27 +880,27 @@ var proveit = {
 			var table = $( '<table>' ).attr( 'id', 'proveit-reference-table' );
 
 			// Add the reference name field
-			var referenceNameRow = $( '<tr>' ),
-				referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
-				referenceNameInput = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name );
-			referenceNameRow.append( referenceNameLabel, referenceNameInput );
+			var referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
+				referenceNameInput = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name ),
+				referenceNameLabelColumn = $( '<td>' ).append( referenceNameLabel ),
+				referenceNameInputColumn = $( '<td>' ).append( referenceNameInput ),
+				referenceNameRow = $( '<tr>' ).append( referenceNameLabelColumn, referenceNameInputColumn );
 			table.append( referenceNameRow );
 
 			// Add the reference content area
-			var referenceContentRow = $( '<tr>' ),
-				referenceContentLabel = $( '<label>' ).text( proveit.getMessage( 'reference-content-label' ) ),
-				referenceContentTextarea = $( '<textarea>' ).attr( 'name', 'reference-content' ).val( this.content );
-			referenceContentRow.append( referenceContentLabel, referenceContentTextarea );
+			var referenceContentLabel = $( '<label>' ).text( proveit.getMessage( 'reference-content-label' ) ),
+				referenceContentTextarea = $( '<textarea>' ).attr( 'name', 'reference-content' ).val( this.content ),
+				referenceContentLabelColumn = $( '<td>' ).append( referenceContentLabel ),
+				referenceContentTextareaColumn = $( '<td>' ).append( referenceContentTextarea ),
+				referenceContentRow = $( '<tr>' ).append( referenceContentLabelColumn, referenceContentTextareaColumn );
 			table.append( referenceContentRow );
 
 			// Add the template dropdown menu
-			var templateRow = $( '<tr>' ),
-				templateLabel = $( '<label>' ).text( proveit.getMessage( 'reference-template-label' ) ),
+			var templateLabel = $( '<label>' ).text( proveit.getMessage( 'reference-template-label' ) ),
 				templateSelect = $( '<select>' ).attr( 'name', 'reference-template' ),
 				templateName = proveit.getMessage( 'no-template' ),
 				templateOption = $( '<option>' ).text( templateName ).val( '' );
 			templateSelect.append( templateOption );
-			templateRow.append( templateLabel, templateSelect );
 			for ( var templateTitle in proveit.templateData ) {
 				templateName = templateTitle.substr( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
 				templateOption = $( '<option>' ).text( templateName ).val( templateName );
@@ -909,7 +909,9 @@ var proveit = {
 				}
 				templateSelect.append( templateOption );
 			}
-			templateRow.append( templateLabel, templateSelect );
+			var templateLabelColumn = $( '<td>' ).append( templateLabel ),
+				templateSelectColumn = $( '<td>' ).append( templateSelect ),
+				templateRow = $( '<tr>' ).append( templateLabelColumn, templateSelectColumn );
 			table.append( templateRow );
 
 			// Add the parameter fields
@@ -962,6 +964,8 @@ var proveit = {
 
 				// Build the table row
 				row = $( '<tr>' ).addClass( 'proveit-param-pair' );
+				labelColumn = $( '<td>' );
+ 				inputColumn = $( '<td>' );
 				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
 				paramNameInput = $( '<input>' ).attr( 'type', 'hidden' ).addClass( 'proveit-param-name' ).val( paramName );
 				paramValueInput = $( '<input>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
@@ -977,7 +981,9 @@ var proveit = {
 				}
 
 				// Put it all together and add it to the table
-				row.append( label, paramValueInput, paramNameInput );
+				labelColumn.append( label );
+				inputColumn.append ( paramValueInput );
+				row.append( labelColumn, inputColumn, paramNameInput );
 				table.append( row );
 			}
 
