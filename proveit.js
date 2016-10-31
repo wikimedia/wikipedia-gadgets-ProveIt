@@ -275,7 +275,7 @@ var proveit = {
 			var i, j, reference, referenceItem;
 			for ( i = 0; i < matches.length; i++ ) {
 				// Turn all the matches into reference objects
-				reference = proveit.makeReference( matches[ i ] );
+				reference = proveit.parseReference( matches[ i ] );
 
 				// For each reference, check the citations array for citations to it
 				for ( j = 0; j < citations.length; j++ ) {
@@ -311,8 +311,8 @@ var proveit = {
 	 * @param {string} wikitext of the reference
 	 * @return {object} reference object
 	 */
-	makeReference: function ( referenceString ) {
-		// Extract the name, if any
+	parseReference: function ( referenceString ) {
+		// Extract the reference name, if any
 		// Three patterns: <ref name="foo">, <ref name='foo'> and <ref name=foo>
 		var referenceName = null,
 			match = referenceString.match( /<[\s]*ref[\s]*name[\s]*=[\s]*(?:(?:\"(.*?)\")|(?:\'(.*?)\')|(?:(.*?)))[\s]*>/i );
@@ -320,7 +320,7 @@ var proveit = {
 			referenceName = match[1] || match[2] || match[3];
 		}
 
-		// Extract the index
+		// Get the index
 		var referenceIndex = proveit.getTextbox().val().indexOf( referenceString );
 
 		// Extract the content
@@ -334,31 +334,44 @@ var proveit = {
 			'content': referenceContent
 		});
 
-		// Determine if the reference uses a template by getting all the registered template names and searching for a match
-		var registeredTemplatesArray = [];
-		for ( var registeredTemplate in proveit.templateData ) {
-			registeredTemplate = registeredTemplate.substring( registeredTemplate.indexOf( ':' ) + 1 ); // Remove the namespace
-			registeredTemplatesArray.push( registeredTemplate );
+		// Search for the main template of the reference
+		var templateName,
+			templateRegex,
+			indexStart;
+		for ( var templateTitle in proveit.templateData ) {
+			templateName = templateTitle.substring( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
+			templateRegex = new RegExp( '{{\\s*' + templateName, 'i' );
+			indexStart = referenceContent.search( templateRegex );
+			if ( indexStart > -1 ) {
+				reference.template = templateName;
+				break;
+			}
 		}
-		var registeredTemplatesDisjunction = registeredTemplatesArray.join( '|' ),
-			regExp = new RegExp( '{{(' + registeredTemplatesDisjunction + ')([\\s\\S]*)}}', 'i' ); // We use [\s\S]* instead of .* to match newlines
-		match = referenceContent.match( regExp );
 
-		// If there's a match, add the template data to the reference
-		if ( match ) {
-			reference.templateString = match[0];
+		// The rest of the code is for when a main template was found
+		if ( reference.template ) {
 
-			// Extract and the template name and normalize it
-			var template = match[1];
-			registeredTemplatesArray.forEach( function ( registeredTemplate ) {
-				if ( template.toLowerCase() === registeredTemplate.toLowerCase() ) {
-					template = registeredTemplate;
+			// Figure out the indexEnd by searching for the closing "}}"
+			// knowing there may be subtemplates and other templates after the main template
+			var indexEnd = referenceContent.length,
+				templateLevel = 0;
+			for ( var i = indexStart; i < indexEnd; i++ ) {
+				if ( referenceContent[ i ] + referenceContent[ i + 1 ] === '{{' ) {
+					templateLevel++;
+					i++; // We speed up the loop to avoid multiple matches when two or more templates are found together
+				} else if ( referenceContent[ i ] + referenceContent[ i + 1 ] === '}}' ) {
+					templateLevel--;
+					i++;
 				}
-			});
-			reference.template = template;
+				if ( templateLevel === 0 ) {
+					indexEnd = i + 1;
+					break;
+				}
+			}
+			reference.templateString = referenceContent.substring( indexStart, indexEnd );
 
 			/**
-			 * Now it's time to parse the parameters, knowing they can contain pipes | and equal = signs:
+			 * Parse the parameters inside the main template. A complex example may be:
 			 * {{Cite book
 			 * |anonymous parameter
 			 * |param1 = value1
@@ -368,16 +381,16 @@ var proveit = {
 			 * }}
 			 */
 
-			// We split by pipe, knowing that we may match pipes inside links and subtemplates
-			var paramArray = match[2].split( '|' ),
-				paramString, inLink = 0, inSubtemplate = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
+			// Remove the outer braces and split by pipe, knowing that we may match pipes inside links and subtemplates
+			var paramArray = reference.templateString.substring( 2, reference.templateString.length - 2 ).split( '|' );
+			paramArray.shift(); // Get rid of the template name
 
-			paramArray.shift(); // Get rid of the stuff before the first pipe
+			var paramString, inLink = 0, inSubtemplate = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
+			for ( i = 0; i < paramArray.length; i++ ) {
 
-			for ( var i = 0; i < paramArray.length; i++ ) {
-				paramString = $.trim( paramArray[ i ] );
+				paramString = paramArray[ i ].trim();
 
-				// If we're inside a link or subtemplate, we append the current paramString to the previous paramValue and continue
+				// If we're inside a link or subtemplate, don't disturb it
 				if ( inLink || inSubtemplate ) {
 					reference.params[ paramName ] += '|' + paramString;
 					if ( paramString.indexOf( ']]' ) > -1 ) {
@@ -398,11 +411,10 @@ var proveit = {
 					continue;
 				}
 
-				paramName = $.trim( paramString.substring( 0, indexOfEqual ) );
-				paramValue = $.trim( paramString.substring( indexOfEqual + 1 ) );
+				paramName = paramString.substring( 0, indexOfEqual ).trim();
+				paramValue = paramString.substring( indexOfEqual + 1 ).trim();
 
-				// If we find "[[" or "{{" in the paramValue, it means there's a link or subtemplate
-				// so we flag it to ignore future pipes and equal signs until all links and subtemplates are closed
+				// Check if there's an unclosed link or subtemplate
 				if ( paramValue.indexOf( '[[' ) > -1 && paramValue.indexOf( ']]' ) === -1 ) {
 					inLink++;
 				}
@@ -969,8 +981,7 @@ var proveit = {
 					paramValue = this.params[ paramName ];
 				} else {
 					for ( var j = 0; j < paramData.aliases.length; j++ ) {
-						paramAlias = paramData.aliases[ j ];
-						paramAlias = $.trim( paramAlias );
+						paramAlias = paramData.aliases[ j ].trim();
 						if ( paramAlias in this.params ) {
 							paramValue = this.params[ paramAlias ];
 						}
