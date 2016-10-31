@@ -335,12 +335,15 @@ var proveit = {
 		});
 
 		// Search for the main template of the reference
-		var templateName,
+		var templateTitles = Object.keys( proveit.templateData ).sort().reverse(), // Match "Cite books" before "Cite book"
+			templateTitle,
+			templateName,
 			templateRegex,
 			indexStart;
-		for ( var templateTitle in proveit.templateData ) {
+		for ( var i = 0; i < templateTitles.length; i++ ) {
+			templateTitle = templateTitles[ i ];
 			templateName = templateTitle.substring( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
-			templateRegex = new RegExp( '{{\\s*' + templateName, 'i' );
+			templateRegex = new RegExp( '{{\\s*' + templateName + '[\\s|]', 'i' );
 			indexStart = referenceContent.search( templateRegex );
 			if ( indexStart > -1 ) {
 				reference.template = templateName;
@@ -355,7 +358,7 @@ var proveit = {
 			// knowing there may be subtemplates and other templates after the main template
 			var indexEnd = referenceContent.length,
 				templateLevel = 0;
-			for ( var i = indexStart; i < indexEnd; i++ ) {
+			for ( i = indexStart; i < indexEnd; i++ ) {
 				if ( referenceContent[ i ] + referenceContent[ i + 1 ] === '{{' ) {
 					templateLevel++;
 					i++; // We speed up the loop to avoid multiple matches when two or more templates are found together
