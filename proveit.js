@@ -16,9 +16,11 @@
 var proveit = {
 
 	/**
-	 * URL of the ProveIt icon hosted at Commons
+	 * URL of the ProveIt icons hosted at Commons
 	 */
 	ICON: '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/ProveIt_logo_for_user_boxes.svg/22px-ProveIt_logo_for_user_boxes.svg.png',
+
+	OLDICON: '//upload.wikimedia.org/wikipedia/commons/d/df/ProveitOldIcon.png',
 
 	/**
 	 * Template data retrieved from the wiki
@@ -119,29 +121,42 @@ var proveit = {
 			});
 		});
 
-		// Replace the Reference button for the ProveIt button
-		proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
-			'section': 'main',
-			'group': 'insert',
-			'tool': 'reference'
-		});
-		proveit.getTextbox().wikiEditor( 'addToToolbar', {
-			'section': 'main',
-			'group': 'insert',
-			'tools': {
-				'proveit': {
-					'label': 'ProveIt',
-					'type': 'button',
-					'icon': proveit.ICON,
-					'action': {
-						'type': 'callback',
-						'execute': function () {
-							$( '#proveit' ).toggle();
+		// Replace the Reference button for the ProveIt button in the new toolbar
+		if ( mw.user.options.get( 'usebetatoolbar' ) === 1 ) {
+			proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
+				'section': 'main',
+				'group': 'insert',
+				'tool': 'reference'
+			});
+			proveit.getTextbox().wikiEditor( 'addToToolbar', {
+				'section': 'main',
+				'group': 'insert',
+				'tools': {
+					'proveit': {
+						'label': 'ProveIt',
+						'type': 'button',
+						'icon': proveit.ICON,
+						'action': {
+							'type': 'callback',
+							'execute': function () {
+								$( '#proveit' ).toggle();
+							}
 						}
 					}
 				}
-			}
-		});
+			});
+		// Add the ProveIt button in the old toolbar
+		} else if ( mw.user.options.get( 'showtoolbar' ) === 1 ) {
+			mw.loader.using( 'mediawiki.toolbar', function () {
+				$( '<div>' )
+				.addClass( 'mw-toolbar-editbutton' )
+				.attr( 'title', 'ProveIt' )
+				.css( 'background-image', 'url(' + proveit.OLDICON + ')' )
+				.appendTo( '#toolbar' ).click( function () {
+					$( '#proveit' ).toggle();
+				});
+			});
+		}
 	},
 
 	/**
