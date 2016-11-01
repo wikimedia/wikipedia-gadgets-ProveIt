@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Agnieszka Dul"
+		]
+	},
+	"proveit-list-tab": "Lista ($1)",
+	"proveit-add-tab": "Dodaj",
+	"proveit-reference-name-label": "Tekstu źródłowego",
+	"proveit-reference-content-label": "Tekst źródłowy",
+	"proveit-reference-template-label": "Główny szablon",
+	"proveit-cite-button": "Cytat",
+	"proveit-remove-button": "Usuń",
+	"proveit-insert-button": "Wstawić",
+	"proveit-update-button": "Aktualizuj",
+	"proveit-prompt-name": "Aby cytować, należy podać autora tekstu źródłowego:",
+	"proveit-confirm-remove": "Zostanie usunięte źródło i wszystkie cytaty. czy jesteś pewien?",
+	"proveit-no-template": "Brak szablonu",
+	"proveit-no-references": "Nie znaleziono źródła"
+}

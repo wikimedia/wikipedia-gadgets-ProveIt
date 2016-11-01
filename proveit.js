@@ -25,7 +25,7 @@ var proveit = {
 	/**
 	 * Template data retrieved from the wiki
 	 *
-	 * @type {object} mapping template name to templateData
+	 * @type {object} mapping template title to templateData
 	 */
 	templateData: {},
 
@@ -335,13 +335,10 @@ var proveit = {
 		});
 
 		// Search for the main template of the reference
-		var templateTitles = Object.keys( proveit.templateData ).sort().reverse(), // Match "Cite books" before "Cite book"
-			templateTitle,
-			templateName,
+		var templateName,
 			templateRegex,
 			indexStart;
-		for ( var i = 0; i < templateTitles.length; i++ ) {
-			templateTitle = templateTitles[ i ];
+		for ( var templateTitle in proveit.templateData ) {
 			templateName = templateTitle.substring( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
 			templateRegex = new RegExp( '{{\\s*' + templateName + '[\\s|]', 'i' );
 			indexStart = referenceContent.search( templateRegex );
@@ -388,19 +385,19 @@ var proveit = {
 			var paramArray = reference.templateString.substring( 2, reference.templateString.length - 2 ).split( '|' );
 			paramArray.shift(); // Get rid of the template name
 
-			var paramString, inLink = 0, inSubtemplate = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
+			var paramString, linkLevel = 0, subtemplateLevel = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
 			for ( i = 0; i < paramArray.length; i++ ) {
 
 				paramString = paramArray[ i ].trim();
 
 				// If we're inside a link or subtemplate, don't disturb it
-				if ( inLink || inSubtemplate ) {
+				if ( linkLevel || subtemplateLevel ) {
 					reference.params[ paramName ] += '|' + paramString;
 					if ( paramString.indexOf( ']]' ) > -1 ) {
-						inLink--;
+						linkLevel--;
 					}
 					if ( paramString.indexOf( '}}' ) > -1 ) {
-						inSubtemplate--;
+						subtemplateLevel--;
 					}
 					continue;
 				}
@@ -419,10 +416,10 @@ var proveit = {
 
 				// Check if there's an unclosed link or subtemplate
 				if ( paramValue.indexOf( '[[' ) > -1 && paramValue.indexOf( ']]' ) === -1 ) {
-					inLink++;
+					linkLevel++;
 				}
 				if ( paramValue.indexOf( '{{' ) > -1 && paramValue.indexOf( '}}' ) === -1 ) {
-					inSubtemplate++;
+					subtemplateLevel++;
 				}
 
 				reference.params[ paramName ] = paramValue;
