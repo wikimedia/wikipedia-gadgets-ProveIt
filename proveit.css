@@ -1,9 +1,13 @@
 #proveit {
 	background: white;
 	border: 1px solid #ddd;
-	font-size: 0.8em;
+	font-size: .8em;
 	position: fixed;
 	z-index: 2147483647; /* Max value */
+}
+
+.skin-monobook #proveit {
+	font-size: 120%;
 }
 
 #proveit-logo {
@@ -127,7 +131,7 @@
 	box-sizing: border-box;
 	font: inherit;
 	outline: none;
-	padding: 0.4em;
+	padding: .4em;
 	width: 100%;
 }
 
@@ -142,7 +146,7 @@
 	border-top: 1px solid #ddd;
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0.3em;
+	padding: .3em;
 	pointer-events: none;
 	position: absolute;
 	bottom: 0;
@@ -154,8 +158,8 @@
 	border: 1px solid #ccc;
 	cursor: pointer;
 	font: inherit;
-	margin: 0 0.2em;
-	padding: 0.6em;
+	margin: 0 .2em;
+	padding: .6em;
 	pointer-events: all;
 }
 
