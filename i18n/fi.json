@@ -15,6 +15,6 @@
     "proveit-update-button": "Päivitä viite",
     "proveit-prompt-name": "Viite tarvitsee nimen toimiakseen:",
     "proveit-confirm-remove": "Oletko varma, että haluat poistaa viitteen?",
-    "proveit-no-template": "Viitemalline puuttuu",
-    "proveit-no-references": "Ilman viitemallinetta"
+    "proveit-no-template": "Ilman viitemallinetta",
+    "proveit-no-references": "Artikkelissa ei ole viitteitä."
 }
