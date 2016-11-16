@@ -23,14 +23,14 @@ var proveit = {
 	OLDICON: '//upload.wikimedia.org/wikipedia/commons/d/df/ProveitOldIcon.png',
 
 	/**
-	 * Template data retrieved from the wiki
+	 * Template data retrieved from the local wiki
 	 *
 	 * @type {object} mapping template title to templateData
 	 */
 	templateData: {},
 
 	/**
-	 * Content language of the wiki
+	 * Content language of the local wiki
 	 *
 	 * @type {string} defaults to English
 	 */
@@ -243,6 +243,11 @@ var proveit = {
 			$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
 			$( '#proveit-insert-button' ).show();
 			$( '#proveit-cite-button, #proveit-remove-button, #proveit-update-button' ).hide();
+		});
+
+		// Remove on VisualEditor
+		mw.hook( 've.activate' ).add( function () {
+			$( '#proveit' ).remove();
 		});
 	},
 
