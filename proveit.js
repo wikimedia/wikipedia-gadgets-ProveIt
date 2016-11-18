@@ -87,11 +87,11 @@ var proveit = {
 			'origin': '*' // Allow requests from any origin so that ProveIt can be used on localhost and non-Wikimedia sites
 		}).done( function ( data ) {
 			//console.log( data );
-			var page, enMessages, userLanguageMessages;
+			var page, englishMessages, userLanguageMessages;
 			for ( page in data.query.pages ) {
 				page = data.query.pages[ page ];
 				if ( page.title === 'MediaWiki:Gadget-ProveIt-en.json' ) {
-					enMessages = JSON.parse( page.revisions[0]['*'] );
+					englishMessages = JSON.parse( page.revisions[0]['*'] );
 				} else if ( 'revisions' in page ) {
 					userLanguageMessages = JSON.parse( page.revisions[0]['*'] );
 				}
@@ -99,7 +99,7 @@ var proveit = {
 			if ( userLanguageMessages ) {
 				mw.messages.set( userLanguageMessages );
 			} else {
-				mw.messages.set( enMessages ); // Fallback to English
+				mw.messages.set( englishMessages ); // Fallback to English
 			}
 
 			// Build the interface
@@ -157,6 +157,11 @@ var proveit = {
 				});
 			});
 		}
+
+		// Remove on VisualEditor
+		mw.hook( 've.activate' ).add( function () {
+			$( '#proveit' ).remove();
+		});
 	},
 
 	/**
@@ -243,11 +248,6 @@ var proveit = {
 			$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
 			$( '#proveit-insert-button' ).show();
 			$( '#proveit-cite-button, #proveit-remove-button, #proveit-update-button' ).hide();
-		});
-
-		// Remove on VisualEditor
-		mw.hook( 've.activate' ).add( function () {
-			$( '#proveit' ).remove();
 		});
 	},
 
@@ -397,7 +397,7 @@ var proveit = {
 
 				// If we're inside a link or subtemplate, don't disturb it
 				if ( linkLevel || subtemplateLevel ) {
-					reference.params[ paramName ] += '|' + paramString;
+					reference.paramPairs[ paramName ] += '|' + paramString;
 					if ( paramString.indexOf( ']]' ) > -1 ) {
 						linkLevel--;
 					}
@@ -427,7 +427,7 @@ var proveit = {
 					subtemplateLevel++;
 				}
 
-				reference.params[ paramName ] = paramValue;
+				reference.paramPairs[ paramName ] = paramValue;
 			}
 		}
 
@@ -582,11 +582,12 @@ var proveit = {
 		/**
 		 * Object mapping the parameter names of this reference to their values
 		 *
+		 * IMPORTANT!!!
 		 * This object is constructed directly out of the wikitext, so it doesn't include
 		 * any information about the parameters other than their names and values.
-		 * Also the parameter names here may be aliases.
+		 * The parameter names here may be aliases or unregistered in the TemplateData
 		 */
-		this.params = {};
+		this.paramPairs = {};
 
 		/**
 		 * Insert a citation to this reference
@@ -808,15 +809,15 @@ var proveit = {
 			var mainValue = this.content;
 			if ( this.template ) {
 				var templateMap = this.getTemplateMap();
-				if ( 'main' in templateMap && templateMap.main in this.params ) {
-					mainValue = this.params[ templateMap.main ];
+				if ( 'main' in templateMap && templateMap.main in this.paramPairs ) {
+					mainValue = this.paramPairs[ templateMap.main ];
 				} else {
 					var templateData = this.getTemplateData(),
 						paramName;
 					for ( var i = 0; i < templateData.paramOrder.length; i++ ) {
 						paramName = templateData.paramOrder[ i ];
-						if ( paramName in this.params ) {
-							mainValue = this.params[ paramName ];
+						if ( paramName in this.paramPairs ) {
+							mainValue = this.paramPairs[ paramName ];
 							break;
 						}
 					}
@@ -841,8 +842,8 @@ var proveit = {
 			// Build the template string
 			if ( this.template ) {
 				var templateString = '{{' + this.template;
-				for ( var name in this.params ) {
-					templateString += ' |' + name + '=' + this.params[ name ];
+				for ( var name in this.paramPairs ) {
+					templateString += ' |' + name + '=' + this.paramPairs[ name ];
 				}
 				templateString += '}}';
 				// Build the content string by replacing the old template string with the new
@@ -950,6 +951,7 @@ var proveit = {
 			var templateData = this.getTemplateData(),
 				templateMap = this.getTemplateMap(),
 				paramOrder = this.getParamOrder(),
+				paramPairs = this.paramPairs,
 				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
 
 			for ( var i = 0; i < paramOrder.length; i++ ) {
@@ -982,23 +984,22 @@ var proveit = {
 				}
 
 				// Extract the parameter value
-				if ( paramName in this.params ) {
-					paramValue = this.params[ paramName ];
+				if ( paramName in paramPairs ) {
+					paramValue = paramPairs[ paramName ];
+					delete paramPairs[ paramName ];
 				} else {
 					for ( var j = 0; j < paramData.aliases.length; j++ ) {
 						paramAlias = paramData.aliases[ j ].trim();
-						if ( paramAlias in this.params ) {
-							paramValue = this.params[ paramAlias ];
+						if ( paramAlias in paramPairs ) {
+							paramValue = paramPairs[ paramAlias ];
+							delete paramPairs[ paramAlias ];
 						}
 					}
 				}
 
-				// Build the table row
-				row = $( '<tr>' ).addClass( 'proveit-param-pair' );
-				labelColumn = $( '<td>' );
- 				inputColumn = $( '<td>' );
+				// Start building the table row
 				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
-				paramNameInput = $( '<input>' ).attr( 'type', 'hidden' ).addClass( 'proveit-param-name' ).val( paramName );
+				paramNameInput = $( '<input>' ).addClass( 'proveit-param-name' ).val( paramName ).hide();
 				paramValueInput = $( '<input>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
 
 				// Check if the parameter should be shown as a textarea
@@ -1006,15 +1007,28 @@ var proveit = {
 					paramValueInput = $( '<textarea>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
 				}
 
+				// Finish building the table row
+				paramNameColumn = $( '<td>' ).append( paramNameInput, label );
+ 				paramValueColumn = $( '<td>' ).append( paramValueInput );
+				row = $( '<tr>' ).addClass( 'proveit-param-pair' ).append( paramNameColumn, paramValueColumn );
+
 				// Mark the required parameters
 				if ( paramData.required ) {
 					row.addClass( 'proveit-required' );
 				}
 
-				// Put it all together and add it to the table
-				labelColumn.append( label );
-				inputColumn.append ( paramValueInput );
-				row.append( labelColumn, inputColumn, paramNameInput );
+				// Add the row to the table
+				table.append( row );
+			}
+
+			// Finally, add any unregistered parameters left in paramPairs
+			for ( paramName in paramPairs ) {
+				paramValue = paramPairs[ paramName ];
+				paramNameInput = $( '<input>' ).addClass( 'proveit-param-name' ).val( paramName );
+				paramValueInput = $( '<input>' ).addClass( 'proveit-param-value' ).val( paramValue );
+				paramNameColumn = $( '<td>' ).append( paramNameInput );
+ 				paramValueColumn = $( '<td>' ).append( paramValueInput );
+				row = $( '<tr>' ).addClass( 'proveit-param-pair' ).append( paramNameColumn, paramValueColumn );
 				table.append( row );
 			}
 
@@ -1072,15 +1086,15 @@ var proveit = {
 			this.template = $( '#proveit-reference-form select[name="reference-template"]' ).val();
 
 			// Load all the parameter key-value pairs
-			var params = {}, name, value;
+			var paramPairs = {}, name, value;
 			$( '.proveit-param-pair' ).each( function () {
 				name = $( '.proveit-param-name', this ).val();
 				value = $( '.proveit-param-value', this ).val();
 				if ( name !== '' && value !== '' ) {
-					params[ name ] = value;
+					paramPairs[ name ] = value;
 				}
 			});
-			this.params = params;
+			this.paramPairs = paramPairs;
 
 			this.string = this.toString();
 		};
