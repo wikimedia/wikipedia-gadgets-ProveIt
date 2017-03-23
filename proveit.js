@@ -110,13 +110,21 @@ var proveit = {
 			new mw.Api().get({
 				'action': 'templatedata',
 				'titles': templates ? templates.join( '|' ) : null,
-				'format': 'json'
+				'format': 'json',
+				'redirects': true
 			}).done( function ( data ) {
-				//console.log( data );
+				console.log( data );
 				for ( var page in data.pages ) {
 					page = data.pages[ page ];
 					proveit.templateData[ page.title ] = page;
 				}
+				if ( 'redirects' in data ) {
+					for ( var redirect in data.redirects ) {
+						redirect = data.redirects[ redirect ];
+						proveit.templateData[ redirect.from ] = proveit.templateData[ redirect.to ];
+					}
+				}
+				console.log( proveit.templateData );
 				proveit.parse();
 			});
 		});
