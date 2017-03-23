@@ -1,5 +1,5 @@
 # ProveIt
 
-ProveIt is a Wikipedia gadget that makes it easy to find, edit, add and delete references when editing Wikipedia articles.
+ProveIt is a Wikipedia gadget that makes it easy to find, edit, add and delete references when editing articles.
 
-Full documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
+Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt

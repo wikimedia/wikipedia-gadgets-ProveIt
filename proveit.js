@@ -1,6 +1,6 @@
 /**
- * ProveIt is a Wikipedia gadget that makes it easy to find, edit, add and delete references when editing Wikipedia articles.
- * Full documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
+ * ProveIt is a Wikipedia gadget that makes it easy to find, edit, add and delete references when editing articles.
+ * Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
  * Copyright 2011- Matthew Flaschen
@@ -16,7 +16,7 @@
 var proveit = {
 
 	/**
-	 * URL of the ProveIt icons hosted at Commons
+	 * URLs of the ProveIt icons hosted at Commons
 	 */
 	ICON: '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/ProveIt_logo_for_user_boxes.svg/22px-ProveIt_logo_for_user_boxes.svg.png',
 
@@ -258,10 +258,7 @@ var proveit = {
 	 */
 	parse: function () {
 
-		// First define the list element
-		var referenceList = $( '<ol>' ).attr( 'id', 'proveit-reference-list' );
-
-		// Second, look for all the citations in the wikitext and store them in an array for later
+		// First look for all the citations and store them in an array for later
 		var wikitext = proveit.getTextbox().val(),
 			citations = [],
 			citationsRegExp = /<\s*ref\s+name\s*=\s*["|']?\s*([^"'\s]+)\s*["|']?\s*\/\s*>/ig, // Three patterns: <ref name="foo" />, <ref name='foo' /> and <ref name=foo />
@@ -273,10 +270,11 @@ var proveit = {
 			citations.push( citation );
 		}
 
-		// Third, look for all the references
+		// Then look for all the references
 		var matches = wikitext.match( /<\s*ref[^\/]*>[\s\S]*?<\s*\/\s*ref\s*>/ig ); // We use [\s\S]* instead of .* to match newlines
 
 		if ( matches ) {
+			var referenceList = $( '<ol>' ).attr( 'id', 'proveit-reference-list' );
 			var i, j, reference, referenceItem;
 			for ( i = 0; i < matches.length; i++ ) {
 				// Turn all the matches into reference objects
@@ -293,8 +291,7 @@ var proveit = {
 				// Finally, turn all the references into list items and insert them into the reference list
 				referenceItem = reference.toListItem();
 
-				// Add the reference number
-				// We don't use the <ol> numbers because of stying reasons
+				// Add the reference number (we don't use the <ol> numbers because of stying reasons)
 				referenceItem.prepend( $( '<span>' ).addClass( 'proveit-reference-number' ).text( i + 1 ) );
 
 				// Add the item to the list
@@ -947,12 +944,21 @@ var proveit = {
 				templateRow = $( '<tr>' ).append( templateLabelColumn, templateSelectColumn );
 			table.append( templateRow );
 
+			// When the template is changed, reload the table
+			templateSelect.change( this, function ( event ) {
+				console.log( event.data );
+				var reference = event.data;
+				reference.template = $( this ).val();
+				$.cookie( 'proveit-last-template', reference.template ); // Remember the user choice
+				table.replaceWith( reference.toTable() );
+			});
+
 			// Add the parameter fields
 			var templateData = this.getTemplateData(),
 				templateMap = this.getTemplateMap(),
 				paramOrder = this.getParamOrder(),
-				paramPairs = this.paramPairs,
-				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput;
+				paramPairs = JSON.parse( JSON.stringify( this.paramPairs ) ), // Clone the data
+				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput, dataList;
 
 			for ( var i = 0; i < paramOrder.length; i++ ) {
 				paramName = paramOrder[ i ];
@@ -999,8 +1005,8 @@ var proveit = {
 
 				// Start building the table row
 				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
-				paramNameInput = $( '<input>' ).addClass( 'proveit-param-name' ).val( paramName ).hide();
-				paramValueInput = $( '<input>' ).attr( 'placeholder', paramPlaceholder ).addClass( 'proveit-param-value' ).val( paramValue );
+				paramNameInput = $( '<input>' ).addClass( 'proveit-param-name' ).val( paramName ).attr( 'type', 'hidden' );
+				paramValueInput = $( '<input>' ).addClass( 'proveit-param-value' ).val( paramValue ).attr( 'placeholder', paramPlaceholder );
 
 				// Check if the parameter should be shown as a textarea
 				if ( 'textarea' in templateMap && ( templateMap.textarea === paramName || templateMap.textarea.indexOf( paramName ) > -1 ) ) {
@@ -1012,8 +1018,8 @@ var proveit = {
  				paramValueColumn = $( '<td>' ).append( paramValueInput );
 				row = $( '<tr>' ).addClass( 'proveit-param-pair' ).append( paramNameColumn, paramValueColumn );
 
-				// Mark the required parameters
 				if ( paramData.required ) {
+					// Mark the required parameters as such to style them appropriattely
 					row.addClass( 'proveit-required' );
 				}
 
@@ -1031,14 +1037,6 @@ var proveit = {
 				row = $( '<tr>' ).addClass( 'proveit-param-pair' ).append( paramNameColumn, paramValueColumn );
 				table.append( row );
 			}
-
-			// Bind events
-			templateSelect.change( this, function ( event ) {
-				var reference = event.data;
-				reference.template = $( this ).val();
-				$.cookie( 'proveit-last-template', reference.template ); // Remember the user choice
-				table.replaceWith( reference.toTable() );
-			});
 
 			return table;
 		};
