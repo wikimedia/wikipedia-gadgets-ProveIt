@@ -1026,9 +1026,15 @@ var proveit = {
  				paramValueColumn = $( '<td>' ).append( paramValueInput );
 				row = $( '<tr>' ).addClass( 'proveit-param-pair' ).append( paramNameColumn, paramValueColumn );
 
+				// Mark the parameters according to their status
 				if ( paramData.required ) {
-					// Mark the required parameters as such to style them appropriattely
 					row.addClass( 'proveit-required' );
+				} else if ( paramData.suggested ) {
+					row.addClass( 'proveit-suggested' );
+				} else if ( paramData.deprecated ) {
+					row.addClass( 'proveit-deprecated' );
+				} else {
+					row.addClass( 'proveit-optional' );
 				}
 
 				// Add the row to the table

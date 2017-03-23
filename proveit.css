@@ -120,6 +120,10 @@
 	font-weight: bold;
 }
 
+#proveit-reference-form .proveit-deprecated label {
+	text-decoration: line-through;
+}
+
 #proveit-reference-form input,
 #proveit-reference-form select,
 #proveit-reference-form textarea {
