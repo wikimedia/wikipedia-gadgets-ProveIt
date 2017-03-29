@@ -113,7 +113,7 @@ var proveit = {
 				'format': 'json',
 				'redirects': true
 			}).done( function ( data ) {
-				console.log( data );
+				//console.log( data );
 				for ( var page in data.pages ) {
 					page = data.pages[ page ];
 					proveit.templateData[ page.title ] = page;
@@ -124,7 +124,7 @@ var proveit = {
 						proveit.templateData[ redirect.from ] = proveit.templateData[ redirect.to ];
 					}
 				}
-				console.log( proveit.templateData );
+				//console.log( proveit.templateData );
 				proveit.parse();
 			});
 		});
@@ -170,6 +170,15 @@ var proveit = {
 		mw.hook( 've.activate' ).add( function () {
 			$( '#proveit' ).remove();
 		});
+
+		// When previewing, re-add the ProveIt tag (bug T154357)
+		if ( mw.config.get( 'wgAction' ) === 'submit' ) {
+			var currentSummary = $( '#wpSummary' ).val(),
+				proveitSummary = proveit.getOption( 'summary' );
+				if ( currentSummary.indexOf( proveitSummary ) > -1 ) {
+					proveit.addTag();
+				}
+		}
 	},
 
 	/**
