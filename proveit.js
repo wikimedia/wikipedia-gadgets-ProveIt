@@ -1045,7 +1045,7 @@ var proveit = {
 				}
 
 				// Start building the table row
-				label = $( '<label>' ).attr( 'title', paramDescription ).text( paramLabel );
+				label = $( '<label>' ).attr( 'data-tooltip', paramDescription ).text( paramLabel );
 				paramNameInput = $( '<input>' ).addClass( 'proveit-param-name' ).val( paramName ).attr( 'type', 'hidden' );
 				paramValueInput = $( '<input>' ).addClass( 'proveit-param-value' ).val( paramValue ).attr( 'placeholder', paramPlaceholder );
 
