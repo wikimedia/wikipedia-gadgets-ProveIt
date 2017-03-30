@@ -453,6 +453,16 @@ var proveit = {
 		};
 
 		/**
+		 * Remove this citation from the textbox
+		 */
+		this.remove = function () {
+			var textbox = proveit.getTextbox(),
+				text = textbox.val();
+			text = text.replace( this.string, '' );
+			textbox.val( text );
+		};
+
+		/**
 		 * Highlight this citation in the textbox and scroll it to view
 		 *
 		 * @return {void}
@@ -574,15 +584,12 @@ var proveit = {
 				var textbox = proveit.getTextbox(),
 					text = textbox.val();
 				text = text.replace( reference.string, '' );
+				textbox.val( text );
 
 				// Remove all the citations
-				// @todo citation.remove()
 				reference.citations.forEach( function ( citation ) {
-					text = text.replace( citation.string, '' );
+					citation.remove();
 				});
-
-				// Update the textbox
-				textbox.val( text );
 
 				// Add the tag and summary
 				proveit.addTag();
