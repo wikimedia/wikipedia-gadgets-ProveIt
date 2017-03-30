@@ -440,7 +440,20 @@ var proveit = {
 		};
 
 		/**
-		 * Highlight the citation in the textbox and scroll it to view
+		 * Update this citation in the textbox
+		 */
+		this.update = function () {
+			var oldString = this.string;
+			this.string = this.toString();
+			var newString = this.string,
+				textbox = proveit.getTextbox(),
+				text = textbox.val();
+			text = text.replace( oldString, newString );
+			textbox.val( text );
+		};
+
+		/**
+		 * Highlight this citation in the textbox and scroll it to view
 		 *
 		 * @return {void}
 		 */
@@ -521,15 +534,14 @@ var proveit = {
 			var reference = event.data;
 
 			// If the reference has no name, ask the user for one
-			// @todo check if the name is unique?
-			// @todo autogenerate names?
+			// @todo check if the name is unique
 			if ( !reference.name ) {
 				reference.name = prompt( proveit.getMessage( 'prompt-name' ) );
 				if ( !reference.name ) {
 					return;
 				}
-				var table = reference.toTable();
-				$( '#proveit-reference-table' ).replaceWith( table );
+
+				$( '#proveit-reference-table' ).replaceWith( reference.toTable() );
 
 				var oldString = reference.string;
 				reference.loadFromForm();
@@ -598,25 +610,17 @@ var proveit = {
 			var newName = reference.name,
 				newString = reference.string;
 
-			// Replace the old reference
+			// Update the textbox
 			var textbox = proveit.getTextbox(),
 				text = textbox.val();
 			text = text.replace( oldString, newString );
-
-			// If the name changed, update the citations
-			// @todo citation.update()
-			if ( oldName !== newName && reference.citations ) {
-				var oldCitationString, newCitationString;
-				reference.citations.forEach( function ( citation ) {
-					oldCitationString = citation.toString();
-					citation.name = newName;
-					newCitationString = citation.toString();
-					text = text.replace( oldCitationString, newCitationString );
-				});
-			}
-
-			// Update the textbox
 			textbox.val( text );
+
+			// Update the citations
+			reference.citations.forEach( function ( citation ) {
+				citation.name = newName;
+				citation.update();
+			});
 
 			// Update the index and highlight the reference
 			text = textbox.val();
