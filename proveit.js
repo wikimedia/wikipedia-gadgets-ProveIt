@@ -87,8 +87,8 @@ var proveit = {
 			'origin': '*' // Allow requests from any origin so that ProveIt can be used on localhost and non-Wikimedia sites
 		}).done( function ( data ) {
 			//console.log( data );
-			var page, englishMessages, userLanguageMessages;
-			for ( page in data.query.pages ) {
+			var englishMessages, userLanguageMessages;
+			for ( var page in data.query.pages ) {
 				page = data.query.pages[ page ];
 				if ( page.title === 'MediaWiki:Gadget-ProveIt-en.json' ) {
 					englishMessages = JSON.parse( page.revisions[0]['*'] );
@@ -604,11 +604,9 @@ var proveit = {
 		this.update = function ( event ) {
 			var reference = event.data;
 
-			var oldName = reference.name,
-				oldString = reference.string;
+			var oldString = reference.string;
 			reference.loadFromForm();
-			var newName = reference.name,
-				newString = reference.string;
+			var newString = reference.string;
 
 			// Update the textbox
 			var textbox = proveit.getTextbox(),
@@ -618,7 +616,7 @@ var proveit = {
 
 			// Update the citations
 			reference.citations.forEach( function ( citation ) {
-				citation.name = newName;
+				citation.name = reference.name;
 				citation.update();
 			});
 
@@ -771,7 +769,7 @@ var proveit = {
 					// knowing there may be subtemplates and other templates after the main template
 					var indexEnd = this.content.length,
 						templateLevel = 0;
-					for ( i = indexStart; i < indexEnd; i++ ) {
+					for ( var i = indexStart; i < indexEnd; i++ ) {
 						if ( this.content[ i ] + this.content[ i + 1 ] === '{{' ) {
 							templateLevel++;
 							i++; // We speed up the loop to avoid multiple matches when two or more templates are found together
@@ -810,7 +808,7 @@ var proveit = {
 			paramArray.shift(); // Get rid of the template name
 
 			var paramString, linkLevel = 0, subtemplateLevel = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
-			for ( i = 0; i < paramArray.length; i++ ) {
+			for ( var i = 0; i < paramArray.length; i++ ) {
 
 				paramString = paramArray[ i ].trim();
 
@@ -848,7 +846,7 @@ var proveit = {
 
 				this.paramPairs[ paramName ] = paramValue;
 			}
-		}
+		};
 
 		/**
 		 * Convert this reference to wikitext
@@ -993,7 +991,7 @@ var proveit = {
 				templateMap = this.getTemplateMap(),
 				paramOrder = this.getParamOrder(),
 				paramPairs = JSON.parse( JSON.stringify( this.paramPairs ) ), // Clone the data
-				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput, dataList;
+				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput, paramNameColumn, paramValueColumn;
 
 			for ( var i = 0; i < paramOrder.length; i++ ) {
 				paramName = paramOrder[ i ];
