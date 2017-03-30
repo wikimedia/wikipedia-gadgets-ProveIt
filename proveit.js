@@ -353,97 +353,7 @@ var proveit = {
 			'content': referenceContent
 		});
 
-		// Search for the main template of the reference
-		var templateName,
-			templateRegex,
-			indexStart;
-		for ( var templateTitle in proveit.templateData ) {
-			templateName = templateTitle.substring( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
-			templateRegex = new RegExp( '{{\\s*' + templateName + '[\\s|]', 'i' );
-			indexStart = referenceContent.search( templateRegex );
-			if ( indexStart > -1 ) {
-				reference.template = templateName;
-				break;
-			}
-		}
-
-		// The rest of the code is for when a main template was found
-		if ( reference.template ) {
-
-			// Figure out the indexEnd by searching for the closing "}}"
-			// knowing there may be subtemplates and other templates after the main template
-			var indexEnd = referenceContent.length,
-				templateLevel = 0;
-			for ( i = indexStart; i < indexEnd; i++ ) {
-				if ( referenceContent[ i ] + referenceContent[ i + 1 ] === '{{' ) {
-					templateLevel++;
-					i++; // We speed up the loop to avoid multiple matches when two or more templates are found together
-				} else if ( referenceContent[ i ] + referenceContent[ i + 1 ] === '}}' ) {
-					templateLevel--;
-					i++;
-				}
-				if ( templateLevel === 0 ) {
-					indexEnd = i + 1;
-					break;
-				}
-			}
-			reference.templateString = referenceContent.substring( indexStart, indexEnd );
-
-			/**
-			 * Parse the parameters inside the main template. A complex example may be:
-			 * {{Cite book
-			 * |anonymous parameter
-			 * |param1 = value1
-			 * |param2 = http://example.com?query=string
-			 * |param3 = [[Some|link]]
-			 * |param4 = {{Subtemplate |anon |param=value}}
-			 * }}
-			 */
-
-			// Remove the outer braces and split by pipe, knowing that we may match pipes inside links and subtemplates
-			var paramArray = reference.templateString.substring( 2, reference.templateString.length - 2 ).split( '|' );
-			paramArray.shift(); // Get rid of the template name
-
-			var paramString, linkLevel = 0, subtemplateLevel = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
-			for ( i = 0; i < paramArray.length; i++ ) {
-
-				paramString = paramArray[ i ].trim();
-
-				// If we're inside a link or subtemplate, don't disturb it
-				if ( linkLevel || subtemplateLevel ) {
-					reference.paramPairs[ paramName ] += '|' + paramString;
-					if ( paramString.indexOf( ']]' ) > -1 ) {
-						linkLevel--;
-					}
-					if ( paramString.indexOf( '}}' ) > -1 ) {
-						subtemplateLevel--;
-					}
-					continue;
-				}
-
-				// If we reach this point and there's no equal sign, it's an anonymous parameter
-				indexOfEqual = paramString.indexOf( '=' );
-				if ( indexOfEqual === -1 ) {
-					paramNumber++;
-					paramName = paramNumber;
-					paramValue = paramString;
-					continue;
-				}
-
-				paramName = paramString.substring( 0, indexOfEqual ).trim();
-				paramValue = paramString.substring( indexOfEqual + 1 ).trim();
-
-				// Check if there's an unclosed link or subtemplate
-				if ( paramValue.indexOf( '[[' ) > -1 && paramValue.indexOf( ']]' ) === -1 ) {
-					linkLevel++;
-				}
-				if ( paramValue.indexOf( '{{' ) > -1 && paramValue.indexOf( '}}' ) === -1 ) {
-					subtemplateLevel++;
-				}
-
-				reference.paramPairs[ paramName ] = paramValue;
-			}
-		}
+		reference.parseContent();
 
 		return reference;
 	},
@@ -596,7 +506,6 @@ var proveit = {
 		/**
 		 * Object mapping the parameter names of this reference to their values
 		 *
-		 * IMPORTANT!!!
 		 * This object is constructed directly out of the wikitext, so it doesn't include
 		 * any information about the parameters other than their names and values.
 		 * The parameter names here may be aliases or unregistered in the TemplateData
@@ -841,6 +750,103 @@ var proveit = {
 		};
 
 		/**
+		 * Update the properties of this reference by parsing the content string
+		 */
+		this.parseContent = function () {
+			var templateName,
+				templateRegex,
+				indexStart;
+			for ( var templateTitle in proveit.templateData ) {
+				templateName = templateTitle.substring( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
+				templateRegex = new RegExp( '{{\\s*' + templateName + '[\\s|]', 'i' );
+				indexStart = this.content.search( templateRegex );
+				if ( indexStart > -1 ) {
+					this.template = templateName;
+
+					// Figure out the indexEnd by searching for the closing "}}"
+					// knowing there may be subtemplates and other templates after the main template
+					var indexEnd = this.content.length,
+						templateLevel = 0;
+					for ( i = indexStart; i < indexEnd; i++ ) {
+						if ( this.content[ i ] + this.content[ i + 1 ] === '{{' ) {
+							templateLevel++;
+							i++; // We speed up the loop to avoid multiple matches when two or more templates are found together
+						} else if ( this.content[ i ] + this.content[ i + 1 ] === '}}' ) {
+							templateLevel--;
+							i++;
+						}
+						if ( templateLevel === 0 ) {
+							indexEnd = i + 1;
+							break;
+						}
+					}
+
+					this.templateString = this.content.substring( indexStart, indexEnd );
+					this.parseTemplateString();
+					break;
+				}
+			}
+		};
+
+		/**
+		 * Parse the parameters inside the main template
+		 *
+		 * A complex example may be:
+		 * {{Cite book
+		 * |anonymous parameter
+		 * |param1 = value1
+		 * |param2 = http://example.com?query=string
+		 * |param3 = [[Some|link]]
+		 * |param4 = {{Subtemplate |anon |param=value}}
+		 * }}
+		 */
+		this.parseTemplateString = function () {
+			// Remove the outer braces and split by pipe, knowing that we may match pipes inside links and subtemplates
+			var paramArray = this.templateString.substring( 2, this.templateString.length - 2 ).split( '|' );
+			paramArray.shift(); // Get rid of the template name
+
+			var paramString, linkLevel = 0, subtemplateLevel = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
+			for ( i = 0; i < paramArray.length; i++ ) {
+
+				paramString = paramArray[ i ].trim();
+
+				// If we're inside a link or subtemplate, don't disturb it
+				if ( linkLevel || subtemplateLevel ) {
+					this.paramPairs[ paramName ] += '|' + paramString;
+					if ( paramString.indexOf( ']]' ) > -1 ) {
+						linkLevel--;
+					}
+					if ( paramString.indexOf( '}}' ) > -1 ) {
+						subtemplateLevel--;
+					}
+					continue;
+				}
+
+				// If we reach this point and there's no equal sign, it's an anonymous parameter
+				indexOfEqual = paramString.indexOf( '=' );
+				if ( indexOfEqual === -1 ) {
+					paramNumber++;
+					paramName = paramNumber;
+					paramValue = paramString;
+					continue;
+				}
+
+				paramName = paramString.substring( 0, indexOfEqual ).trim();
+				paramValue = paramString.substring( indexOfEqual + 1 ).trim();
+
+				// Check if there's an unclosed link or subtemplate
+				if ( paramValue.indexOf( '[[' ) > -1 && paramValue.indexOf( ']]' ) === -1 ) {
+					linkLevel++;
+				}
+				if ( paramValue.indexOf( '{{' ) > -1 && paramValue.indexOf( '}}' ) === -1 ) {
+					subtemplateLevel++;
+				}
+
+				this.paramPairs[ paramName ] = paramValue;
+			}
+		}
+
+		/**
 		 * Convert this reference to wikitext
 		 *
 		 * @return {string} wikitext for this reference
@@ -942,6 +948,14 @@ var proveit = {
 				referenceContentRow = $( '<tr>' ).append( referenceContentLabelColumn, referenceContentTextareaColumn );
 			table.append( referenceContentRow );
 
+			// When the reference content is manually changed, reload the table
+			referenceContentTextarea.change( this, function ( event ) {
+				var reference = event.data;
+				reference.content = $( this ).val();
+				reference.parseContent();
+				table.replaceWith( reference.toTable() );
+			});
+
 			// Add the template dropdown menu
 			var templateLabel = $( '<label>' ).text( proveit.getMessage( 'reference-template-label' ) ),
 				templateSelect = $( '<select>' ).attr( 'name', 'reference-template' ),
@@ -963,7 +977,7 @@ var proveit = {
 
 			// When the template is changed, reload the table
 			templateSelect.change( this, function ( event ) {
-				console.log( event.data );
+				//console.log( event.data );
 				var reference = event.data;
 				reference.template = $( this ).val();
 				$.cookie( 'proveit-last-template', reference.template ); // Remember the user choice
