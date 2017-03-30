@@ -990,6 +990,7 @@ var proveit = {
 				var reference = event.data;
 				reference.template = $( this ).val();
 				$.cookie( 'proveit-last-template', reference.template ); // Remember the user choice
+				reference.loadFromForm();
 				table.replaceWith( reference.toTable() );
 			});
 
