@@ -76,7 +76,7 @@ var proveit = {
 		// Set the content language
 		proveit.contentLanguage = mw.config.get( 'wgContentLanguage' );
 
-		// Get the interface messages from Commons
+		// Set the interface language by getting the messages from Commons
 		var userLanguage = mw.config.get( 'wgUserLanguage' );
 		$.get( '//commons.wikimedia.org/w/api.php', {
 			'titles': 'MediaWiki:Gadget-ProveIt-' + userLanguage + '.json|MediaWiki:Gadget-ProveIt-en.json', // Get the English messages as fallback
@@ -86,21 +86,17 @@ var proveit = {
 			'format': 'json',
 			'origin': '*' // Allow requests from any origin so that ProveIt can be used on localhost and non-Wikimedia sites
 		}).done( function ( data ) {
+			// The Commons page for English messages was created first, so it will always be first in the loop
 			//console.log( data );
-			var englishMessages, userLanguageMessages;
+			var messages;
 			for ( var page in data.query.pages ) {
-				page = data.query.pages[ page ];
-				if ( page.title === 'MediaWiki:Gadget-ProveIt-en.json' ) {
-					englishMessages = JSON.parse( page.revisions[0]['*'] );
-				} else if ( 'revisions' in page ) {
-					userLanguageMessages = JSON.parse( page.revisions[0]['*'] );
+				if ( page > -1 ) {
+					page = data.query.pages[ page ];
+					messages = page.revisions[0]['*'];
 				}
 			}
-			if ( userLanguageMessages ) {
-				mw.messages.set( userLanguageMessages );
-			} else {
-				mw.messages.set( englishMessages ); // Fallback to English
-			}
+			messages = JSON.parse( messages );
+			mw.messages.set( messages );
 
 			// Build the interface
 			proveit.build();
@@ -175,7 +171,7 @@ var proveit = {
 		if ( mw.config.get( 'wgAction' ) === 'submit' ) {
 			var currentSummary = $( '#wpSummary' ).val(),
 				proveitSummary = proveit.getOption( 'summary' );
-				if ( currentSummary.indexOf( proveitSummary ) > -1 ) {
+				if ( proveitSummary && currentSummary.indexOf( proveitSummary ) > -1 ) {
 					proveit.addTag();
 				}
 		}
