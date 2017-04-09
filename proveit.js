@@ -274,12 +274,12 @@ var proveit = {
 		// First look for all the citations and store them in an array for later
 		var wikitext = proveit.getTextbox().val(),
 			citations = [],
-			citationsRegExp = /<\s*ref\s+name\s*=\s*["|']?\s*([^"'\s]+)\s*["|']?\s*\/\s*>/ig, // Three patterns: <ref name="foo" />, <ref name='foo' /> and <ref name=foo />
+			citationsRegExp = /<\s*ref\s+name\s*=\s*((["'])(((?!\2).)+)\2|([^\s'">\/]+))\s*\/\s*>/ig, // Three patterns: <ref name="foo" />, <ref name='foo' /> and <ref name=foo />
 			match,
 			citation;
 
-		while ( ( match = citationsRegExp.exec( wikitext ) ) ) {
-			citation = new proveit.Citation({ 'name': match[1], 'index': match.index, 'string': match[0] });
+	    while ( ( match = citationsRegExp.exec( wikitext ) ) ) {
+			citation = new proveit.Citation({ 'name': match[3] || match[5], 'index': match.index, 'string': match[0] });
 			citations.push( citation );
 		}
 
@@ -330,9 +330,9 @@ var proveit = {
 		// Extract the reference name, if any
 		// Three patterns: <ref name="foo">, <ref name='foo'> and <ref name=foo>
 		var referenceName = null,
-			match = referenceString.match( /<[\s]*ref[\s]*name[\s]*=[\s]*(?:(?:\"(.*?)\")|(?:\'(.*?)\')|(?:(.*?)))[\s]*>/i );
+			match = referenceString.match( /<\s*ref\s+name\s*=\s*((["'])(((?!\2).)+)\2|([^\s'">]+))\s*\s*>/i );
 		if ( match ) {
-			referenceName = match[1] || match[2] || match[3];
+			referenceName = match[3] || match[5];
 		}
 
 		// Get the index
