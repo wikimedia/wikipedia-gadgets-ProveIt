@@ -207,7 +207,7 @@ var proveit = {
 				handle: header,
 				containment: 'window',
 				start: function ( event ) {
-					if ( event.toElement.id !== 'proveit-header' ) {
+					if ( event.originalEvent.target.id !== 'proveit-header' ) {
 						dragged = true;
 					}
 					gui.css({
