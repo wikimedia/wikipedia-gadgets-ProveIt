@@ -1,18 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe Schenone"
+			"Felipe Schenone",
+			"Liuxinyu970226",
+			"Robby"
 		]
 	},
-	"proveit-list-tab": "Text for the List tab",
-	"proveit-add-tab": "Text for the Add tab",
+	"proveit-list-tab": "Text for the List tab\n{{Identical|List}}",
+	"proveit-add-tab": "Text for the Add tab\n{{Identical|Add}}",
 	"proveit-reference-name-label": "Label for the field of the reference name",
 	"proveit-reference-content-label": "Label for the field of the reference content",
 	"proveit-reference-template-label": "Label for the field of the main template of the reference",
-	"proveit-cite-button": "Text for the Cite button",
-	"proveit-remove-button": "Text for the Remove button",
-	"proveit-insert-button": "Text for the Insert button",
-	"proveit-update-button": "Text for the Update button",
+	"proveit-cite-button": "Text for the Cite button\n{{Identical|Cite}}",
+	"proveit-remove-button": "Text for the Remove button\n{{Identical|Remove}}",
+	"proveit-insert-button": "Text for the Insert button\n{{Identical|Insert}}",
+	"proveit-update-button": "Text for the Update button\n{{Identical|Update}}",
 	"proveit-prompt-name": "Text for the dialog prompted when a user tries to add a citation for a reference without a name",
 	"proveit-confirm-remove": "Text for the alert prompted when a user tries to remove a reference with or without citations",
 	"proveit-no-template": "Text for the dropdown option corresponding to the references without a template",

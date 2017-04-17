@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fulup"
+		]
+	},
+	"proveit-list-tab": "Rollañ ($1)",
+	"proveit-add-tab": "Ouzhpennañ",
+	"proveit-reference-name-label": "Anv an daveenn",
+	"proveit-reference-content-label": "Danvez an daveenn",
+	"proveit-reference-template-label": "Patrom pennañ",
+	"proveit-cite-button": "Menegiñ",
+	"proveit-remove-button": "Dilemel",
+	"proveit-insert-button": "Ensoc'hañ",
+	"proveit-update-button": "Hizivaat",
+	"proveit-prompt-name": "Dezhi da vezañ meneget, ret eo reiñ un anv d'an daveenn :",
+	"proveit-confirm-remove": "Dilemel a raio an daveenn hag an holl arroudennoù. Sur oc'h ?",
+	"proveit-no-template": "Patrom ebet",
+	"proveit-no-references": "N'eus bet kavet daveenn ebet"
+}

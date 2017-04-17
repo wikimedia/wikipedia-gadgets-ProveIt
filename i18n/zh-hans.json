@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"proveit-list-tab": "列表（$1）",
+	"proveit-add-tab": "添加",
+	"proveit-reference-name-label": "参考资料名称",
+	"proveit-reference-content-label": "参考资料内容",
+	"proveit-reference-template-label": "主模板",
+	"proveit-cite-button": "引用",
+	"proveit-remove-button": "移除",
+	"proveit-insert-button": "插入",
+	"proveit-update-button": "更新",
+	"proveit-prompt-name": "为了引用参考资料，其需要名称：",
+	"proveit-confirm-remove": "这将移除参考资料及其所有引文。您确定么？",
+	"proveit-no-template": "无模板",
+	"proveit-no-references": "未找到参考资料"
+}

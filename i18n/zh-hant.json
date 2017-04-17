@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"proveit-list-tab": "列表（$1）",
+	"proveit-add-tab": "新增",
+	"proveit-reference-name-label": "參考資料名稱",
+	"proveit-reference-content-label": "參考資料內容",
+	"proveit-reference-template-label": "主模板",
+	"proveit-cite-button": "引用",
+	"proveit-remove-button": "移除",
+	"proveit-insert-button": "插入",
+	"proveit-update-button": "更新",
+	"proveit-prompt-name": "為引用參考資料；需要一個名稱：",
+	"proveit-confirm-remove": "這將會移除參考資料以及所有引用內容。您確定嗎？",
+	"proveit-no-template": "沒有模板",
+	"proveit-no-references": "找不到參考資料"
+}

@@ -1,21 +1,21 @@
 {
-    "@metadata": {
-        "authors": [
-            "Agnieszka Dul",
-            "Michał Sobkowski"
-        ]
-    },
-    "proveit-list-tab": "Lista ($1)",
-    "proveit-add-tab": "Dodaj",
-    "proveit-reference-name-label": "Nazwa przypisu",
-    "proveit-reference-content-label": "Kod źródłowy przypisu",
-    "proveit-reference-template-label": "Główny szablon",
-    "proveit-cite-button": "Wstaw przypis",
-    "proveit-remove-button": "Usuń",
-    "proveit-insert-button": "Wstaw",
-    "proveit-update-button": "Aktualizuj",
-    "proveit-prompt-name": "Ten przypis nie ma jeszcze nazwy. Zdefiniuj ją tutaj:",
-    "proveit-confirm-remove": "Zostanie usunięte źródło i wszystkie cytaty. czy jesteś pewien?",
-    "proveit-no-template": "Brak szablonu",
-    "proveit-no-references": "Nie znaleziono źródła"
+	"@metadata": {
+		"authors": [
+			"Agnieszka Dul",
+			"Michał Sobkowski"
+		]
+	},
+	"proveit-list-tab": "Lista ($1)",
+	"proveit-add-tab": "Dodaj",
+	"proveit-reference-name-label": "Nazwa przypisu",
+	"proveit-reference-content-label": "Kod źródłowy przypisu",
+	"proveit-reference-template-label": "Główny szablon",
+	"proveit-cite-button": "Wstaw przypis",
+	"proveit-remove-button": "Usuń",
+	"proveit-insert-button": "Wstaw",
+	"proveit-update-button": "Aktualizuj",
+	"proveit-prompt-name": "Ten przypis nie ma jeszcze nazwy. Zdefiniuj ją tutaj:",
+	"proveit-confirm-remove": "Zostanie usunięte źródło i wszystkie cytaty. czy jesteś pewien?",
+	"proveit-no-template": "Brak szablonu",
+	"proveit-no-references": "Nie znaleziono źródła"
 }

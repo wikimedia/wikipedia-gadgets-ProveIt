@@ -1,20 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe Schenone"
+			"Felipe Schenone",
+			"Beta16"
 		]
 	},
-	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Aggiungere",
+	"proveit-list-tab": "Elenco ($1)",
+	"proveit-add-tab": "Aggiungi",
 	"proveit-reference-name-label": "Nome di riferimento",
 	"proveit-reference-content-label": "Contenuti di riferimento",
 	"proveit-reference-template-label": "Template principale",
-	"proveit-cite-button": "Citare",
-	"proveit-remove-button": "Cancellare",
-	"proveit-insert-button": "Inserire",
-	"proveit-update-button": "Aggiornare",
+	"proveit-cite-button": "Cita",
+	"proveit-remove-button": "Rimuovi",
+	"proveit-insert-button": "Inserisci",
+	"proveit-update-button": "Aggiorna",
 	"proveit-prompt-name": "Il riferimento ha bisogno di un nome per essere citati:",
-	"proveit-confirm-remove": "Questo elimina il riferimento e tutti gli citazione. Sei sicuro?",
+	"proveit-confirm-remove": "Questo rimuoverà il riferimento e tutte le sue citazioni. Sei sicuro?",
 	"proveit-no-template": "Senza template",
 	"proveit-no-references": "Nessun riferimento trovato"
 }

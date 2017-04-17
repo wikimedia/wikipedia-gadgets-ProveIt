@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"proveit-list-tab": "Список ($1)",
+	"proveit-add-tab": "Додај",
+	"proveit-reference-name-label": "Назив на наводот",
+	"proveit-reference-content-label": "Содржина на наводот",
+	"proveit-reference-template-label": "Главен шаблон",
+	"proveit-cite-button": "Наведи",
+	"proveit-remove-button": "Отстрани",
+	"proveit-insert-button": "Вметни",
+	"proveit-update-button": "Поднови",
+	"proveit-prompt-name": "На наводот треба да му се зададе назив за да се повика:",
+	"proveit-confirm-remove": "Ова ќе го отстрани наводот и сите негови повикувања. Дали сте сигурни?",
+	"proveit-no-template": "Нема шаблон",
+	"proveit-no-references": "Не пронајдов наводи"
+}

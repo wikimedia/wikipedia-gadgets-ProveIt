@@ -1,21 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe Schenone",
-			"He7d3r"
+			"Felipe L. Ewald",
+			"WikiUser22222"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
 	"proveit-add-tab": "Adicionar",
 	"proveit-reference-name-label": "Nome da referência",
 	"proveit-reference-content-label": "Conteúdo de referência",
-	"proveit-reference-template-label": "Predefinição principal",
+	"proveit-reference-template-label": "Modelo principal",
 	"proveit-cite-button": "Citar",
-	"proveit-remove-button": "Excluir",
+	"proveit-remove-button": "Remover",
 	"proveit-insert-button": "Inserir",
 	"proveit-update-button": "Atualizar",
 	"proveit-prompt-name": "A referência precisa de um nome para ser citada:",
-	"proveit-confirm-remove": "Isso eliminará a referência e todas as citações da mesma. Tem certeza?",
-	"proveit-no-template": "Sem predefinição",
-	"proveit-no-references": "Não foram encontradas referências"
+	"proveit-confirm-remove": "Isso removerá a referência e todas as suas citações. Você tem certeza?",
+	"proveit-no-template": "Nenhum modelo",
+	"proveit-no-references": "Nenhuma referência encontrada"
 }
