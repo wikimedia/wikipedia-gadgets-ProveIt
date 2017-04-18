@@ -43,7 +43,8 @@
 	background: #ccc;
 }
 
-#proveit-header span:not(.active):not(#proveit-logo):hover {
+#proveit-list-tab:not(.active):hover,
+#proveit-add-tab:not(.active):hover {
 	display: inline-block;
 	background: #eee;
 }

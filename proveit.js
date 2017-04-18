@@ -866,13 +866,23 @@ var proveit = {
 
 			// Build the template string
 			if ( this.template ) {
-				var templateString = '{{' + this.template;
+				var templateData = this.getTemplateData(),
+					format = templateData.format,
+					templateString = '{{' + this.template;
 				for ( var name in this.paramPairs ) {
-					templateString += ' |' + name + '=' + this.paramPairs[ name ];
+					if ( format === 'block' ) {
+						templateString += '\r\n| ' + name + ' = ' + this.paramPairs[ name ];
+					} else {
+						templateString += ' |' + name + '=' + this.paramPairs[ name ];
+					}
 				}
-				templateString += '}}';
+				if ( format === 'block' ) {
+					templateString += '\r\n}}';
+				} else {
+					templateString += '}}';
+				}
 				// Build the content string by replacing the old template string with the new
-				// By doing this we keep any content that before or after the template string
+				// By doing this we keep any content that was before or after the template string
 				this.content = this.content.replace( this.templateString, templateString );
 				this.templateString = templateString;
 			}
