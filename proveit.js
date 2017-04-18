@@ -537,9 +537,14 @@ var proveit = {
 		this.cite = function ( event ) {
 			var reference = event.data;
 
-			// If the reference has no name, ask the user for one
+			if ( reference.name ) {
+				// Add the citation
+				var citation = new proveit.Citation({ 'name': reference.name });
+				citation.insert();
+
+			// If there's no reference name, ask the user for one
 			// @todo check if the name is unique
-			if ( !reference.name ) {
+			} else {
 				reference.name = prompt( proveit.getMessage( 'prompt-name' ) );
 				if ( !reference.name ) {
 					return;
@@ -551,15 +556,15 @@ var proveit = {
 				reference.loadFromForm();
 				var newString = reference.string;
 
+				// Add the citation
+				var citation = new proveit.Citation({ 'name': reference.name });
+				citation.insert();
+
 				// Replace the old reference
 				var textbox = proveit.getTextbox(),
 					text = textbox.val().replace( oldString, newString );
 				textbox.val( text );
 			}
-
-			// Add the citation
-			var citation = new proveit.Citation({ 'name': reference.name });
-			citation.insert();
 		};
 
 		/**
