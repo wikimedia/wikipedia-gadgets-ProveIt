@@ -16,5 +16,6 @@
 	"proveit-prompt-name": "The reference needs a name in order to be cited:",
 	"proveit-confirm-remove": "This will remove the reference and all of its citations. Are you sure?",
 	"proveit-no-template": "No template",
-	"proveit-no-references": "No references found"
+	"proveit-no-references": "No references found",
+	"proveit-filter-field": "Filter fields"
 }

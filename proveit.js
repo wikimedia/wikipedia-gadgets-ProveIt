@@ -662,7 +662,7 @@ var proveit = {
 			// Switch to edit mode
 			$( '#proveit-list-tab' ).addClass( 'active' ).siblings().removeClass( 'active' );
 			$( '#proveit-reference-table' ).replaceWith( reference.toTable() );
-			$( '#proveit-insert-button' ).hide().siblings().show();
+			$( '#proveit-insert-button' ).hide().siblings( 'button' ).show();
 
 			// Add the tag and summary
 			proveit.addTag();
@@ -915,7 +915,7 @@ var proveit = {
 					form = reference.toForm();
 				reference.highlight();
 				$( '#proveit-content' ).html( form );
-				$( '#proveit-insert-button' ).hide().siblings().show();
+				$( '#proveit-insert-button' ).hide().siblings( 'button' ).show();
 			});
 
 			$( '.proveit-citation', item ).click( this, function ( event ) {
@@ -1094,23 +1094,39 @@ var proveit = {
 			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ),
 				table = this.toTable();
 
-			// Add the buttons
-			var buttons = $( '<div>' ).attr( 'id', 'proveit-buttons' ),
+			// Add the footer
+			var footer = $( '<div>' ).attr( 'id', 'proveit-footer' ),
+				filterField = $( '<input>' ).attr({ 'id': 'proveit-filter-field', 'placeholder': proveit.getMessage( 'filter-field' ) }),
 				citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( proveit.getMessage( 'cite-button' ) ),
 				removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( proveit.getMessage( 'remove-button' ) ),
 				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
 				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
-			buttons.append( citeButton, removeButton, updateButton, insertButton );
-			form.append( table, buttons );
+			footer.append( filterField, citeButton, removeButton, updateButton, insertButton );
+			form.append( table, footer );
 
 			// Bind events
 			form.submit( false );
+			filterField.keyup( form, this.filterFields );
 			citeButton.click( this, this.cite );
 			removeButton.click( this, this.remove );
 			updateButton.click( this, this.update );
 			insertButton.click( this, this.insert );
 
 			return form;
+		};
+
+		/**
+		 * Hide all irrelevant fields
+		 *
+		 * @return {void}
+		 */
+		this.filterFields = function ( event ) {
+			var filter = $( event.target ).val().toLowerCase(),
+				form = event.data;
+
+			$( 'tr', form ).show().filter( function () {
+				return $( 'label', this ).text().toLowerCase().startsWith( filter ) ? false : true;
+			}).hide();
 		};
 
 		/**

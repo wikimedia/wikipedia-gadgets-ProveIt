@@ -18,5 +18,6 @@
 	"proveit-prompt-name": "Text for the dialog prompted when a user tries to add a citation for a reference without a name",
 	"proveit-confirm-remove": "Text for the alert prompted when a user tries to remove a reference with or without citations",
 	"proveit-no-template": "Text for the dropdown option corresponding to the references without a template",
-	"proveit-no-references": "Text for when no references are found"
+	"proveit-no-references": "Text for when no references are found",
+	"proveit-filter-field": "Placeholder for the input field to filter parameters"
 }
