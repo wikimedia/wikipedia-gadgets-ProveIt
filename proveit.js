@@ -1135,7 +1135,7 @@ var proveit = {
 				form = event.data;
 
 			$( 'tr', form ).show().filter( function () {
-				return $( 'label', this ).text().toLowerCase().startsWith( filter ) ? false : true;
+				return $( this ).text().toLowerCase().indexOf( filter ) > -1 ? false : true;
 			}).hide();
 		};
 
