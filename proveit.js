@@ -202,20 +202,18 @@ var proveit = {
 
 		// Make the GUI draggable
 		var dragged = false;
-		mw.loader.using( 'jquery.ui.draggable' ).then( function () {
-			gui.draggable({
-				handle: header,
-				containment: 'window',
-				start: function ( event ) {
-					if ( event.originalEvent.target.id !== 'proveit-header' ) {
-						dragged = true;
-					}
-					gui.css({
-						'right': 'auto',
-						'bottom': 'auto'
-					});
+		gui.draggable({
+			handle: header,
+			containment: 'window',
+			start: function ( event ) {
+				if ( event.originalEvent.target.id !== 'proveit-header' ) {
+					dragged = true;
 				}
-			});
+				gui.css({
+					'right': 'auto',
+					'bottom': 'auto'
+				});
+			}
 		});
 
 		// Lastly, bind events
