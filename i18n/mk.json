@@ -16,5 +16,6 @@
 	"proveit-prompt-name": "На наводот треба да му се зададе назив за да се повика:",
 	"proveit-confirm-remove": "Ова ќе го отстрани наводот и сите негови повикувања. Дали сте сигурни?",
 	"proveit-no-template": "Нема шаблон",
-	"proveit-no-references": "Не пронајдов наводи"
+	"proveit-no-references": "Не пронајдов наводи",
+	"proveit-filter-field": "Филтер на полиња"
 }

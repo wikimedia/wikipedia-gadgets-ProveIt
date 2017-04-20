@@ -17,5 +17,6 @@
 	"proveit-prompt-name": "Der Einzelnachweis benötigt einen Namen, um zitiert zu werden:",
 	"proveit-confirm-remove": "Dies wird den Einzelnachweis und all seine Zitate entfernen. Bist du sicher?",
 	"proveit-no-template": "Keine Vorlage",
-	"proveit-no-references": "Keine Einzelnachweise gefunden"
+	"proveit-no-references": "Keine Einzelnachweise gefunden",
+	"proveit-filter-field": "Felder filtern"
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98",
+			"Sjoerddebruin"
+		]
+	},
+	"proveit-add-tab": "Toevoegen",
+	"proveit-reference-template-label": "Hoofdsjabloon",
+	"proveit-remove-button": "Verwijderen",
+	"proveit-insert-button": "Invoegen",
+	"proveit-update-button": "Bijwerken",
+	"proveit-no-template": "Geen sjabloon"
+}

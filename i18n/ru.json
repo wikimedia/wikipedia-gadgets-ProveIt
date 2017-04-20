@@ -16,5 +16,6 @@
 	"proveit-prompt-name": "Источнику нужно задать имя, чтобы его процитировать:",
 	"proveit-confirm-remove": "Будет удален источник и все его цитаты. Вы уверены?",
 	"proveit-no-template": "Нет шаблона",
-	"proveit-no-references": "Источники не найдены"
+	"proveit-no-references": "Источники не найдены",
+	"proveit-filter-field": "Фильтр полей"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bastenbas"
+			"Bastenbas",
+			"Gomoko"
 		]
 	},
 	"proveit-list-tab": "Lister ($1)",
@@ -16,5 +17,6 @@
 	"proveit-prompt-name": "La référence a besoin d'un nom pour être réutilisée:",
 	"proveit-confirm-remove": "Cela supprimera la référence dans tout l'article. Êtes-vous sûr?",
 	"proveit-no-template": "Aucun modèle",
-	"proveit-no-references": "Aucune référence trouvée"
+	"proveit-no-references": "Aucune référence trouvée",
+	"proveit-filter-field": "Champs du filtre"
 }

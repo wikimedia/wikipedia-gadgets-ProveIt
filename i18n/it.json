@@ -17,5 +17,6 @@
 	"proveit-prompt-name": "Il riferimento ha bisogno di un nome per essere citati:",
 	"proveit-confirm-remove": "Questo rimuoverà il riferimento e tutte le sue citazioni. Sei sicuro?",
 	"proveit-no-template": "Senza template",
-	"proveit-no-references": "Nessun riferimento trovato"
+	"proveit-no-references": "Nessun riferimento trovato",
+	"proveit-filter-field": "Campi filtro"
 }
