@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Obsuser"
+		]
+	},
+	"proveit-list-tab": "Списак ($1)",
+	"proveit-add-tab": "Додај",
+	"proveit-reference-name-label": "Име референце",
+	"proveit-reference-content-label": "Садржај референце",
+	"proveit-reference-template-label": "Главни шаблон",
+	"proveit-cite-button": "Референце",
+	"proveit-remove-button": "Уклони",
+	"proveit-insert-button": "Убаци",
+	"proveit-update-button": "Ажурирај",
+	"proveit-prompt-name": "Референца треба име да би се цитирала:",
+	"proveit-confirm-remove": "Овиме ће се уклонити све референце и сви наведени извори. Јесте ли сигурни?",
+	"proveit-no-template": "Нема шаблона",
+	"proveit-no-references": "Ниједна референца није пронађена",
+	"proveit-filter-field": "Филтер за поља"
+}

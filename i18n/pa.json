@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sony dandiwal"
+		]
+	},
+	"proveit-list-tab": "ਸੂਚੀ ($1)",
+	"proveit-add-tab": "ਜੋੜੋ",
+	"proveit-reference-name-label": "ਹਵਾਲੇ ਦਾ ਨਾਂਮ",
+	"proveit-reference-content-label": "ਹਵਾਲੇ ਦੀ ਲਿਖ਼ਤ",
+	"proveit-reference-template-label": "ਮੁੱਖ ਫਰਮਾ",
+	"proveit-cite-button": "ਹਵਾਲਾ",
+	"proveit-remove-button": "ਹਟਾਓ",
+	"proveit-insert-button": "ਜੋੜੋ",
+	"proveit-update-button": "ਨਵਿਆਉ",
+	"proveit-prompt-name": "ਇਸ ਹਵਾਲੇ ਨੂੰ ਇੱਕ ਨਾਂਮ ਚਾਹੀਦਾ ਹੈ ਤਾਂ ਜੋ ਇਹ ਜੁੜ ਸਕੇ:",
+	"proveit-confirm-remove": "ਇਸ ਨਾਲ ਹਵਾਲਾ ਅਤੇ ਬਾਕੀ ਲਿਖ਼ਤ ਮਿਟ ਸਕਦੀ ਹੈ। ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇਹ ਚਾਹੁੰਦੇ ਹੋ?",
+	"proveit-no-template": "ਕੋਈ ਫਰਮਾ ਨਹੀਂ",
+	"proveit-no-references": "ਕੋਈ ਹਵਾਲੇ ਨਹੀਂ ਲੱਭੇ",
+	"proveit-filter-field": "ਫਿਲਟਰ ਖੇਤਰ"
+}
