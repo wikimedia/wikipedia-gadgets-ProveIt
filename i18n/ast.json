@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"proveit-list-tab": "Llista ($1)",
+	"proveit-add-tab": "Amestar",
+	"proveit-reference-name-label": "Nome de la referencia",
+	"proveit-reference-content-label": "Conteníu de la referencia",
+	"proveit-reference-template-label": "Plantía principal",
+	"proveit-cite-button": "Citar",
+	"proveit-remove-button": "Desaniciar",
+	"proveit-insert-button": "Inxertar",
+	"proveit-update-button": "Anovar",
+	"proveit-prompt-name": "La referencia necesita un nome pa poder citase:",
+	"proveit-confirm-remove": "Esto desaniciará la referencia y toles cites que tenga. ¿Tas seguru?",
+	"proveit-no-template": "Sin plantía",
+	"proveit-no-references": "Nun s'alcontraron referencies",
+	"proveit-filter-field": "Filtrar campos"
+}

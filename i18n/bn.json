@@ -16,5 +16,6 @@
 	"proveit-prompt-name": "উদ্ধৃত করতে তথ্যসূত্রের একটি নাম দেয়া প্রয়োজন:",
 	"proveit-confirm-remove": "এটি এই তথ্যসূত্রটি এবং এর থেকে দেয়া সব উদ্ধৃতিদান সরিয়ে ফেলবে। আপনি কি নিশ্চিত?",
 	"proveit-no-template": "কোন টেমপ্লেট নেই",
-	"proveit-no-references": "কোন তথ্যসূত্র পাওয়া যায়নি"
+	"proveit-no-references": "কোন তথ্যসূত্র পাওয়া যায়নি",
+	"proveit-filter-field": "ক্ষেত্র ছাঁকুন"
 }

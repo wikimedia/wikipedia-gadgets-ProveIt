@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Omotecho"
+		]
+	},
+	"proveit-list-tab": "リスト ($1)",
+	"proveit-add-tab": "追加",
+	"proveit-reference-name-label": "出典名",
+	"proveit-reference-content-label": "出典情報",
+	"proveit-cite-button": "引用",
+	"proveit-remove-button": "除去",
+	"proveit-insert-button": "挿入",
+	"proveit-update-button": "更新",
+	"proveit-prompt-name": "出典を引用するには名前が必要です。",
+	"proveit-confirm-remove": "出典と引用をすべて削除します。本当に実行しますか?",
+	"proveit-no-template": "テンプレートがありません",
+	"proveit-no-references": "出典が見つかりません",
+	"proveit-filter-field": "フィルターのフィールド"
+}

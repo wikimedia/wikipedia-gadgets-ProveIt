@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Red Winged Duck"
+		]
+	},
+	"proveit-list-tab": "Сьпіс ($1)",
+	"proveit-add-tab": "Дадаць",
+	"proveit-reference-name-label": "Назва крыніцы",
+	"proveit-reference-content-label": "Зьмест крыніцы",
+	"proveit-reference-template-label": "Галоўны шаблён",
+	"proveit-cite-button": "Цытаваць"
+}
