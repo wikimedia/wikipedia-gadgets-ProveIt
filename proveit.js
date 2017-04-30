@@ -127,7 +127,7 @@ var proveit = {
 
 		// Replace the Reference button for the ProveIt button in the new toolbar
 		if ( mw.user.options.get( 'usebetatoolbar' ) === 1 ) {
-			proveit.getTextbox().on( 'wikiEditor-toolbar-doneInitialSections', function () {
+			mw.loader.using( 'ext.wikiEditor.toolbar', function () {
 				proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
 					'section': 'main',
 					'group': 'insert',
