@@ -127,27 +127,29 @@ var proveit = {
 
 		// Replace the Reference button for the ProveIt button in the new toolbar
 		if ( mw.user.options.get( 'usebetatoolbar' ) === 1 ) {
-			proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
-				'section': 'main',
-				'group': 'insert',
-				'tool': 'reference'
-			});
-			proveit.getTextbox().wikiEditor( 'addToToolbar', {
-				'section': 'main',
-				'group': 'insert',
-				'tools': {
-					'proveit': {
-						'label': 'ProveIt',
-						'type': 'button',
-						'icon': proveit.ICON,
-						'action': {
-							'type': 'callback',
-							'execute': function () {
-								$( '#proveit' ).toggle();
+			proveit.getTextbox().on( 'wikiEditor-toolbar-doneInitialSections', function () {
+				proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
+					'section': 'main',
+					'group': 'insert',
+					'tool': 'reference'
+				});
+				proveit.getTextbox().wikiEditor( 'addToToolbar', {
+					'section': 'main',
+					'group': 'insert',
+					'tools': {
+						'proveit': {
+							'label': 'ProveIt',
+							'type': 'button',
+							'icon': proveit.ICON,
+							'action': {
+								'type': 'callback',
+								'execute': function () {
+									$( '#proveit' ).toggle();
+								}
 							}
 						}
 					}
-				}
+				});
 			});
 		// Add the ProveIt button in the old toolbar
 		} else if ( mw.user.options.get( 'showtoolbar' ) === 1 ) {
@@ -202,18 +204,20 @@ var proveit = {
 
 		// Make the GUI draggable
 		var dragged = false;
-		gui.draggable({
-			handle: header,
-			containment: 'window',
-			start: function ( event ) {
-				if ( event.originalEvent.target.id !== 'proveit-header' ) {
-					dragged = true;
+		mw.loader.using( 'jquery.ui.draggable' ).then( function () {
+			gui.draggable({
+				handle: header,
+				containment: 'window',
+				start: function ( event ) {
+					if ( event.originalEvent.target.id !== 'proveit-header' ) {
+						dragged = true;
+					}
+					gui.css({
+						'right': 'auto',
+						'bottom': 'auto'
+					});
 				}
-				gui.css({
-					'right': 'auto',
-					'bottom': 'auto'
-				});
-			}
+			});
 		});
 
 		// Lastly, bind events
