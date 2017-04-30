@@ -1,10 +1,10 @@
 /**
- * ProveIt is a Wikipedia gadget that makes it easy to find, edit, add and delete references when editing articles.
+ * ProveIt is a powerful reference manager for Wikipedia
  * Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
  * Copyright 2011- Matthew Flaschen
- * Rewritten, internationalized, enhanced and maintained by Felipe Schenone since 2014
+ * Rewritten, internationalized, enhanced and maintained by Sophivorus since 2014
  *
  * ProveIt is available under the GNU Free Documentation License (http://www.gnu.org/copyleft/fdl.html),
  * the Creative Commons Attribution/Share-Alike License 3.0 (http://creativecommons.org/licenses/by-sa/3.0/),
@@ -204,20 +204,18 @@ var proveit = {
 
 		// Make the GUI draggable
 		var dragged = false;
-		mw.loader.using( 'jquery.ui.draggable' ).then( function () {
-			gui.draggable({
-				handle: header,
-				containment: 'window',
-				start: function ( event ) {
-					if ( event.originalEvent.target.id !== 'proveit-header' ) {
-						dragged = true;
-					}
-					gui.css({
-						'right': 'auto',
-						'bottom': 'auto'
-					});
+		gui.draggable({
+			handle: header,
+			containment: 'window',
+			start: function ( event ) {
+				if ( event.originalEvent.target.id !== 'proveit-header' ) {
+					dragged = true;
 				}
-			});
+				gui.css({
+					'right': 'auto',
+					'bottom': 'auto'
+				});
+			}
 		});
 
 		// Lastly, bind events
@@ -430,8 +428,7 @@ var proveit = {
 		 * Insert this citation into the textbox
 		 */
 		this.insert = function () {
-			var textbox = proveit.getTextbox();
-			textbox.textSelection( 'encapsulateSelection', {
+			proveit.getTextbox().textSelection( 'encapsulateSelection', {
 				'peri': this.toString(),
 				'replace': true
 			});
@@ -482,7 +479,10 @@ var proveit = {
 			// Highlight the string
 			var start = this.index,
 				end = start + this.string.length;
-			$( textbox ).focus().textSelection( 'setSelection', { 'start': start, 'end': end } );
+			$( textbox ).focus().textSelection( 'setSelection', {
+				'start': start,
+				'end': end
+			});
 		};
 	},
 
@@ -1175,6 +1175,11 @@ var proveit = {
 	}
 };
 
-$( proveit.init );
+mw.loader.using([
+	'mediawiki.api',
+	'jquery.cookie',
+	'jquery.textSelection',
+	'jquery.ui.draggable'
+], proveit.init );
 
 }( mw, jQuery ) );
