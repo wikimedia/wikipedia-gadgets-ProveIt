@@ -16,5 +16,6 @@
 	"proveit-prompt-name": "Referensen behöver ett namn för att kunna källhänvisas:",
 	"proveit-confirm-remove": "Detta tar bort referensen och alla dess källhänvisningar. Är du säker?",
 	"proveit-no-template": "Ingen mall",
-	"proveit-no-references": "Inga referenser hittades"
+	"proveit-no-references": "Inga referenser hittades",
+	"proveit-filter-field": "Filtrera fält"
 }

@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"proveit-list-tab": "Zerrenda ($1)",
+	"proveit-add-tab": "Gehitu",
+	"proveit-reference-name-label": "Erreferentziaren izena",
+	"proveit-reference-content-label": "Erreferentziaren edukia",
+	"proveit-reference-template-label": "Txantiloi nagusia",
+	"proveit-cite-button": "Aipatu",
+	"proveit-remove-button": "Kendu",
+	"proveit-insert-button": "Txertatu",
+	"proveit-update-button": "Eguneratu",
+	"proveit-prompt-name": "Erreferentzia honek izen bat behar du aipua erakutsi ahal izateko:",
+	"proveit-confirm-remove": "Ekintza honek erreferentzia eta honi lotutako aipu guztiak kenduko ditu. Ziur zaude?",
+	"proveit-no-template": "Txantiloirik gabe",
+	"proveit-no-references": "Ez da erreferentziarik aurkitu",
+	"proveit-filter-field": "Eremuak iragazi"
+}

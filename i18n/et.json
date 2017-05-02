@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cumbril"
+		]
+	},
+	"proveit-list-tab": "Loend ($1)",
+	"proveit-add-tab": "Lisa",
+	"proveit-reference-name-label": "Viite nimi",
+	"proveit-reference-content-label": "Viite sisu",
+	"proveit-reference-template-label": "Põhimall",
+	"proveit-cite-button": "Viita",
+	"proveit-remove-button": "Eemalda",
+	"proveit-insert-button": "Lisa teksti",
+	"proveit-update-button": "Värskenda",
+	"proveit-prompt-name": "Pane viitele korduskasutamiseks nimi:",
+	"proveit-confirm-remove": "See eemaldab viite koos kõigi selle kasutustega. Kas oled kindel?",
+	"proveit-no-template": "Mall puudub",
+	"proveit-no-references": "Ühtegi viidet ei leitud",
+	"proveit-filter-field": "Väljafilter"
+}
