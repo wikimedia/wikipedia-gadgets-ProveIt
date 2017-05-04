@@ -14,5 +14,8 @@
 	"proveit-insert-button": "Уставіць",
 	"proveit-update-button": "Абнавіць",
 	"proveit-prompt-name": "Крыніцы патрэбная назва, каб яе цытаваць:",
-	"proveit-confirm-remove": "Гэта выдаліць крыніцу і ўсе яе цытаты. Вы ўпэўненыя?"
+	"proveit-confirm-remove": "Гэта выдаліць крыніцу і ўсе яе цытаты. Вы ўпэўненыя?",
+	"proveit-no-template": "Няма шаблёну",
+	"proveit-no-references": "Крыніцы ня знойдзеныя",
+	"proveit-filter-field": "Фільтар палёў"
 }
