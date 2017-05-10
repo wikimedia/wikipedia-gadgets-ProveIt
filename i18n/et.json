@@ -17,5 +17,5 @@
 	"proveit-confirm-remove": "See eemaldab viite koos kõigi selle kasutustega. Kas oled kindel?",
 	"proveit-no-template": "Mall puudub",
 	"proveit-no-references": "Ühtegi viidet ei leitud",
-	"proveit-filter-field": "Väljafilter"
+	"proveit-filter-fields": "Väljafilter"
 }

@@ -16,5 +16,5 @@
 	"proveit-confirm-remove": "出典と引用をすべて削除します。本当に実行しますか?",
 	"proveit-no-template": "テンプレートがありません",
 	"proveit-no-references": "出典が見つかりません",
-	"proveit-filter-field": "フィルターのフィールド"
+	"proveit-filter-fields": "フィルターのフィールド"
 }

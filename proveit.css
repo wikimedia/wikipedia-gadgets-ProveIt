@@ -52,6 +52,7 @@
 #proveit-content {
 	background: #f4f4f4;
 	border-top: 1px solid #ddd;
+	padding-bottom: 50px;
 	overflow-y: scroll;
 	width: 700px;
 	height: 300px;
@@ -100,10 +101,6 @@
 #proveit-no-references-message {
 	text-align: center;
 	padding: 10px;
-}
-
-#proveit-reference-form {
-	margin-bottom: 50px;
 }
 
 #proveit-reference-form table {
@@ -159,6 +156,7 @@
 }
 
 #proveit-footer input {
+	font: inherit;
 	padding: .6em;
 	pointer-events: all;
 	width: 150px;

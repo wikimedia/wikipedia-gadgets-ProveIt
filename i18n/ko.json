@@ -17,5 +17,5 @@
 	"proveit-confirm-remove": "각주와 인용 전부를 제거합니다. 그렇게 하시겠습니까?",
 	"proveit-no-template": "틀 없음",
 	"proveit-no-references": "각주를 찾을 수 없습니다",
-	"proveit-filter-field": "필터 필드"
+	"proveit-filter-fields": "필터 필드"
 }

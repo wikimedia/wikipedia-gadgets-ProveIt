@@ -17,5 +17,5 @@
 	"proveit-confirm-remove": "Ова ќе го отстрани наводот и сите негови повикувања. Дали сте сигурни?",
 	"proveit-no-template": "Нема шаблон",
 	"proveit-no-references": "Не пронајдов наводи",
-	"proveit-filter-field": "Филтер на полиња"
+	"proveit-filter-fields": "Филтер на полиња"
 }

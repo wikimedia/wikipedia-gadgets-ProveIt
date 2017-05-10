@@ -1,5 +1,5 @@
 /**
- * ProveIt is a powerful reference manager for Wikipedia
+ * ProveIt is a powerful reference manager for MediaWiki
  * Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
@@ -194,12 +194,13 @@ var proveit = {
 			rightBracket = $( '<span>' ).attr( 'id', 'proveit-right-bracket' ).text( ']' ),
 			listTab = $( '<span>' ).attr( 'id', 'proveit-list-tab' ).addClass( 'active' ).text( proveit.getMessage( 'list-tab', 0 ) ),
 			addTab = $( '<span>' ).attr( 'id', 'proveit-add-tab' ).text( proveit.getMessage( 'add-tab' ) ),
-			content = $( '<div>' ).attr( 'id', 'proveit-content' );
+			content = $( '<div>' ).attr( 'id', 'proveit-content' ),
+			footer = $( '<div>' ).attr( 'id', 'proveit-footer' );			
 
 		// Put everything together and add it to the DOM
 		logo.prepend( leftBracket ).append( rightBracket );
 		header.append( logo, listTab, addTab );
-		gui.append( header,	content );
+		gui.append( header, content, footer );
 		$( 'body' ).prepend( gui );
 
 		// Make the GUI draggable
@@ -227,6 +228,7 @@ var proveit = {
 			listTab.toggle();
 			addTab.toggle();
 			content.toggle();
+			footer.toggle();
 			gui.css({
 				'top': 'auto',
 				'left': 'auto',
@@ -262,6 +264,20 @@ var proveit = {
 			$( '#proveit-insert-button' ).show();
 			$( '#proveit-cite-button, #proveit-remove-button, #proveit-update-button' ).hide();
 		});
+	},
+
+	/**
+	 * Hide all irrelevant references
+	 *
+	 * @return {void}
+	 */
+	filterReferences: function ( event ) {
+		var filter = $( event.target ).val().toLowerCase(),
+			list = $( '#proveit-reference-list' );
+
+		$( 'li', list ).show().filter( function () {
+			return $( this ).text().toLowerCase().indexOf( filter ) > -1 ? false : true;
+		}).hide();
 	},
 
 	/**
@@ -316,8 +332,14 @@ var proveit = {
 
 		} else {
 			$( '#proveit-list-tab' ).text( proveit.getMessage( 'list-tab', 0 ) );
-			$( '#proveit-content' ).html( $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) ) );
+			var noReferences = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( proveit.getMessage( 'no-references' ) );
+			$( '#proveit-content' ).html( noReferences );
 		}
+
+		// Update the footer
+		var filterReferences = $( '<input>' ).attr( 'placeholder', proveit.getMessage( 'filter-references' ) );
+		$( '#proveit-footer' ).html( filterReferences );
+		filterReferences.keyup( proveit.filterReferences );
 	},
 
 	/**
@@ -1108,22 +1130,21 @@ var proveit = {
 		 */
 		this.toForm = function () {
 
-			var form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ),
-				table = this.toTable();
+			// Build the form the form
+			var table = this.toTable(),
+				form = $( '<form>' ).attr( 'id', 'proveit-reference-form' ).html( table );
 
-			// Add the footer
-			var footer = $( '<div>' ).attr( 'id', 'proveit-footer' ),
-				filterField = $( '<input>' ).attr({ 'id': 'proveit-filter-field', 'placeholder': proveit.getMessage( 'filter-field' ) }),
+			// Update the footer
+			var filterFields = $( '<input>' ).attr( 'placeholder', proveit.getMessage( 'filter-fields' ) ),
 				citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( proveit.getMessage( 'cite-button' ) ),
 				removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( proveit.getMessage( 'remove-button' ) ),
 				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
 				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
-			footer.append( filterField, citeButton, removeButton, updateButton, insertButton );
-			form.append( table, footer );
+			$( '#proveit-footer' ).empty().append( filterFields, citeButton, removeButton, updateButton, insertButton );
 
 			// Bind events
 			form.submit( false );
-			filterField.keyup( form, this.filterFields );
+			filterFields.keyup( form, this.filterFields );
 			citeButton.click( this, this.cite );
 			removeButton.click( this, this.remove );
 			updateButton.click( this, this.update );

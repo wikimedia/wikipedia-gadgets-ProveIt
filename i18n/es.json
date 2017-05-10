@@ -18,5 +18,6 @@
 	"proveit-confirm-remove": "Esto borra la referencia y todas sus citas. ¿Estás seguro?",
 	"proveit-no-template": "Sin plantilla",
 	"proveit-no-references": "No se encontraron referencias",
-	"proveit-filter-field": "Filtrar campos"
+	"proveit-filter-fields": "Filtrar campos",
+	"proveit-filter-references": "Filtrar referencias"
 }

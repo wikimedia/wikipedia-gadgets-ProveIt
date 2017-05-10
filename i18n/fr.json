@@ -18,5 +18,5 @@
 	"proveit-confirm-remove": "Cela supprimera la référence dans tout l'article. Êtes-vous sûr?",
 	"proveit-no-template": "Aucun modèle",
 	"proveit-no-references": "Aucune référence trouvée",
-	"proveit-filter-field": "Champs du filtre"
+	"proveit-filter-fields": "Champs du filtre"
 }

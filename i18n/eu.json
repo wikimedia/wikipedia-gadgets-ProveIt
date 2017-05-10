@@ -17,5 +17,5 @@
 	"proveit-confirm-remove": "Ekintza honek erreferentzia eta honi lotutako aipu guztiak kenduko ditu. Ziur zaude?",
 	"proveit-no-template": "Txantiloirik gabe",
 	"proveit-no-references": "Ez da erreferentziarik aurkitu",
-	"proveit-filter-field": "Eremuak iragazi"
+	"proveit-filter-fields": "Eremuak iragazi"
 }

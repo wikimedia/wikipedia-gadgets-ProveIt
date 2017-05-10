@@ -17,5 +17,6 @@
 	"proveit-confirm-remove": "This will remove the reference and all of its citations. Are you sure?",
 	"proveit-no-template": "No template",
 	"proveit-no-references": "No references found",
-	"proveit-filter-field": "Filter fields"
+	"proveit-filter-fields": "Filter fields",
+	"proveit-filter-references": "Filter references"
 }
