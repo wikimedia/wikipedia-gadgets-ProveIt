@@ -19,6 +19,6 @@
 	"proveit-confirm-remove": "Text for the alert prompted when a user tries to remove a reference with or without citations",
 	"proveit-no-template": "Text for the dropdown option corresponding to the references without a template",
 	"proveit-no-references": "Text for when no references are found",
-	"proveit-filter-fields": "Placeholder for the input field to filter parameters"
+	"proveit-filter-fields": "Placeholder for the input field to filter parameters",
 	"proveit-filter-references": "Placeholder for the input field to filter references"
 }
