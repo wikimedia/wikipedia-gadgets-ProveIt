@@ -3,7 +3,8 @@
 		"authors": [
 			"Bastenbas",
 			"Gomoko",
-			"Wladek92"
+			"Wladek92",
+			"Thibaut120094"
 		]
 	},
 	"proveit-list-tab": "Lister ($1)",
@@ -19,5 +20,6 @@
 	"proveit-confirm-remove": "Cela supprimera la référence ainsi que toutes ses citations. Êtes-vous sûr?",
 	"proveit-no-template": "Aucun modèle",
 	"proveit-no-references": "Aucune référence trouvée",
-	"proveit-filter-fields": "Champs du filtre"
+	"proveit-filter-fields": "Champs du filtre",
+	"proveit-filter-references": "Filtrer les références"
 }

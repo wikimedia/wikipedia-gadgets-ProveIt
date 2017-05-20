@@ -18,5 +18,6 @@
 	"proveit-confirm-remove": "Dies wird den Einzelnachweis und all seine Zitate entfernen. Bist du sicher?",
 	"proveit-no-template": "Keine Vorlage",
 	"proveit-no-references": "Keine Einzelnachweise gefunden",
-	"proveit-filter-fields": "Felder filtern"
+	"proveit-filter-fields": "Felder filtern",
+	"proveit-filter-references": "Einzelnachweise filtern"
 }

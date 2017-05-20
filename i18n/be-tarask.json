@@ -17,5 +17,6 @@
 	"proveit-confirm-remove": "Гэта выдаліць крыніцу і ўсе яе цытаты. Вы ўпэўненыя?",
 	"proveit-no-template": "Няма шаблёну",
 	"proveit-no-references": "Крыніцы ня знойдзеныя",
-	"proveit-filter-fields": "Фільтар палёў"
+	"proveit-filter-fields": "Фільтар палёў",
+	"proveit-filter-references": "Фільтар крыніц"
 }

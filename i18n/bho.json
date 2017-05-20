@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"SatyamMishra"
+		]
+	},
+	"proveit-list-tab": "लिस्ट ($1)",
+	"proveit-add-tab": "जोड़ीं",
+	"proveit-reference-name-label": "संदर्भ नाँव",
+	"proveit-reference-content-label": "संदर्भ सामग्री",
+	"proveit-reference-template-label": "मुख्य टेम्पलेट",
+	"proveit-cite-button": "हवाला देईं",
+	"proveit-remove-button": "हटाईं",
+	"proveit-insert-button": "जोड़ीं",
+	"proveit-update-button": "अपडेट",
+	"proveit-prompt-name": "हवाला देवे खातिर एह संदर्भ के नाँव होखे चाहीं:",
+	"proveit-confirm-remove": "एह संदर्भ आ एकर सभ जगह से हवाला के हटा दी, आप निश्चित बानी?",
+	"proveit-no-template": "कौनों टेम्पलेट ना बा",
+	"proveit-no-references": "कौनों संदर्भ ना मिलल",
+	"proveit-filter-fields": "फील्ड फिल्टर करीं",
+	"proveit-filter-references": "संदर्भ फिल्टर करीं"
+}

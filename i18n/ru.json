@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iniquity"
+			"Iniquity",
+			"Facenapalm"
 		]
 	},
 	"proveit-list-tab": "Список ($1)",
@@ -17,5 +18,6 @@
 	"proveit-confirm-remove": "Будет удален источник и все его цитаты. Вы уверены?",
 	"proveit-no-template": "Нет шаблона",
 	"proveit-no-references": "Источники не найдены",
-	"proveit-filter-fields": "Фильтр полей"
+	"proveit-filter-fields": "Фильтр полей",
+	"proveit-filter-references": "Фильтр сносок"
 }

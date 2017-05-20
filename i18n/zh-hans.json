@@ -17,5 +17,6 @@
 	"proveit-confirm-remove": "这将移除参考资料及其所有引文。您确定么？",
 	"proveit-no-template": "无模板",
 	"proveit-no-references": "未找到参考资料",
-	"proveit-filter-fields": "过滤器字段"
+	"proveit-filter-fields": "过滤器字段",
+	"proveit-filter-references": "过滤参考资料"
 }
