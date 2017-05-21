@@ -17,5 +17,6 @@
 	"proveit-confirm-remove": "Овиме ће се уклонити све референце и сви наведени извори. Јесте ли сигурни?",
 	"proveit-no-template": "Нема шаблона",
 	"proveit-no-references": "Ниједна референца није пронађена",
-	"proveit-filter-fields": "Филтер за поља"
+	"proveit-filter-fields": "Филтер за поља",
+	"proveit-filter-references": "Филтрирај референце"
 }
