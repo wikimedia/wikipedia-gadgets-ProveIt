@@ -108,6 +108,10 @@
 	width: 100%;
 }
 
+#proveit-reference-form td {
+	position: relative;
+}
+
 #proveit-reference-form td:first-child {
 	width: 150px;
 	padding-left: 5px;
@@ -139,6 +143,20 @@
 #proveit-reference-form textarea {
 	height: 60px;
 	resize: vertical;
+}
+
+#proveit-reference-form button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font: inherit;
+	padding: .4em;
+	position: absolute;
+	right: 0;
+}
+
+#proveit-reference-form button:hover {
+	text-decoration: underline;
 }
 
 #proveit-footer {

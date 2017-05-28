@@ -19,5 +19,6 @@
 	"proveit-no-template": "Sin plantilla",
 	"proveit-no-references": "No se encontraron referencias",
 	"proveit-filter-fields": "Filtrar campos",
-	"proveit-filter-references": "Filtrar referencias"
+	"proveit-filter-references": "Filtrar referencias",
+	"proveit-today-button": "Hoy"
 }

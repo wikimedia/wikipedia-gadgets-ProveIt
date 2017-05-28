@@ -1051,16 +1051,6 @@ var proveit = {
 					paramLabel = paramData.label[ proveit.contentLanguage ];
 				}
 
-				// If the parameter is a date, put the current date as a placeholder
-				// @todo find a better solution
-				if ( paramData.type === 'date' ) {
-					var date = new Date(),
-						yyyy = date.getFullYear(),
-						mm = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ),
-						dd = ( '0' + date.getDate() ).slice( -2 );
-					paramPlaceholder = yyyy + '-' + mm + '-' + dd;
-				}
-
 				if ( paramData.description ) {
 					paramDescription = paramData.description[ proveit.contentLanguage ];
 				}
@@ -1093,6 +1083,19 @@ var proveit = {
 				paramNameColumn = $( '<td>' ).append( paramNameInput, label );
  				paramValueColumn = $( '<td>' ).append( paramValueInput );
 				row = $( '<tr>' ).addClass( 'proveit-param-pair' ).append( paramNameColumn, paramValueColumn );
+
+				// If the parameter is a date, add the Today button
+				if ( paramData.type === 'date' ) {
+					todayButton = $( '<button>' ).text( 'Today' ).click( paramValueInput, function ( event ) {
+						var paramValueInput = event.data,
+							date = new Date(),
+							yyyy = date.getFullYear(),
+							mm = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ),
+							dd = ( '0' + date.getDate() ).slice( -2 );
+						paramValueInput.val( yyyy + '-' + mm + '-' + dd );
+					});
+					paramValueColumn.prepend( todayButton );
+				}
 
 				// Mark the parameters according to their status
 				if ( paramData.required ) {

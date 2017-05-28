@@ -21,5 +21,6 @@
 	"proveit-no-template": "Text for the dropdown option corresponding to the references without a template",
 	"proveit-no-references": "Text for when no references are found",
 	"proveit-filter-fields": "Placeholder for the input field to filter parameters",
-	"proveit-filter-references": "Placeholder for the input field to filter references"
+	"proveit-filter-references": "Placeholder for the input field to filter references",
+	"proveit-today-button": "Text for the button that inserts the current date"
 }

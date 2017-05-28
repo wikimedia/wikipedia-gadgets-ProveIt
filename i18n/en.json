@@ -18,5 +18,6 @@
 	"proveit-no-template": "No template",
 	"proveit-no-references": "No references found",
 	"proveit-filter-fields": "Filter fields",
-	"proveit-filter-references": "Filter references"
+	"proveit-filter-references": "Filter references",
+	"proveit-today-button": "Today"
 }
