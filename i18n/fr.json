@@ -21,5 +21,6 @@
 	"proveit-no-template": "Aucun modèle",
 	"proveit-no-references": "Aucune référence trouvée",
 	"proveit-filter-fields": "Champs du filtre",
-	"proveit-filter-references": "Filtrer les références"
+	"proveit-filter-references": "Filtrer les références",
+	"proveit-today-button": "Aujourd’hui"
 }

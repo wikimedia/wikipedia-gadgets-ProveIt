@@ -18,5 +18,6 @@
 	"proveit-confirm-remove": "Това ще премахне източникът и всички негови цитирания. Сигурни ли сте?",
 	"proveit-no-template": "Няма шаблон",
 	"proveit-no-references": "Не са намерени източници",
-	"proveit-filter-fields": "Филтър на полета"
+	"proveit-filter-fields": "Филтър на полета",
+	"proveit-filter-references": "Филтриране на източниците"
 }

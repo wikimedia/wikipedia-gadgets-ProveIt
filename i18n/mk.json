@@ -18,5 +18,6 @@
 	"proveit-no-template": "Нема шаблон",
 	"proveit-no-references": "Не пронајдов наводи",
 	"proveit-filter-fields": "Филтер на полиња",
-	"proveit-filter-references": "Филтрирај наводи"
+	"proveit-filter-references": "Филтрирај наводи",
+	"proveit-today-button": "денес"
 }

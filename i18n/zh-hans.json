@@ -18,5 +18,6 @@
 	"proveit-no-template": "无模板",
 	"proveit-no-references": "未找到参考资料",
 	"proveit-filter-fields": "过滤器字段",
-	"proveit-filter-references": "过滤参考资料"
+	"proveit-filter-references": "过滤参考资料",
+	"proveit-today-button": "今天"
 }

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bulgu"
+		]
+	},
+	"proveit-list-tab": "Liste ($1)",
+	"proveit-add-tab": "Ekle",
+	"proveit-reference-name-label": "Kaynak adı",
+	"proveit-reference-content-label": "Kaynak içeriği",
+	"proveit-reference-template-label": "Ana şablon",
+	"proveit-cite-button": "Alıntı yap",
+	"proveit-remove-button": "Kaldır",
+	"proveit-insert-button": "Ekle",
+	"proveit-update-button": "Güncelle",
+	"proveit-no-template": "Şablonsuz kaynak",
+	"proveit-no-references": "Kaynak bulunamadı"
+}

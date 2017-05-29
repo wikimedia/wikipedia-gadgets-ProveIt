@@ -17,5 +17,6 @@
 	"proveit-confirm-remove": "Detta tar bort referensen och alla dess källhänvisningar. Är du säker?",
 	"proveit-no-template": "Ingen mall",
 	"proveit-no-references": "Inga referenser hittades",
-	"proveit-filter-fields": "Filtrera fält"
+	"proveit-filter-fields": "Filtrera fält",
+	"proveit-filter-references": "Filtrera referenser"
 }
