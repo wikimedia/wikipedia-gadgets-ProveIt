@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anoop rao"
+		]
+	},
+	"proveit-list-tab": "ಪಟ್ಟಿ ($1)",
+	"proveit-add-tab": "ಸೇರಿಸು",
+	"proveit-reference-name-label": "ಉಲ್ಲೇಖದ ಹೆಸರು",
+	"proveit-reference-content-label": "ಉಲ್ಲೇಖದ ವಿಷಯ",
+	"proveit-reference-template-label": "ಮುಖ್ಯ ಟೆಂಪ್ಲೇಟ್",
+	"proveit-cite-button": "ಉಲ್ಲೇಖಿಸಿ",
+	"proveit-remove-button": "ತೆಗೆದುಹಾಕಿ",
+	"proveit-insert-button": "ಸೇರಿಸು",
+	"proveit-update-button": "ಪರಿಷ್ಕರಿಸು",
+	"proveit-prompt-name": "ಉಲ್ಲೇಖಿಸಲು ಸಲುವಾಗಿ ಉಲ್ಲೇಖಕ್ಕೆ ಒಂದು ಹೆಸರಿನ ಅಗತ್ಯವಿದೆ:",
+	"proveit-confirm-remove": "ಇದು ಉಲ್ಲೇಖ ಮತ್ತು ಅದರ ಎಲ್ಲಾ ಆಧಾರಗಳನ್ನೂ ತೆಗೆದುಹಾಕುತ್ತದೆ. ನೀವು ಖಚಿತವಾಗಿರುವಿರಾ?",
+	"proveit-no-template": "ಟೆಂಪ್ಲೆಟ್ ಇಲ್ಲ",
+	"proveit-no-references": "ಯಾವುದೇ ಉಲ್ಲೇಖಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
+	"proveit-filter-fields": "ಕ್ಷೇತ್ರಗಳನ್ನು ಸೋಸು",
+	"proveit-filter-references": "ಉಲ್ಲೇಖಗಳನ್ನು ಸೋಸು",
+	"proveit-today-button": "ಇಂದು"
+}

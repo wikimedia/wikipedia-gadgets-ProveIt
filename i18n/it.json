@@ -18,5 +18,6 @@
 	"proveit-confirm-remove": "Questo rimuoverà il riferimento e tutte le sue citazioni. Sei sicuro?",
 	"proveit-no-template": "Senza template",
 	"proveit-no-references": "Nessun riferimento trovato",
-	"proveit-filter-fields": "Campi filtro"
+	"proveit-filter-fields": "Campi filtro",
+	"proveit-today-button": "Oggi"
 }

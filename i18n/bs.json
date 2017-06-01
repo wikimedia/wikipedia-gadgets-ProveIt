@@ -18,5 +18,6 @@
 	"proveit-no-template": "Nema šablona",
 	"proveit-no-references": "Nisu pronađene reference",
 	"proveit-filter-fields": "Filtriraj polja",
-	"proveit-filter-references": "Filtriraj reference"
+	"proveit-filter-references": "Filtriraj reference",
+	"proveit-today-button": "Danas"
 }

@@ -18,5 +18,6 @@
 	"proveit-no-template": "কোন টেমপ্লেট নেই",
 	"proveit-no-references": "কোন তথ্যসূত্র পাওয়া যায়নি",
 	"proveit-filter-fields": "ক্ষেত্র ছাঁকুন",
-	"proveit-filter-references": "তথ্যসূত্র ছাঁকুন"
+	"proveit-filter-references": "তথ্যসূত্র ছাঁকুন",
+	"proveit-today-button": "আজ"
 }

@@ -17,5 +17,7 @@
 	"proveit-confirm-remove": "Isto borra a referencia e tódalas súas citas. Está seguro?",
 	"proveit-no-template": "Sen modelo",
 	"proveit-no-references": "Non se atoparon referencias",
-	"proveit-filter-fields": "Campos do filtro"
+	"proveit-filter-fields": "Campos do filtro",
+	"proveit-filter-references": "Filtrar as referencias",
+	"proveit-today-button": "Hoxe"
 }

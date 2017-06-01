@@ -19,5 +19,6 @@
 	"proveit-no-template": "Няма шаблон",
 	"proveit-no-references": "Не са намерени източници",
 	"proveit-filter-fields": "Филтър на полета",
-	"proveit-filter-references": "Филтриране на източниците"
+	"proveit-filter-references": "Филтриране на източниците",
+	"proveit-today-button": "Днес"
 }

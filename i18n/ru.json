@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Iniquity",
-			"Facenapalm"
+			"Facenapalm",
+			"Av6"
 		]
 	},
 	"proveit-list-tab": "Список ($1)",
@@ -19,5 +20,6 @@
 	"proveit-no-template": "Нет шаблона",
 	"proveit-no-references": "Источники не найдены",
 	"proveit-filter-fields": "Фильтр полей",
-	"proveit-filter-references": "Фильтр сносок"
+	"proveit-filter-references": "Фильтр сносок",
+	"proveit-today-button": "Сегодня"
 }

@@ -22,5 +22,5 @@
 	"proveit-no-references": "Text for when no references are found",
 	"proveit-filter-fields": "Placeholder for the input field to filter parameters",
 	"proveit-filter-references": "Placeholder for the input field to filter references",
-	"proveit-today-button": "Text for the button that inserts the current date"
+	"proveit-today-button": "Text for the button that inserts the current date\n{{Identical|Today}}"
 }

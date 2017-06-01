@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Agnieszka Dul",
-			"Michał Sobkowski"
+			"Michał Sobkowski",
+			"Chrumps"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
@@ -18,5 +19,6 @@
 	"proveit-confirm-remove": "Zostanie usunięte źródło i wszystkie cytaty. czy jesteś pewien?",
 	"proveit-no-template": "Brak szablonu",
 	"proveit-no-references": "Nie znaleziono źródła",
-	"proveit-filter-fields": "Filtrowanie pól"
+	"proveit-filter-fields": "Filtrowanie pól",
+	"proveit-today-button": "Dzisiaj"
 }
