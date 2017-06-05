@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sophivorus",
-			"Beta16"
+			"Beta16",
+			"Selven"
 		]
 	},
 	"proveit-list-tab": "Elenco ($1)",
@@ -19,5 +20,6 @@
 	"proveit-no-template": "Senza template",
 	"proveit-no-references": "Nessun riferimento trovato",
 	"proveit-filter-fields": "Campi filtro",
+	"proveit-filter-references": "Filtra riferimenti",
 	"proveit-today-button": "Oggi"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Obsuser"
+			"Obsuser",
+			"Srdjan m"
 		]
 	},
 	"proveit-list-tab": "Списак ($1)",
@@ -18,5 +19,6 @@
 	"proveit-no-template": "Нема шаблона",
 	"proveit-no-references": "Ниједна референца није пронађена",
 	"proveit-filter-fields": "Филтер за поља",
-	"proveit-filter-references": "Филтрирај референце"
+	"proveit-filter-references": "Филтрирај референце",
+	"proveit-today-button": "Данас"
 }
