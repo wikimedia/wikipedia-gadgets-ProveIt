@@ -20,5 +20,11 @@
 	"proveit-no-references": "No se encontraron referencias",
 	"proveit-filter-fields": "Filtrar campos",
 	"proveit-filter-references": "Filtrar referencias",
-	"proveit-today-button": "Hoy"
+	"proveit-show-all-button": "Mostrar todos los campos",
+	"proveit-today-button": "Hoy",
+	"proveit-citoid-label": "Identificador de la referencia",
+	"proveit-citoid-tooltip": "Ingresa una URL, DOI, ISBN or PMC/PMID para intentar extraer los detalles automáticamente a través del servicio Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-citoid-loading": "Cargando...",
+	"proveit-citoid-error": "Error"
 }

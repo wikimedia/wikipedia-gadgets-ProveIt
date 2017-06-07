@@ -134,6 +134,7 @@
 	border: 1px solid #ddd;
 	border-radius: 0;
 	box-sizing: border-box;
+	display: block;
 	font: inherit;
 	outline: none;
 	padding: .4em;
@@ -145,7 +146,7 @@
 	resize: vertical;
 }
 
-#proveit-reference-form button {
+#proveit-reference-form .today-button {
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -155,8 +156,14 @@
 	right: 0;
 }
 
-#proveit-reference-form button:hover {
+#proveit-reference-form .today-button:hover {
 	text-decoration: underline;
+}
+
+#proveit-reference-form .citoid-message {
+	padding: .4em;
+	position: absolute;
+	right: 0;
 }
 
 #proveit-footer {
@@ -174,24 +181,40 @@
 }
 
 #proveit-footer input {
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	float: left;
 	font: inherit;
-	padding: .6em;
+	padding: 9px;
 	pointer-events: all;
 	width: 150px;
-	float: left;
 }
 
 #proveit-footer button {
-	border: 1px solid #ccc;
+	background: #ddd;
+	border: none;
 	cursor: pointer;
 	font: inherit;
-	margin: 0 .2em;
-	padding: .6em;
+	margin-right: 5px;
+	padding: 10px;
 	pointer-events: all;
 }
 
 #proveit-footer button:hover {
-	background: #eee;
+	background: #ccc;
+}
+
+#proveit-footer button#proveit-show-all-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	float: left;
+	font: inherit;
+	padding: 10px;
+}
+
+#proveit-footer button#proveit-show-all-button:hover {
+	text-decoration: underline;
 }
 
 /**

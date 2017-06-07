@@ -22,5 +22,11 @@
 	"proveit-no-references": "Text for when no references are found",
 	"proveit-filter-fields": "Placeholder for the input field to filter parameters",
 	"proveit-filter-references": "Placeholder for the input field to filter references",
-	"proveit-today-button": "Text for the button that inserts the current date\n{{Identical|Today}}"
+	"proveit-show-all-button": "Text for the button that shows all parameter fields",
+	"proveit-today-button": "Text for the button that inserts the current date\n{{Identical|Today}}",
+	"proveit-citoid-label": "Reference identifier",
+	"proveit-citoid-tooltip": "Tooltip for the field that when filled with a reference identifier, triggers the Citoid service to automatically fill in the reference details",
+	"proveit-citoid-placeholder": "Placeholder for the field that triggers the Citoid service",
+	"proveit-citoid-loading": "Status text while Citoid service is loading the reference details",
+	"proveit-citoid-error": "Generic error message when something went wrong with the Citoid service"
 }

@@ -86,16 +86,18 @@ var proveit = {
 			'format': 'json',
 			'origin': '*' // Allow requests from any origin so that ProveIt can be used on localhost and non-Wikimedia sites
 		}).done( function ( data ) {
-			// The Commons page for English messages was created first, so it will always be first in the loop
+			// The Commons page for English messages has the lowest page id so it will always be first in the loop
 			//console.log( data );
-			var messages;
+			var messages = {},
+				content;
 			for ( var page in data.query.pages ) {
 				if ( page > -1 ) {
 					page = data.query.pages[ page ];
-					messages = page.revisions[0]['*'];
+					content = page.revisions[0]['*'];
+					content = JSON.parse( content );
+					Object.assign( messages, content );
 				}
 			}
-			messages = JSON.parse( messages );
 			mw.messages.set( messages );
 
 			// Build the interface
@@ -533,7 +535,7 @@ var proveit = {
 		this.citations = [];
 
 		/**
-		 * Name of the main template of this reference, if any
+		 * Name of the main template of this reference (if any) without namespace
 		 *
 		 * Example: Cite book
 		 */
@@ -570,6 +572,7 @@ var proveit = {
 
 			// If there's no reference name, ask the user for one
 			// @todo check if the name is unique
+			// @todo auto-generate name based on getMainValue (T148210)
 			} else {
 				reference.name = prompt( proveit.getMessage( 'prompt-name' ) );
 				if ( !reference.name ) {
@@ -741,6 +744,22 @@ var proveit = {
 				}
 			}
 			return templateMap;
+		};
+
+		/**
+		 * Get the Citoid Map object from the template data
+		 *
+		 * @return {object} Maps Citoid properties to template parameters
+		 */
+		this.getCitoidMap = function () {
+			var citoidMap = {};
+			if ( this.template ) {
+				var templateData = this.getTemplateData();
+				if ( 'maps' in templateData && 'citoid' in templateData.maps ) {
+					citoidMap = templateData.maps.citoid;
+				}
+			}
+			return citoidMap;
 		};
 
 		/**
@@ -977,23 +996,23 @@ var proveit = {
 			var table = $( '<table>' ).attr( 'id', 'proveit-reference-table' );
 
 			// Add the reference name field
-			var referenceNameLabel = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
-				referenceNameInput = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name ),
-				referenceNameLabelColumn = $( '<td>' ).append( referenceNameLabel ),
-				referenceNameInputColumn = $( '<td>' ).append( referenceNameInput ),
-				referenceNameRow = $( '<tr>' ).append( referenceNameLabelColumn, referenceNameInputColumn );
-			table.append( referenceNameRow );
+			var label = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
+				input = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name ),
+				labelColumn = $( '<td>' ).append( label ),
+				inputColumn = $( '<td>' ).append( input ),
+				row = $( '<tr>' ).append( labelColumn, inputColumn );
+			table.append( row );
 
-			// Add the reference content area
-			var referenceContentLabel = $( '<label>' ).text( proveit.getMessage( 'reference-content-label' ) ),
-				referenceContentTextarea = $( '<textarea>' ).attr( 'name', 'reference-content' ).val( this.content ),
-				referenceContentLabelColumn = $( '<td>' ).append( referenceContentLabel ),
-				referenceContentTextareaColumn = $( '<td>' ).append( referenceContentTextarea ),
-				referenceContentRow = $( '<tr>' ).append( referenceContentLabelColumn, referenceContentTextareaColumn );
-			table.append( referenceContentRow );
+			// Add the reference content field
+			label = $( '<label>' ).text( proveit.getMessage( 'reference-content-label' ) );
+			input = $( '<textarea>' ).attr( 'name', 'reference-content' ).val( this.content );
+			labelColumn = $( '<td>' ).append( label );
+			inputColumn = $( '<td>' ).append( input );
+			row = $( '<tr>' ).append( labelColumn, inputColumn );
+			table.append( row );
 
 			// When the reference content is manually changed, reload the table
-			referenceContentTextarea.change( this, function ( event ) {
+			input.change( this, function ( event ) {
 				var reference = event.data;
 				reference.content = $( this ).val();
 				reference.parseContent();
@@ -1032,9 +1051,56 @@ var proveit = {
 			// Add the parameter fields
 			var templateData = this.getTemplateData(),
 				templateMap = this.getTemplateMap(),
+				citoidMap = this.getCitoidMap(),
 				paramOrder = this.getParamOrder(),
 				paramPairs = JSON.parse( JSON.stringify( this.paramPairs ) ), // Clone the data
-				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, row, label, paramNameInput, paramValueInput, paramNameColumn, paramValueColumn;
+				paramName, paramData, paramLabel, paramPlaceholder, paramDescription, paramAlias, paramValue, paramNameInput, paramValueInput, paramNameColumn, paramValueColumn;
+
+			// If the template has an associated Citoid map, add the Citoid field first
+			if ( !$.isEmptyObject( citoidMap ) ) {
+				var citoidLabel = proveit.getMessage( 'citoid-label' ),
+					citoidTooltip = proveit.getMessage( 'citoid-tooltip' ),
+					citoidPlaceholder = proveit.getMessage( 'citoid-placeholder' ),
+					citoidMessage = $( '<span>' ).addClass( 'citoid-message' );
+				label = $( '<label>' ).text( citoidLabel ).attr( 'data-tooltip', citoidTooltip );
+				input = $( '<input>' ).attr( 'placeholder', citoidPlaceholder );
+				labelColumn = $( '<td>' ).append( label );
+				inputColumn = $( '<td>' ).append( citoidMessage, input );
+				row = $( '<tr>' ).append( labelColumn, inputColumn );
+				table.append( row );
+
+				// When the reference identifier changes, try to extract the reference data automatically via the Citoid service
+				input.change( this, function ( event ) {
+					citoidMessage.text( proveit.getMessage( 'citoid-loading' ) );
+
+					var URI = $( this ).val(),
+						encodedURI = encodeURIComponent( URI );
+					$.get( '//' + proveit.contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodedURI ).done( function ( data ) {
+						if ( typeof data === 'array' || typeof data[0] === 'object' ) {
+							var citoidData = data[0],
+								reference = event.data;
+							for ( var citoidKey in citoidData ) {
+								paramName = citoidMap[ citoidKey ];
+								paramValue = citoidData[ citoidKey ];
+								function setParamPair( paramName, paramValue ) {
+									if ( typeof paramName === 'string' && typeof paramValue === 'string' && paramName in templateData.params ) {
+										reference.paramPairs[ paramName ] = paramValue;
+									} else if ( paramName instanceof Array && paramValue instanceof Array ) {
+										for ( var i = 0; i < paramName.length; i++ ) {
+											setParamPair( paramName[ i ], paramValue[ i ] );
+										}
+									}
+								}
+								setParamPair( paramName, paramValue );
+							}
+							$( '#proveit-reference-table' ).replaceWith( reference.toTable() );
+							citoidMessage.empty();
+						}
+					}).error( function () {
+						citoidMessage.text( proveit.getMessage( 'citoid-error' ) );
+					});
+				});
+			}
 
 			for ( var i = 0; i < paramOrder.length; i++ ) {
 				paramName = paramOrder[ i ];
@@ -1086,7 +1152,7 @@ var proveit = {
 
 				// If the parameter is a date, add the Today button
 				if ( paramData.type === 'date' ) {
-					todayButton = $( '<button>' ).text( 'Today' ).click( paramValueInput, function ( event ) {
+					todayButton = $( '<button>' ).addClass( 'today-button' ).text( proveit.getMessage( 'today-button' ) ).click( paramValueInput, function ( event ) {
 						var paramValueInput = event.data,
 							date = new Date(),
 							yyyy = date.getFullYear(),
@@ -1106,6 +1172,11 @@ var proveit = {
 					row.addClass( 'proveit-deprecated' );
 				} else {
 					row.addClass( 'proveit-optional' );
+				}
+
+				// Hide all optional and deprecated parameters, unless they are filled
+				if ( !paramValue && ( row.hasClass( 'proveit-optional' ) || row.hasClass( 'proveit-deprecated' ) ) ) {
+					row.hide();
 				}
 
 				// Add the row to the table
@@ -1139,15 +1210,17 @@ var proveit = {
 
 			// Update the footer
 			var filterFields = $( '<input>' ).attr( 'placeholder', proveit.getMessage( 'filter-fields' ) ),
+				showAllButton = $( '<button>' ).attr( 'id', 'proveit-show-all-button' ).text( proveit.getMessage( 'show-all-button' ) ),
 				citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( proveit.getMessage( 'cite-button' ) ),
 				removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( proveit.getMessage( 'remove-button' ) ),
 				updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( proveit.getMessage( 'update-button' ) ),
 				insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( proveit.getMessage( 'insert-button' ) );
-			$( '#proveit-footer' ).empty().append( filterFields, citeButton, removeButton, updateButton, insertButton );
+			$( '#proveit-footer' ).empty().append( filterFields, showAllButton, citeButton, removeButton, updateButton, insertButton );
 
 			// Bind events
 			form.submit( false );
 			filterFields.keyup( form, this.filterFields );
+			showAllButton.click( form, this.showAllFields );
 			citeButton.click( this, this.cite );
 			removeButton.click( this, this.remove );
 			updateButton.click( this, this.update );
@@ -1168,6 +1241,16 @@ var proveit = {
 			$( 'tr', form ).show().filter( function () {
 				return $( this ).text().toLowerCase().indexOf( filter ) > -1 ? false : true;
 			}).hide();
+		};
+
+		/**
+		 * Show all fields
+		 *
+		 * @return {void}
+		 */
+		this.showAllFields = function ( event ) {
+			var form = event.data;
+			$( 'tr', form ).show();
 		};
 
 		/**
