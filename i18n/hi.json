@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sfic"
+			"Sfic",
+			"Anamdas",
+			"SatyamMishra"
 		]
 	},
 	"proveit-list-tab": "सूची ($1)",
@@ -18,5 +20,9 @@
 	"proveit-no-template": "साँचा नहीं",
 	"proveit-no-references": "कोई भी सन्दर्भ नहीं मिला",
 	"proveit-filter-fields": "फ़िल्टर क्षेत्र",
-	"proveit-filter-references": "सन्दर्भ छननी"
+	"proveit-filter-references": "सन्दर्भ छननी",
+	"proveit-show-all-button": "सभी फील्ड दिखाएं",
+	"proveit-today-button": "आज",
+	"proveit-citoid-loading": "लोड हो रहा है...",
+	"proveit-citoid-error": "त्रुटि"
 }

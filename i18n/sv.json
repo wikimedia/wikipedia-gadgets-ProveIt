@@ -18,5 +18,6 @@
 	"proveit-no-template": "Ingen mall",
 	"proveit-no-references": "Inga referenser hittades",
 	"proveit-filter-fields": "Filtrera fält",
-	"proveit-filter-references": "Filtrera referenser"
+	"proveit-filter-references": "Filtrera referenser",
+	"proveit-today-button": "Idag"
 }

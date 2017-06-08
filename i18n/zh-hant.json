@@ -17,7 +17,13 @@
 	"proveit-confirm-remove": "這將會移除參考資料以及所有引用內容。您確定嗎？",
 	"proveit-no-template": "沒有模板",
 	"proveit-no-references": "找不到參考資料",
-	"proveit-filter-fields": "過濾字段",
+	"proveit-filter-fields": "過濾欄位",
 	"proveit-filter-references": "過濾參考資料",
-	"proveit-today-button": "今日"
+	"proveit-show-all-button": "顯示所有欄位",
+	"proveit-today-button": "今日",
+	"proveit-citoid-label": "參考資料識別",
+	"proveit-citoid-tooltip": "輸入一個 URL、DOI、ISBN 或 PMC/PMID 來嘗試透過 Citoid 服務自動摘取細節內容",
+	"proveit-citoid-placeholder": "URL、DOI、ISBN 或 PMC/PMID",
+	"proveit-citoid-loading": "載入中...",
+	"proveit-citoid-error": "錯誤"
 }

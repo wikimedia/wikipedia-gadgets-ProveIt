@@ -20,5 +20,9 @@
 	"proveit-no-template": "Brak szablonu",
 	"proveit-no-references": "Nie znaleziono źródła",
 	"proveit-filter-fields": "Filtrowanie pól",
-	"proveit-today-button": "Dzisiaj"
+	"proveit-show-all-button": "Pokaż wszystkie pola",
+	"proveit-today-button": "Dzisiaj",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN lub PMC/PMID",
+	"proveit-citoid-loading": "Ładowanie...",
+	"proveit-citoid-error": "Błąd"
 }

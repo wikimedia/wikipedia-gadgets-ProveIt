@@ -19,5 +19,11 @@
 	"proveit-no-references": "각주를 찾을 수 없습니다",
 	"proveit-filter-fields": "필터 필드",
 	"proveit-filter-references": "필터 환경 설정",
-	"proveit-today-button": "오늘"
+	"proveit-show-all-button": "모든 필드 표시",
+	"proveit-today-button": "오늘",
+	"proveit-citoid-label": "각주 식별자",
+	"proveit-citoid-tooltip": "Citoid 서비스를 통해 자동으로 자세한 정보의 추출을 시도하려면 URL, DOI, ISBN 또는 PMC/PMID를 입력하십시오",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN 또는 PMC/PMID",
+	"proveit-citoid-loading": "불러오는 중...",
+	"proveit-citoid-error": "오류"
 }
