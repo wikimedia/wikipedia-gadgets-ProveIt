@@ -19,5 +19,9 @@
 	"proveit-no-references": "Keng Referenze fonnt",
 	"proveit-filter-fields": "Felder filteren",
 	"proveit-filter-references": "Referenze filteren",
-	"proveit-today-button": "Haut"
+	"proveit-show-all-button": "All Felder weisen",
+	"proveit-today-button": "Haut",
+	"proveit-citoid-placeholder": "URL, DOI ISBN oder PMC/PMID",
+	"proveit-citoid-loading": "Lueden...",
+	"proveit-citoid-error": "Feeler"
 }

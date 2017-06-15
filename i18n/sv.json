@@ -19,5 +19,11 @@
 	"proveit-no-references": "Inga referenser hittades",
 	"proveit-filter-fields": "Filtrera fält",
 	"proveit-filter-references": "Filtrera referenser",
-	"proveit-today-button": "Idag"
+	"proveit-show-all-button": "Visa alla fält",
+	"proveit-today-button": "Idag",
+	"proveit-citoid-label": "Referensidentifierare",
+	"proveit-citoid-tooltip": "Ange en URL, DOI, ISBN eller PMC/PMID för att försöka extrahera detaljerna automatiskt via tjänsten Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN eller PMC/PMID",
+	"proveit-citoid-loading": "Läser in...",
+	"proveit-citoid-error": "Fel"
 }

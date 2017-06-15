@@ -3,7 +3,8 @@
 		"authors": [
 			"Sophivorus",
 			"Beta16",
-			"Selven"
+			"Selven",
+			"Ontsed"
 		]
 	},
 	"proveit-list-tab": "Elenco ($1)",
@@ -21,5 +22,11 @@
 	"proveit-no-references": "Nessun riferimento trovato",
 	"proveit-filter-fields": "Campi filtro",
 	"proveit-filter-references": "Filtra riferimenti",
-	"proveit-today-button": "Oggi"
+	"proveit-show-all-button": "Mostra tutti i campi",
+	"proveit-today-button": "Oggi",
+	"proveit-citoid-label": "Identificatore di riferimento",
+	"proveit-citoid-tooltip": "Inserisci URL, DOI, ISBN o PMC/PMID per provare ad estrarre i dettagli automatici attraverso il servizio Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-citoid-loading": "Caricamento...",
+	"proveit-citoid-error": "Errore"
 }

@@ -19,5 +19,11 @@
 	"proveit-no-references": "Nun s'alcontraron referencies",
 	"proveit-filter-fields": "Filtrar campos",
 	"proveit-filter-references": "Filtriar referencies",
-	"proveit-today-button": "Güei"
+	"proveit-show-all-button": "Amosar tolos campos",
+	"proveit-today-button": "Güei",
+	"proveit-citoid-label": "Identificador de la referencia",
+	"proveit-citoid-tooltip": "Escribe una URL, DOI, ISBN o PMC/PMID pa intentar estrayer los detalles automáticamente per aciu del serviciu Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-citoid-loading": "Cargando...",
+	"proveit-citoid-error": "Error"
 }

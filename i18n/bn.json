@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftabuzzaman"
+			"Aftabuzzaman",
+			"Mohammed Galib Hasan"
 		]
 	},
 	"proveit-list-tab": "মোট ($1টি)",
@@ -19,5 +20,10 @@
 	"proveit-no-references": "কোন তথ্যসূত্র পাওয়া যায়নি",
 	"proveit-filter-fields": "ক্ষেত্র ছাঁকুন",
 	"proveit-filter-references": "তথ্যসূত্র ছাঁকুন",
-	"proveit-today-button": "আজ"
+	"proveit-show-all-button": "সব ক্ষেত্র দেখান",
+	"proveit-today-button": "আজ",
+	"proveit-citoid-label": "তথ্যসূত্র শনাক্তকারী",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN বা PMC/PMID",
+	"proveit-citoid-loading": "লোড হচ্ছে...",
+	"proveit-citoid-error": "ত্রুটি"
 }

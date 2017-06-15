@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sophivorus",
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
@@ -25,6 +26,6 @@
 	"proveit-citoid-label": "Identificador de la referencia",
 	"proveit-citoid-tooltip": "Ingresa una URL, DOI, ISBN or PMC/PMID para intentar extraer los detalles automáticamente a través del servicio Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
-	"proveit-citoid-loading": "Cargando...",
+	"proveit-citoid-loading": "Cargando…",
 	"proveit-citoid-error": "Error"
 }

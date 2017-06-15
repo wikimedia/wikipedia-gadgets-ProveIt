@@ -19,5 +19,11 @@
 	"proveit-no-references": "Не пронајдов наводи",
 	"proveit-filter-fields": "Филтер на полиња",
 	"proveit-filter-references": "Филтрирај наводи",
-	"proveit-today-button": "денес"
+	"proveit-show-all-button": "Покажи ги сите полиња",
+	"proveit-today-button": "денес",
+	"proveit-citoid-label": "Наводна назнака",
+	"proveit-citoid-tooltip": "Внесете URL, DOI, ISBN или PMC/PMID и со тоа обидете се автоматски да ги добиете податоците преку службата Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN или PMC/PMID",
+	"proveit-citoid-loading": "Вчитувам...",
+	"proveit-citoid-error": "Грешка"
 }

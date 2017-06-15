@@ -20,5 +20,11 @@
 	"proveit-no-references": "Keine Einzelnachweise gefunden",
 	"proveit-filter-fields": "Felder filtern",
 	"proveit-filter-references": "Einzelnachweise filtern",
-	"proveit-today-button": "Heute"
+	"proveit-show-all-button": "Alle Felder anzeigen",
+	"proveit-today-button": "Heute",
+	"proveit-citoid-label": "Referenzidentifikator",
+	"proveit-citoid-tooltip": "Gib eine URL, DOI, ISBN oder PMC/PMID ein, um die Einzelheiten automatisch mithilfe des Citoid-Dienstes zu extrahieren.",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN oder PMC/PMID",
+	"proveit-citoid-loading": "Lade …",
+	"proveit-citoid-error": "Fehler"
 }

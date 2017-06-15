@@ -21,6 +21,8 @@
 	"proveit-filter-references": "过滤参考资料",
 	"proveit-show-all-button": "显示所有字段",
 	"proveit-today-button": "今天",
+	"proveit-citoid-label": "参考标识符",
+	"proveit-citoid-tooltip": "输入URL、DOI、ISBN或PMC/PMID尝试自动通过Citoid服务提取详情",
 	"proveit-citoid-placeholder": "URL、DOI、ISBN或PMC/PMID",
 	"proveit-citoid-loading": "正在载入...",
 	"proveit-citoid-error": "错误"

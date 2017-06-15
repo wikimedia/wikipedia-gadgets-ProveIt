@@ -19,5 +19,11 @@
 	"proveit-no-references": "Nisu pronađene reference",
 	"proveit-filter-fields": "Filtriraj polja",
 	"proveit-filter-references": "Filtriraj reference",
-	"proveit-today-button": "Danas"
+	"proveit-show-all-button": "Prikaži sva polja",
+	"proveit-today-button": "Danas",
+	"proveit-citoid-label": "Identifikator reference",
+	"proveit-citoid-tooltip": "Upišite URL, DOI, ISBN ili PMC/PMID da biste automatski pokušali dobiti podatke pomoću usluge Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ili PMC/PMID",
+	"proveit-citoid-loading": "Učitavam...",
+	"proveit-citoid-error": "Greška"
 }

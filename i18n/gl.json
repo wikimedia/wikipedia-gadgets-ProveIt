@@ -19,5 +19,11 @@
 	"proveit-no-references": "Non se atoparon referencias",
 	"proveit-filter-fields": "Campos do filtro",
 	"proveit-filter-references": "Filtrar as referencias",
-	"proveit-today-button": "Hoxe"
+	"proveit-show-all-button": "Amosar tódolos campos",
+	"proveit-today-button": "Hoxe",
+	"proveit-citoid-label": "Identificador da referencia",
+	"proveit-citoid-tooltip": "Indique unha URL, DOI, ISBN ou PMC/PMID para intentar extraer os detalles automaticamente a través do servizo Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ou PMC/PMID",
+	"proveit-citoid-loading": "Cargando...",
+	"proveit-citoid-error": "Erro"
 }

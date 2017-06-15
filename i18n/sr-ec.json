@@ -20,5 +20,7 @@
 	"proveit-no-references": "Ниједна референца није пронађена",
 	"proveit-filter-fields": "Филтер за поља",
 	"proveit-filter-references": "Филтрирај референце",
-	"proveit-today-button": "Данас"
+	"proveit-today-button": "Данас",
+	"proveit-citoid-loading": "Учитавам...",
+	"proveit-citoid-error": "Грешка"
 }
