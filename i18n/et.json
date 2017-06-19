@@ -17,5 +17,13 @@
 	"proveit-confirm-remove": "See eemaldab viite koos kõigi selle kasutustega. Kas oled kindel?",
 	"proveit-no-template": "Mall puudub",
 	"proveit-no-references": "Ühtegi viidet ei leitud",
-	"proveit-filter-fields": "Väljafilter"
+	"proveit-filter-fields": "Filtreeri välju",
+	"proveit-filter-references": "Filtreeri viiteid",
+	"proveit-show-all-button": "Kuva kõik väljad",
+	"proveit-today-button": "Täna",
+	"proveit-citoid-label": "Viite tunnus",
+	"proveit-citoid-tooltip": "Sisesta URL, DOI, ISBN või PMC/PMID, et proovida viite üksikasjad automaatselt Citoidi teenuse kaudu kätte saada",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN või PMC/PMID",
+	"proveit-citoid-loading": "Laadin...",
+	"proveit-citoid-error": "Viga"
 }

@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ashok modhvadia"
+		]
+	},
+	"proveit-list-tab": "યાદી ($1)",
+	"proveit-add-tab": "ઉમેરો",
+	"proveit-reference-name-label": "સંદર્ભનું નામ",
+	"proveit-reference-content-label": "સંદર્ભ સામગ્રી",
+	"proveit-reference-template-label": "મુખ્ય ઢાંચો",
+	"proveit-cite-button": "ટાંકો",
+	"proveit-remove-button": "હટાવો",
+	"proveit-insert-button": "ઉમેરો",
+	"proveit-update-button": "અદ્યતન કરો",
+	"proveit-prompt-name": "ટાંકવા માટે સંદર્ભમાં નામ હોવું જોઈએ:",
+	"proveit-confirm-remove": "આનાથી બધાં સંદર્ભ અને તેનાં ઉદ્ધરણો પણ દૂર થઈ જશે. તમે ખરેખર એવું કરવા ઈચ્છો છો?",
+	"proveit-no-template": "ઢાંચો નહીં",
+	"proveit-no-references": "કોઈ સંદર્ભો મળ્યા નથી",
+	"proveit-filter-fields": "ફિલ્ટર વિષયો",
+	"proveit-filter-references": "ફિલ્ટર સંદર્ભો",
+	"proveit-show-all-button": "બધાં વિષય દર્શાવો",
+	"proveit-today-button": "આજે",
+	"proveit-citoid-label": "સંદર્ભ ઓળખકર્તા",
+	"proveit-citoid-loading": "લવાઇ રહ્યું છે...",
+	"proveit-citoid-error": "ત્રુટિ"
+}

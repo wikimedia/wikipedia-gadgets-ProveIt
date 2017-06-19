@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"GMozafarian"
+			"GMozafarian",
+			"Yoosef Pooranvary"
 		]
 	},
 	"proveit-list-tab": "لیست ($1)",
@@ -13,10 +14,14 @@
 	"proveit-remove-button": "حذف",
 	"proveit-insert-button": "درج",
 	"proveit-update-button": "به‌روزرسانی",
-	"proveit-prompt-name": "48/5000\nمنبع نیاز به یک نام به منظور ارجاء دارد:",
+	"proveit-prompt-name": "منبع نیاز به یک نام برای ارجاع دارد:",
 	"proveit-confirm-remove": "با این کار منبع و تمام استنادهای آن را حذف می‌کنید. اطمینان کامل دارید؟",
 	"proveit-no-template": "بدون الگو",
 	"proveit-no-references": "منبع یافت نشد",
 	"proveit-filter-fields": "فیلتر فیلدها",
-	"proveit-filter-references": "فیلتر منابع"
+	"proveit-filter-references": "فیلتر منابع",
+	"proveit-show-all-button": "نمایش همهٔ فیلدها",
+	"proveit-today-button": "امروز",
+	"proveit-citoid-loading": "بارگذاری...",
+	"proveit-citoid-error": "خطا"
 }
