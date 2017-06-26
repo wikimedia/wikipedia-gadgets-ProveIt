@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Mikel Ibaiba"
 		]
 	},
 	"proveit-list-tab": "Zerrenda ($1)",
@@ -17,5 +18,13 @@
 	"proveit-confirm-remove": "Ekintza honek erreferentzia eta honi lotutako aipu guztiak kenduko ditu. Ziur zaude?",
 	"proveit-no-template": "Txantiloirik gabe",
 	"proveit-no-references": "Ez da erreferentziarik aurkitu",
-	"proveit-filter-fields": "Eremuak iragazi"
+	"proveit-filter-fields": "Eremuak iragazi",
+	"proveit-filter-references": "Erreferentziak iragazi",
+	"proveit-show-all-button": "Eremu guztiak erakutsi",
+	"proveit-today-button": "Gaur",
+	"proveit-citoid-label": "Erreferentzia identifikatzailea",
+	"proveit-citoid-tooltip": "Sartu URL, DOI, ISBN edo PMC/PMID bat Citoid zerbitzuaren bitartez automatikoki xehetasunak ateratzeko",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN edo PMC/PMID",
+	"proveit-citoid-loading": "Kargatzen...",
+	"proveit-citoid-error": "Akatsa"
 }
