@@ -16,5 +16,15 @@
 	"proveit-prompt-name": "Viite tarvitsee nimen toimiakseen:",
 	"proveit-confirm-remove": "Oletko varma, että haluat poistaa viitteen?",
 	"proveit-no-template": "Ilman viitemallinetta",
-	"proveit-no-references": "Artikkelissa ei ole viitteitä."
+	"proveit-no-references": "Artikkelissa ei ole viitteitä.",
+	"proveit-filter-fields": "Suodata kenttiä",
+	"proveit-filter-references": "Suodata viitteitä",
+	"proveit-show-all-button": "Näytä kaikki",
+	"proveit-today-button": "Tänään",
+	"proveit-citoid-label": "Automaattinen viite",
+	"proveit-citoid-tooltip": "Hae viitteen tietoja URL, DOI, ISBN or PMC/PMID tunnisteella",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN or PMC/PMID",
+	"proveit-citoid-load": "Lataa",
+	"proveit-citoid-loading": "Ladataan...",
+	"proveit-citoid-error": "Virhe"
 }
