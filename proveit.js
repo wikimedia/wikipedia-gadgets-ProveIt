@@ -16,10 +16,13 @@
 var proveit = {
 
 	/**
-	 * URLs of the ProveIt icons hosted at Commons
+	 * URL of the ProveIt icon hosted at Commons
 	 */
 	ICON: '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/ProveIt_logo_for_user_boxes.svg/22px-ProveIt_logo_for_user_boxes.svg.png',
 
+	/**
+	 * URL of the ProveIt icon when the WikiEditor is disabled
+	 */
 	OLDICON: '//upload.wikimedia.org/wikipedia/commons/d/df/ProveitOldIcon.png',
 
 	/**
@@ -38,6 +41,7 @@ var proveit = {
 
 	/**
 	 * Convenience method to get a ProveIt option
+	 * These options are set on a per-wiki level when initializing ProveIt
 	 *
 	 * @param {string} option key without the "proveit-" prefix
 	 * @return {string} option value
@@ -50,7 +54,7 @@ var proveit = {
 	 * Convenience method to get a ProveIt message
 	 *
 	 * @param {string} message key without the "proveit-" prefix
-	 * @param {int} number of references
+	 * @param {string} parameter passed to the message
 	 * @return {string} message value
 	 */
 	getMessage: function ( key, param ) {
@@ -58,7 +62,7 @@ var proveit = {
 	},
 
 	/**
-	 * Convenience method to get the edit textbox
+	 * Convenience method to get the MediaWiki edit textbox
 	 *
 	 * @return {jQuery} edit textbox
 	 */
@@ -76,20 +80,21 @@ var proveit = {
 		// Set the content language
 		proveit.contentLanguage = mw.config.get( 'wgContentLanguage' );
 
-		// Set the interface language by getting the messages from Commons
+		// Get the interface messages from Commons
+		// Also get the English messages as fallback
 		var userLanguage = mw.config.get( 'wgUserLanguage' );
 		$.get( '//commons.wikimedia.org/w/api.php', {
-			'titles': 'MediaWiki:Gadget-ProveIt-' + userLanguage + '.json|MediaWiki:Gadget-ProveIt-en.json', // Get the English messages as fallback
+			'titles': 'MediaWiki:Gadget-ProveIt-' + userLanguage + '.json|MediaWiki:Gadget-ProveIt-en.json',
 			'action': 'query',
 			'prop': 'revisions',
 			'rvprop': 'content',
 			'format': 'json',
 			'origin': '*' // Allow requests from any origin so that ProveIt can be used on localhost and non-Wikimedia sites
 		}).done( function ( data ) {
-			// The Commons page for English messages has the lowest page id so it will always be first in the loop
 			//console.log( data );
 			var messages = {},
 				content;
+			// The Commons page for English messages has the lowest page id so it will always be first in the loop
 			for ( var page in data.query.pages ) {
 				if ( page > -1 ) {
 					page = data.query.pages[ page ];
@@ -856,7 +861,9 @@ var proveit = {
 		this.parseTemplateString = function () {
 			// Remove the outer braces and split by pipe, knowing that we may match pipes inside links and subtemplates
 			var paramArray = this.templateString.substring( 2, this.templateString.length - 2 ).split( '|' );
-			paramArray.shift(); // Get rid of the template name
+
+			// Get rid of the template name
+			paramArray.shift();
 
 			var paramString, linkLevel = 0, subtemplateLevel = 0, indexOfEqual, paramNumber = 0, paramName, paramValue;
 			for ( var i = 0; i < paramArray.length; i++ ) {
@@ -943,7 +950,7 @@ var proveit = {
 		};
 
 		/**
-		 * Convert this reference to a list item
+		 * Convert this reference to a list item for the reference list
 		 *
 		 * @return {jQuery} list item
 		 */
@@ -1061,43 +1068,51 @@ var proveit = {
 				var citoidLabel = proveit.getMessage( 'citoid-label' ),
 					citoidTooltip = proveit.getMessage( 'citoid-tooltip' ),
 					citoidPlaceholder = proveit.getMessage( 'citoid-placeholder' ),
-					citoidMessage = $( '<span>' ).addClass( 'citoid-message' );
+					citoidButton = $( '<button>' ).text( proveit.getMessage( 'citoid-load' ) );
 				label = $( '<label>' ).text( citoidLabel ).attr( 'data-tooltip', citoidTooltip );
 				input = $( '<input>' ).attr( 'placeholder', citoidPlaceholder );
 				labelColumn = $( '<td>' ).append( label );
-				inputColumn = $( '<td>' ).append( citoidMessage, input );
+				inputColumn = $( '<td>' ).append( citoidButton, input );
 				row = $( '<tr>' ).append( labelColumn, inputColumn );
 				table.append( row );
 
-				// When the reference identifier changes, try to extract the reference data automatically via the Citoid service
-				input.change( this, function ( event ) {
-					citoidMessage.text( proveit.getMessage( 'citoid-loading' ) );
+				// When the Citoid button is clicked, try to extract the reference data automatically via the Citoid service
+				citoidButton.click( this, function ( event ) {
+					var URI = input.val();
+					if ( !URI ) {
+						return; // Do nothing
+					}
 
-					var URI = $( this ).val(),
-						encodedURI = encodeURIComponent( URI );
-					$.get( '//' + proveit.contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodedURI ).done( function ( data ) {
-						if ( typeof data === 'array' || typeof data[0] === 'object' ) {
+					citoidButton.text( proveit.getMessage( 'citoid-loading' ) );
+
+					$.get( '//' + proveit.contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodeURIComponent( URI ) ).done( function ( data ) {
+						if ( data instanceof Array || typeof data[0] === 'object' ) {
 							var citoidData = data[0],
 								reference = event.data;
+
+							// Helper function
+							function setParamPair( paramName, paramValue ) {
+								if ( typeof paramName === 'string' && typeof paramValue === 'string' && paramName in templateData.params ) {
+									reference.paramPairs[ paramName ] = paramValue;
+								} else if ( paramName instanceof Array && paramValue instanceof Array ) {
+									for ( var i = 0; i < paramName.length; i++ ) {
+										setParamPair( paramName[ i ], paramValue[ i ] );
+									}
+								}
+							}
 							for ( var citoidKey in citoidData ) {
 								paramName = citoidMap[ citoidKey ];
 								paramValue = citoidData[ citoidKey ];
-								function setParamPair( paramName, paramValue ) {
-									if ( typeof paramName === 'string' && typeof paramValue === 'string' && paramName in templateData.params ) {
-										reference.paramPairs[ paramName ] = paramValue;
-									} else if ( paramName instanceof Array && paramValue instanceof Array ) {
-										for ( var i = 0; i < paramName.length; i++ ) {
-											setParamPair( paramName[ i ], paramValue[ i ] );
-										}
-									}
-								}
 								setParamPair( paramName, paramValue );
 							}
 							$( '#proveit-reference-table' ).replaceWith( reference.toTable() );
-							citoidMessage.empty();
+							citoidButton.text( proveit.getMessage( 'citoid-load' ) );
 						}
 					}).error( function () {
-						citoidMessage.text( proveit.getMessage( 'citoid-error' ) );
+						citoidButton.text( proveit.getMessage( 'citoid-error' ) );
+						setTimeout( function () {
+							citoidButton.text( proveit.getMessage( 'citoid-load' ) );
+						}, 3000 );
 					});
 				});
 			}
@@ -1152,7 +1167,7 @@ var proveit = {
 
 				// If the parameter is a date, add the Today button
 				if ( paramData.type === 'date' ) {
-					todayButton = $( '<button>' ).addClass( 'today-button' ).text( proveit.getMessage( 'today-button' ) ).click( paramValueInput, function ( event ) {
+					todayButton = $( '<button>' ).text( proveit.getMessage( 'today-button' ) ).click( paramValueInput, function ( event ) {
 						var paramValueInput = event.data,
 							date = new Date(),
 							yyyy = date.getFullYear(),
@@ -1184,7 +1199,7 @@ var proveit = {
 			}
 
 			// Finally, add any unregistered parameters left in paramPairs
-			for ( paramName in paramPairs ) {
+			for ( var paramName in paramPairs ) {
 				paramValue = paramPairs[ paramName ];
 				paramNameInput = $( '<input>' ).addClass( 'proveit-param-name' ).val( paramName );
 				paramValueInput = $( '<input>' ).addClass( 'proveit-param-value' ).val( paramValue );

@@ -31,22 +31,21 @@
 
 #proveit-list-tab,
 #proveit-add-tab {
-	color: black;
 	cursor: pointer;
 	display: inline-block;
-	outline: none;
-	padding: 15px;
+	border: 1px solid #ddd;
+	padding: 12px 30px;
+	margin-left: 5px;
+	position: relative;
+	top: 5px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 #proveit-list-tab.active,
 #proveit-add-tab.active {
-	background: #ccc;
-}
-
-#proveit-list-tab:not(.active):hover,
-#proveit-add-tab:not(.active):hover {
-	display: inline-block;
-	background: #eee;
+	background: #f4f4f4;
+	border-bottom-color: #f4f4f4;
 }
 
 #proveit-content {
@@ -146,24 +145,12 @@
 	resize: vertical;
 }
 
-#proveit-reference-form .today-button {
-	background: none;
-	border: none;
+#proveit-reference-table button {
 	cursor: pointer;
 	font: inherit;
-	padding: .4em;
 	position: absolute;
-	right: 0;
-}
-
-#proveit-reference-form .today-button:hover {
-	text-decoration: underline;
-}
-
-#proveit-reference-form .citoid-message {
-	padding: .4em;
-	position: absolute;
-	right: 0;
+	top: 4px;
+	right: 4px;
 }
 
 #proveit-footer {
@@ -222,12 +209,12 @@
  * http://www.webdesignerdepot.com/2012/11/how-to-create-a-simple-css3-tooltip/
  */
 
-label[data-tooltip] {
+#proveit [data-tooltip] {
     display: inline;
     position: relative;
 }
 
-label[data-tooltip]:hover:after {
+#proveit [data-tooltip]:hover:after {
     background: #333;
     background: rgba( 0, 0, 0, .8 );
     border-radius: 5px;
@@ -242,7 +229,7 @@ label[data-tooltip]:hover:after {
     width: 220px;
 }
 
-label[data-tooltip]:hover:before {
+#proveit [data-tooltip]:hover:before {
     border: solid;
     border-color: #333 transparent;
     border-width: 6px 6px 0 6px;
