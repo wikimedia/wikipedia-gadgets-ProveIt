@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Choomaq",
+			"Piramidion"
+		]
+	},
+	"proveit-list-tab": "Список ($1)",
+	"proveit-add-tab": "Додати",
+	"proveit-reference-name-label": "Назва примітки",
+	"proveit-reference-content-label": "Вміст примітки",
+	"proveit-reference-template-label": "Основний шаблон",
+	"proveit-cite-button": "Джерело",
+	"proveit-remove-button": "Вилучити",
+	"proveit-insert-button": "Вставити",
+	"proveit-update-button": "Оновити",
+	"proveit-prompt-name": "Примітка повинна мати ім'я, щоб її можна було використовувати:",
+	"proveit-confirm-remove": "Це вилучить примітку і всі її включення. Ви впевнені?",
+	"proveit-no-template": "Немає шаблону",
+	"proveit-no-references": "Не знайдено приміток",
+	"proveit-filter-fields": "Фільтрувати поля",
+	"proveit-filter-references": "Фільтрувати примітки",
+	"proveit-show-all-button": "Показати всі поля",
+	"proveit-today-button": "Сьогодні",
+	"proveit-citoid-label": "Автоматична примітка",
+	"proveit-citoid-tooltip": "Введіть URL-адресу, DOI, ISBN або PMC/PMID, щоб спробувати видобути деталі автоматично за допомогою сервісу Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN або PMC/PMID",
+	"proveit-citoid-load": "Завантажити",
+	"proveit-citoid-loading": "Завантаження…",
+	"proveit-citoid-error": "Помилка"
+}

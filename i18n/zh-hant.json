@@ -21,9 +21,10 @@
 	"proveit-filter-references": "過濾參考資料",
 	"proveit-show-all-button": "顯示所有欄位",
 	"proveit-today-button": "今日",
-	"proveit-citoid-label": "參考資料識別",
+	"proveit-citoid-label": "自動參考",
 	"proveit-citoid-tooltip": "輸入一個 URL、DOI、ISBN 或 PMC/PMID 來嘗試透過 Citoid 服務自動摘取細節內容",
 	"proveit-citoid-placeholder": "URL、DOI、ISBN 或 PMC/PMID",
+	"proveit-citoid-load": "載入",
 	"proveit-citoid-loading": "載入中...",
 	"proveit-citoid-error": "錯誤"
 }

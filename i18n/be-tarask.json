@@ -21,7 +21,7 @@
 	"proveit-filter-references": "Фільтар крыніц",
 	"proveit-show-all-button": "Паказаць усе палі",
 	"proveit-today-button": "Сёньня",
-	"proveit-citoid-label": "Ідэнтыфікатар крыніцы",
+	"proveit-citoid-label": "Аўтаматычная зноска",
 	"proveit-citoid-tooltip": "Увядзіце URL, DOI, ISBN ці PMC/PMID, каб паспрабаваць атрымаць падрабязнасьці аўтаматычна праз сэрвіс Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN ці PMC/PMID",
 	"proveit-citoid-loading": "Загрузка…",

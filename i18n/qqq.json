@@ -27,7 +27,7 @@
 	"proveit-citoid-label": "Label for the Citoid field",
 	"proveit-citoid-tooltip": "Tooltip for the field that when filled with a reference identifier, triggers the Citoid service to automatically fill in the reference details",
 	"proveit-citoid-placeholder": "Placeholder for the field that triggers the Citoid service",
-	"proveit-citoid-load": "Default text for the button that loads a reference out of a URI through the Citoid service",
+	"proveit-citoid-load": "Default text for the button that loads a reference out of a URI through the Citoid service\n{{Identical|Load}}",
 	"proveit-citoid-loading": "Status text while Citoid service is loading the reference details",
 	"proveit-citoid-error": "Generic error message when something went wrong with the Citoid service\n{{Identical|Error}}"
 }

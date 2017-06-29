@@ -3,7 +3,8 @@
 		"authors": [
 			"Agnieszka Dul",
 			"Michał Sobkowski",
-			"Chrumps"
+			"Chrumps",
+			"InternerowyGołąb"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
@@ -22,7 +23,9 @@
 	"proveit-filter-fields": "Filtrowanie pól",
 	"proveit-show-all-button": "Pokaż wszystkie pola",
 	"proveit-today-button": "Dzisiaj",
+	"proveit-citoid-label": "Automatyczny przypis",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN lub PMC/PMID",
+	"proveit-citoid-load": "Zzaładuj",
 	"proveit-citoid-loading": "Ładowanie...",
 	"proveit-citoid-error": "Błąd"
 }

@@ -21,9 +21,10 @@
 	"proveit-filter-references": "필터 환경 설정",
 	"proveit-show-all-button": "모든 필드 표시",
 	"proveit-today-button": "오늘",
-	"proveit-citoid-label": "각주 식별자",
+	"proveit-citoid-label": "자동 각주",
 	"proveit-citoid-tooltip": "Citoid 서비스를 통해 자동으로 자세한 정보의 추출을 시도하려면 URL, DOI, ISBN 또는 PMC/PMID를 입력하십시오",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN 또는 PMC/PMID",
+	"proveit-citoid-load": "불러오기",
 	"proveit-citoid-loading": "불러오는 중...",
 	"proveit-citoid-error": "오류"
 }
