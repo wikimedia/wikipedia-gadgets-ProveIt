@@ -21,9 +21,10 @@
 	"proveit-filter-references": "Filtreeri viiteid",
 	"proveit-show-all-button": "Kuva kõik väljad",
 	"proveit-today-button": "Täna",
-	"proveit-citoid-label": "Viite tunnus",
+	"proveit-citoid-label": "Automaatne viide",
 	"proveit-citoid-tooltip": "Sisesta URL, DOI, ISBN või PMC/PMID, et proovida viite üksikasjad automaatselt Citoidi teenuse kaudu kätte saada",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN või PMC/PMID",
+	"proveit-citoid-load": "Laadi",
 	"proveit-citoid-loading": "Laadin...",
 	"proveit-citoid-error": "Viga"
 }

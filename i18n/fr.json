@@ -4,7 +4,8 @@
 			"Bastenbas",
 			"Gomoko",
 			"Wladek92",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Od1n"
 		]
 	},
 	"proveit-list-tab": "Lister ($1)",
@@ -24,9 +25,10 @@
 	"proveit-filter-references": "Filtrer les références",
 	"proveit-show-all-button": "Afficher tous les champs",
 	"proveit-today-button": "Aujourd’hui",
-	"proveit-citoid-label": "Identifiant de la référence",
+	"proveit-citoid-label": "Référence automatique",
 	"proveit-citoid-tooltip": "Saisir un URL, DOI, ISBN ou PMC/PMID pour essayer d’extraire automatiquement les détails via le service Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN ou PMC/PMID",
+	"proveit-citoid-load": "Charger",
 	"proveit-citoid-loading": "Chargement…",
 	"proveit-citoid-error": "Erreur"
 }

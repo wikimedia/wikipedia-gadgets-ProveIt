@@ -21,7 +21,9 @@
 	"proveit-filter-references": "Referenze filteren",
 	"proveit-show-all-button": "All Felder weisen",
 	"proveit-today-button": "Haut",
+	"proveit-citoid-label": "Automatesch Referenz",
 	"proveit-citoid-placeholder": "URL, DOI ISBN oder PMC/PMID",
+	"proveit-citoid-load": "Lueden",
 	"proveit-citoid-loading": "Lueden...",
 	"proveit-citoid-error": "Feeler"
 }

@@ -22,7 +22,7 @@
 	"proveit-filter-references": "Филтриране на източниците",
 	"proveit-show-all-button": "Показване на всички полета",
 	"proveit-today-button": "Днес",
-	"proveit-citoid-label": "Идентификатор на източник",
+	"proveit-citoid-label": "Автоматична бележка под линия",
 	"proveit-citoid-tooltip": "Въведете URL, DOI, ISBN или PMC/PMID за да опитате да извлечете автоматично детайлите чрез услугата Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN или PMC/PMID",
 	"proveit-citoid-loading": "Зареждане...",

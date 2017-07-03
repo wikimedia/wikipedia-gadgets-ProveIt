@@ -22,9 +22,10 @@
 	"proveit-filter-references": "Erreferentziak iragazi",
 	"proveit-show-all-button": "Eremu guztiak erakutsi",
 	"proveit-today-button": "Gaur",
-	"proveit-citoid-label": "Erreferentzia identifikatzailea",
+	"proveit-citoid-label": "Erreferentzia automatikoa",
 	"proveit-citoid-tooltip": "Sartu URL, DOI, ISBN edo PMC/PMID bat Citoid zerbitzuaren bitartez automatikoki xehetasunak ateratzeko",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN edo PMC/PMID",
+	"proveit-citoid-load": "Kargatu",
 	"proveit-citoid-loading": "Kargatzen...",
 	"proveit-citoid-error": "Akatsa"
 }

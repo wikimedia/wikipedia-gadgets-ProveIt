@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"GMozafarian",
-			"Yoosef Pooranvary"
+			"Yoosef Pooranvary",
+			"DEXi"
 		]
 	},
 	"proveit-list-tab": "لیست ($1)",
@@ -22,6 +23,9 @@
 	"proveit-filter-references": "فیلتر منابع",
 	"proveit-show-all-button": "نمایش همهٔ فیلدها",
 	"proveit-today-button": "امروز",
+	"proveit-citoid-tooltip": "یک نشانی وب، DOI، شابک و یا PMID را وارد کنید تا سرویس Citoid بصورت خودکار جزئیات را استخراج کند.",
+	"proveit-citoid-placeholder": "نشانی وب، DOI، شابک و یا PMID",
+	"proveit-citoid-load": "بارگیری",
 	"proveit-citoid-loading": "بارگذاری...",
 	"proveit-citoid-error": "خطا"
 }
