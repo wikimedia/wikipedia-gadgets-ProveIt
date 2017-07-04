@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Urbalazs"
+			"Urbalazs",
+			"Bencemac"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
@@ -18,5 +19,13 @@
 	"proveit-no-template": "Nincs sablon",
 	"proveit-no-references": "Nem találhatók hivatkozások",
 	"proveit-filter-fields": "Mezők szűrése",
-	"proveit-filter-references": "Hivatkozások szűrése"
+	"proveit-filter-references": "Hivatkozások szűrése",
+	"proveit-show-all-button": "Az összes mező megjelenítése",
+	"proveit-today-button": "Ma",
+	"proveit-citoid-label": "Automatikus hivatkozás",
+	"proveit-citoid-tooltip": "Adj meg a következők közül egyet, hogy a Citoid szolgáltatás segítségével automatikusan hozzáférj a részletekhez: URL, DOI, ISBN vagy PMC/PMID.",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN vagy PMC/PMID",
+	"proveit-citoid-load": "Betöltés",
+	"proveit-citoid-loading": "Betöltés…",
+	"proveit-citoid-error": "Hiba"
 }
