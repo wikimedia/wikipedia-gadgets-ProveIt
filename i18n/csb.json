@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kaszeba"
+		]
+	},
+	"proveit-list-tab": "Lësta ($1)",
+	"proveit-add-tab": "Dodôj",
+	"proveit-reference-name-label": "Miono przëpisënka",
+	"proveit-reference-content-label": "Kòd zdrojowi przëpisënka",
+	"proveit-reference-template-label": "Przédnô szablóna",
+	"proveit-cite-button": "Wstawi przëpisënk",
+	"proveit-remove-button": "Rëmôj",
+	"proveit-insert-button": "Wstôwi",
+	"proveit-update-button": "Aktualizëjë",
+	"proveit-prompt-name": "Temù przëpisënkòwi nót je zdefiniowac miono.",
+	"proveit-no-template": "Felënk szablónë",
+	"proveit-no-references": "Felënk zdroju",
+	"proveit-filter-fields": "Filtrowanié pòlów",
+	"proveit-filter-references": "Filtrë przëpisënków",
+	"proveit-show-all-button": "Wëskrzëni wszëtczé pòla",
+	"proveit-today-button": "Dzysô",
+	"proveit-citoid-label": "Aùtomatny przëpisënczi",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN lub PMC/PMID",
+	"proveit-citoid-load": "Wladëjë",
+	"proveit-citoid-loading": "Ladowanié...",
+	"proveit-citoid-error": "Fela"
+}
