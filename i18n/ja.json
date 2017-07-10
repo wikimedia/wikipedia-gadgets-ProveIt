@@ -16,5 +16,12 @@
 	"proveit-confirm-remove": "出典と引用をすべて削除します。本当に実行しますか?",
 	"proveit-no-template": "テンプレートがありません",
 	"proveit-no-references": "出典が見つかりません",
-	"proveit-filter-fields": "フィルターのフィールド"
+	"proveit-filter-fields": "フィルターのフィールド",
+	"proveit-filter-references": "フィルターの出典",
+	"proveit-show-all-button": "すべてのフィールドを表示",
+	"proveit-today-button": "今日",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN または PMC/PMID",
+	"proveit-citoid-load": "読み込む",
+	"proveit-citoid-loading": "読み込み中...",
+	"proveit-citoid-error": "エラー"
 }
