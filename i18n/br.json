@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fulup"
+			"Fulup",
+			"Gwenn-Ael"
 		]
 	},
 	"proveit-list-tab": "Rollañ ($1)",
@@ -18,5 +19,13 @@
 	"proveit-no-template": "Patrom ebet",
 	"proveit-no-references": "N'eus bet kavet daveenn ebet",
 	"proveit-filter-fields": "Maeziennoù ar sil",
-	"proveit-filter-references": "Silañ an daveennoù"
+	"proveit-filter-references": "Silañ an daveennoù",
+	"proveit-show-all-button": "Diskwel an holl vaeziennoù",
+	"proveit-today-button": "Hiziv",
+	"proveit-citoid-label": "Daveenn emgefreek",
+	"proveit-citoid-tooltip": "Ebarzhiñ un URL, DOI, ISBN pe PMC/PMID evit klask ezteuler ar munudoù en un doare emgefreek dre ar servij Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN pe PMC/PMID",
+	"proveit-citoid-load": "Kargañ",
+	"proveit-citoid-loading": "O kargañ...",
+	"proveit-citoid-error": "Fazi"
 }
