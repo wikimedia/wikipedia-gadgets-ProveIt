@@ -19,5 +19,12 @@
 	"proveit-no-references": "कौनों संदर्भ ना मिलल",
 	"proveit-filter-fields": "फील्ड फिल्टर करीं",
 	"proveit-filter-references": "संदर्भ फिल्टर करीं",
-	"proveit-today-button": "आज"
+	"proveit-show-all-button": "सगरी फील्ड देखीं",
+	"proveit-today-button": "आज",
+	"proveit-citoid-label": "ऑटोमेटिक संदर्भ",
+	"proveit-citoid-tooltip": "सिटोइड सर्विस द्वरा डिटेल खोज के निकाले कोसिस करे खातिर एगो यूआरएल, डीओआइ, आइएसबीएन या पीएमसी/पीएमआइडी डालीं",
+	"proveit-citoid-placeholder": "यूआरएल, डीओआई आइएसबीएन या पीएमसी/पीएमआइडी",
+	"proveit-citoid-load": "लोड करीं",
+	"proveit-citoid-loading": "लोड हो रहल बा...",
+	"proveit-citoid-error": "खराबी"
 }
