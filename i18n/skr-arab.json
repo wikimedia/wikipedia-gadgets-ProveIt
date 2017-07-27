@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"proveit-list-tab": "لسٹ($1)",
+	"proveit-add-tab": "رلاؤ",
+	"proveit-reference-name-label": "حوالے دا ناں",
+	"proveit-reference-content-label": "حوالے دا مواد",
+	"proveit-reference-template-label": "بنیادی سانچہ",
+	"proveit-cite-button": "حوالہ درج کرو",
+	"proveit-remove-button": "مٹاؤ",
+	"proveit-insert-button": "درج کرو",
+	"proveit-update-button": "تجدید",
+	"proveit-prompt-name": "حوالے کوں ترتیب وچ لکھݨ کیتے ہک ناں دی لوڑ ہے",
+	"proveit-confirm-remove": "ایہ سارے حوالے  مٹا ݙیسی۔ بھلا تساں چاہندو",
+	"proveit-no-template": "کوئی سانچہ کائنی",
+	"proveit-no-references": "کوئی حوالہ کائنی لبھا",
+	"proveit-filter-fields": "فلٹر فیلڈ",
+	"proveit-filter-references": "فلٹر دے حوالے",
+	"proveit-show-all-button": "سارے خانے ݙیکھاؤ",
+	"proveit-today-button": "اڄ",
+	"proveit-citoid-label": "خود کار حوالہ",
+	"proveit-citoid-tooltip": "حوالہ جاتی خدمت دے ذریعے خود کار تفصیلات گھنݨ کیتے یو آر ایل، ڈی او آئی، آئی ایس بی این یا پی ایم سی/پی ایم آئی ڈی درج کرو",
+	"proveit-citoid-placeholder": "یو آر ایل، ڈی او آئی، آئی ایس بی این یا پی ایم سی/پی ایم آئی ڈی",
+	"proveit-citoid-load": "چڑھاؤ",
+	"proveit-citoid-loading": "لوڈ تھیندا پئے",
+	"proveit-citoid-error": "نقص"
+}
