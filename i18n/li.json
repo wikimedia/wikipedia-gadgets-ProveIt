@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ooswesthoesbes"
+		]
+	},
+	"proveit-list-tab": "Lies ($1)",
+	"proveit-add-tab": "Veug tou",
+	"proveit-reference-name-label": "Rifferensienaam",
+	"proveit-reference-content-label": "Rifferensieteks",
+	"proveit-reference-template-label": "Houfsjabloon",
+	"proveit-cite-button": "Citeer",
+	"proveit-remove-button": "Haol eweg",
+	"proveit-insert-button": "Veug in",
+	"proveit-update-button": "Wirk bie",
+	"proveit-prompt-name": "De rifferensie mót 'ne naam zeen veur te kónne waere geciteerdj:",
+	"proveit-confirm-remove": "Dit zal de rifferensie en alle citate daobie eweghaole. Wèts se 't zeker?",
+	"proveit-no-template": "Gei sjabloon",
+	"proveit-no-references": "Gein rifferensies gevónje",
+	"proveit-filter-fields": "Filtjer veljer",
+	"proveit-filter-references": "Filtjer rifferensies",
+	"proveit-show-all-button": "Toean alle veljer",
+	"proveit-today-button": "Dezen daag",
+	"proveit-citoid-label": "Automatische rifferensies",
+	"proveit-citoid-tooltip": "Veur URL, DOI, ISBN of PMC/PMID in veure details automatisch via de Citoid-service te perbere te ónttrèkke",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN of PMC/PMID",
+	"proveit-citoid-load": "Laaj",
+	"proveit-citoid-loading": "Laje...",
+	"proveit-citoid-error": "Fout"
+}
