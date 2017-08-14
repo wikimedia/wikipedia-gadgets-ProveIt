@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Uzdil"
+		]
+	},
+	"proveit-list-tab": "تىزىملىك ($1)",
+	"proveit-add-tab": "قوشۇش",
+	"proveit-reference-name-label": "پايدىلانغان ماتېرىيال نامى",
+	"proveit-reference-content-label": "پايدىلانغان ماتېرىيال مەزمۇنى",
+	"proveit-reference-template-label": "ئاساسىي قېلىپ",
+	"proveit-cite-button": "نەقىل",
+	"proveit-remove-button": "چىقىرىۋىتىش",
+	"proveit-insert-button": "قىستۇرۇش",
+	"proveit-update-button": "يېڭىلاش",
+	"proveit-prompt-name": "پايدىلىنىش ماتېرىيالىنى نەقىل ئېلىش ئۈچۈن نامى لازىم بولىدۇ:",
+	"proveit-confirm-remove": "پايدىلىنىش ماتېرىيالىدىكى بارلىق نەقىلنى چىقىرۋېتىسىز. جەزىملەشتۈرەمسىز؟",
+	"proveit-no-template": "قېلىپ يوق",
+	"proveit-no-references": "پايدىلىنىش ماتېرىيالى تېپىلمىدى",
+	"proveit-filter-fields": "سۈزگۈچ خەت بۆلىكى",
+	"proveit-filter-references": "پايدىلىنىش ماتېرىيالىنى سۈزۈش",
+	"proveit-show-all-button": "بارلىق خەت بۆلىكىنى كۆرسىتىش",
+	"proveit-today-button": "بۈگۈن",
+	"proveit-citoid-label": "ئاپتوماتىك پايدىلىنىش",
+	"proveit-citoid-tooltip": "URL، DOI، ISBN ياكى PMC/PMID كىرگۈزۈپ Citoid مۇلازىمىتىرىدىن تەپسىلاتىنى ئاپتوماتىك چىقىرىشنى سىناپ كۆرۈڭ",
+	"proveit-citoid-placeholder": "URL، DOI، ISBN ياكى PMC/PMID",
+	"proveit-citoid-load": "يۈكلەش",
+	"proveit-citoid-loading": "يۈكلەۋاتىدۇ…",
+	"proveit-citoid-error": "خاتالىق"
+}

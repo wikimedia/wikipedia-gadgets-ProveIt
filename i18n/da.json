@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joedalton"
+		]
+	},
+	"proveit-list-tab": "Vis ($1)",
+	"proveit-add-tab": "Tilføj",
+	"proveit-reference-name-label": "Referencenavn",
+	"proveit-reference-content-label": "Referenceindhold",
+	"proveit-reference-template-label": "Hovedskabelon",
+	"proveit-cite-button": "Citer",
+	"proveit-remove-button": "Fjern",
+	"proveit-insert-button": "Indsæt",
+	"proveit-update-button": "Opdater",
+	"proveit-prompt-name": "Referencen skal bruge et navn for at kunne citeres:",
+	"proveit-confirm-remove": "Dette vil fjerne referencen og alle dens citationer. Er du sikker?",
+	"proveit-no-template": "Ingen skabelon",
+	"proveit-no-references": "Ingen referencer fundet",
+	"proveit-filter-fields": "Filtrer felter",
+	"proveit-filter-references": "Filterreferencer",
+	"proveit-show-all-button": "Vis alle felter",
+	"proveit-today-button": "I dag",
+	"proveit-citoid-label": "Automatisk reference",
+	"proveit-citoid-tooltip": "Indtast en URL, DOI, ISBN eller PMC/PMID for at forsøge at udtrække detaljerne automatisk via tjenesten Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN eller PMC/PMID",
+	"proveit-citoid-load": "Indlæs",
+	"proveit-citoid-loading": "Indlæser ...",
+	"proveit-citoid-error": "Fejl"
+}
