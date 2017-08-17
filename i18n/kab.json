@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Belkacem77"
+		]
+	},
+	"proveit-list-tab": "Tabdart ($1)",
+	"proveit-add-tab": "Rnu",
+	"proveit-reference-name-label": "Isem n temsisɣelt",
+	"proveit-reference-content-label": "Agbur n temsisɣelt",
+	"proveit-reference-template-label": "Taneɣruft n temsisɣelt",
+	"proveit-cite-button": "Bder-d",
+	"proveit-remove-button": "Kkes",
+	"proveit-insert-button": "Ger",
+	"proveit-update-button": "Leqqem",
+	"proveit-prompt-name": "Tamsisɣelt tesra isem akken ad tettwabder:",
+	"proveit-confirm-remove": "Ayagi ad yekkes tamsisɣelt akked tinebdurin-is. Ad tedduḍ?",
+	"proveit-no-template": "Ulac taneɣruft",
+	"proveit-no-references": "Ulac tineɣrufin",
+	"proveit-filter-fields": "Urtan n imzizdeg",
+	"proveit-filter-references": "Timsisɣal n imzizdeg",
+	"proveit-show-all-button": "Sken akk urtan",
+	"proveit-today-button": "Ass-a",
+	"proveit-citoid-label": "Tamsisɣelt tawurmant",
+	"proveit-citoid-tooltip": "Sekcem URL, DOI, ISBN neɣ PMC/PMID akken ad tɛerḍeḍ ad tessuffɣeḍ s wudem awurman talqayt s umeẓlu Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN neɣ PMC/PMID",
+	"proveit-citoid-load": "Sali",
+	"proveit-citoid-loading": "Asali...",
+	"proveit-citoid-error": "Tuccḍa"
+}

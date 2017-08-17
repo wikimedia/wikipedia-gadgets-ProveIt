@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"proveit-list-tab": "Lista ($1)",
+	"proveit-add-tab": "Apondre",
+	"proveit-reference-name-label": "Nom de la referéncia",
+	"proveit-reference-content-label": "Contengut de la referéncia",
+	"proveit-reference-template-label": "Modèl principal",
+	"proveit-cite-button": "Citar",
+	"proveit-remove-button": "Suprimir",
+	"proveit-insert-button": "Inserir",
+	"proveit-update-button": "Metre a jorn",
+	"proveit-prompt-name": "La referéncia a besonh d'un nom per èsser citada :",
+	"proveit-confirm-remove": "Aquò suprimirà la referéncia e totas sas citacions. Sètz segur ?",
+	"proveit-no-template": "Pas cap de modèl",
+	"proveit-no-references": "Cap de referéncia pas trobada.",
+	"proveit-filter-fields": "Camps del filtre",
+	"proveit-filter-references": "Filtrar las referéncias",
+	"proveit-show-all-button": "Afichar totes los camps",
+	"proveit-today-button": "Uèi",
+	"proveit-citoid-label": "Referéncia automatica",
+	"proveit-citoid-tooltip": "Picar un URL, DOI, ISBN o PMC/PMID per ensajar d’extraire automaticament los detalhs via lo servici Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-citoid-load": "Cargar",
+	"proveit-citoid-loading": "Cargament…",
+	"proveit-citoid-error": "Error"
+}
