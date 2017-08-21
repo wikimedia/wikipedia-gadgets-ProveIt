@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aram1985",
+			"Kareyac"
+		]
+	},
+	"proveit-list-tab": "Ցանկ ($1)",
+	"proveit-add-tab": "Ավելացնել",
+	"proveit-reference-name-label": "Ծանոթագրության անվանում",
+	"proveit-reference-content-label": "Ծանոթագրության տեքստ",
+	"proveit-reference-template-label": "Հիմնական կաղապար",
+	"proveit-cite-button": "Քաղվածք",
+	"proveit-remove-button": "Հեռացնել",
+	"proveit-insert-button": "Ներդնել",
+	"proveit-update-button": "Թարմացնել",
+	"proveit-prompt-name": "Ծանոթագրությանն անհրաժեշտ է անվանում քաղվածելու համար",
+	"proveit-confirm-remove": "Կհեռացվեն աղբյուրն ու բոլոր մեջբերումները: Վստա՞հ եք:",
+	"proveit-no-template": "Կաղապար չկա",
+	"proveit-no-references": "Աղբյուրները չեն գտնվել",
+	"proveit-filter-fields": "Դաշտերի ֆիլտրեր",
+	"proveit-filter-references": "Ծանոթագրությունների ֆիլտր",
+	"proveit-show-all-button": "Ցուցադրել բոլոր դաշտերը",
+	"proveit-today-button": "Այսօր",
+	"proveit-citoid-label": "Ինքնաշխատ ծանոթագրություն",
+	"proveit-citoid-tooltip": "Մուտքագրեք URL, DOI, ISBN կամ PMC/PMID, որպեսզի փորձեք արտածել մանրամասներն ինքնաշխատ Citoid ծառայության միջոցով",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN կամ PMC/PMID",
+	"proveit-citoid-load": "Բեռնել",
+	"proveit-citoid-loading": "Բեռնում",
+	"proveit-citoid-error": "Սխալ"
+}
