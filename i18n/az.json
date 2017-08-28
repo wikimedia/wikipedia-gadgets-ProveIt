@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cekli829"
+		]
+	},
+	"proveit-list-tab": "Siyahı ($1)",
+	"proveit-add-tab": "Əlavə et",
+	"proveit-reference-name-label": "İstinad adı",
+	"proveit-reference-content-label": "İstinad məzmunu",
+	"proveit-reference-template-label": "Əsas şablon",
+	"proveit-remove-button": "Çıxar",
+	"proveit-insert-button": "Yerləşdir",
+	"proveit-update-button": "Yenilə",
+	"proveit-no-template": "Şablon yoxdur",
+	"proveit-today-button": "Bu gün",
+	"proveit-citoid-label": "Avtomatik istinad",
+	"proveit-citoid-load": "Yüklə",
+	"proveit-citoid-loading": "Yüklənir…",
+	"proveit-citoid-error": "Xəta"
+}
