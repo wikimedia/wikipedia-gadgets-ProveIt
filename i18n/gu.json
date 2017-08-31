@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ashok modhvadia"
+			"Ashok modhvadia",
+			"Drashti4"
 		]
 	},
 	"proveit-list-tab": "યાદી ($1)",
@@ -21,7 +22,10 @@
 	"proveit-filter-references": "ફિલ્ટર સંદર્ભો",
 	"proveit-show-all-button": "બધાં વિષય દર્શાવો",
 	"proveit-today-button": "આજે",
-	"proveit-citoid-label": "સંદર્ભ ઓળખકર્તા",
+	"proveit-citoid-label": "ઓળખકર્તાનો સંદર્ભ",
+	"proveit-citoid-tooltip": "URL, DOI, ISBN અથવા PMC/PMID દાખલ કરો સિટોઈડ સેવા દ્વારા આપમેળે વિગતો કાઢવા પ્રયાસ કરો",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN અથવા PMC/PMID",
+	"proveit-citoid-load": "લાવો",
 	"proveit-citoid-loading": "લવાઇ રહ્યું છે...",
 	"proveit-citoid-error": "ત્રુટિ"
 }
