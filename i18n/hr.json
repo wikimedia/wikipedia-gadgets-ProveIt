@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bugoslav"
+		]
+	},
+	"proveit-list-tab": "Popis ($1)",
+	"proveit-add-tab": "Dodaj",
+	"proveit-reference-name-label": "Naziv referencije",
+	"proveit-reference-content-label": "Sadržaj referencije",
+	"proveit-reference-template-label": "Glavni predložak",
+	"proveit-cite-button": "Navedi",
+	"proveit-remove-button": "Ukloni",
+	"proveit-insert-button": "Umetni",
+	"proveit-update-button": "Ažuriraj",
+	"proveit-prompt-name": "Referenciji treba zadati naziv da bi se mogla navesti:",
+	"proveit-confirm-remove": "Ovim će se ukloniti referencija i svi njeni navodi. Jeste li sigurni?",
+	"proveit-no-template": "Nema predloška",
+	"proveit-no-references": "Nisu pronađene referencije",
+	"proveit-filter-fields": "Filtriraj polja",
+	"proveit-filter-references": "Filtriraj referencije",
+	"proveit-show-all-button": "Prikaži sva polja",
+	"proveit-today-button": "Danas",
+	"proveit-citoid-label": "Automatska referencija",
+	"proveit-citoid-tooltip": "Upišite URL, DOI, ISBN ili PMC/PMID da biste automatski pokušali dobiti podatke pomoću usluge Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ili PMC/PMID",
+	"proveit-citoid-load": "Učitaj",
+	"proveit-citoid-loading": "Učitavam...",
+	"proveit-citoid-error": "Pogrješka"
+}

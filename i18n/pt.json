@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Sophivorus",
-			"He7d3r"
+			"He7d3r",
+			"Hamilton Abreu",
+			"MokaAkashiyaPT"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
@@ -17,5 +19,15 @@
 	"proveit-prompt-name": "A referência precisa de um nome para ser citada:",
 	"proveit-confirm-remove": "Isso eliminará a referência e todas as citações da mesma. Tem certeza?",
 	"proveit-no-template": "Sem predefinição",
-	"proveit-no-references": "Não foram encontradas referências"
+	"proveit-no-references": "Não foram encontradas referências",
+	"proveit-filter-fields": "Filtrar campos",
+	"proveit-filter-references": "Filtrar referências",
+	"proveit-show-all-button": "Mostrar todos os campos",
+	"proveit-today-button": "Hoje",
+	"proveit-citoid-label": "Referência automática",
+	"proveit-citoid-tooltip": "Introduza um URL, DOI, ISBN ou PMC/PMID para tentar extrair os detalhes automaticamente através do serviço Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ou PMC/PMID",
+	"proveit-citoid-load": "Carregar",
+	"proveit-citoid-loading": "A carregar...",
+	"proveit-citoid-error": "Erro"
 }
