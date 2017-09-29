@@ -56,6 +56,12 @@
 	resize: both;
 }
 
+@-moz-document url-prefix() { 
+	#proveit-reference-form {
+		margin-bottom: 50px;
+	}
+}
+
 #proveit-reference-list {
 	margin: 0;
 	padding: 0;
