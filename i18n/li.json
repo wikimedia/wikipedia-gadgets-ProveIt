@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ooswesthoesbes"
+			"Ooswesthoesbes",
+			"Pahles"
 		]
 	},
 	"proveit-list-tab": "Lies ($1)",
@@ -19,7 +20,7 @@
 	"proveit-no-references": "Gein rifferensies gevónje",
 	"proveit-filter-fields": "Filtjer veljer",
 	"proveit-filter-references": "Filtjer rifferensies",
-	"proveit-show-all-button": "Toean alle veljer",
+	"proveit-show-all-button": "Tuin alle veldjer",
 	"proveit-today-button": "Dezen daag",
 	"proveit-citoid-label": "Automatische rifferensies",
 	"proveit-citoid-tooltip": "Veur URL, DOI, ISBN of PMC/PMID in veure details automatisch via de Citoid-service te perbere te ónttrèkke",
