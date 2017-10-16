@@ -20,7 +20,12 @@
 	"proveit-no-references": "Ниједна референца није пронађена",
 	"proveit-filter-fields": "Филтер за поља",
 	"proveit-filter-references": "Филтрирај референце",
+	"proveit-show-all-button": "Прикажи сва поља",
 	"proveit-today-button": "Данас",
+	"proveit-citoid-label": "Аутоматска референца",
+	"proveit-citoid-tooltip": "Унети URL, DOI, ISBN или PMC/PMID ради покушаја извлачења информација аутоматски преко алатке Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN или PMC/PMID",
+	"proveit-citoid-load": "Учитај",
 	"proveit-citoid-loading": "Учитавам...",
 	"proveit-citoid-error": "Грешка"
 }
