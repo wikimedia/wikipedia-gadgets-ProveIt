@@ -1,5 +1,5 @@
 # ProveIt
 
-ProveIt is powerful reference manager for MediaWiki
+ProveIt is a powerful reference manager for Wikipedia (and any other MediaWiki wiki)
 
 Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
