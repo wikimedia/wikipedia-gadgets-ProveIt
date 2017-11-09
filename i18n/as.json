@@ -16,5 +16,15 @@
 	"proveit-prompt-name": "উদ্ধৃতিৰ বাবে তথ্যসূত্ৰৰ এটা নাম দিয়াৰ প্ৰয়োজন:",
 	"proveit-confirm-remove": "এই কাৰ্যই তথ্যসূত্ৰটো আৰু লগৰ সকলো উদ্ধৃতি আঁতৰাই পেলাব। আপুনি নিশ্চিতনে?",
 	"proveit-no-template": "কোনো সাঁচ নাই",
-	"proveit-no-references": "কোনো তথ্যসূত্ৰ পোৱা নগ'ল"
+	"proveit-no-references": "কোনো তথ্যসূত্ৰ পোৱা নগ'ল",
+	"proveit-filter-fields": "ক্ষেত্ৰ ছেকক",
+	"proveit-filter-references": "তথ্যসূত্ৰ ছেকক",
+	"proveit-show-all-button": "সকলো ক্ষেত্ৰ দেখুৱাওক",
+	"proveit-today-button": "আজি",
+	"proveit-citoid-label": "স্বয়ংক্ৰিয় তথ্যসূত্ৰ",
+	"proveit-citoid-tooltip": "Citoid service-ৰ জৰিয়তে স্বয়ংক্ৰিয়ভাৱে সবিশেষ উলিয়াবলৈ এটা URL, DOI, ISBN বা PMC/PMID লিখক।",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN বা PMC/PMID",
+	"proveit-citoid-load": "ল'ড কৰক",
+	"proveit-citoid-loading": "ল'ড হৈ আছে…",
+	"proveit-citoid-error": "ত্ৰুটি"
 }
