@@ -144,6 +144,12 @@
 	width: 100%;
 }
 
+#proveit-reference-form select {
+	-moz-appearance: menulist;
+	-webkit-appearance: menulist;
+	padding: .4em .1em;
+}
+
 #proveit-reference-form textarea {
 	height: 60px;
 	resize: vertical;
