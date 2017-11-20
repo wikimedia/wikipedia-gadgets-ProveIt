@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"proveit-list-tab": "Elenghe ($1)",
+	"proveit-add-tab": "Aggiunge",
+	"proveit-reference-name-label": "Nome de referimende",
+	"proveit-reference-content-label": "Condenute de referimende",
+	"proveit-reference-template-label": "Template prengepàle",
+	"proveit-cite-button": "Cite",
+	"proveit-remove-button": "Live",
+	"proveit-insert-button": "'Nzerisce",
+	"proveit-update-button": "Aggiorne",
+	"proveit-prompt-name": "'U referimende abbesogne de 'nu nome pe essere citate:",
+	"proveit-confirm-remove": "Quiste leve 'u referimende a tutte le citaziune sue. Sì secure?",
+	"proveit-no-template": "Nisciune template",
+	"proveit-no-references": "Nisciune referimende acchiate",
+	"proveit-filter-fields": "Filtre le cambe",
+	"proveit-filter-references": "Filtre le refereminde",
+	"proveit-show-all-button": "Fà 'ndrucà tutte le cambe",
+	"proveit-today-button": "Osce",
+	"proveit-citoid-label": "Referimende automateche",
+	"proveit-citoid-load": "Careche",
+	"proveit-citoid-loading": "Stoche a careche…",
+	"proveit-citoid-error": "Errore"
+}
