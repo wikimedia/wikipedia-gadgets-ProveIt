@@ -22,6 +22,8 @@
 	"proveit-show-all-button": "Fà 'ndrucà tutte le cambe",
 	"proveit-today-button": "Osce",
 	"proveit-citoid-label": "Referimende automateche",
+	"proveit-citoid-tooltip": "Mitte 'nURL, DOI, iSBN o PMC/PMID pe pruvà a fà assè fore le dettaglie automatece ausanne 'u servizie Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
 	"proveit-citoid-load": "Careche",
 	"proveit-citoid-loading": "Stoche a careche…",
 	"proveit-citoid-error": "Errore"
