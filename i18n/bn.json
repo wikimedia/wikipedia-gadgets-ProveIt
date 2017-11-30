@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Aftabuzzaman",
-			"Mohammed Galib Hasan"
+			"Mohammed Galib Hasan",
+			"Rasal Lia"
 		]
 	},
 	"proveit-list-tab": "মোট ($1টি)",
@@ -23,6 +24,7 @@
 	"proveit-show-all-button": "সব ক্ষেত্র দেখান",
 	"proveit-today-button": "আজ",
 	"proveit-citoid-label": "স্বয়ংক্রিয় তথ্যসূত্র",
+	"proveit-citoid-tooltip": "Citoid সেবা হতে বিস্তারিত জানার চেষ্টা করতে URL, DOI,ISBN অথবা PMC/PMID প্রবেশ করান",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN বা PMC/PMID",
 	"proveit-citoid-load": "লোড করুন",
 	"proveit-citoid-loading": "লোড হচ্ছে...",
