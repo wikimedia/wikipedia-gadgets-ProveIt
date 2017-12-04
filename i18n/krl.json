@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ilja.mos"
+		]
+	},
+	"proveit-list-tab": "Luvettelo ($1)",
+	"proveit-add-tab": "Lisyä",
+	"proveit-reference-name-label": "Viittehen nimi",
+	"proveit-reference-content-label": "Viittehen šisältö",
+	"proveit-reference-template-label": "Piämalli",
+	"proveit-cite-button": "Viittua",
+	"proveit-remove-button": "Poissa",
+	"proveit-insert-button": "Lisyä",
+	"proveit-update-button": "Päivitä",
+	"proveit-prompt-name": "Viiteheh pitäy lisätä nimi, jotta še ruatais:",
+	"proveit-confirm-remove": "Oletko varma, jotta tahot poistua viittehen?",
+	"proveit-no-template": "Ilman mallie",
+	"proveit-no-references": "Viitehtä ei löytyn",
+	"proveit-filter-fields": "Rajua kentät",
+	"proveit-filter-references": "Rajua viittehet",
+	"proveit-show-all-button": "Näytä kaikki",
+	"proveit-today-button": "Tänäpiänä",
+	"proveit-citoid-label": "Automuattini viiteh",
+	"proveit-citoid-tooltip": "Eči viittehen tietuo URL, DOI, ISBN tahi PMC/PMID tunnistehella",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN tahi PMC/PMID",
+	"proveit-citoid-load": "Latua",
+	"proveit-citoid-loading": "Latauš...",
+	"proveit-citoid-error": "Hairahuš"
+}
