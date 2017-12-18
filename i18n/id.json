@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hidayatsrf"
+		]
+	},
+	"proveit-list-tab": "Daftar ($1)",
+	"proveit-add-tab": "Tambahkan",
+	"proveit-reference-name-label": "Nomor referensi",
+	"proveit-reference-content-label": "Teks referensi",
+	"proveit-reference-template-label": "Templat utama",
+	"proveit-cite-button": "Kutip",
+	"proveit-remove-button": "Hapus",
+	"proveit-insert-button": "Sisipkan",
+	"proveit-update-button": "Perbarui",
+	"proveit-prompt-name": "Referensi membutuhkan nama untuk dikutip:",
+	"proveit-confirm-remove": "Ini akan menghapus referensi dan semua kutipanya. Apakah Anda yakin?",
+	"proveit-no-template": "Templat tidak ada",
+	"proveit-no-references": "Tidak ada referensi ditemukan",
+	"proveit-filter-fields": "Saring form",
+	"proveit-filter-references": "Saring referensi",
+	"proveit-show-all-button": "Tampilkan semua form",
+	"proveit-today-button": "Hari ini",
+	"proveit-citoid-label": "Referensi otomatis",
+	"proveit-citoid-tooltip": "Masukan URL, DOI, ISBN atau PMC/PMID untuk mencoba mengekstrak detail secara otomatis melalui layanan citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN atau PMC/PMID",
+	"proveit-citoid-load": "Muatkan",
+	"proveit-citoid-loading": "Memuat...",
+	"proveit-citoid-error": "Kesalahan"
+}
