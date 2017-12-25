@@ -22,6 +22,7 @@
 	"proveit-show-all-button": "All Felder weisen",
 	"proveit-today-button": "Haut",
 	"proveit-citoid-label": "Automatesch Referenz",
+	"proveit-citoid-tooltip": "Gitt eng URL, DOI, ISBN oder PMC/PMID a fir ze probéiere fir Detailer automatesch mam Citoid-Service erauszezéien.",
 	"proveit-citoid-placeholder": "URL, DOI ISBN oder PMC/PMID",
 	"proveit-citoid-load": "Lueden",
 	"proveit-citoid-loading": "Lueden...",
