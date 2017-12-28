@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"proveit-list-tab": "Lista ($1)",
+	"proveit-add-tab": "Afegeix",
+	"proveit-reference-name-label": "Nom de la referència",
+	"proveit-reference-content-label": "Contingut de la referència",
+	"proveit-reference-template-label": "Plantilla principal",
+	"proveit-cite-button": "Cita",
+	"proveit-insert-button": "Inserta",
+	"proveit-update-button": "Actualitza",
+	"proveit-no-template": "Cap plantilla",
+	"proveit-no-references": "No s’ha trobat cap referència",
+	"proveit-filter-fields": "Filtra els camps",
+	"proveit-filter-references": "Filtra les referències",
+	"proveit-show-all-button": "Mostra tots els camps",
+	"proveit-today-button": "Avui",
+	"proveit-citoid-label": "Referència automàtica",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-citoid-load": "Carrega",
+	"proveit-citoid-loading": "S’està carregant…",
+	"proveit-citoid-error": "Error"
+}
