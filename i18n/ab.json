@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Абухба Андрей",
+			"Андрей"
+		]
+	},
+	"proveit-list-tab": "Ахьӡынҵа ($1)",
+	"proveit-add-tab": "Иацҵатәуп",
+	"proveit-reference-template-label": "Ихадоу ашаблон",
+	"proveit-remove-button": "Ианыхтәуп",
+	"proveit-update-button": "Ирҿыцтәуп",
+	"proveit-no-template": "Ашаблон ыҟам",
+	"proveit-no-references": "Ахыҵхырҭақәа ҧшаам",
+	"proveit-today-button": "Иахьа",
+	"proveit-citoid-placeholder": "Азхьарҧш, DOI, ISBN ма PMC/PMID",
+	"proveit-citoid-load": "Иҭагалатәуп",
+	"proveit-citoid-loading": "Аҭагалара...",
+	"proveit-citoid-error": "Агха"
+}
