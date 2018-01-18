@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"proveit-add-tab": "Pievienot",
+	"proveit-remove-button": "Noņemt",
+	"proveit-insert-button": "Ievietot",
+	"proveit-today-button": "Šodiena",
+	"proveit-citoid-label": "Automātiska atsauce",
+	"proveit-citoid-load": "Ielādēt",
+	"proveit-citoid-error": "Kļūda"
+}

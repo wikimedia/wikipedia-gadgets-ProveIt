@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Manik Soren"
+		]
+	},
+	"proveit-list-tab": "ᱛᱟᱹᱞᱠᱟᱹ ($1)",
+	"proveit-add-tab": "ᱥᱮᱞᱮᱫ",
+	"proveit-remove-button": "ᱚᱪᱚᱜ",
+	"proveit-insert-button": "ᱵᱚᱞᱚ",
+	"proveit-today-button": "ᱛᱤᱦᱤᱧ",
+	"proveit-citoid-loading": "ᱦᱤᱡᱩᱜᱠᱟᱱᱟ..."
+}
