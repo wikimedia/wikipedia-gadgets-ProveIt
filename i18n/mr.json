@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tiven2240"
+		]
+	},
+	"proveit-list-tab": "सूची ($1)",
+	"proveit-add-tab": "जोडा",
+	"proveit-reference-name-label": "संदर्भ नाव",
+	"proveit-reference-content-label": "संदर्भ सामग्री",
+	"proveit-reference-template-label": "प्रमुख साचे",
+	"proveit-cite-button": "स्रोत",
+	"proveit-remove-button": "हटवा",
+	"proveit-insert-button": "समाविष्ट करा",
+	"proveit-update-button": "अद्ययावत करा",
+	"proveit-prompt-name": "उद्धृत करण्यासाठी संदर्भाला एक नाव आवश्यक आहे:",
+	"proveit-confirm-remove": "हे संदर्भ आणि त्याच्या सर्व उद्धरणे काढेल. तुला खात्री आहे?",
+	"proveit-no-template": "साचा जोडा",
+	"proveit-no-references": "कुठलाही संदर्भ सापडला नाही.",
+	"proveit-filter-fields": "फिल्टर फील्ड",
+	"proveit-filter-references": "फिल्टर संदर्भ",
+	"proveit-show-all-button": "पूर्ण फील्ड पहा",
+	"proveit-today-button": "आज",
+	"proveit-citoid-label": "स्वयंचलित संदर्भ",
+	"proveit-citoid-tooltip": "Citoid सेवेद्वारे आपोआप तपशील काढण्याचा प्रयत्न करण्यासाठी URL, DOI, ISBN किंवा PMC / PMID प्रविष्ट करा",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN किव्हा PMC/PMID",
+	"proveit-citoid-load": "भारण करा",
+	"proveit-citoid-loading": "लोड करीत आहे...",
+	"proveit-citoid-error": "त्रुटी"
+}
