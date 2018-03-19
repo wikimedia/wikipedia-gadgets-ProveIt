@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bikarhêner"
+		]
+	},
+	"proveit-list-tab": "Lîste ($1)",
+	"proveit-add-tab": "Lê zêde bike",
+	"proveit-reference-name-label": "Navê çavkaniyê",
+	"proveit-reference-content-label": "Naveroka çavkaniyê",
+	"proveit-remove-button": "Rake",
+	"proveit-insert-button": "Tevlî bike",
+	"proveit-update-button": "Nû bike",
+	"proveit-today-button": "Îro",
+	"proveit-citoid-load": "Bar bike",
+	"proveit-citoid-loading": "Tê barkirin...",
+	"proveit-citoid-error": "Çewtî"
+}
