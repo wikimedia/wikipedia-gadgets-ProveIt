@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aefgh39622"
+		]
+	},
+	"proveit-list-tab": "รายการ ($1)",
+	"proveit-add-tab": "เพิ่ม",
+	"proveit-reference-name-label": "ชื่อแหล่งอ้างอิง",
+	"proveit-reference-content-label": "เนื้อหาอ้างอิง",
+	"proveit-reference-template-label": "แม่แบบหลัก",
+	"proveit-cite-button": "อ้างอิง",
+	"proveit-remove-button": "ลบออก",
+	"proveit-insert-button": "แทรก",
+	"proveit-update-button": "อัปเดต",
+	"proveit-prompt-name": "จำเป็นต้องระบุชื่อแหล่งอ้างอิง:",
+	"proveit-confirm-remove": "การดำเนินการนี้จะลบรายการอ้างอิงทั้งหมด คุณแน่ใจหรือไม่?",
+	"proveit-no-template": "ไม่มีแม่แบบ",
+	"proveit-no-references": "ไม่พบรายการอ้างอิง",
+	"proveit-filter-fields": "กรองเขตข้อมูล",
+	"proveit-filter-references": "กรองรายการอ้างอิง",
+	"proveit-show-all-button": "แสดงเขตข้อมูลทั้งหมด",
+	"proveit-today-button": "วันนี้",
+	"proveit-citoid-label": "รายการอ้างอิงอัตโนมัติ",
+	"proveit-citoid-tooltip": "ป้อน URL, DOI, ISBN หรือ PMC/PMID เพื่อลองแยกรายละเอียดอัตโนมัติผ่านบริการ Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN หรือ PMC/PMID",
+	"proveit-citoid-load": "โหลด",
+	"proveit-citoid-loading": "กำลังโหลด...",
+	"proveit-citoid-error": "ข้อผิดพลาด"
+}
