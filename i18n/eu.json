@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Subi",
-			"Mikel Ibaiba"
+			"Mikel Ibaiba",
+			"Theklan"
 		]
 	},
 	"proveit-list-tab": "Zerrenda ($1)",
@@ -10,7 +11,7 @@
 	"proveit-reference-name-label": "Erreferentziaren izena",
 	"proveit-reference-content-label": "Erreferentziaren edukia",
 	"proveit-reference-template-label": "Txantiloi nagusia",
-	"proveit-cite-button": "Aipatu",
+	"proveit-cite-button": "Erreferentzia",
 	"proveit-remove-button": "Kendu",
 	"proveit-insert-button": "Txertatu",
 	"proveit-update-button": "Eguneratu",

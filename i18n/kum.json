@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"ArslanX"
+		]
+	},
+	"proveit-list-tab": "Сиягь ($1)",
+	"proveit-add-tab": "Къошмакъ",
+	"proveit-reference-template-label": "Аслу уьлгю",
+	"proveit-remove-button": "Тайдырмакъ",
+	"proveit-insert-button": "Гийирмек",
+	"proveit-update-button": "Янгыртмакъ",
+	"proveit-no-template": "Уьлгю ёкъ",
+	"proveit-no-references": "Эниклер табылмагъан",
+	"proveit-today-button": "Бугюн",
+	"proveit-citoid-placeholder": "Байланыв, DOI, ISBN яда PMC/PMID",
+	"proveit-citoid-load": "Юклемек",
+	"proveit-citoid-loading": "Юклев...",
+	"proveit-citoid-error": "Янгылыш"
+}
