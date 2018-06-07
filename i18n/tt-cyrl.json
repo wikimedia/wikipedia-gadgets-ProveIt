@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ильнар"
+		]
+	},
+	"proveit-list-tab": "Исемлек ($1)",
+	"proveit-add-tab": "Өстәү",
+	"proveit-reference-name-label": "Чыгарылма исеме",
+	"proveit-reference-content-label": "Чыгарма эчтәлеге",
+	"proveit-reference-template-label": "Төп калып",
+	"proveit-cite-button": "Өземтәләү",
+	"proveit-remove-button": "Бетерү",
+	"proveit-insert-button": "Өстәү",
+	"proveit-update-button": "Яңарту",
+	"proveit-prompt-name": "ЧЫганакны өземтәләү өчен исем кую кирәк:",
+	"proveit-confirm-remove": "Чыганак белән бергә өземтәләү дә бетереләчәк. Сез килешәсезме?",
+	"proveit-no-template": "Калып юк",
+	"proveit-no-references": "ЧЫганаклар табылмады",
+	"proveit-filter-fields": "Юл фильтры",
+	"proveit-filter-references": "Чыгарылма фильтры",
+	"proveit-show-all-button": "Барлык юлларны күрсәтү",
+	"proveit-today-button": "Бүген",
+	"proveit-citoid-label": "Автоматик чыгарылма",
+	"proveit-citoid-tooltip": "Citoid сервисы аша автоматик рәвештә тулырак мәгълүмат алу өчен URL, DOI, ISBN яисә PMC/PMID сылтамаларын кертегез",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN яисә PMC/PMID",
+	"proveit-citoid-load": "Йөкләү",
+	"proveit-citoid-loading": "Йөкләү...",
+	"proveit-citoid-error": "Хата"
+}
