@@ -4,7 +4,8 @@
 			"Agnieszka Dul",
 			"Michał Sobkowski",
 			"Chrumps",
-			"InternerowyGołąb"
+			"InternerowyGołąb",
+			"Sp5uhe"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
@@ -21,9 +22,11 @@
 	"proveit-no-template": "Brak szablonu",
 	"proveit-no-references": "Nie znaleziono źródła",
 	"proveit-filter-fields": "Filtrowanie pól",
+	"proveit-filter-references": "Filtruj przypisy",
 	"proveit-show-all-button": "Pokaż wszystkie pola",
 	"proveit-today-button": "Dzisiaj",
 	"proveit-citoid-label": "Automatyczny przypis",
+	"proveit-citoid-tooltip": "Wprowadź URL, DOI, ISBN lub PMC/PMID, aby spróbować wypełnić szczegóły automatycznie z wykorzystaniem serwisu Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN lub PMC/PMID",
 	"proveit-citoid-load": "Zzaładuj",
 	"proveit-citoid-loading": "Ładowanie...",
