@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dr Lotus Black"
+		]
+	},
+	"proveit-add-tab": "ပေါင်းထည့်ရန်",
+	"proveit-reference-content-label": "ကိုးကား အကြောင်းအရာ",
+	"proveit-reference-template-label": "ပင်မ တမ်းပလိတ်",
+	"proveit-remove-button": "ဖယ်ရှားရန်",
+	"proveit-insert-button": "ထည့်ရန်",
+	"proveit-update-button": "မွမ်းမံ",
+	"proveit-no-template": "တမ်းပလိတ် မရှိပါ",
+	"proveit-today-button": "ယနေ့"
+}
