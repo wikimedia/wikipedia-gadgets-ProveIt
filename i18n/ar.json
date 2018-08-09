@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mido",
+			"ديفيد"
+		]
+	},
+	"proveit-list-tab": "قائمة ($1)",
+	"proveit-add-tab": "إضافة",
+	"proveit-reference-name-label": "اسم المرجع",
+	"proveit-reference-content-label": "محتوى المرجع",
+	"proveit-reference-template-label": "القالب الرئيسي",
+	"proveit-cite-button": "استشهاد",
+	"proveit-remove-button": "إزالة",
+	"proveit-insert-button": "إدراج",
+	"proveit-update-button": "تحديث",
+	"proveit-prompt-name": "يحتاج المرجع إلى اسم لكي يتم الاستشهاد به:",
+	"proveit-confirm-remove": "سيؤدي هذا إلى إزالة المرجع وجميع الاستشهادات، هل أنت واثق؟",
+	"proveit-no-template": "لا يوجد قالب",
+	"proveit-no-references": "لم يتم العثور على مراجع",
+	"proveit-filter-fields": "تصفية الحقول",
+	"proveit-filter-references": "تصفية المراجع",
+	"proveit-show-all-button": "عرض جميع الحقول",
+	"proveit-today-button": "اليوم",
+	"proveit-citoid-label": "المرجع التلقائي",
+	"proveit-citoid-tooltip": "أدخل مسارا أو معرف الوثيقة الرقمية أو الرقم الدولي المعياري للكتاب أو ببمد سنترال/معرف بوبميد لمحاولة استخراج التفاصيل تلقائيا من خلال خدمة سايتويد",
+	"proveit-citoid-placeholder": "مسار أو معرف الوثيقة الرقمية أو الرقم الدولي المعياري للكتاب أو ببمد سنترال/معرف بوبميد",
+	"proveit-citoid-load": "تحميل",
+	"proveit-citoid-loading": "جارٍ التحميل...",
+	"proveit-citoid-error": "خطأ"
+}
