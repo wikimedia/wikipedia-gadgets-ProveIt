@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Patriccck"
+		]
+	},
+	"proveit-list-tab": "Seznam ($1)",
+	"proveit-add-tab": "Přidat",
+	"proveit-reference-name-label": "Název reference",
+	"proveit-reference-content-label": "Obsah reference",
+	"proveit-reference-template-label": "Hlavní šablona",
+	"proveit-cite-button": "Citace",
+	"proveit-remove-button": "Odebrat",
+	"proveit-insert-button": "Vložit",
+	"proveit-update-button": "Aktualizovat",
+	"proveit-prompt-name": "Reference potřebuje jméno, aby mohla být citována:",
+	"proveit-confirm-remove": "Tímto odstraníte reference a všechny její citace. Jste si jisti?",
+	"proveit-no-template": "Žádná šablona",
+	"proveit-no-references": "Nebyla nalezena žádná reference",
+	"proveit-filter-fields": "Filtrování polí",
+	"proveit-filter-references": "Filtr referencí",
+	"proveit-show-all-button": "Zobrazit všechna pole",
+	"proveit-today-button": "Dnes",
+	"proveit-citoid-label": "Automatická reference",
+	"proveit-citoid-tooltip": "Zadejte adresu URL, DOI, ISBN nebo PMC / PMID, chcete-li zkusit automatické extrahování detailů prostřednictvím služby Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN nebo PMC/PMID",
+	"proveit-citoid-load": "Načíst",
+	"proveit-citoid-loading": "Načítání…",
+	"proveit-citoid-error": "Chyba"
+}
