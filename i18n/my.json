@@ -5,11 +5,18 @@
 		]
 	},
 	"proveit-add-tab": "ပေါင်းထည့်ရန်",
+	"proveit-reference-name-label": "ကိုးကားချက် အမည်",
 	"proveit-reference-content-label": "ကိုးကား အကြောင်းအရာ",
 	"proveit-reference-template-label": "ပင်မ တမ်းပလိတ်",
+	"proveit-cite-button": "ကိုးကားရန်",
 	"proveit-remove-button": "ဖယ်ရှားရန်",
 	"proveit-insert-button": "ထည့်ရန်",
 	"proveit-update-button": "မွမ်းမံ",
 	"proveit-no-template": "တမ်းပလိတ် မရှိပါ",
-	"proveit-today-button": "ယနေ့"
+	"proveit-no-references": "ကိုးကားချက်များ မတွေ့ပါ",
+	"proveit-filter-references": "ကိုးကားချက်များ စိစစ်ရန်",
+	"proveit-today-button": "ယနေ့",
+	"proveit-citoid-label": "အလိုအလျောက် ကိုးကားချက်",
+	"proveit-citoid-loading": "ဝန်ဆွဲတင်နေသည်...",
+	"proveit-citoid-error": "အမှား"
 }

@@ -24,7 +24,7 @@
 	"proveit-show-all-button": "Показать все поля",
 	"proveit-today-button": "Сегодня",
 	"proveit-citoid-label": "Автоматическая сноска",
-	"proveit-citoid-tooltip": "Введите ссылку, DOI, ISBN или PMC/PMID, чтобы попытаться извлечь подробности автоматически через сервис Citoid",
+	"proveit-citoid-tooltip": "Введите ссылку, DOI, ISBN или PMC/PMID, чтобы попытаться автоматически извлечь сведения через сервис Citoid",
 	"proveit-citoid-placeholder": "Ссылка, DOI, ISBN или PMC/PMID",
 	"proveit-citoid-load": "Загрузить",
 	"proveit-citoid-loading": "Загрузка…",

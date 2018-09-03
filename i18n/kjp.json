@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rul1902"
+		]
+	},
+	"proveit-list-tab": "ဆ်ုတုဂ် $1",
+	"proveit-add-tab": "ဍုဂ်ဍိင်လင်",
+	"proveit-reference-name-label": "အ်ုထိုဝ် မၠိင်",
+	"proveit-reference-content-label": "အ်ုထိုဝ် အ်ုခဝ့်ပ်ုယဝ့်",
+	"proveit-reference-template-label": "တန်ပ်ုလိတ် ခေါဟ်ဍံင်",
+	"proveit-cite-button": "မာၮေဝ် အ်ုထိုဝ်",
+	"proveit-remove-button": "မ်ုထုက်",
+	"proveit-insert-button": "ဍုဂ်လင်",
+	"proveit-update-button": "မာၰီ့",
+	"proveit-no-template": "တန်ပ်ုလိတ် လ်ုအ်ှၜး",
+	"proveit-no-references": "တန်ပ်ုလိတ် လ်ုဍးၜး",
+	"proveit-filter-references": "မာၮေဝ်အ်ုထိုဝ်သယ် မ်ုယေဝ်ႋထါင်",
+	"proveit-today-button": "လ်ုၮီယိုဝ်",
+	"proveit-citoid-label": "အ်ုဆ်ုမာလ်ုအှ် မာၮေဝ်အ်ုထိုဝ်",
+	"proveit-citoid-loading": "ဆ်ုယှိင့်မ်ုကြုဒ်လုဂ်",
+	"proveit-citoid-error": "ဆ်ုမာ့"
+}
