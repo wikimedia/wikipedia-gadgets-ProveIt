@@ -13,11 +13,18 @@
 	"proveit-remove-button": "မ်ုထုက်",
 	"proveit-insert-button": "ဍုဂ်လင်",
 	"proveit-update-button": "မာၰီ့",
+	"proveit-prompt-name": "တုဂ်ၮေဝ်ႋအ်ုဍံင်လင်ၮှ် လိက်မေံမိင်အ်ုလူးအ်ှထာ့အှ် လိက်အ်ှဆိင့်သယ်မာ့ ၮေဝ်လ်ှ:",
+	"proveit-confirm-remove": "ၮ်ုအ်ုမာဆ်ုမာယိုဝ် အ်ုဝေ့တုဂ်ၮေဝ်ႋအ်ုဍံင်လ်ု လိက်အင်းအုဂ်သယ်လ်ုဖး မာဆိုင့်လုက်ကၠာ။ ထီ့ဆာ့ဝှး။",
 	"proveit-no-template": "တန်ပ်ုလိတ် လ်ုအ်ှၜး",
 	"proveit-no-references": "တန်ပ်ုလိတ် လ်ုဍးၜး",
+	"proveit-filter-fields": "လုဲႋဍာၮဲယွာႋပြင်",
 	"proveit-filter-references": "မာၮေဝ်အ်ုထိုဝ်သယ် မ်ုယေဝ်ႋထါင်",
+	"proveit-show-all-button": "လုဲႋဍာၮဲယွာႋပြင်လုက်ကၠာ",
 	"proveit-today-button": "လ်ုၮီယိုဝ်",
 	"proveit-citoid-label": "အ်ုဆ်ုမာလ်ုအှ် မာၮေဝ်အ်ုထိုဝ်",
+	"proveit-citoid-tooltip": "Enter a URL, DOI, ISBN or PMC/PMID to try to extract the details automatically through the Citoid service",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN or PMC/PMID",
+	"proveit-citoid-load": "ဆောဝ်ႋ",
 	"proveit-citoid-loading": "ဆ်ုယှိင့်မ်ုကြုဒ်လုဂ်",
 	"proveit-citoid-error": "ဆ်ုမာ့"
 }
