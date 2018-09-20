@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aue Nai"
+		]
+	},
+	"proveit-list-tab": "စရၚ်($1)",
+	"proveit-add-tab": "ထပ်",
+	"proveit-reference-name-label": "ယၟုနိဿဲ",
+	"proveit-reference-content-label": "အဆက်စပ်နိဿဲ",
+	"proveit-reference-template-label": "တာန်ပလုတ်အဓိက",
+	"proveit-cite-button": "ကဵုနိဿဲ",
+	"proveit-remove-button": "ပတိတ်",
+	"proveit-insert-button": "စုတ်",
+	"proveit-update-button": "ပခိုဟ်လဟဵု",
+	"proveit-prompt-name": "အရာနိဿဲဏအ်နွံပၟိက်ကဵုယၟုမွဲမွဲတၞဟ်နဂွံကဵုနိဿဲ",
+	"proveit-confirm-remove": "ဣဏံဂှ်ပတိတ်ထောံမနိဿဲကေုာံမကဵုလဝ်နိဿဲတအ်ဖအိုတ်ဏောၚ်။ ညးလွပ်စှ်ေစိုတ်ယျဟာ",
+	"proveit-no-template": "တာန်ပလုတ်ဟွံမွဲ",
+	"proveit-no-references": "ဟွံဆဵုညာတ်ကေတ်အရာနိဿဲ",
+	"proveit-filter-fields": "ဝှာၚ်ဓဍိုဟ်ဂမၠိုၚ်",
+	"proveit-filter-references": "ထဍိုဟ်နိဿဲဂမၠိုၚ်",
+	"proveit-show-all-button": "ထမံက်ကဵုဝှာၚ်ဖအိုတ်",
+	"proveit-today-button": "တ္ၚဲဏအ်",
+	"proveit-citoid-label": "ကဵုနိဿဲအလဵုအလဵုဍေံ",
+	"proveit-citoid-tooltip": "စုတ် URL,DOI,ISBN ဟွံသေၚ် PMC/PMID သ္ဂောံဂစာန်သွက်ၜေတ်ပတိတ်တၚ်နၚ်သောဲဗွဲအလဵုအလုံမွဲကမၠောန်Citoid",
+	"proveit-citoid-placeholder": "URL,Dok,ISBN ဟွံသေၚ် PMC/PMID",
+	"proveit-citoid-load": "ပတိုန်\nဒါန်လိက်ပေၚ်အာ ၁၀၀ တုဲညးပလံၚ်နၚ်လိက်အခေါၚ်ကၠောန်ခၞံဒါန်ရ။\nတၚ်ဂုဏ်ရ။",
+	"proveit-citoid-loading": "ပတိုန်ဒၟံၚ်",
+	"proveit-citoid-error": "ဗၠေတ်"
+}
