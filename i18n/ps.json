@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"proveit-add-tab": "ورگډول",
+	"proveit-cite-button": "اخځ",
+	"proveit-remove-button": "غورځول",
+	"proveit-insert-button": "ورټومبل",
+	"proveit-update-button": "اوسمهالول",
+	"proveit-today-button": "نن",
+	"proveit-citoid-load": "برسېرول",
+	"proveit-citoid-loading": "رابرسېرېږي...",
+	"proveit-citoid-error": "تېروتنه"
+}
