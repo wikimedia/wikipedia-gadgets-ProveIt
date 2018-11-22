@@ -7,8 +7,8 @@
 			"BadDog"
 		]
 	},
-	"proveit-list-tab": "Листа ($1)",
-	"proveit-add-tab": "Додај",
+	"proveit-list-tab": "Списак ($1)",
+	"proveit-add-tab": "Додавање",
 	"proveit-reference-name-label": "Име референце",
 	"proveit-reference-content-label": "Садржај референце",
 	"proveit-reference-template-label": "Главни шаблон",
@@ -16,7 +16,7 @@
 	"proveit-remove-button": "Уклони",
 	"proveit-insert-button": "Уметни",
 	"proveit-update-button": "Ажурирај",
-	"proveit-prompt-name": "Референци треба име да би се цитирала:",
+	"proveit-prompt-name": "Референци треба име како би се цитирала:",
 	"proveit-confirm-remove": "Овиме ће се уклонити све референце и сви њени наводи. Јесте ли сигурни?",
 	"proveit-no-template": "Нема шаблона",
 	"proveit-no-references": "Референце нису пронађене",
