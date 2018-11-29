@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Trần Nguyễn Minh Huy"
+		]
+	},
+	"proveit-list-tab": "Danh sách ($1)",
+	"proveit-add-tab": "Thêm",
+	"proveit-reference-name-label": "Tên tham khảo",
+	"proveit-reference-content-label": "Nội dung tham khảo",
+	"proveit-reference-template-label": "Bản mẫu chính",
+	"proveit-cite-button": "Chú thích",
+	"proveit-remove-button": "Loại bỏ",
+	"proveit-insert-button": "Chèn",
+	"proveit-update-button": "Cập nhật",
+	"proveit-prompt-name": "Tham khảo cần một cái tên để được chú thích:",
+	"proveit-confirm-remove": "Việc này sẽ loại bỏ tham khảo và toàn bộ nội dung chú thích của nó. Bạn chắc chứ?",
+	"proveit-no-template": "Không có bản mẫu",
+	"proveit-no-references": "Không tìm thấy tham khảo",
+	"proveit-filter-fields": "Lọc ô điền",
+	"proveit-filter-references": "Lọc tham khảo",
+	"proveit-show-all-button": "Hiện tất cả ô điền",
+	"proveit-today-button": "Hôm nay",
+	"proveit-citoid-label": "Tham khảo tự động",
+	"proveit-citoid-tooltip": "Nhập URL, DOI, ISBN hoặc PMC/PMID để thử truy xuất chi tiết một cách tự động qua dịch vụ Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN hoặc PMC/PMID",
+	"proveit-citoid-load": "Tải",
+	"proveit-citoid-loading": "Đang tải...",
+	"proveit-citoid-error": "Lỗi"
+}
