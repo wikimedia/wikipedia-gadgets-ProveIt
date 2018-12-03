@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zache"
+			"Zache",
+			"Susannaanas"
 		]
 	},
 	"proveit-list-tab": "Viitteet ($1)",
@@ -22,8 +23,8 @@
 	"proveit-show-all-button": "Näytä kaikki",
 	"proveit-today-button": "Tänään",
 	"proveit-citoid-label": "Automaattinen viite",
-	"proveit-citoid-tooltip": "Hae viitteen tietoja URL, DOI, ISBN or PMC/PMID tunnisteella",
-	"proveit-citoid-placeholder": "URL, DOI, ISBN or PMC/PMID",
+	"proveit-citoid-tooltip": "Hae viitteen tietoja URL, DOI, ISBN PMC/PMID tai Wikidatan QID-tunnisteella",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN, PMC/PMID tai QID",
 	"proveit-citoid-load": "Lataa",
 	"proveit-citoid-loading": "Ladataan...",
 	"proveit-citoid-error": "Virhe"
