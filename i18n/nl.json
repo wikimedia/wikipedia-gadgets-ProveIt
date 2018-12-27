@@ -2,13 +2,32 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Marcelhospers",
+			"Optilete"
 		]
 	},
+	"proveit-list-tab": "Lijst ($1)",
 	"proveit-add-tab": "Toevoegen",
+	"proveit-reference-name-label": "Referentie naam",
+	"proveit-reference-content-label": "Referentie inhoud",
 	"proveit-reference-template-label": "Hoofdsjabloon",
+	"proveit-cite-button": "Citeren",
 	"proveit-remove-button": "Verwijderen",
 	"proveit-insert-button": "Invoegen",
 	"proveit-update-button": "Bijwerken",
-	"proveit-no-template": "Geen sjabloon"
+	"proveit-prompt-name": "De referentie heeft een naam nodig om te worden geciteerd:",
+	"proveit-confirm-remove": "Hiermee worden de referentie en alle bijbehorende citaten verwijderd. Weet je het zeker?",
+	"proveit-no-template": "Geen sjabloon",
+	"proveit-no-references": "Geen referenties gevonden.",
+	"proveit-filter-fields": "Filter velden",
+	"proveit-filter-references": "Filter referenties",
+	"proveit-show-all-button": "Toon alle velden",
+	"proveit-today-button": "Vandaag",
+	"proveit-citoid-label": "Automatische referentie",
+	"proveit-citoid-tooltip": "Voer een URL, DOI, ISBN of PMC/PMID in om te proberen de details automatisch uit te pakken via de Citoid-service",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN of PMC/PMID",
+	"proveit-citoid-load": "Laden",
+	"proveit-citoid-loading": "Bezig met laden …",
+	"proveit-citoid-error": "Fout"
 }
