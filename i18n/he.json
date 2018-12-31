@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"YaronSh"
+			"YaronSh",
+			"Strayblues"
 		]
 	},
 	"proveit-list-tab": "רשימה ($1)",
@@ -22,6 +23,7 @@
 	"proveit-show-all-button": "הצגת כל השדות",
 	"proveit-today-button": "היום",
 	"proveit-citoid-label": "הפניה אוטומטית",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN או PMC/PMID",
 	"proveit-citoid-load": "טעינה",
 	"proveit-citoid-loading": "בטעינה…",
 	"proveit-citoid-error": "שגיאה"
