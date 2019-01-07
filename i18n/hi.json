@@ -3,7 +3,8 @@
 		"authors": [
 			"Sfic",
 			"Anamdas",
-			"SatyamMishra"
+			"SatyamMishra",
+			"Gopalindians"
 		]
 	},
 	"proveit-list-tab": "सूची ($1)",
@@ -23,6 +24,10 @@
 	"proveit-filter-references": "सन्दर्भ छननी",
 	"proveit-show-all-button": "सभी फील्ड दिखाएं",
 	"proveit-today-button": "आज",
+	"proveit-citoid-label": "स्वयंचलित संदर्भ",
+	"proveit-citoid-tooltip": "Citoid सेवा के माध्यम से स्वचालित रूप से विवरण निकालने का प्रयास करने के लिए एक URL, DOI, ISBN या PMC/PMID दर्ज करें",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN या PMC/PMID",
+	"proveit-citoid-load": "लोड",
 	"proveit-citoid-loading": "लोड हो रहा है...",
 	"proveit-citoid-error": "त्रुटि"
 }
