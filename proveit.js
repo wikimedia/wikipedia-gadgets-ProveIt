@@ -21,11 +21,6 @@ var proveit = {
 	ICON: '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/ProveIt_logo_for_user_boxes.svg/22px-ProveIt_logo_for_user_boxes.svg.png',
 
 	/**
-	 * URL of the ProveIt icon when the WikiEditor is disabled
-	 */
-	OLDICON: '//upload.wikimedia.org/wikipedia/commons/d/df/ProveitOldIcon.png',
-
-	/**
 	 * Template data retrieved from the local wiki
 	 *
 	 * @type {object} mapping template title to templateData
@@ -156,17 +151,6 @@ var proveit = {
 							}
 						}
 					}
-				});
-			});
-		// Add the ProveIt button in the old toolbar
-		} else if ( mw.user.options.get( 'showtoolbar' ) === 1 ) {
-			mw.loader.using( 'mediawiki.toolbar', function () {
-				$( '<div>' )
-				.addClass( 'mw-toolbar-editbutton' )
-				.attr( 'title', 'ProveIt' )
-				.css( 'background-image', 'url(' + proveit.OLDICON + ')' )
-				.appendTo( '#toolbar' ).click( function () {
-					$( '#proveit' ).toggle();
 				});
 			});
 		}
