@@ -3,11 +3,12 @@
 		"authors": [
 			"Sophivorus",
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"Tiberius1701"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Agregar",
+	"proveit-add-tab": "Añadir",
 	"proveit-reference-name-label": "Nombre de la referencia",
 	"proveit-reference-content-label": "Contenido de la referencia",
 	"proveit-reference-template-label": "Plantilla principal",
@@ -24,7 +25,7 @@
 	"proveit-show-all-button": "Mostrar todos los campos",
 	"proveit-today-button": "Hoy",
 	"proveit-citoid-label": "Referencia automática",
-	"proveit-citoid-tooltip": "Proporciona un URL, DOI, ISBN o PMC/PMID para intentar extraer los detalles automáticamente a través del servicio Citoid",
+	"proveit-citoid-tooltip": "Introduce tu URL, DOI, ISBN o PMC/PMID para intentar extraer los detalles automáticamente a través del servicio Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
 	"proveit-citoid-load": "Cargar",
 	"proveit-citoid-loading": "Cargando…",
