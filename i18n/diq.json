@@ -1,11 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali"
+			"Mirzali",
+			"Orbot707"
 		]
 	},
 	"proveit-list-tab": "Liste ($1)",
 	"proveit-add-tab": "Cı ke",
+	"proveit-reference-name-label": "Nameyê çımeyi",
+	"proveit-reference-content-label": "Zerrekê çımeyi",
+	"proveit-reference-template-label": "Şablono serên",
+	"proveit-cite-button": "Vate",
+	"proveit-remove-button": "Wedare",
+	"proveit-insert-button": "Cı ke",
+	"proveit-update-button": "Rocane ke",
 	"proveit-today-button": "Ewro",
 	"proveit-citoid-load": "Bar ke",
 	"proveit-citoid-loading": "Bar beno...",

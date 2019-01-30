@@ -25,7 +25,7 @@
 	"proveit-show-all-button": "Mostrar todos los campos",
 	"proveit-today-button": "Hoy",
 	"proveit-citoid-label": "Referencia automática",
-	"proveit-citoid-tooltip": "Introduce tu URL, DOI, ISBN o PMC/PMID para intentar extraer los detalles automáticamente a través del servicio Citoid",
+	"proveit-citoid-tooltip": "Proporciona un URL, DOI, ISBN o PMC/PMID para intentar extraer los detalles automáticamente a través del servicio Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
 	"proveit-citoid-load": "Cargar",
 	"proveit-citoid-loading": "Cargando…",
