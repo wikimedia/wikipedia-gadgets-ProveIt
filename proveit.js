@@ -1,5 +1,5 @@
 /**
- * ProveIt is a powerful reference manager for Wikipedia (and any other MediaWiki wiki)
+ * ProveIt is a reference manager for Wikipedia (and any other MediaWiki wiki)
  * Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
@@ -22,6 +22,7 @@ var proveit = {
 
 	/**
 	 * Template data retrieved from the local wiki
+	 * This object is populated when initializing ProveIt
 	 *
 	 * @type {object} mapping template title to templateData
 	 */
@@ -29,6 +30,7 @@ var proveit = {
 
 	/**
 	 * Content language of the local wiki
+	 * This property is set when initializing ProveIt
 	 *
 	 * @type {string} defaults to English
 	 */
@@ -90,6 +92,7 @@ var proveit = {
 			var messages = {},
 				content;
 			// The Commons page for English messages has the lowest page id so it will always be first in the loop
+			// This solution works and will probably always work, but it could be a lot less obscure
 			for ( var page in data.query.pages ) {
 				if ( page > -1 ) {
 					page = data.query.pages[ page ];
@@ -127,7 +130,7 @@ var proveit = {
 			});
 		});
 
-		// Replace the Reference button for the ProveIt button in the new toolbar
+		// If the WikiEditor toolbar is available, replace the Reference button for the ProveIt button
 		if ( mw.user.options.get( 'usebetatoolbar' ) === 1 ) {
 			mw.loader.using( 'ext.wikiEditor.toolbar', function () {
 				proveit.getTextbox().wikiEditor( 'removeFromToolbar', {
@@ -155,7 +158,7 @@ var proveit = {
 			});
 		}
 
-		// Remove on VisualEditor
+		// ProveIt is not useful when using the VisualEditor
 		mw.hook( 've.activate' ).add( function () {
 			$( '#proveit' ).remove();
 		});
@@ -164,9 +167,9 @@ var proveit = {
 		if ( mw.config.get( 'wgAction' ) === 'submit' ) {
 			var currentSummary = $( '#wpSummary' ).val(),
 				proveitSummary = proveit.getOption( 'summary' );
-				if ( proveitSummary && currentSummary.indexOf( proveitSummary ) > -1 ) {
-					proveit.addTag();
-				}
+			if ( proveitSummary && currentSummary.indexOf( proveitSummary ) > -1 ) {
+				proveit.addTag();
+			}
 		}
 	},
 
@@ -760,7 +763,11 @@ var proveit = {
 			var paramOrder = [];
 			if ( this.template ) {
 				var templateData = this.getTemplateData();
-				paramOrder = templateData.paramOrder;
+				if ( templateData.paramOrder ) {
+					paramOrder = templateData.paramOrder;
+				} else if ( templateData.params ) {
+					paramOrder = Object.keys( templateData.params );
+				}
 			}
 			return paramOrder;
 		};
