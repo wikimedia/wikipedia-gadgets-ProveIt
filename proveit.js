@@ -784,10 +784,10 @@ var proveit = {
 				if ( 'main' in templateMap && templateMap.main in this.paramPairs ) {
 					mainValue = this.paramPairs[ templateMap.main ];
 				} else {
-					var templateData = this.getTemplateData(),
+					var paramOrder = this.getParamOrder(),
 						paramName;
-					for ( var i = 0; i < templateData.paramOrder.length; i++ ) {
-						paramName = templateData.paramOrder[ i ];
+					for ( var i = 0; i < paramOrder.length; i++ ) {
+						paramName = paramOrder[ i ];
 						if ( paramName in this.paramPairs ) {
 							mainValue = this.paramPairs[ paramName ];
 							break;
