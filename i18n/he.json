@@ -23,6 +23,7 @@
 	"proveit-show-all-button": "הצגת כל השדות",
 	"proveit-today-button": "היום",
 	"proveit-citoid-label": "הפניה אוטומטית",
+	"proveit-citoid-tooltip": "נא להכניס כתובת אתר, DOI (מזהה עצם דיגיטלי), מסת״ב או PMC/PMID כדי לנסות לחלץ פרטים אוטומטית דרך השירות Citoid",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN או PMC/PMID",
 	"proveit-citoid-load": "טעינה",
 	"proveit-citoid-loading": "בטעינה…",
