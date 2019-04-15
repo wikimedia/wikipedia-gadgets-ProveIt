@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"proveit-list-tab": "Popis ($1)",
+	"proveit-add-tab": "Dodaj",
+	"proveit-reference-name-label": "Naziv reference",
+	"proveit-reference-content-label": "Sadržaj reference",
+	"proveit-reference-template-label": "Glavni šablon",
+	"proveit-cite-button": "Navedi",
+	"proveit-remove-button": "Ukloni",
+	"proveit-insert-button": "Umetni",
+	"proveit-update-button": "Ažuriraj",
+	"proveit-prompt-name": "Referenci treba zadati naziv da bi se mogla navesti:",
+	"proveit-confirm-remove": "Ovim će se ukloniti referenca i svi njeni navodi. Jeste li sigurni?",
+	"proveit-no-template": "Nema šablona",
+	"proveit-no-references": "Nisam pronašao reference",
+	"proveit-filter-fields": "Filtriraj polja",
+	"proveit-filter-references": "Filtriraj reference",
+	"proveit-show-all-button": "Pokaži sva polja",
+	"proveit-today-button": "Danas",
+	"proveit-citoid-label": "Automatska referenca",
+	"proveit-citoid-tooltip": "Upišite URL, DOI, ISBN ili PMC/PMID i s tim pokušajte automatski dobiti podatke pomoću usluge Citoid",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ili PMC/PMID",
+	"proveit-citoid-load": "Učitaj",
+	"proveit-citoid-loading": "Učitavam...",
+	"proveit-citoid-error": "Greška"
+}
