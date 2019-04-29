@@ -23,6 +23,7 @@
 	"proveit-show-all-button": "എല്ലാ മണ്ഡലങ്ങളും കാണിക്കുക",
 	"proveit-today-button": "ഇന്ന്",
 	"proveit-citoid-label": "യാന്ത്രിക അവലംബം",
+	"proveit-citoid-placeholder": "യു.ആർ.എൽ., ഡി.ഓ.ഐ., ഐ.എസ്.ബി.എൻ. അല്ലെങ്കിൽ പി.എം.സി./പി.എം.ഐ.ഡി.",
 	"proveit-citoid-load": "ശേഖരിക്കുക",
 	"proveit-citoid-loading": "ശേഖരിക്കുന്നു...",
 	"proveit-citoid-error": "പിഴവ്"
