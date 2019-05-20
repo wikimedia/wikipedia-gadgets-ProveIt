@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joseagush"
+		]
+	},
+	"proveit-list-tab": "Daptar ($1)",
+	"proveit-reference-name-label": "Nomor reperensi",
+	"proveit-remove-button": "Apus",
+	"proveit-no-template": "Tusing ade templat",
+	"proveit-today-button": "Dina mangkin",
+	"proveit-citoid-label": "Reperensi otomatis",
+	"proveit-citoid-error": "kaluputan"
+}
