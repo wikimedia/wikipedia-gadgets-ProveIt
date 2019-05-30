@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gitartha.bordoloi"
+			"Gitartha.bordoloi",
+			"Simbu123"
 		]
 	},
-	"proveit-list-tab": "তালিকা ($1",
+	"proveit-list-tab": "তালিকা ($1)",
 	"proveit-add-tab": "যোগ কৰক",
 	"proveit-reference-name-label": "তথ্যসূত্ৰৰ নাম",
 	"proveit-reference-content-label": "তথ্যসূত্ৰৰ পাঠ্য",
