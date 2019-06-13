@@ -4,7 +4,8 @@
 			"GMozafarian",
 			"Yoosef Pooranvary",
 			"DEXi",
-			"Alirezaaa"
+			"Alirezaaa",
+			"FarsiNevis"
 		]
 	},
 	"proveit-list-tab": "لیست ($1)",
@@ -15,7 +16,7 @@
 	"proveit-cite-button": "یادکرد",
 	"proveit-remove-button": "حذف",
 	"proveit-insert-button": "درج",
-	"proveit-update-button": "به‌روزرسانی",
+	"proveit-update-button": "روزامدسازی",
 	"proveit-prompt-name": "منبع نیاز به یک نام برای ارجاع دارد:",
 	"proveit-confirm-remove": "با این کار منبع و تمام استنادهای آن را حذف می‌کنید. اطمینان کامل دارید؟",
 	"proveit-no-template": "بدون الگو",

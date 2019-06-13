@@ -16,7 +16,7 @@
 	"proveit-update-button": "Обновяване",
 	"proveit-prompt-name": "Източникът трябва да има име, за може да бъде цитиран:",
 	"proveit-confirm-remove": "Това ще премахне източникът и всички негови цитирания. Сигурни ли сте?",
-	"proveit-no-template": "Няма шаблон",
+	"proveit-no-template": "Без шаблон",
 	"proveit-no-references": "Не са намерени източници",
 	"proveit-filter-fields": "Филтриране на полетата",
 	"proveit-filter-references": "Филтриране на източниците",
