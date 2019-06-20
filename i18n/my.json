@@ -4,6 +4,7 @@
 			"Dr Lotus Black"
 		]
 	},
+	"proveit-list-tab": "($1) စာရင်းပြုပါ",
 	"proveit-add-tab": "ပေါင်းထည့်ရန်",
 	"proveit-reference-name-label": "ကိုးကားချက် အမည်",
 	"proveit-reference-content-label": "ကိုးကား အကြောင်းအရာ",
@@ -12,11 +13,16 @@
 	"proveit-remove-button": "ဖယ်ရှားရန်",
 	"proveit-insert-button": "ထည့်ရန်",
 	"proveit-update-button": "မွမ်းမံ",
+	"proveit-prompt-name": "ကိုးကားချက်ရန် နာမည်တစ်ခုလိုအပ်သည်-",
+	"proveit-confirm-remove": "ဤသည် ကိုးကားချက်များကို ဖယ်ရှားလိုက်မည်ဖြစ်သည်။ သေချာပါသလား။",
 	"proveit-no-template": "တမ်းပလိတ် မရှိပါ",
 	"proveit-no-references": "ကိုးကားချက်များ မတွေ့ပါ",
+	"proveit-filter-fields": "ကွင်းများကို စစ်ထုတ်ရန်",
 	"proveit-filter-references": "ကိုးကားချက်များ စိစစ်ရန်",
+	"proveit-show-all-button": "ကွင်းများအားလုံး ပြသရန်",
 	"proveit-today-button": "ယနေ့",
 	"proveit-citoid-label": "အလိုအလျောက် ကိုးကားချက်",
+	"proveit-citoid-load": "ဝန်ဆွဲတင်",
 	"proveit-citoid-loading": "ဝန်ဆွဲတင်နေသည်...",
 	"proveit-citoid-error": "အမှား"
 }
