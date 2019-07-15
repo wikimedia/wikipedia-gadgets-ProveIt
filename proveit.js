@@ -343,12 +343,21 @@ var proveit = {
 	 * @return {object} reference object
 	 */
 	parseReference: function ( referenceString ) {
-		// Extract the reference name, if any
-		// Three patterns: <ref name="foo">, <ref name='foo'> and <ref name=foo>
+		// Extract the reference name and group, if any
+		// Possible patterns: <ref name="foo">, <ref group='bar'>, <ref name="foo" group = bar >, <ref group=bar name='foo'>
 		var referenceName = null,
-			match = referenceString.match( /<\s*ref\s+name\s*=\s*((["'])(((?!\2).)+)\2|([^\s'">]+))\s*\s*>/i );
-		if ( match ) {
-			referenceName = match[3] || match[5];
+			referenceGroup = null,
+			referenceAttributesMatch = referenceString.match( /<\s*ref([^>]+)>/i );
+		if ( referenceAttributesMatch ) {
+			var referenceAttributes = referenceAttributesMatch[1],
+				referenceNameMatch = referenceAttributes.match( /name\s*=\s*["']?([^"'>]+)["']?/i ),
+				referenceGroupMatch = referenceAttributes.match( /group\s*=\s*["']?([^"'>]+)["']?/i );
+			if ( referenceNameMatch ) {
+				referenceName = referenceNameMatch[1];
+			}
+			if ( referenceGroupMatch ) {
+				referenceGroup = referenceGroupMatch[1];
+			}
 		}
 
 		// Get the index
@@ -360,6 +369,7 @@ var proveit = {
 		// Build the basic reference
 		var reference = new proveit.Reference({
 			'name': referenceName,
+			'group': referenceGroup,
 			'index': referenceIndex,
 			'string': referenceString,
 			'content': referenceContent
@@ -422,6 +432,11 @@ var proveit = {
 		this.name = data.name ? data.name : '';
 
 		/**
+		 * Citation group
+		 */
+		this.group = data.group ? data.group : '';
+
+		/**
 		 * Citation location in the edit textbox
 		 */
 		this.index = data.index ? data.index : 0;
@@ -437,7 +452,12 @@ var proveit = {
 		 * Convert this citation to wikitext
 		 */
 		this.toString = function () {
-			return '<ref name="' + this.name + '" />';
+			var string = '<ref name="' + this.name + '"';
+			if ( this.group ) {
+				string += ' group="' + this.group + '"';
+			}
+			string += ' />';
+			return string;
 		};
 
 		/**
@@ -908,6 +928,9 @@ var proveit = {
 			if ( this.name ) {
 				string += ' name="' + this.name + '"';
 			}
+			if ( this.group ) {
+				string += ' group="' + this.group + '"';
+			}
 			string += '>';
 
 			// Build the template string
@@ -996,6 +1019,14 @@ var proveit = {
 			// Add the reference name field
 			var label = $( '<label>' ).text( proveit.getMessage( 'reference-name-label' ) ),
 				input = $( '<input>' ).attr( 'name', 'reference-name' ).val( this.name ),
+				labelColumn = $( '<td>' ).append( label ),
+				inputColumn = $( '<td>' ).append( input ),
+				row = $( '<tr>' ).append( labelColumn, inputColumn );
+			table.append( row );
+
+			// Add the reference group field
+			var label = $( '<label>' ).text( proveit.getMessage( 'reference-group-label' ) ),
+				input = $( '<input>' ).attr( 'name', 'reference-group' ).val( this.group ),
 				labelColumn = $( '<td>' ).append( label ),
 				inputColumn = $( '<td>' ).append( input ),
 				row = $( '<tr>' ).append( labelColumn, inputColumn );
@@ -1267,6 +1298,8 @@ var proveit = {
 		this.loadFromForm = function () {
 
 			this.name = $( '#proveit-reference-form input[name="reference-name"]' ).val();
+
+			this.group = $( '#proveit-reference-form input[name="reference-group"]' ).val();
 
 			this.content = $( '#proveit-reference-form textarea[name="reference-content"]' ).val();
 

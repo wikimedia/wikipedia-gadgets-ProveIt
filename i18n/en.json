@@ -7,6 +7,7 @@
 	"proveit-list-tab": "List ($1)",
 	"proveit-add-tab": "Add",
 	"proveit-reference-name-label": "Reference name",
+	"proveit-reference-group-label": "Reference group",
 	"proveit-reference-content-label": "Reference content",
 	"proveit-reference-template-label": "Main template",
 	"proveit-cite-button": "Cite",

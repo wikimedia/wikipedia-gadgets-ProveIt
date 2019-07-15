@@ -10,6 +10,7 @@
 	"proveit-list-tab": "Text for the List tab\n{{Identical|List}}",
 	"proveit-add-tab": "Text for the Add tab\n{{Identical|Add}}",
 	"proveit-reference-name-label": "Label for the field of the reference name",
+	"proveit-reference-group-label": "Label for the field of the reference group",
 	"proveit-reference-content-label": "Label for the field of the reference content",
 	"proveit-reference-template-label": "Label for the field of the main template of the reference",
 	"proveit-cite-button": "Text for the Cite button\n{{Identical|Cite}}",

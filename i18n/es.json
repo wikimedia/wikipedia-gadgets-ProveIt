@@ -10,6 +10,7 @@
 	"proveit-list-tab": "Lista ($1)",
 	"proveit-add-tab": "Añadir",
 	"proveit-reference-name-label": "Nombre de la referencia",
+	"proveit-reference-group-label": "Grupo de la referencia",
 	"proveit-reference-content-label": "Contenido de la referencia",
 	"proveit-reference-template-label": "Plantilla principal",
 	"proveit-cite-button": "Citar",
