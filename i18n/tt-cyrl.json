@@ -1,30 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
 	"proveit-list-tab": "Исемлек ($1)",
 	"proveit-add-tab": "Өстәү",
-	"proveit-reference-name-label": "Чыгарылма исеме",
-	"proveit-reference-content-label": "Чыгарма эчтәлеге",
+	"proveit-reference-name-label": "Искәрмә аты",
+	"proveit-reference-content-label": "Искәрмәнең эчтәлеге",
 	"proveit-reference-template-label": "Төп калып",
-	"proveit-cite-button": "Өземтәләү",
+	"proveit-cite-button": "Өземтә китерү",
 	"proveit-remove-button": "Бетерү",
-	"proveit-insert-button": "Өстәү",
+	"proveit-insert-button": "Кертеп кую",
 	"proveit-update-button": "Яңарту",
-	"proveit-prompt-name": "ЧЫганакны өземтәләү өчен исем кую кирәк:",
+	"proveit-prompt-name": "Искәрмәдән өземтә китерү өчен аны атарга кирәк:",
 	"proveit-confirm-remove": "Чыганак белән бергә өземтәләү дә бетереләчәк. Сез килешәсезме?",
 	"proveit-no-template": "Калып юк",
 	"proveit-no-references": "ЧЫганаклар табылмады",
-	"proveit-filter-fields": "Юл фильтры",
-	"proveit-filter-references": "Чыгарылма фильтры",
-	"proveit-show-all-button": "Барлык юлларны күрсәтү",
+	"proveit-filter-fields": "Кырлар сөзгече",
+	"proveit-filter-references": "Искәрмәләр сөзгече",
+	"proveit-show-all-button": "Барлык кырларны күрсәтү",
 	"proveit-today-button": "Бүген",
-	"proveit-citoid-label": "Автоматик чыгарылма",
+	"proveit-citoid-label": "Автоматик искәрмә",
 	"proveit-citoid-tooltip": "Citoid сервисы аша автоматик рәвештә тулырак мәгълүмат алу өчен URL, DOI, ISBN яисә PMC/PMID сылтамаларын кертегез",
-	"proveit-citoid-placeholder": "URL, DOI, ISBN яисә PMC/PMID",
-	"proveit-citoid-load": "Йөкләү",
-	"proveit-citoid-loading": "Йөкләү...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN яки PMC/PMID",
+	"proveit-citoid-load": "Төяү",
+	"proveit-citoid-loading": "Төяү бара…",
 	"proveit-citoid-error": "Хата"
 }
