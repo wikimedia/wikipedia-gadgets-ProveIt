@@ -11,6 +11,7 @@
 	"proveit-list-tab": "Lister ($1)",
 	"proveit-add-tab": "Ajouter",
 	"proveit-reference-name-label": "Nom de la référence",
+	"proveit-reference-group-label": "Groupe de référence",
 	"proveit-reference-content-label": "Contenu de la référence",
 	"proveit-reference-template-label": "Modèle principal",
 	"proveit-cite-button": "Réutiliser",

@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Mido",
-			"ديفيد"
+			"ديفيد",
+			"Habib-d"
 		]
 	},
 	"proveit-list-tab": "قائمة ($1)",
 	"proveit-add-tab": "إضافة",
 	"proveit-reference-name-label": "اسم المرجع",
+	"proveit-reference-group-label": "المجموعة المرجعية",
 	"proveit-reference-content-label": "محتوى المرجع",
 	"proveit-reference-template-label": "القالب الرئيسي",
 	"proveit-cite-button": "استشهاد",

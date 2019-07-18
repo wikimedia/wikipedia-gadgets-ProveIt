@@ -4,12 +4,14 @@
 			"Mainframe98",
 			"Sjoerddebruin",
 			"Marcelhospers",
-			"Optilete"
+			"Optilete",
+			"Siebrand"
 		]
 	},
 	"proveit-list-tab": "Lijst ($1)",
 	"proveit-add-tab": "Toevoegen",
 	"proveit-reference-name-label": "Referentie naam",
+	"proveit-reference-group-label": "Referentiegroep",
 	"proveit-reference-content-label": "Referentie inhoud",
 	"proveit-reference-template-label": "Hoofdsjabloon",
 	"proveit-cite-button": "Citeren",

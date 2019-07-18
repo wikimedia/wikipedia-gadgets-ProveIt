@@ -3,12 +3,14 @@
 		"authors": [
 			"Subi",
 			"Mikel Ibaiba",
-			"Theklan"
+			"Theklan",
+			"An13sa"
 		]
 	},
 	"proveit-list-tab": "Zerrenda ($1)",
 	"proveit-add-tab": "Gehitu",
 	"proveit-reference-name-label": "Erreferentziaren izena",
+	"proveit-reference-group-label": "Erreferentzia taldea",
 	"proveit-reference-content-label": "Erreferentziaren edukia",
 	"proveit-reference-template-label": "Txantiloi nagusia",
 	"proveit-cite-button": "Erreferentzia",

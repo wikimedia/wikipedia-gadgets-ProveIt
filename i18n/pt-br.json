@@ -3,12 +3,14 @@
 		"authors": [
 			"Felipe L. Ewald",
 			"WikiUser22222",
-			"Tks4Fish"
+			"Tks4Fish",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"proveit-list-tab": "Lista ($1)",
 	"proveit-add-tab": "Adicionar",
 	"proveit-reference-name-label": "Nome da referência",
+	"proveit-reference-group-label": "Grupo da referência",
 	"proveit-reference-content-label": "Conteúdo da referência",
 	"proveit-reference-template-label": "Predefinição principal",
 	"proveit-cite-button": "Citar",

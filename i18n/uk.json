@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Choomaq",
-			"Piramidion"
+			"Piramidion",
+			"Movses"
 		]
 	},
 	"proveit-list-tab": "Список ($1)",
 	"proveit-add-tab": "Додати",
 	"proveit-reference-name-label": "Назва примітки",
+	"proveit-reference-group-label": "Група приміток",
 	"proveit-reference-content-label": "Вміст примітки",
 	"proveit-reference-template-label": "Основний шаблон",
 	"proveit-cite-button": "Джерело",
