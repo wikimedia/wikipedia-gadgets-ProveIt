@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Cumbril",
-			"H2kks"
+			"H2kks",
+			"Pikne"
 		]
 	},
 	"proveit-list-tab": "Loend ($1)",
 	"proveit-add-tab": "Lisa",
 	"proveit-reference-name-label": "Viite nimi",
-	"proveit-reference-group-label": "Viite rühm",
+	"proveit-reference-group-label": "Viiterühm",
 	"proveit-reference-content-label": "Viite sisu",
 	"proveit-reference-template-label": "Põhimall",
 	"proveit-cite-button": "Viita",
