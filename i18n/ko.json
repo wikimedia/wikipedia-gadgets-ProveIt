@@ -7,6 +7,7 @@
 	"proveit-list-tab": "목록 ($1)",
 	"proveit-add-tab": "추가",
 	"proveit-reference-name-label": "각주 이름",
+	"proveit-reference-group-label": "각주 그룹",
 	"proveit-reference-content-label": "각주 내용",
 	"proveit-reference-template-label": "기본 틀",
 	"proveit-cite-button": "인용",

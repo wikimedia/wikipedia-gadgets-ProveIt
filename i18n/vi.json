@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Trần Nguyễn Minh Huy"
+			"Trần Nguyễn Minh Huy",
+			"Leducthn"
 		]
 	},
 	"proveit-list-tab": "Danh sách ($1)",
 	"proveit-add-tab": "Thêm",
 	"proveit-reference-name-label": "Tên tham khảo",
+	"proveit-reference-group-label": "Nhóm tham khảo",
 	"proveit-reference-content-label": "Nội dung tham khảo",
 	"proveit-reference-template-label": "Bản mẫu chính",
 	"proveit-cite-button": "Chú thích",
