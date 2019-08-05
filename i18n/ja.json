@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Omotecho",
-			"ネイ"
+			"ネイ",
+			"Afaz"
 		]
 	},
 	"proveit-list-tab": "脚注（現在$1個）",
 	"proveit-add-tab": "追加",
 	"proveit-reference-name-label": "出典名",
+	"proveit-reference-group-label": "脚注グループ名",
 	"proveit-reference-content-label": "脚注内容",
 	"proveit-reference-template-label": "使用テンプレート",
 	"proveit-cite-button": "追加",

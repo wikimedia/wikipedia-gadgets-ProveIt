@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"VulpesVulpes825"
 		]
 	},
 	"proveit-list-tab": "列表（$1）",
 	"proveit-add-tab": "添加",
 	"proveit-reference-name-label": "参考资料名称",
+	"proveit-reference-group-label": "参照组",
 	"proveit-reference-content-label": "参考资料内容",
 	"proveit-reference-template-label": "主模板",
 	"proveit-cite-button": "引用",
