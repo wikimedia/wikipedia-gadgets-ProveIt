@@ -4,12 +4,14 @@
 			"Obsuser",
 			"Srdjan m",
 			"Acamicamacaraca",
-			"BadDog"
+			"BadDog",
+			"Zoranzoki21"
 		]
 	},
 	"proveit-list-tab": "Списак ($1)",
 	"proveit-add-tab": "Додавање",
 	"proveit-reference-name-label": "Име референце",
+	"proveit-reference-group-label": "Група референци",
 	"proveit-reference-content-label": "Садржај референце",
 	"proveit-reference-template-label": "Главни шаблон",
 	"proveit-cite-button": "Цитирај",
