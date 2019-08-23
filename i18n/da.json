@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Joedalton",
-			"Jhertel"
+			"Jhertel",
+			"Saederup92"
 		]
 	},
 	"proveit-list-tab": "Vis ($1)",
 	"proveit-add-tab": "Tilføj",
 	"proveit-reference-name-label": "Referencenavn",
+	"proveit-reference-group-label": "Referencegruppe",
 	"proveit-reference-content-label": "Referenceindhold",
 	"proveit-reference-template-label": "Hovedskabelon",
 	"proveit-cite-button": "Citer",

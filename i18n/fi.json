@@ -9,6 +9,7 @@
 	"proveit-list-tab": "Viitteet ($1)",
 	"proveit-add-tab": "Lisää",
 	"proveit-reference-name-label": "Viitteen nimi",
+	"proveit-reference-group-label": "Viiteryhmä",
 	"proveit-reference-content-label": "Viitteen sisältö",
 	"proveit-reference-template-label": "Viitemalline",
 	"proveit-cite-button": "Viittaa",
