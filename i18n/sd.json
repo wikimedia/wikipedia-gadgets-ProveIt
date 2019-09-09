@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tweety"
+			"Tweety",
+			"Mehtab ahmed"
 		]
 	},
-	"proveit-list-tab": "فهرست ($1)",
+	"proveit-list-tab": "فھرست ($1)",
 	"proveit-add-tab": "شامل ڪريو",
 	"proveit-reference-name-label": "حوالي جو نالو",
 	"proveit-reference-content-label": "حوالي جو متن",
