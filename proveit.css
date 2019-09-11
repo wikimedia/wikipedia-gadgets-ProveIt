@@ -1,59 +1,45 @@
 #proveit {
 	background: white;
-	border: 1px solid #ddd;
 	font-size: .8em;
 	position: fixed;
-	z-index: 4;
+	right: 0;
+	bottom: 0;
+	z-index: 9;
 }
 
 .skin-monobook #proveit {
 	font-size: 120%;
 }
 
+#proveit-header {
+	background: #f0f0f0;
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+}
+
 #proveit-logo {
-	background: black;
-	color: white;
+    background: black;
+    color: white;
 	cursor: pointer;
 	float: right;
-	font-weight: bold;
-	padding: 15px;
+	font-family: monospace;
+    font-size: 1.4em;
+    height: 43px;
+    line-height: 43px;
+}
+.proveit-bracket {
+    color: yellow;
+    font-size: 2em;
+    position: relative;
+    vertical-align: bottom;
 }
 
-#proveit-left-bracket {
-	color: yellow;
-	margin-right: 5px;
-}
-
-#proveit-right-bracket {
-	color: yellow;
-	margin-left: 5px;
-}
-
-#proveit-list-tab,
-#proveit-add-tab {
-	cursor: pointer;
-	display: inline-block;
-	border: 1px solid #ddd;
-	padding: 12px 30px;
-	margin-left: 5px;
-	position: relative;
-	top: 5px;
-}
-
-#proveit-list-tab.active,
-#proveit-add-tab.active {
+#proveit-body {
 	background: #f4f4f4;
-	border-bottom-color: #f4f4f4;
-}
-
-#proveit-content {
-	background: #f4f4f4;
-	border-top: 1px solid #ddd;
-	padding-bottom: 50px;
 	overflow-y: scroll;
 	width: 700px;
-	height: 300px;
-	resize: both;
+	max-height: 300px;
+	resize: none;
 }
 
 @-moz-document url-prefix() { 
@@ -83,8 +69,15 @@
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-reference-number {
-	font-weight: bold;
 	margin-right: 10px;
+}
+
+#proveit-reference-list .proveit-reference-item .proveit-citation {
+	color: blue;
+	font-size: .9em;
+	margin-left: .5em;
+	position: relative;
+	top: -.5em;
 }
 
 #proveit-reference-list .proveit-reference-item .proveit-reference-template {
@@ -92,32 +85,21 @@
 	margin-right: 10px;
 }
 
-#proveit-reference-list .proveit-reference-item .proveit-citations {
-	float: right;
-}
-
-#proveit-reference-list .proveit-reference-item .proveit-citation {
-	color: blue;
-	padding: 3px;
-}
-
 #proveit-no-references-message {
 	text-align: center;
 	padding: 10px;
 }
 
-#proveit-reference-form table {
-	border-spacing: 0;
-	width: 100%;
-}
-
-#proveit-reference-form td {
+#proveit-reference-form div {
 	position: relative;
 }
 
-#proveit-reference-form td:first-child {
-	width: 150px;
-	padding-left: 5px;
+#proveit-reference-form label {
+	box-sizing: border-box;
+	display: inline-block;
+	padding: .4em;
+	vertical-align: top;
+	width: 25%;
 }
 
 #proveit-reference-form .proveit-required label {
@@ -131,17 +113,18 @@
 #proveit-reference-form input,
 #proveit-reference-form select,
 #proveit-reference-form textarea {
-	-moz-appearance:none;
+	-moz-appearance: none;
 	-webkit-appearance: none;
 	background: white;
-	border: 1px solid #ddd;
+	border: 1px solid #f4f4f4;
 	border-radius: 0;
 	box-sizing: border-box;
-	display: block;
+	display: inline-block;
 	font: inherit;
 	outline: none;
 	padding: .4em;
-	width: 100%;
+	vertical-align: middle;
+	width: 75%;
 }
 
 #proveit-reference-form select {
@@ -155,16 +138,15 @@
 	resize: vertical;
 }
 
-#proveit-reference-form textarea[name=reference-content] {
-	font-family: monospace;
+#proveit-reference-content {
+	font-family: monospace !important;
 }
 
-#proveit-reference-table button {
+#proveit-reference-form button {
 	cursor: pointer;
-	font: inherit;
 	position: absolute;
-	top: 4px;
-	right: 4px;
+	top: 3px;
+	right: 3px;
 }
 
 #proveit-footer {
@@ -172,13 +154,8 @@
 	border-spacing: 0;
 	border-top: 1px solid #ddd;
 	box-sizing: border-box;
-	margin: 0;
-	padding: .3em;
-	pointer-events: none;
-	position: absolute;
-	bottom: 0;
+	overflow: hidden;
 	text-align: right;
-	width: 100%;
 }
 
 #proveit-footer input {
@@ -186,48 +163,39 @@
 	box-sizing: border-box;
 	float: left;
 	font: inherit;
+	margin: .3em;
 	padding: 9px;
-	pointer-events: all;
 	width: 150px;
 }
 
+#proveit-header button,
 #proveit-footer button {
 	background: #ddd;
 	border: none;
 	cursor: pointer;
 	font: inherit;
-	margin-right: 5px;
+	margin: .3em;
 	padding: 10px;
-	pointer-events: all;
 }
 
+#proveit-header button:hover,
 #proveit-footer button:hover {
-	background: #ccc;
+	filter: brightness( 1.2 );
 }
 
-#proveit-show-all-button {
-	background: none;
-	border: none;
-	cursor: pointer;
-	float: left;
-	font: inherit;
-	padding: 10px;
-}
-
-#proveit-show-all-button:hover {
-	text-decoration: underline;
+#proveit-header .progressive,
+#proveit-footer .progressive {
+	background: #36c;
+	color: white;
 }
 
 /**
  * Simple CSS tooltip by Keenan Payne
  * http://www.webdesignerdepot.com/2012/11/how-to-create-a-simple-css3-tooltip/
  */
-
 #proveit [data-tooltip] {
-    display: inline;
     position: relative;
 }
-
 #proveit [data-tooltip]:hover:after {
     background: #333;
     background: rgba( 0, 0, 0, .8 );
@@ -239,10 +207,9 @@
     left: 20%;
     padding: 5px 15px;
     position: absolute;
-    z-index: 98;
+    z-index: 99;
     width: 220px;
 }
-
 #proveit [data-tooltip]:hover:before {
     border: solid;
     border-color: #333 transparent;
@@ -251,5 +218,5 @@
     content: "";
     left: 50%;
     position: absolute;
-    z-index: 99;
+    z-index: 100;
 }
