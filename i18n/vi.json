@@ -5,8 +5,6 @@
 			"Leducthn"
 		]
 	},
-	"proveit-list-tab": "Danh sách ($1)",
-	"proveit-add-tab": "Thêm",
 	"proveit-reference-name-label": "Tên tham khảo",
 	"proveit-reference-group-label": "Nhóm tham khảo",
 	"proveit-reference-content-label": "Nội dung tham khảo",
@@ -15,7 +13,6 @@
 	"proveit-remove-button": "Loại bỏ",
 	"proveit-insert-button": "Chèn",
 	"proveit-update-button": "Cập nhật",
-	"proveit-prompt-name": "Tham khảo cần một cái tên để được chú thích:",
 	"proveit-confirm-remove": "Việc này sẽ loại bỏ tham khảo và toàn bộ nội dung chú thích của nó. Bạn chắc chứ?",
 	"proveit-no-template": "Không có bản mẫu",
 	"proveit-no-references": "Không tìm thấy tham khảo",

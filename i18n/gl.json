@@ -4,8 +4,6 @@
 			"Elisardojm"
 		]
 	},
-	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Engadir",
 	"proveit-reference-name-label": "Nome da referencia",
 	"proveit-reference-content-label": "Contido da referencia",
 	"proveit-reference-template-label": "Modelo principal",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Eliminar",
 	"proveit-insert-button": "Inserir",
 	"proveit-update-button": "Actualizar",
-	"proveit-prompt-name": "A referencia precisa un nome para ser citada:",
 	"proveit-confirm-remove": "Isto borra a referencia e tódalas súas citas. Está seguro?",
 	"proveit-no-template": "Sen modelo",
 	"proveit-no-references": "Non se atoparon referencias",

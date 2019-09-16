@@ -8,8 +8,6 @@
 			"FarsiNevis"
 		]
 	},
-	"proveit-list-tab": "لیست ($1)",
-	"proveit-add-tab": "افزودن",
 	"proveit-reference-name-label": "نام منبع",
 	"proveit-reference-content-label": "متن منبع",
 	"proveit-reference-template-label": "الگوی اصلی",
@@ -17,7 +15,6 @@
 	"proveit-remove-button": "حذف",
 	"proveit-insert-button": "درج",
 	"proveit-update-button": "روزآمدسازی",
-	"proveit-prompt-name": "منبع نیاز به یک نام برای ارجاع دارد:",
 	"proveit-confirm-remove": "با این کار منبع و تمام استنادهای آن را حذف می‌کنید. اطمینان کامل دارید؟",
 	"proveit-no-template": "بدون الگو",
 	"proveit-no-references": "منبع یافت نشد",

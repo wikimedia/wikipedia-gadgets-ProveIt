@@ -4,8 +4,6 @@
 			"WikiPhoenix"
 		]
 	},
-	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Lägg till",
 	"proveit-reference-name-label": "Referensnamn",
 	"proveit-reference-group-label": "Referensgrupp",
 	"proveit-reference-content-label": "Källhänvisningsinnehåll",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "Ta bort",
 	"proveit-insert-button": "Infoga",
 	"proveit-update-button": "Uppdatera",
-	"proveit-prompt-name": "Referensen behöver ett namn för att kunna källhänvisas:",
 	"proveit-confirm-remove": "Detta tar bort referensen och alla dess källhänvisningar. Är du säker?",
 	"proveit-no-template": "Ingen mall",
 	"proveit-no-references": "Inga referenser hittades",

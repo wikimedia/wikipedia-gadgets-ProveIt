@@ -5,8 +5,6 @@
 			"Mehtab ahmed"
 		]
 	},
-	"proveit-list-tab": "فھرست ($1)",
-	"proveit-add-tab": "شامل ڪريو",
 	"proveit-reference-name-label": "حوالي جو نالو",
 	"proveit-reference-content-label": "حوالي جو متن",
 	"proveit-reference-template-label": "مک سانچو",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "هٽايو",
 	"proveit-insert-button": "وجھو",
 	"proveit-update-button": "تازو ڪيو",
-	"proveit-prompt-name": "حوالي ڏيڻ لاءِ حوالي جو نالو گھربل:",
 	"proveit-confirm-remove": "هي سمورن حوالن جو متن ختم ڪندو. اوهان کي پڪ آهي؟",
 	"proveit-no-template": "سانچو ناهي",
 	"proveit-no-references": "حوالا نه لڌا",

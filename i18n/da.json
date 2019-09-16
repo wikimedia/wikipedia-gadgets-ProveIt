@@ -6,8 +6,6 @@
 			"Saederup92"
 		]
 	},
-	"proveit-list-tab": "Vis ($1)",
-	"proveit-add-tab": "Tilføj",
 	"proveit-reference-name-label": "Referencenavn",
 	"proveit-reference-group-label": "Referencegruppe",
 	"proveit-reference-content-label": "Referenceindhold",
@@ -16,7 +14,6 @@
 	"proveit-remove-button": "Fjern",
 	"proveit-insert-button": "Indsæt",
 	"proveit-update-button": "Opdater",
-	"proveit-prompt-name": "Referencen skal bruge et navn for at kunne citeres:",
 	"proveit-confirm-remove": "Dette vil fjerne referencen og alle henvisninger til den. Er du sikker?",
 	"proveit-no-template": "Ingen skabelon",
 	"proveit-no-references": "Ingen referencer fundet",

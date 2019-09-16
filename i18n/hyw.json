@@ -4,8 +4,6 @@
 			"Armeniki"
 		]
 	},
-	"proveit-list-tab": "Ցանկ ($1)",
-	"proveit-add-tab": "Աւելցնել",
 	"proveit-reference-name-label": "Ծանօթագրութեան անունը",
 	"proveit-reference-content-label": "Ծանօթագրութեան բնաբանը",
 	"proveit-reference-template-label": "Հիմնական կաղապար",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Հանել",
 	"proveit-insert-button": "Ներդնել",
 	"proveit-update-button": "Թարմացնել",
-	"proveit-prompt-name": "Այս ծանօթագրութիւնը անուն պէտք ունի որպէսզի եկակոչուի:",
 	"proveit-confirm-remove": "Այս կատարումը պիտի հանէ բոլոր ծանօթագրութիւնը եւ եկակոչումները: Վստա՞հ էք:",
 	"proveit-no-template": "Կաղապար չկայ",
 	"proveit-no-references": "Աղբիւրները չը գտնուեցան",

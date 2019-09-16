@@ -7,8 +7,6 @@
 			"Gopalindians"
 		]
 	},
-	"proveit-list-tab": "सूची ($1)",
-	"proveit-add-tab": "जोड़ें",
 	"proveit-reference-name-label": "सन्दर्भ का नाम",
 	"proveit-reference-content-label": "सन्दर्भ की सामग्री",
 	"proveit-reference-template-label": "मुख्य साँचा",
@@ -16,7 +14,6 @@
 	"proveit-remove-button": "निकालें",
 	"proveit-insert-button": "जोड़ें",
 	"proveit-update-button": "अद्यतनित करें",
-	"proveit-prompt-name": "उद्धरण करने हेतु सन्दर्भ में नाम भी होना चाहिए:",
 	"proveit-confirm-remove": "इससे सभी सन्दर्भ और उसके उद्धरण भी निकल जाएँगे। क्या आप ऐसा करना चाहते हैं?",
 	"proveit-no-template": "साँचा नहीं",
 	"proveit-no-references": "कोई भी सन्दर्भ नहीं मिला",

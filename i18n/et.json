@@ -6,8 +6,6 @@
 			"Pikne"
 		]
 	},
-	"proveit-list-tab": "Loend ($1)",
-	"proveit-add-tab": "Lisa",
 	"proveit-reference-name-label": "Viite nimi",
 	"proveit-reference-group-label": "Viiterühm",
 	"proveit-reference-content-label": "Viite sisu",
@@ -16,7 +14,6 @@
 	"proveit-remove-button": "Eemalda",
 	"proveit-insert-button": "Lisa teksti",
 	"proveit-update-button": "Värskenda",
-	"proveit-prompt-name": "Pane viitele korduskasutamiseks nimi:",
 	"proveit-confirm-remove": "See eemaldab viite koos kõigi selle kasutustega. Kas oled kindel?",
 	"proveit-no-template": "Mall puudub",
 	"proveit-no-references": "Ühtegi viidet ei leitud",

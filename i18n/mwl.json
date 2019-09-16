@@ -5,8 +5,6 @@
 			"Athena in Wonderland"
 		]
 	},
-	"proveit-list-tab": "Lhista ($1)",
-	"proveit-add-tab": "Poner",
 	"proveit-reference-name-label": "Nome de la refréncia",
 	"proveit-reference-content-label": "Cuntenido de refréncia",
 	"proveit-reference-template-label": "Modelo percipal",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "Scluir",
 	"proveit-insert-button": "Anserir",
 	"proveit-update-button": "Atualizar",
-	"proveit-prompt-name": "La refréncia percisa dun nome pa ser citada:",
 	"proveit-confirm-remove": "Esso scluirá la refréncia i todas las citaçones de la mesma. Ten certeza?",
 	"proveit-no-template": "Sin modelo",
 	"proveit-no-references": "Nanhue refréncia ancontrada",

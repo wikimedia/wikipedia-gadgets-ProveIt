@@ -5,8 +5,6 @@
 			"Pahles"
 		]
 	},
-	"proveit-list-tab": "Lies ($1)",
-	"proveit-add-tab": "Veug tou",
 	"proveit-reference-name-label": "Rifferensienaam",
 	"proveit-reference-content-label": "Rifferensieteks",
 	"proveit-reference-template-label": "Houfsjabloon",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "Haol eweg",
 	"proveit-insert-button": "Veug in",
 	"proveit-update-button": "Wirk bie",
-	"proveit-prompt-name": "De rifferensie mót 'ne naam zeen veur te kónne waere geciteerdj:",
 	"proveit-confirm-remove": "Dit zal de rifferensie en alle citate daobie eweghaole. Wèts se 't zeker?",
 	"proveit-no-template": "Gei sjabloon",
 	"proveit-no-references": "Gein rifferensies gevónje",

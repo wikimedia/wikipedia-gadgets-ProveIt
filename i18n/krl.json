@@ -4,8 +4,6 @@
 			"Ilja.mos"
 		]
 	},
-	"proveit-list-tab": "Luvettelo ($1)",
-	"proveit-add-tab": "Lisyä",
 	"proveit-reference-name-label": "Viittehen nimi",
 	"proveit-reference-content-label": "Viittehen šisältö",
 	"proveit-reference-template-label": "Piämalli",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Poissa",
 	"proveit-insert-button": "Lisyä",
 	"proveit-update-button": "Päivitä",
-	"proveit-prompt-name": "Viiteheh pitäy lisätä nimi, jotta še ruatais:",
 	"proveit-confirm-remove": "Oletko varma, jotta tahot poistua viittehen?",
 	"proveit-no-template": "Ilman mallie",
 	"proveit-no-references": "Viitehtä ei löytyn",

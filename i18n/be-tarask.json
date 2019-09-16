@@ -4,8 +4,6 @@
 			"Red Winged Duck"
 		]
 	},
-	"proveit-list-tab": "Сьпіс ($1)",
-	"proveit-add-tab": "Дадаць",
 	"proveit-reference-name-label": "Назва крыніцы",
 	"proveit-reference-group-label": "Група спасылак",
 	"proveit-reference-content-label": "Зьмест крыніцы",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "Выдаліць",
 	"proveit-insert-button": "Уставіць",
 	"proveit-update-button": "Абнавіць",
-	"proveit-prompt-name": "Крыніцы патрэбная назва, каб яе цытаваць:",
 	"proveit-confirm-remove": "Гэта выдаліць крыніцу і ўсе яе цытаты. Вы ўпэўненыя?",
 	"proveit-no-template": "Няма шаблёну",
 	"proveit-no-references": "Крыніцы ня знойдзеныя",

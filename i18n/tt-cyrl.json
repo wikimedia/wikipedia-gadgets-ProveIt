@@ -5,8 +5,6 @@
 			"Ерней"
 		]
 	},
-	"proveit-list-tab": "Исемлек ($1)",
-	"proveit-add-tab": "Өстәү",
 	"proveit-reference-name-label": "Искәрмә аты",
 	"proveit-reference-group-label": "Искәрмә төркеме",
 	"proveit-reference-content-label": "Искәрмәнең эчтәлеге",
@@ -15,7 +13,6 @@
 	"proveit-remove-button": "Бетерү",
 	"proveit-insert-button": "Кертеп кую",
 	"proveit-update-button": "Яңарту",
-	"proveit-prompt-name": "Искәрмәдән өземтә китерү өчен аны атарга кирәк:",
 	"proveit-confirm-remove": "Искәрмә һәм аннан китерелгән барлык өземтәләр бетереләчәк. Сез килешәсезме?",
 	"proveit-no-template": "Калып юк",
 	"proveit-no-references": "Искәрмәләр табылмаган",

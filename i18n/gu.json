@@ -5,8 +5,6 @@
 			"Drashti4"
 		]
 	},
-	"proveit-list-tab": "યાદી ($1)",
-	"proveit-add-tab": "ઉમેરો",
 	"proveit-reference-name-label": "સંદર્ભનું નામ",
 	"proveit-reference-content-label": "સંદર્ભ સામગ્રી",
 	"proveit-reference-template-label": "મુખ્ય ઢાંચો",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "હટાવો",
 	"proveit-insert-button": "ઉમેરો",
 	"proveit-update-button": "અદ્યતન કરો",
-	"proveit-prompt-name": "ટાંકવા માટે સંદર્ભમાં નામ હોવું જોઈએ:",
 	"proveit-confirm-remove": "આનાથી બધાં સંદર્ભ અને તેનાં ઉદ્ધરણો પણ દૂર થઈ જશે. તમે ખરેખર એવું કરવા ઈચ્છો છો?",
 	"proveit-no-template": "ઢાંચો નહીં",
 	"proveit-no-references": "કોઈ સંદર્ભો મળ્યા નથી",

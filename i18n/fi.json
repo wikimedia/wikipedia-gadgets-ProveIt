@@ -6,8 +6,6 @@
 			"Pyscowicz"
 		]
 	},
-	"proveit-list-tab": "Viitteet ($1)",
-	"proveit-add-tab": "Lisää",
 	"proveit-reference-name-label": "Viitteen nimi",
 	"proveit-reference-group-label": "Viiteryhmä",
 	"proveit-reference-content-label": "Viitteen sisältö",
@@ -16,7 +14,6 @@
 	"proveit-remove-button": "Poista viite",
 	"proveit-insert-button": "Lisää viite",
 	"proveit-update-button": "Päivitä viite",
-	"proveit-prompt-name": "Viite tarvitsee nimen toimiakseen:",
 	"proveit-confirm-remove": "Oletko varma, että haluat poistaa viitteen?",
 	"proveit-no-template": "Ilman viitemallinetta",
 	"proveit-no-references": "Artikkelissa ei ole viitteitä.",

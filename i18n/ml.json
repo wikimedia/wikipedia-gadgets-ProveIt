@@ -5,16 +5,14 @@
 			"Praveenp"
 		]
 	},
-	"proveit-list-tab": "പട്ടിക ($1)",
-	"proveit-add-tab": "ചേർക്കുക",
 	"proveit-reference-name-label": "അവലംബത്തിന്റെ പേര്",
+	"proveit-reference-group-label": "അവലംബ സംഘം",
 	"proveit-reference-content-label": "അവലംബത്തിന്റെ ഉള്ളടക്കം",
 	"proveit-reference-template-label": "പ്രധാന ഫലകം",
 	"proveit-cite-button": "ഉദ്ധരിക്കുക",
 	"proveit-remove-button": "നീക്കം ചെയ്യുക",
 	"proveit-insert-button": "ഉൾപ്പെടുത്തുക",
 	"proveit-update-button": "പുതുക്കുക",
-	"proveit-prompt-name": "ഉദ്ധരിക്കുവാനായി അവലംബത്തിന് ഒരു പേര് നൽകണം:",
 	"proveit-confirm-remove": "ഇത് അവലംബങ്ങളും അവയുടെ എല്ലാ ഉദ്ധരണികളും ഒഴിവാകും. താങ്കൾക്ക് ഉറപ്പാണോ?",
 	"proveit-no-template": "ഫലകങ്ങൾ ഇല്ല",
 	"proveit-no-references": "അവലംബങ്ങൾ കണ്ടെത്തിയില്ല",

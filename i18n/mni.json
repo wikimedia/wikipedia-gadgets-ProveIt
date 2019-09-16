@@ -4,8 +4,6 @@
 			"Awangba Mangang"
 		]
 	},
-	"proveit-list-tab": "ꯄꯔꯤꯡ($1)",
-	"proveit-add-tab": "ꯍꯥꯞꯄꯨ",
 	"proveit-reference-name-label": "ꯃꯃꯤꯡ ꯂꯧꯔꯧꯐꯝ",
 	"proveit-reference-content-label": "ꯃꯅꯨꯡꯒꯤ ꯑꯌꯥꯕꯁꯤꯡ ꯂꯧꯔꯛꯐꯝ",
 	"proveit-reference-template-label": "ꯃꯔꯨꯑꯣꯏꯕ ꯇꯦꯝꯄꯂꯦꯠ",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "ꯃꯥꯡꯍꯟꯕ",
 	"proveit-insert-button": "ꯏꯟꯁꯤꯟꯕ",
 	"proveit-update-button": "ꯅꯧꯊꯣꯛꯍꯟꯕ",
-	"proveit-prompt-name": "ꯂꯧꯔꯛꯐꯝꯒꯤ ꯃꯃꯤꯡꯁꯤ ꯐꯖꯅ ꯏꯕ ꯱ ꯆꯪꯂꯤ ꯄꯥꯊꯣꯛꯅꯕ :",
 	"proveit-confirm-remove": "This will remove the reference and all of its citations. Are you sure?",
 	"proveit-no-template": "ꯇꯦꯝꯄꯂꯦꯠ ꯌꯥꯎꯗꯦ",
 	"proveit-no-references": "ꯂꯧꯔꯛꯐꯝ ꯊꯤꯕ ꯐꯪꯗꯔꯦ",

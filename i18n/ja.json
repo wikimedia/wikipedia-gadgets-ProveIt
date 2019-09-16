@@ -6,8 +6,6 @@
 			"Afaz"
 		]
 	},
-	"proveit-list-tab": "脚注（現在$1個）",
-	"proveit-add-tab": "追加",
 	"proveit-reference-name-label": "出典名",
 	"proveit-reference-group-label": "脚注グループ名",
 	"proveit-reference-content-label": "脚注内容",
@@ -16,7 +14,6 @@
 	"proveit-remove-button": "除去",
 	"proveit-insert-button": "追加",
 	"proveit-update-button": "更新",
-	"proveit-prompt-name": "脚注名を指定する必要があります：",
 	"proveit-confirm-remove": "この脚注をこのページから全て除去します。続行しますか？",
 	"proveit-no-template": "テンプレートなし",
 	"proveit-no-references": "脚注は見つかりませんでした",

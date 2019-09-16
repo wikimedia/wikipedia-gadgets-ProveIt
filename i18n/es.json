@@ -7,8 +7,6 @@
 			"Tiberius1701"
 		]
 	},
-	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Añadir",
 	"proveit-reference-name-label": "Nombre de la referencia",
 	"proveit-reference-group-label": "Grupo de la referencia",
 	"proveit-reference-content-label": "Contenido de la referencia",
@@ -17,7 +15,6 @@
 	"proveit-remove-button": "Quitar",
 	"proveit-insert-button": "Insertar",
 	"proveit-update-button": "Actualizar",
-	"proveit-prompt-name": "La referencia necesita un nombre para ser citada:",
 	"proveit-confirm-remove": "Esto borra la referencia y todas sus citas. ¿Estás seguro?",
 	"proveit-no-template": "Sin plantilla",
 	"proveit-no-references": "No se encontraron referencias",

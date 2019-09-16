@@ -4,8 +4,6 @@
 			"Terfili"
 		]
 	},
-	"proveit-list-tab": "Lischte ($1)",
-	"proveit-add-tab": "Zuefiege",
 	"proveit-reference-name-label": "Name vo däm Einzelnoochwys",
 	"proveit-reference-content-label": "Referänzinhalt",
 	"proveit-reference-template-label": "Hauptvorlag",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Ussenee",
 	"proveit-insert-button": "Yyfiege",
 	"proveit-update-button": "Aktualisiere",
-	"proveit-prompt-name": "De Einzelnoochwys bruucht en Name, demit er zitiert werde cha:",
 	"proveit-confirm-remove": "Eso wir de Einzelnoochwys un alli Zitat devo ussegno. Wottsch de würkli mache?",
 	"proveit-no-template": "Kei Vorlag",
 	"proveit-no-references": "Es sin kei Einzelnoochwys gfunde worde",

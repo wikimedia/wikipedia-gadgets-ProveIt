@@ -8,8 +8,6 @@
 			"Saimongoltinio"
 		]
 	},
-	"proveit-list-tab": "Список ($1)",
-	"proveit-add-tab": "Добавить",
 	"proveit-reference-name-label": "Имя сноски",
 	"proveit-reference-group-label": "Список на ссылки",
 	"proveit-reference-content-label": "Содержание сноски",
@@ -18,8 +16,7 @@
 	"proveit-remove-button": "Удалить",
 	"proveit-insert-button": "Вставить",
 	"proveit-update-button": "Обновить",
-	"proveit-prompt-name": "Сноске нужно задать имя, чтобы её процитировать:",
-	"proveit-confirm-remove": "Будет удалена сноска и все ссылки на неё. Вы уверены?",
+	"proveit-confirm-remove": "Буду также удалены все ссылки на сноску. Продолжить?",
 	"proveit-no-template": "Нет шаблона",
 	"proveit-no-references": "Сноски не найдены",
 	"proveit-filter-fields": "Фильтр полей",

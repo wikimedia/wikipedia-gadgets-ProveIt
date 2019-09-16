@@ -4,8 +4,6 @@
 			"Dr Lotus Black"
 		]
 	},
-	"proveit-list-tab": "($1) စာရင်းပြုပါ",
-	"proveit-add-tab": "ပေါင်းထည့်ရန်",
 	"proveit-reference-name-label": "ကိုးကားချက် အမည်",
 	"proveit-reference-content-label": "ကိုးကား အကြောင်းအရာ",
 	"proveit-reference-template-label": "ပင်မ တမ်းပလိတ်",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "ဖယ်ရှားရန်",
 	"proveit-insert-button": "ထည့်သွင်းရန်",
 	"proveit-update-button": "မွမ်းမံ",
-	"proveit-prompt-name": "ကိုးကားချက်ရန် နာမည်တစ်ခုလိုအပ်သည်-",
 	"proveit-confirm-remove": "ဤသည် ကိုးကားချက်များကို ဖယ်ရှားလိုက်မည်ဖြစ်သည်။ သေချာပါသလား။",
 	"proveit-no-template": "တမ်းပလိတ် မရှိပါ",
 	"proveit-no-references": "ကိုးကားချက်များ မတွေ့ပါ",

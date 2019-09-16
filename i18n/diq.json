@@ -5,8 +5,6 @@
 			"Orbot707"
 		]
 	},
-	"proveit-list-tab": "Liste ($1)",
-	"proveit-add-tab": "Cı ke",
 	"proveit-reference-name-label": "Nameyê çımeyi",
 	"proveit-reference-group-label": "Gruba referansi",
 	"proveit-reference-content-label": "Zerrekê çımeyi",
@@ -15,7 +13,6 @@
 	"proveit-remove-button": "Wedare",
 	"proveit-insert-button": "Cı ke",
 	"proveit-update-button": "Rocane ke",
-	"proveit-prompt-name": "Seba vatekerdışi rê yew nameyê çımeyi gani bıbo:",
 	"proveit-confirm-remove": "Çıme u cı ra vıraşten vatışi pêro do esteriyê. Wazenê?",
 	"proveit-no-template": "Şablon çıniyo",
 	"proveit-no-references": "Çımeyi nêvêniyayi",

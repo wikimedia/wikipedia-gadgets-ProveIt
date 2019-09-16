@@ -4,8 +4,6 @@
 			"Mirin"
 		]
 	},
-	"proveit-list-tab": "Listo ($1)",
-	"proveit-add-tab": "Aldoni",
 	"proveit-reference-name-label": "Nomo de referenco",
 	"proveit-reference-group-label": "Referencaro",
 	"proveit-reference-content-label": "Enhavo de referenco",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "Forigi",
 	"proveit-insert-button": "Enmeti",
 	"proveit-update-button": "Ĝisdatigi",
-	"proveit-prompt-name": "Nomo de referenco necesas for citi:",
 	"proveit-confirm-remove": "Tio forigos la referencon kaj ĉiujn de ĝiaj citaĵoj. Ĉu vi certas?",
 	"proveit-no-template": "Neniu ŝablono",
 	"proveit-no-references": "Neniu referenco trovita",

@@ -4,8 +4,6 @@
 			"Obaid Raza"
 		]
 	},
-	"proveit-list-tab": "فہرست ($1)",
-	"proveit-add-tab": "شامل کریں",
 	"proveit-reference-name-label": "نام حوالہ",
 	"proveit-reference-content-label": "مواد حوالہ",
 	"proveit-reference-template-label": "بنیادی سانچہ",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "حذف کریں",
 	"proveit-insert-button": "درج کریں",
 	"proveit-update-button": "تجدید",
-	"proveit-prompt-name": "حوالے کو ایک عنوان کی ضرورت ہے  in order to be cited:",
 	"proveit-no-template": "کوئی سانچہ نہيں",
 	"proveit-no-references": "کوئی حوالہ نہیں ملا"
 }

@@ -5,8 +5,6 @@
 			"Vodnokon4e"
 		]
 	},
-	"proveit-list-tab": "Списък ($1)",
-	"proveit-add-tab": "Добавяне",
 	"proveit-reference-name-label": "Име на източника",
 	"proveit-reference-content-label": "Съдържание на източника",
 	"proveit-reference-template-label": "Главен шаблон",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "Премахване",
 	"proveit-insert-button": "Вмъкване",
 	"proveit-update-button": "Обновяване",
-	"proveit-prompt-name": "Източникът трябва да има име, за може да бъде цитиран:",
 	"proveit-confirm-remove": "Това ще премахне източникът и всички негови цитирания. Сигурни ли сте?",
 	"proveit-no-template": "Без шаблон",
 	"proveit-no-references": "Не са намерени източници",

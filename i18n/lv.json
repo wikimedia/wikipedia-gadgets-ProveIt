@@ -4,7 +4,9 @@
 			"Papuass"
 		]
 	},
-	"proveit-add-tab": "Pievienot",
+	"proveit-reference-wikitext-label": "Atsauces vikiteksts",
+	"proveit-add-button": "Pievienot",
+	"proveit-back-button": "Atpakaļ",
 	"proveit-remove-button": "Noņemt",
 	"proveit-insert-button": "Ievietot",
 	"proveit-today-button": "Šodiena",

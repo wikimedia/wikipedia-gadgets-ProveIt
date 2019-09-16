@@ -4,8 +4,6 @@
 			"Hidayatsrf"
 		]
 	},
-	"proveit-list-tab": "Daftar ($1)",
-	"proveit-add-tab": "Tambahkan",
 	"proveit-reference-name-label": "Nomor referensi",
 	"proveit-reference-content-label": "Teks referensi",
 	"proveit-reference-template-label": "Templat utama",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Hapus",
 	"proveit-insert-button": "Sisipkan",
 	"proveit-update-button": "Perbarui",
-	"proveit-prompt-name": "Referensi membutuhkan nama untuk dikutip:",
 	"proveit-confirm-remove": "Ini akan menghapus referensi dan semua kutipanya. Apakah Anda yakin?",
 	"proveit-no-template": "Templat tidak ada",
 	"proveit-no-references": "Tidak ada referensi ditemukan",

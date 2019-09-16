@@ -5,8 +5,6 @@
 			"Bencemac"
 		]
 	},
-	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Hozzáadás",
 	"proveit-reference-name-label": "Hivatkozás neve",
 	"proveit-reference-content-label": "Hivatkozás tartalma",
 	"proveit-reference-template-label": "Fő sablon",
@@ -14,7 +12,6 @@
 	"proveit-remove-button": "Eltávolítás",
 	"proveit-insert-button": "Beszúrás",
 	"proveit-update-button": "Frissítés",
-	"proveit-prompt-name": "A hivatkozásnak szüksége van egy névre, hogy meg lehessen jelölni a forrást:",
 	"proveit-confirm-remove": "Ez el fogja távolítani a hivatkozást és az összes forrását. Biztos benne?",
 	"proveit-no-template": "Nincs sablon",
 	"proveit-no-references": "Nem találhatók hivatkozások",

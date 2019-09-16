@@ -4,8 +4,6 @@
 			"Patriccck"
 		]
 	},
-	"proveit-list-tab": "Seznam ($1)",
-	"proveit-add-tab": "Přidat",
 	"proveit-reference-name-label": "Název reference",
 	"proveit-reference-content-label": "Obsah reference",
 	"proveit-reference-template-label": "Hlavní šablona",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Odebrat",
 	"proveit-insert-button": "Vložit",
 	"proveit-update-button": "Aktualizovat",
-	"proveit-prompt-name": "Reference potřebuje jméno, aby mohla být citována:",
 	"proveit-confirm-remove": "Tímto odstraníte reference a všechny její citace. Jste si jisti?",
 	"proveit-no-template": "Žádná šablona",
 	"proveit-no-references": "Nebyla nalezena žádná reference",

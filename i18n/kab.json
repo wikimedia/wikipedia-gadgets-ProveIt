@@ -4,8 +4,6 @@
 			"Belkacem77"
 		]
 	},
-	"proveit-list-tab": "Tabdart ($1)",
-	"proveit-add-tab": "Rnu",
 	"proveit-reference-name-label": "Isem n temsisɣelt",
 	"proveit-reference-content-label": "Agbur n temsisɣelt",
 	"proveit-reference-template-label": "Taneɣruft n temsisɣelt",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Kkes",
 	"proveit-insert-button": "Ger",
 	"proveit-update-button": "Leqqem",
-	"proveit-prompt-name": "Tamsisɣelt tesra isem akken ad tettwabder:",
 	"proveit-confirm-remove": "Ayagi ad yekkes tamsisɣelt akked tinebdurin-is. Ad tedduḍ?",
 	"proveit-no-template": "Ulac taneɣruft",
 	"proveit-no-references": "Ulac tineɣrufin",

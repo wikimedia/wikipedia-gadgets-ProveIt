@@ -4,8 +4,6 @@
 			"Srdjan m"
 		]
 	},
-	"proveit-list-tab": "Spisak ($1)",
-	"proveit-add-tab": "Dodaj",
 	"proveit-reference-name-label": "Naziv reference",
 	"proveit-reference-content-label": "Sadržaj reference",
 	"proveit-reference-template-label": "Glavni šablon",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Ukloni",
 	"proveit-insert-button": "Umetni",
 	"proveit-update-button": "Ažuriraj",
-	"proveit-prompt-name": "Referenci treba zadati ime da bi se mogla navesti:",
 	"proveit-confirm-remove": "Ovim će se ukloniti referenca i svi njene navodi. Jeste li sigurni?",
 	"proveit-no-template": "Nema šablona",
 	"proveit-no-references": "Nisu pronađene reference",

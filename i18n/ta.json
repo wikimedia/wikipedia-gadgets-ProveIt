@@ -4,7 +4,6 @@
 			"Dineshkumar Ponnusamy"
 		]
 	},
-	"proveit-add-tab": "சேர்",
 	"proveit-reference-name-label": "மேற்கோளின் பெயர்",
 	"proveit-reference-content-label": "மேற்கோள் உள்ளடக்கம்",
 	"proveit-reference-template-label": "முதன்மை வார்ப்புரு",
@@ -12,7 +11,6 @@
 	"proveit-remove-button": "நீக்குக",
 	"proveit-insert-button": "நுழை",
 	"proveit-update-button": "புதுப்பிக்கவும்",
-	"proveit-prompt-name": "இம்மேற்கோளுக்கு பெயரிடுக:",
 	"proveit-confirm-remove": "இது அனைத்து மேற்கோள்களையும், குறிப்புகளையும் நீக்கிவிடும், செயல்படுத்தவா?",
 	"proveit-no-template": "வார்ப்புரு இல்லை",
 	"proveit-no-references": "மேற்கோள்கள் எதுவும் இல்லை",

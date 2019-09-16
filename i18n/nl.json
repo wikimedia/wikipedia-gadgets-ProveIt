@@ -8,8 +8,6 @@
 			"Siebrand"
 		]
 	},
-	"proveit-list-tab": "Lijst ($1)",
-	"proveit-add-tab": "Toevoegen",
 	"proveit-reference-name-label": "Referentie naam",
 	"proveit-reference-group-label": "Referentiegroep",
 	"proveit-reference-content-label": "Referentie inhoud",
@@ -18,7 +16,6 @@
 	"proveit-remove-button": "Verwijderen",
 	"proveit-insert-button": "Invoegen",
 	"proveit-update-button": "Bijwerken",
-	"proveit-prompt-name": "De referentie heeft een naam nodig om te worden geciteerd:",
 	"proveit-confirm-remove": "Hiermee worden de referentie en alle bijbehorende citaten verwijderd. Weet je het zeker?",
 	"proveit-no-template": "Geen sjabloon",
 	"proveit-no-references": "Geen referenties gevonden.",

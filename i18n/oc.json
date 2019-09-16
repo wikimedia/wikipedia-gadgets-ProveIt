@@ -4,8 +4,6 @@
 			"Cedric31"
 		]
 	},
-	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Apondre",
 	"proveit-reference-name-label": "Nom de la referéncia",
 	"proveit-reference-content-label": "Contengut de la referéncia",
 	"proveit-reference-template-label": "Modèl principal",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Suprimir",
 	"proveit-insert-button": "Inserir",
 	"proveit-update-button": "Metre a jorn",
-	"proveit-prompt-name": "La referéncia a besonh d'un nom per èsser citada :",
 	"proveit-confirm-remove": "Aquò suprimirà la referéncia e totas sas citacions. Sètz segur ?",
 	"proveit-no-template": "Pas cap de modèl",
 	"proveit-no-references": "Cap de referéncia pas trobada.",

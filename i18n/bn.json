@@ -7,8 +7,6 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"proveit-list-tab": "মোট ($1টি)",
-	"proveit-add-tab": "যোগ করুন",
 	"proveit-reference-name-label": "তথ্যসূত্রের নাম",
 	"proveit-reference-group-label": "তথ্যসূত্রের দল",
 	"proveit-reference-content-label": "তথ্যসূত্রের বিষয়বস্তু",
@@ -17,7 +15,6 @@
 	"proveit-remove-button": "সরান",
 	"proveit-insert-button": "সন্নিবেশ করুন",
 	"proveit-update-button": "হালনাগাদ করুন",
-	"proveit-prompt-name": "উদ্ধৃত করতে তথ্যসূত্রের একটি নাম দেয়া প্রয়োজন:",
 	"proveit-confirm-remove": "এটি এই তথ্যসূত্রটি এবং এর থেকে দেয়া সব উদ্ধৃতিদান সরিয়ে ফেলবে। আপনি কি নিশ্চিত?",
 	"proveit-no-template": "কোন টেমপ্লেট নেই",
 	"proveit-no-references": "কোন তথ্যসূত্র পাওয়া যায়নি",

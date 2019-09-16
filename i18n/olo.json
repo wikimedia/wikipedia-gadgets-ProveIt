@@ -4,8 +4,6 @@
 			"Ilja.mos"
 		]
 	},
-	"proveit-list-tab": "Luvettelo ($1)",
-	"proveit-add-tab": "Ližiä",
 	"proveit-reference-name-label": "Viittehen nimi",
 	"proveit-reference-content-label": "Viittehen sizäldö",
 	"proveit-reference-template-label": "Piäšablonu",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Ota iäre",
 	"proveit-insert-button": "Ližiä",
 	"proveit-update-button": "Päivitä",
-	"proveit-prompt-name": "Viitteheh pidäy ližätä nimi, gu se ruadas:",
 	"proveit-confirm-remove": "Oletgo varmu, gu tahtot ottua iäre tämän viittehen?",
 	"proveit-no-template": "Ei šablonua",
 	"proveit-no-references": "Viittehii ei ole",

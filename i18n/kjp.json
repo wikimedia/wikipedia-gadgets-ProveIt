@@ -4,8 +4,6 @@
 			"Rul1902"
 		]
 	},
-	"proveit-list-tab": "ဆ်ုတုဂ် $1",
-	"proveit-add-tab": "ဍုဂ်ဍိင်လင်",
 	"proveit-reference-name-label": "အ်ုထိုဝ် မၠိင်",
 	"proveit-reference-content-label": "အ်ုထိုဝ် အ်ုခဝ့်ပ်ုယဝ့်",
 	"proveit-reference-template-label": "တန်ပ်ုလိတ် ခေါဟ်ဍံင်",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "မ်ုထုက်",
 	"proveit-insert-button": "ဍုဂ်လင်",
 	"proveit-update-button": "မာၰီ့",
-	"proveit-prompt-name": "တုဂ်ၮေဝ်ႋအ်ုဍံင်လင်ၮှ် လိက်မေံမိင်အ်ုလူးအ်ှထာ့အှ် လိက်အ်ှဆိင့်သယ်မာ့ ၮေဝ်လ်ှ:",
 	"proveit-confirm-remove": "ၮ်ုအ်ုမာဆ်ုမာယိုဝ် အ်ုဝေ့တုဂ်ၮေဝ်ႋအ်ုဍံင်လ်ု လိက်အင်းအုဂ်သယ်လ်ုဖး မာဆိုင့်လုက်ကၠာ။ ထီ့ဆာ့ဝှး။",
 	"proveit-no-template": "တန်ပ်ုလိတ် လ်ုအ်ှၜး",
 	"proveit-no-references": "တန်ပ်ုလိတ် လ်ုဍးၜး",

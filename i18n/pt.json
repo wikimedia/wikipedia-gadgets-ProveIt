@@ -8,8 +8,6 @@
 			"Athena in Wonderland"
 		]
 	},
-	"proveit-list-tab": "Lista ($1)",
-	"proveit-add-tab": "Adicionar",
 	"proveit-reference-name-label": "Nome da referência",
 	"proveit-reference-group-label": "Grupo da referência",
 	"proveit-reference-content-label": "Conteúdo da referência",
@@ -18,7 +16,6 @@
 	"proveit-remove-button": "Eliminar",
 	"proveit-insert-button": "Inserir",
 	"proveit-update-button": "Atualizar",
-	"proveit-prompt-name": "A referência precisa de um nome para ser citada:",
 	"proveit-confirm-remove": "Isto eliminará a referência e todas as citações da mesma. Tem a certeza?",
 	"proveit-no-template": "Sem predefinição",
 	"proveit-no-references": "Não foram encontradas referências",

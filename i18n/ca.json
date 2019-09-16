@@ -4,8 +4,6 @@
 			"Fitoschido"
 		]
 	},
-	"proveit-list-tab": "Llista ($1)",
-	"proveit-add-tab": "Afegeix",
 	"proveit-reference-name-label": "Nom de la referència",
 	"proveit-reference-content-label": "Contingut de la referència",
 	"proveit-reference-template-label": "Plantilla principal",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Treu",
 	"proveit-insert-button": "Insereix",
 	"proveit-update-button": "Actualitza",
-	"proveit-prompt-name": "La referència necessita un nom per a citar-la:",
 	"proveit-no-template": "Cap plantilla",
 	"proveit-no-references": "No s’ha trobat cap referència",
 	"proveit-filter-fields": "Filtra els camps",

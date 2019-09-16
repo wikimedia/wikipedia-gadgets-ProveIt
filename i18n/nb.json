@@ -6,8 +6,6 @@
 			"Pmt"
 		]
 	},
-	"proveit-list-tab": "Liste ($1)",
-	"proveit-add-tab": "Legg til",
 	"proveit-reference-name-label": "Referansenavn",
 	"proveit-reference-content-label": "Referanseinnhold",
 	"proveit-reference-template-label": "Hovedmal",
@@ -15,7 +13,6 @@
 	"proveit-remove-button": "Fjern",
 	"proveit-insert-button": "Sett inn",
 	"proveit-update-button": "Oppdater",
-	"proveit-prompt-name": "Referansen må ha et navn for å kunne siteres:",
 	"proveit-confirm-remove": "Dette vil fjerne referansen og alle siteringene av den. Er du sikker?",
 	"proveit-no-template": "Ingen mal",
 	"proveit-no-references": "Ingen referanser funnet",

@@ -4,8 +4,6 @@
 			"Aue Nai"
 		]
 	},
-	"proveit-list-tab": "စရၚ်($1)",
-	"proveit-add-tab": "ထပ်",
 	"proveit-reference-name-label": "ယၟုနိဿဲ",
 	"proveit-reference-content-label": "အဆက်စပ်နိဿဲ",
 	"proveit-reference-template-label": "တာန်ပလုတ်အဓိက",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "ပတိတ်",
 	"proveit-insert-button": "စုတ်",
 	"proveit-update-button": "ပခိုဟ်လဟဵု",
-	"proveit-prompt-name": "အရာနိဿဲဏအ်နွံပၟိက်ကဵုယၟုမွဲမွဲတၞဟ်နဂွံကဵုနိဿဲ",
 	"proveit-confirm-remove": "ဣဏံဂှ်ပတိတ်ထောံမနိဿဲကေုာံမကဵုလဝ်နိဿဲတအ်ဖအိုတ်ဏောၚ်။ ညးလွပ်စှ်ေစိုတ်ယျဟာ",
 	"proveit-no-template": "တာန်ပလုတ်ဟွံမွဲ",
 	"proveit-no-references": "ဟွံဆဵုညာတ်ကေတ်အရာနိဿဲ",

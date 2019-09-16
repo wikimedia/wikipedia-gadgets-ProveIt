@@ -4,8 +4,6 @@
 			"Aefgh39622"
 		]
 	},
-	"proveit-list-tab": "รายการ ($1)",
-	"proveit-add-tab": "เพิ่ม",
 	"proveit-reference-name-label": "ชื่อแหล่งอ้างอิง",
 	"proveit-reference-content-label": "เนื้อหาอ้างอิง",
 	"proveit-reference-template-label": "แม่แบบหลัก",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "ลบออก",
 	"proveit-insert-button": "แทรก",
 	"proveit-update-button": "อัปเดต",
-	"proveit-prompt-name": "จำเป็นต้องระบุชื่อแหล่งอ้างอิง:",
 	"proveit-confirm-remove": "การดำเนินการนี้จะลบรายการอ้างอิงทั้งหมด คุณแน่ใจหรือไม่?",
 	"proveit-no-template": "ไม่มีแม่แบบ",
 	"proveit-no-references": "ไม่พบรายการอ้างอิง",

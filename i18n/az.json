@@ -6,8 +6,6 @@
 			"Serkanland"
 		]
 	},
-	"proveit-list-tab": "Siyahı ($1)",
-	"proveit-add-tab": "Əlavə et",
 	"proveit-reference-name-label": "İstinad adı",
 	"proveit-reference-content-label": "İstinad məzmunu",
 	"proveit-reference-template-label": "Əsas şablon",
@@ -15,7 +13,6 @@
 	"proveit-remove-button": "Çıxar",
 	"proveit-insert-button": "Yerləşdir",
 	"proveit-update-button": "Yenilə",
-	"proveit-prompt-name": "Sənədə istinad etmək üçün bir ada ehtiyac var:",
 	"proveit-confirm-remove": "Bu istinad və bütün sitatların çıxarılacaq. Əminsiniz?",
 	"proveit-no-template": "Şablon yoxdur",
 	"proveit-no-references": "İstinadlar tapılmadı",

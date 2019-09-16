@@ -4,8 +4,6 @@
 			"Nikosgranturismogt"
 		]
 	},
-	"proveit-list-tab": "Λίστα ($1)",
-	"proveit-add-tab": "Προσθήκη",
 	"proveit-reference-name-label": "Όνομα αναφοράς",
 	"proveit-reference-content-label": "Περιεχόμενο αναφοράς",
 	"proveit-reference-template-label": "Κύριο πρότυπο",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "Αφαίρεση",
 	"proveit-insert-button": "Εισαγωγή",
 	"proveit-update-button": "Ενημέρωση",
-	"proveit-prompt-name": "Η αναφορά χρειάζεται ένα όνομα προκειμένου να αναφερθεί:",
 	"proveit-confirm-remove": "Αυτό θα αφαιρέσει την αναφορά και όλες τις παραπομπές της. Είστε σίγουρος;",
 	"proveit-no-template": "Χωρίς πρότυπο",
 	"proveit-no-references": "Δεν βρέθηκαν αναφορές",

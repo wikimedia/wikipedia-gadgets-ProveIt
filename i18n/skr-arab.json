@@ -4,8 +4,6 @@
 			"Saraiki"
 		]
 	},
-	"proveit-list-tab": "لسٹ($1)",
-	"proveit-add-tab": "رلاؤ",
 	"proveit-reference-name-label": "حوالے دا ناں",
 	"proveit-reference-content-label": "حوالے دا مواد",
 	"proveit-reference-template-label": "بنیادی سانچہ",
@@ -13,7 +11,6 @@
 	"proveit-remove-button": "مٹاؤ",
 	"proveit-insert-button": "درج کرو",
 	"proveit-update-button": "تجدید",
-	"proveit-prompt-name": "حوالے کوں ترتیب وچ لکھݨ کیتے ہک ناں دی لوڑ ہے",
 	"proveit-confirm-remove": "ایہ سارے حوالے  مٹا ݙیسی۔ بھلا تساں چاہندو",
 	"proveit-no-template": "کوئی سانچہ کائنی",
 	"proveit-no-references": "کوئی حوالہ کائنی لبھا",

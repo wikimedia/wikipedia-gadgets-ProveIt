@@ -5,8 +5,6 @@
 			"Strayblues"
 		]
 	},
-	"proveit-list-tab": "רשימה ($1)",
-	"proveit-add-tab": "הוספה",
 	"proveit-reference-name-label": "שם הפניה",
 	"proveit-reference-group-label": "קבוצת התייחסות",
 	"proveit-reference-content-label": "תוכן הפניה",
@@ -15,7 +13,6 @@
 	"proveit-remove-button": "הסרה",
 	"proveit-insert-button": "הוספה",
 	"proveit-update-button": "עדכון",
-	"proveit-prompt-name": "ההפניה דורשת שם לטובת ציטוט ממנה:",
 	"proveit-confirm-remove": "פעולה זו תסיר את ההפניה ואת כל הציטוטים שלה. להסיר?",
 	"proveit-no-template": "אין תבנית",
 	"proveit-no-references": "לא נמצאו הפניות",
