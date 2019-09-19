@@ -5,13 +5,16 @@
 			"He7d3r",
 			"Hamilton Abreu",
 			"MokaAkashiyaPT",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"Mansil alfalb"
 		]
 	},
 	"proveit-reference-name-label": "Nome da referência",
 	"proveit-reference-group-label": "Grupo da referência",
 	"proveit-reference-content-label": "Conteúdo da referência",
 	"proveit-reference-template-label": "Predefinição principal",
+	"proveit-add-button": "Adicionar",
+	"proveit-back-button": "Anterior",
 	"proveit-cite-button": "Citar",
 	"proveit-remove-button": "Eliminar",
 	"proveit-insert-button": "Inserir",
