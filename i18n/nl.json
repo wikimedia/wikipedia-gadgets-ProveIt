@@ -19,6 +19,7 @@
 	"proveit-remove-button": "Verwijderen",
 	"proveit-insert-button": "Invoegen",
 	"proveit-update-button": "Bijwerken",
+	"proveit-normalize-message": "Normaliseren... Dit duurt even.",
 	"proveit-confirm-remove": "Hiermee worden de referentie en alle bijbehorende citaten verwijderd. Weet je het zeker?",
 	"proveit-no-template": "Geen sjabloon",
 	"proveit-no-references": "Geen referenties gevonden.",

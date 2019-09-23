@@ -5,7 +5,8 @@
 			"Gomoko",
 			"Wladek92",
 			"Thibaut120094",
-			"Od1n"
+			"Od1n",
+			"Verdy p"
 		]
 	},
 	"proveit-reference-name-label": "Nom de la référence",
@@ -15,13 +16,13 @@
 	"proveit-reference-template-label": "Modèle principal",
 	"proveit-add-button": "Ajouter",
 	"proveit-back-button": "Retour",
-	"proveit-cite-button": "Réutiliser",
+	"proveit-cite-button": "Citer",
 	"proveit-remove-button": "Supprimer",
 	"proveit-insert-button": "Insérer",
 	"proveit-update-button": "Mettre à jour",
 	"proveit-normalize-button": "Normaliser toutes les références",
-	"proveit-normalize-message": "Normalisation… cela peut prendre plusieurs secondes, même des minutes !",
-	"proveit-confirm-remove": "Cela supprimera aussi toutes les citations de la référence. Ok ?",
+	"proveit-normalize-message": "Normalisation... Cela peut prendre plusieurs secondes, même des minutes !",
+	"proveit-confirm-remove": "Cela supprimera aussi toutes les citations de la référence. OK ?",
 	"proveit-no-template": "Aucun modèle",
 	"proveit-no-references": "Aucune référence trouvée",
 	"proveit-filter-fields": "Champs du filtre",
@@ -29,9 +30,9 @@
 	"proveit-show-all-button": "Afficher tous les champs",
 	"proveit-today-button": "Aujourd’hui",
 	"proveit-citoid-label": "Référence automatique",
-	"proveit-citoid-tooltip": "Saisir un URL, DOI, ISBN ou PMC/PMID pour essayer d’extraire automatiquement les détails via le service Citoid",
+	"proveit-citoid-tooltip": "Saisir une URL ou un identifiant DOI, ISBN ou PMC/PMID afin de tenter d’extraire automatiquement les détails via le service ''Citoid''",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN ou PMC/PMID",
 	"proveit-citoid-load": "Charger",
-	"proveit-citoid-loading": "Chargement…",
+	"proveit-citoid-loading": "Chargement...",
 	"proveit-citoid-error": "Erreur"
 }
