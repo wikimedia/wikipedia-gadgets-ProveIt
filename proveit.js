@@ -13,16 +13,16 @@
 var ProveIt = {
 
 	/**
-	 * Template data of all the citation templates on the current wiki
-	 * This property is set on ProveIt.init()
+	 * Template data for the citation templates of the wiki
+	 * Populated on ProveIt.init()
 	 *
 	 * @type {object} map from template name to template data
 	 */
 	templateData: {},
 
 	/**
-	 * Content language of the current wiki
-	 * This property is set on ProveIt.init() and defaults to English
+	 * Content language of the wiki
+	 * Set on ProveIt.init(), defaults to English
 	 *
 	 * @type {string} content language code
 	 */
@@ -30,8 +30,7 @@ var ProveIt = {
 
 	/**
 	 * Convenience method to get a ProveIt configuration option
-	 * Configuration options are set in the initialization script of each wiki,
-	 * not in this file
+	 * Configuration options are set from the loader of the wiki, not here
 	 *
 	 * @param {string} option key without the "proveit-" prefix
 	 * @return {string} option value
@@ -42,6 +41,7 @@ var ProveIt = {
 
 	/**
 	 * Convenience method to get a ProveIt interface message
+	 * Interface messages are set on ProveIt.init()
 	 *
 	 * @param {string} message key without the "proveit-" prefix
 	 * @return {string} message value
@@ -53,19 +53,21 @@ var ProveIt = {
 	/**
 	 * Convenience method to detect the current editor
 	 *
-	 * @return {string|null} name of the current editor ('basic', 'classic' or '2017')
+	 * @return {string|null} name of the current editor ('basic', 'classic' or '2017') or null if it's not supported
 	 */
 	getEditor: function () {
-		if ( window.ve && ve.init && ve.init.target && ve.init.target.active && ve.init.target.getSurface().getMode() === 'source' ) {
-			return '2017'; // 2017 wikitext editor
+		if ( window.ve && ve.init && ve.init.target && ve.init.target.active ) {
+			if ( ve.init.target.getSurface().getMode() === 'source' ) {
+				return '2017'; // 2017 wikitext editor
+			}
+			return; // Visual editor
 		}
 		var action = mw.config.get( 'wgAction' );
 		if ( action === 'edit' || action === 'submit' ) {
 			if ( mw.user.options.get( 'usebetatoolbar' ) === 1 ) {
 				return 'classic'; // WikiEditor
-			} else {
-				return 'basic';
 			}
+			return 'basic'; // Core editor
 		}
 	},
 
@@ -80,7 +82,7 @@ var ProveIt = {
 			case 'classic':
 				return $( '#wpTextbox1' ).val();
 			case '2017':
-				return $( '.ve-ce-documentNode' ).text();
+				return $( '.ve-ce-documentNode' ).text(); // Crude, but effective
 		}
 	},
 
@@ -90,6 +92,27 @@ var ProveIt = {
 	 * @return {void}
 	 */
 	init: function () {
+
+		// Remove any previous instance
+		$( '#proveit' ).remove();
+
+		// Only load on wikitext pages
+		var contentModel = mw.config.get( 'wgPageContentModel' );
+		if ( contentModel !== 'wikitext' ) {
+			return;
+		}
+
+		// Only load on supported namespaces
+		var namespace = mw.config.get( 'wgNamespaceNumber' ),
+			namespaces = ProveIt.getOption( 'namespaces' );
+		if ( ! namespaces.includes( namespace ) ) {
+			return;
+		}
+
+		// Only load on supported editors
+		if ( ! ProveIt.getEditor() ) {
+			return;
+		}
 
 		// Get and set the content language
 		ProveIt.contentLanguage = mw.config.get( 'wgContentLanguage' );
@@ -119,9 +142,18 @@ var ProveIt = {
 			messages = Object.assign( english, messages ); // Merge them
 			mw.messages.set( messages );
 
+			// Get the citation templates
+			var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
+				formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
+				templateNamespace = formattedNamespaces[ 10 ],
+				titles = [];
+			templates.forEach( function ( templateName ) {
+				titles.push( templateNamespace + ':' + templateName );
+			});
+
 			// Get the template data for the current wiki
 			new mw.Api().get({
-				'titles': ProveIt.getOption( 'templates' ).join( '|' ),
+				'titles': titles.join( '|' ),
 				'action': 'templatedata',
 				'redirects': true,
 				'format': 'json',
@@ -140,13 +172,20 @@ var ProveIt = {
 				if ( 'redirects' in data ) {
 					for ( var redirect in data.redirects ) {
 						redirect = data.redirects[ redirect ];
-						ProveIt.templateData[ redirect.from ] = ProveIt.templateData[ redirect.to ];
+						if ( redirect.to in data.pages ) {
+							ProveIt.templateData[ redirect.from ] = ProveIt.templateData[ redirect.to ];
+						}
 					}
 				}
 
 				// Finally, build the GUI
 				ProveIt.buildGUI();
 			});
+		});
+
+		// Remove ProveIt when switching out from the source editor
+		mw.hook( 've.deactivationComplete' ).add( function () {
+			$( '#proveit' ).remove();
 		});
 
 		// When previewing, re-add the ProveIt tag (T154357)
@@ -307,14 +346,14 @@ var ProveIt = {
 			label, input, div;
 
 		// Add the reference name field
-		label = $( '<label>' ).text( ProveIt.getMessage( 'reference-name-label' ) ),
-		input = $( '<input>' ).attr( 'id', 'proveit-reference-name' ).val( reference.getName() ),
+		label = $( '<label>' ).text( ProveIt.getMessage( 'reference-name-label' ) );
+		input = $( '<input>' ).attr( 'id', 'proveit-reference-name' ).val( reference.getName() );
 		div = $( '<div>' ).append( label, input );
 		form.append( div );
 
 		// Add the reference group field
-		label = $( '<label>' ).text( ProveIt.getMessage( 'reference-group-label' ) ),
-		input = $( '<input>' ).attr( 'id', 'proveit-reference-group' ).val( reference.getGroup() ),
+		label = $( '<label>' ).text( ProveIt.getMessage( 'reference-group-label' ) );
+		input = $( '<input>' ).attr( 'id', 'proveit-reference-group' ).val( reference.getGroup() );
 		div = $( '<div>' ).append( label, input );
 		form.append( div );
 
@@ -347,7 +386,7 @@ var ProveIt = {
 		for ( templateName in ProveIt.templateData ) {
 			templateOption = $( '<option>' ).text( templateName ).val( templateName );
 			if ( reference.getTemplateName() === templateName ) {
-				templateOption.attr( 'selected', 'selected' );
+				templateOption.prop( 'selected', true );
 			}
 			input.append( templateOption );
 		}
@@ -391,7 +430,7 @@ var ProveIt = {
 					return; // Do nothing
 				}
 
-				citoidButton.text( ProveIt.getMessage( 'citoid-loading' ) ).attr( 'disabled', true );
+				citoidButton.text( ProveIt.getMessage( 'citoid-loading' ) ).prop( 'disabled', true );
 
 				$.get( '//' + ProveIt.contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodeURIComponent( URI ) ).done( function ( data ) {
 					if ( data instanceof Array && data[0] instanceof Object ) {
@@ -400,21 +439,21 @@ var ProveIt = {
 							templateData = reference.getTemplateData();
 
 						// Recursive helper function
-						function setParamPair( paramName, paramValue ) {
+						function setParamValue( paramName, paramValue ) {
 							if ( typeof paramName === 'string' && typeof paramValue === 'string' && paramName in templateData.params ) {
 								$( '.proveit-template-param[name="' + paramName + '"]' ).val( paramValue );
 							} else if ( paramName instanceof Array && paramValue instanceof Array ) {
 								for ( var i = 0; i < paramName.length; i++ ) {
-									setParamPair( paramName[ i ], paramValue[ i ] );
+									setParamValue( paramName[ i ], paramValue[ i ] );
 								}
 							}
 						}
 						for ( var citoidKey in citoidData ) {
 							paramName = citoidMap[ citoidKey ];
 							paramValue = citoidData[ citoidKey ];
-							setParamPair( paramName, paramValue );
+							setParamValue( paramName, paramValue );
 						}
-						citoidButton.text( ProveIt.getMessage( 'citoid-load' ) ).attr( 'disabled', false );
+						citoidButton.text( ProveIt.getMessage( 'citoid-load' ) ).prop( 'disabled', false );
 
 						var content = reference.buildContent();
 						$( '#proveit-reference-content' ).val( content );
@@ -422,7 +461,7 @@ var ProveIt = {
 				}).error( function () {
 					citoidButton.text( ProveIt.getMessage( 'citoid-error' ) );
 					setTimeout( function () {
-						citoidButton.text( ProveIt.getMessage( 'citoid-load' ) ).attr( 'disabled', false );
+						citoidButton.text( ProveIt.getMessage( 'citoid-load' ) ).prop( 'disabled', false );
 					}, 3000 );
 				});
 			});
@@ -475,7 +514,7 @@ var ProveIt = {
 			if ( paramDescription ) {
 				label.attr( 'data-tooltip', paramDescription );
 			}
-			input = paramData.type === 'content' ? $( '<textarea>' ) : $( '<input>' )
+			input = paramData.type === 'content' ? $( '<textarea>' ) : $( '<input>' );
 			input.val( paramValue ).attr({
 				'name': paramName,
 				'class': 'proveit-template-param',
@@ -985,7 +1024,7 @@ var ProveIt = {
 		 * @return {void}
 		 */
 		this.cite = function () {
-			var citation = new ProveIt.Citation,
+			var citation = new ProveIt.Citation(),
 				name = this.buildName();
 			if ( name ) {
 				citation.insert();

@@ -1,0 +1,31 @@
+{
+    "@metadata": {
+        "authors": [
+            "Épine",
+            "Aram"
+        ]
+    },
+    "proveit-list-tab": "پێڕست ($1)",
+    "proveit-add-tab": "زیادکردن",
+    "proveit-reference-name-label": "ناوی سەرچاوە",
+    "proveit-reference-content-label": "ناوەڕۆکی سەرچاوە",
+    "proveit-reference-template-label": "داڕێژەی سەرەکی",
+    "proveit-cite-button": "ھێنانەوەی سەرچاوە",
+    "proveit-remove-button": "لابردن",
+    "proveit-insert-button": "تێخستن",
+    "proveit-update-button": "نوێکردنەوە",
+    "proveit-prompt-name": "سەرچاوەکە پێویستی بە ناوێکە تاوەکوو وەکوو سەرچاوە بھێندرێتەوە:",
+    "proveit-confirm-remove": "ئەمە سەرچاوەکە و ھەموو سەرچاوەھێنانەوەکانیشی لادەبات. دڵنیایت؟",
+    "proveit-no-template": "داڕێژە نییە",
+    "proveit-no-references": "ھیچ سەرچاوەیەک نەدۆزرایەوە",
+    "proveit-filter-fields": "پاڵاوتنی خانەکان",
+    "proveit-filter-references": "پاڵاوتنی سەرچاوەکان",
+    "proveit-show-all-button": "پیشاندانی ھەموو خانەکان",
+    "proveit-today-button": "ئەمڕۆ",
+    "proveit-citoid-label": "سەرچاوەی خۆکار",
+    "proveit-citoid-tooltip": "URL، DOI، ISBN یان PMC/PMID داخل بکە تا ھەوڵی وەرگرتنی خۆکارانەی وردەکارییەکان لەناو ڕاژەی سەرچاوەکە بدات",
+    "proveit-citoid-placeholder": "URL، DOI، ISBN یان PMC/PMID",
+    "proveit-citoid-load": "بارکردن",
+    "proveit-citoid-loading": "بارکردن...",
+    "proveit-citoid-error": "ھەڵە"
+}
