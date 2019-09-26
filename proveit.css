@@ -85,7 +85,8 @@
 	margin-right: 10px;
 }
 
-#proveit-no-references-message {
+#proveit-no-references-message,
+#proveit-no-template-data-message {
 	text-align: center;
 	padding: 10px;
 }

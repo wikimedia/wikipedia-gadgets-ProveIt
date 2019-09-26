@@ -7,7 +7,7 @@
  * Rewritten, internationalized, improved and maintained by Sophivorus since 2014
  *
  * ProveIt is available under the GNU Free Documentation License (http://www.gnu.org/copyleft/fdl.html),
- * the Creative Commons Attribution/Share-Alike License 3.0 (http://creativecommons.org/licenses/by-sa/3.0/),
+ * the Creative Commons Attribution/Share-Alike License 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
  * and the GNU General Public License 2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 var ProveIt = {
@@ -105,7 +105,7 @@ var ProveIt = {
 		// Only load on supported namespaces
 		var namespace = mw.config.get( 'wgNamespaceNumber' ),
 			namespaces = ProveIt.getOption( 'namespaces' );
-		if ( ! namespaces.includes( namespace ) ) {
+		if ( namespaces && ! namespaces.includes( namespace ) ) {
 			return;
 		}
 
@@ -117,69 +117,64 @@ var ProveIt = {
 		// Get and set the content language
 		ProveIt.contentLanguage = mw.config.get( 'wgContentLanguage' );
 
-		// Get and set the interface messages from Commons, with English as fallback
-		var userLanguage = mw.config.get( 'wgUserLanguage' );
-		$.get( '//commons.wikimedia.org/w/api.php', {
-			'titles': 'MediaWiki:Gadget-ProveIt-en.json|MediaWiki:Gadget-ProveIt-' + userLanguage + '.json',
-			'action': 'query',
-			'prop': 'revisions',
-			'rvprop': 'content',
-			'rvslots': 'main',
-			'format': 'json',
-			'formatversion': 2,
-			'origin': '*', // Allow requests from any origin so that ProveIt can be used on localhost and non-Wikimedia wikis
-		}).done( function ( data ) {
+		// Get the latest English messages
+		$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/en.json?format=text', function ( data ) {
+			var englishMessages = JSON.parse( window.atob( data ) );
+			delete englishMessages['@metadata'];
 
-			// Extract and set the messages
-			var messages, english;
-			data.query.pages.forEach( function ( page ) {
-				if ( page.title === 'MediaWiki:Gadget-ProveIt-en.json' ) {
-					english = JSON.parse( page.revisions[0].slots.main.content );
-				} else if ( 'revisions' in page ) {
-					messages = JSON.parse( page.revisions[0].slots.main.content );
-				}
-			});
-			messages = Object.assign( english, messages ); // Merge them
-			mw.messages.set( messages );
+			// Get the latest translations to the preferred user language
+			var userLanguage = mw.config.get( 'wgUserLanguage' );
+			$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text', function ( data ) {
+				var translatedMessages = JSON.parse( window.atob( data ) );
+				delete translatedMessages['@metadata'];
 
-			// Get the citation templates
-			var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
-				formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
-				templateNamespace = formattedNamespaces[ 10 ],
-				titles = [];
-			templates.forEach( function ( templateName ) {
-				titles.push( templateNamespace + ':' + templateName );
-			});
+				// Merge and set the messages
+				var messages = Object.assign( englishMessages, translatedMessages );
+				mw.messages.set( messages );
 
-			// Get the template data for the current wiki
-			new mw.Api().get({
-				'titles': titles.join( '|' ),
-				'action': 'templatedata',
-				'redirects': true,
-				'format': 'json',
-				'formatversion': 2,
-			}).done( function ( data ) {
+				// Get the citation templates
+				var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
+					formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
+					templateNamespace = formattedNamespaces[ 10 ],
+					titles = [];
+				templates.forEach( function ( templateName ) {
+					titles.push( templateNamespace + ':' + templateName );
+				});
 
-				// Extract and set the template data
-				var templateData, templateName;
-				for ( var page in data.pages ) {
-					templateData = data.pages[ page ];
-					templateName = templateData.title.substring( templateData.title.indexOf( ':' ) + 1 ); // Remove the namespace
-					ProveIt.templateData[ templateName ] = templateData;
-				}
+				// Get the template data
+				new mw.Api().get({
+					'titles': titles.join( '|' ),
+					'action': 'templatedata',
+					'redirects': true,
+					'includeMissingTitles': true,
+					'format': 'json',
+					'formatversion': 2,
+				}).done( function ( data ) {
 
-				// Resolve redirects
-				if ( 'redirects' in data ) {
-					for ( var redirect in data.redirects ) {
-						redirect = data.redirects[ redirect ];
-						if ( redirect.to in data.pages ) {
-							ProveIt.templateData[ redirect.from ] = ProveIt.templateData[ redirect.to ];
+					// Extract and set the template data
+					var templateData, templateName;
+					for ( var page in data.pages ) {
+						templateData = data.pages[ page ];
+						if ( 'missing' in templateData ) {
+							continue;
+						}
+						templateName = templateData.title.substring( templateData.title.indexOf( ':' ) + 1 ); // Remove the namespace
+						ProveIt.templateData[ templateName ] = templateData;
+					}
+
+					// Resolve redirects
+					if ( 'redirects' in data ) {
+						for ( var redirect in data.redirects ) {
+							redirect = data.redirects[ redirect ];
+							if ( redirect.to in data.pages ) {
+								ProveIt.templateData[ redirect.from ] = ProveIt.templateData[ redirect.to ];
+							}
 						}
 					}
-				}
 
-				// Finally, build the GUI
-				ProveIt.buildGUI();
+					// Finally, build the GUI
+					ProveIt.buildGUI();
+				});
 			});
 		});
 
@@ -290,36 +285,11 @@ var ProveIt = {
 			// Add the list to the GUI and make sure we're at the top
 			$( '#proveit-body' ).html( list ).scrollTop( 0 );
 
-		} else {
-
-			var div = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( ProveIt.getMessage( 'no-references' ) );
-			$( '#proveit-body' ).html( div );
-
-		}
-
-		// Build the header
-		$( '#proveit-header button' ).remove();
-		var addButton = $( '<button>' ).addClass( 'progressive' ).text( ProveIt.getMessage( 'add-button' ) );
-		$( '#proveit-header' ).prepend( addButton );
-		addButton.click( function () {
-			// Create a dummy reference and a dummy form out of it
-			var templateName = $.cookie( 'proveit-last-template' ), // Remember the user choice
-				wikitext = templateName ? '<ref>{{' + templateName + '}}</ref>' : '<ref></ref>',
-				reference = new ProveIt.Reference( wikitext );
-			ProveIt.buildForm( reference );
-		});
-
-		// Build the footer
-		$( '#proveit-footer' ).empty();
-		if ( references.length ) {
-			var filterReferences = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-references' ) );
-			filterReferences.keyup( function () {
-				var filter = $( this ).val().toLowerCase();
-				$( 'li', list ).show().filter( function () {
-					return $( this ).text().toLowerCase().indexOf( filter ) === -1;
-				}).hide();
-			});
-			var normalizeButton = $( '<button>' ).attr( 'id', 'proveit-normalize-button' ).text( ProveIt.getMessage( 'normalize-button' ) );
+			// Build the footer
+			var footer = $( '#proveit-footer' ),
+				normalizeButton = $( '<button>' ).attr( 'id', 'proveit-normalize-button' ).text( ProveIt.getMessage( 'normalize-button' ) );
+			footer.empty();
+			footer.append( normalizeButton );
 			normalizeButton.click( function () {
 				$( this ).remove();
 				mw.notify( ProveIt.getMessage( 'normalize-message' ) );
@@ -331,8 +301,35 @@ var ProveIt = {
 					});
 				}, 100 );
 			});
-			$( '#proveit-footer' ).prepend( filterReferences, normalizeButton );
+			if ( references.length > 9 ) {
+				var filterReferences = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-references' ) );
+				footer.prepend( filterReferences );
+				filterReferences.keyup( function () {
+					var filter = $( this ).val().toLowerCase();
+					$( 'li', list ).show().filter( function () {
+						return $( this ).text().toLowerCase().indexOf( filter ) === -1;
+					}).hide();
+				});
+			}
+
+		// If no references are found
+		} else {
+			var div = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( ProveIt.getMessage( 'no-references' ) );
+			$( '#proveit-body' ).html( div );
 		}
+
+		// Build the header
+		var header = $( '#proveit-header' ),
+			addButton = $( '<button>' ).addClass( 'progressive' ).text( ProveIt.getMessage( 'add-button' ) );
+		$( 'button', header ).remove();
+		header.prepend( addButton );
+		addButton.click( function () {
+			// Create a dummy reference and a dummy form out of it
+			var templateName = $.cookie( 'proveit-last-template' ), // Remember the user choice
+				wikitext = templateName ? '<ref>{{' + templateName + '}}</ref>' : '<ref></ref>',
+				reference = new ProveIt.Reference( wikitext );
+			ProveIt.buildForm( reference );
+		});
 	},
 
 	/**
@@ -554,28 +551,45 @@ var ProveIt = {
 			form.append( div );
 		}
 
+		// Some citation templates may have no template data defined
+		if ( !paramOrder.length ) {
+			div = $( '<div>' ).attr( 'id', 'proveit-no-template-data-message' ).text( ProveIt.getMessage( 'no-template-data' ) );
+			form.append( div );
+		}
+
+		// Add the form to the GUI and make sure we're at the top
+		$( '#proveit-body' ).html( form ).scrollTop( 0 );
+
 		// Build the header
-		$( '#proveit-header button' ).remove();
-		var backButton = $( '<button>' ).text( ProveIt.getMessage( 'back-button' ) );
-		$( '#proveit-header' ).prepend( backButton );
+		var header = $( '#proveit-header' ),
+			backButton = $( '<button>' ).text( ProveIt.getMessage( 'back-button' ) );
+		$( 'button', header ).remove();
+		header.prepend( backButton );
 		backButton.click( ProveIt.buildList );
 
 		// Build the footer
-		var filterFields = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-fields' ) ),
+		var footer = $( '#proveit-footer' ),
+			filterFields = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-fields' ) ),
 			insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( ProveIt.getMessage( 'insert-button' ) ).addClass( 'progressive' ),
 			updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( ProveIt.getMessage( 'update-button' ) ).addClass( 'progressive' ),
 			removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( ProveIt.getMessage( 'remove-button' ) ),
 			showAllButton = $( '<button>' ).attr( 'id', 'proveit-show-all-button' ).text( ProveIt.getMessage( 'show-all-button' ) ),
 			citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( ProveIt.getMessage( 'cite-button' ) );
 
-		$( '#proveit-footer' ).empty();
-		if ( reference.getTemplateName() ) {
-			$( '#proveit-footer' ).append( filterFields, showAllButton );
+		footer.empty();
+		if ( paramOrder.length > 9 ) {
+			footer.append( filterFields );
 		}
-		if ( reference.exists() ) {
-			$( '#proveit-footer' ).append( citeButton, removeButton, updateButton );
+		if ( $( '.proveit-required, .proveit-suggested' ).length && $( '.proveit-deprecated, .proveit-optional' ).length ) {
+			footer.append( showAllButton );
 		} else {
-			$( '#proveit-footer' ).append( citeButton, insertButton );
+			$( '.proveit-deprecated, .proveit-optional' ).show();
+		}
+		footer.append( citeButton ); // Some users prefer to cite in place and then insert the full reference at the bottom
+		if ( reference.exists() ) {
+			footer.append( removeButton, updateButton );
+		} else {
+			footer.append( insertButton );
 		}
 
 		// Bind events
@@ -584,7 +598,7 @@ var ProveIt = {
 		removeButton.click( reference, function ( event ) { event.data.remove(); } );
 		citeButton.click( reference, function ( event ) { event.data.cite(); } );
 		showAllButton.click( function () {
-			$( 'div', form ).show();
+			$( '.proveit-deprecated, .proveit-optional' ).show();
 			$( this ).remove();
 		});
 		filterFields.keyup( function () {
@@ -593,9 +607,6 @@ var ProveIt = {
 				return $( this ).text().toLowerCase().indexOf( filter ) === -1;
 			}).hide();
 		});
-
-		// Add the form to the GUI and make sure we're at the top
-		$( '#proveit-body' ).html( form ).scrollTop( 0 );
 
 		// When any template parameter is changed, rebuild the reference content
 		var content = reference.getContent();
