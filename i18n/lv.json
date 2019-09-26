@@ -4,13 +4,13 @@
 			"Papuass"
 		]
 	},
-	"proveit-reference-wikitext-label": "Atsauces vikiteksts",
 	"proveit-add-button": "Pievienot",
 	"proveit-back-button": "Atpakaļ",
-	"proveit-remove-button": "Noņemt",
-	"proveit-insert-button": "Ievietot",
-	"proveit-today-button": "Šodiena",
+	"proveit-citoid-error": "Kļūda",
 	"proveit-citoid-label": "Automātiska atsauce",
 	"proveit-citoid-load": "Ielādēt",
-	"proveit-citoid-error": "Kļūda"
+	"proveit-insert-button": "Ievietot",
+	"proveit-reference-wikitext-label": "Atsauces vikiteksts",
+	"proveit-remove-button": "Noņemt",
+	"proveit-today-button": "Šodiena"
 }

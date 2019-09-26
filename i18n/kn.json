@@ -4,17 +4,17 @@
 			"Anoop rao"
 		]
 	},
-	"proveit-reference-name-label": "ಉಲ್ಲೇಖದ ಹೆಸರು",
-	"proveit-reference-content-label": "ಉಲ್ಲೇಖದ ವಿಷಯ",
-	"proveit-reference-template-label": "ಮುಖ್ಯ ಟೆಂಪ್ಲೇಟ್",
 	"proveit-cite-button": "ಉಲ್ಲೇಖಿಸಿ",
-	"proveit-remove-button": "ತೆಗೆದುಹಾಕಿ",
-	"proveit-insert-button": "ಸೇರಿಸು",
-	"proveit-update-button": "ಪರಿಷ್ಕರಿಸು",
 	"proveit-confirm-remove": "ಇದು ಉಲ್ಲೇಖ ಮತ್ತು ಅದರ ಎಲ್ಲಾ ಆಧಾರಗಳನ್ನೂ ತೆಗೆದುಹಾಕುತ್ತದೆ. ನೀವು ಖಚಿತವಾಗಿರುವಿರಾ?",
-	"proveit-no-template": "ಟೆಂಪ್ಲೆಟ್ ಇಲ್ಲ",
-	"proveit-no-references": "ಯಾವುದೇ ಉಲ್ಲೇಖಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
 	"proveit-filter-fields": "ಕ್ಷೇತ್ರಗಳನ್ನು ಸೋಸು",
 	"proveit-filter-references": "ಉಲ್ಲೇಖಗಳನ್ನು ಸೋಸು",
-	"proveit-today-button": "ಇಂದು"
+	"proveit-insert-button": "ಸೇರಿಸು",
+	"proveit-no-references": "ಯಾವುದೇ ಉಲ್ಲೇಖಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
+	"proveit-no-template": "ಟೆಂಪ್ಲೆಟ್ ಇಲ್ಲ",
+	"proveit-reference-content-label": "ಉಲ್ಲೇಖದ ವಿಷಯ",
+	"proveit-reference-name-label": "ಉಲ್ಲೇಖದ ಹೆಸರು",
+	"proveit-reference-template-label": "ಮುಖ್ಯ ಟೆಂಪ್ಲೇಟ್",
+	"proveit-remove-button": "ತೆಗೆದುಹಾಕಿ",
+	"proveit-today-button": "ಇಂದು",
+	"proveit-update-button": "ಪರಿಷ್ಕರಿಸು"
 }

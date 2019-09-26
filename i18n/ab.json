@@ -5,14 +5,14 @@
 			"Андрей"
 		]
 	},
-	"proveit-reference-template-label": "Ихадоу ашаблон",
-	"proveit-remove-button": "Ианыхтәуп",
-	"proveit-update-button": "Ирҿыцтәуп",
-	"proveit-no-template": "Ашаблон ыҟам",
-	"proveit-no-references": "Ахыҵхырҭақәа ҧшаам",
-	"proveit-today-button": "Иахьа",
-	"proveit-citoid-placeholder": "Азхьарҧш, DOI, ISBN ма PMC/PMID",
+	"proveit-citoid-error": "Агха",
 	"proveit-citoid-load": "Иҭагалатәуп",
 	"proveit-citoid-loading": "Аҭагалара...",
-	"proveit-citoid-error": "Агха"
+	"proveit-citoid-placeholder": "Азхьарҧш, DOI, ISBN ма PMC/PMID",
+	"proveit-no-references": "Ахыҵхырҭақәа ҧшаам",
+	"proveit-no-template": "Ашаблон ыҟам",
+	"proveit-reference-template-label": "Ихадоу ашаблон",
+	"proveit-remove-button": "Ианыхтәуп",
+	"proveit-today-button": "Иахьа",
+	"proveit-update-button": "Ирҿыцтәуп"
 }

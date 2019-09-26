@@ -4,15 +4,15 @@
 			"Sony dandiwal"
 		]
 	},
-	"proveit-reference-name-label": "ਹਵਾਲੇ ਦਾ ਨਾਂਮ",
-	"proveit-reference-content-label": "ਹਵਾਲੇ ਦੀ ਲਿਖ਼ਤ",
-	"proveit-reference-template-label": "ਮੁੱਖ ਫਰਮਾ",
 	"proveit-cite-button": "ਹਵਾਲਾ",
-	"proveit-remove-button": "ਹਟਾਓ",
-	"proveit-insert-button": "ਜੋੜੋ",
-	"proveit-update-button": "ਨਵਿਆਉ",
 	"proveit-confirm-remove": "ਇਸ ਨਾਲ ਹਵਾਲਾ ਅਤੇ ਬਾਕੀ ਲਿਖ਼ਤ ਮਿਟ ਸਕਦੀ ਹੈ। ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇਹ ਚਾਹੁੰਦੇ ਹੋ?",
-	"proveit-no-template": "ਕੋਈ ਫਰਮਾ ਨਹੀਂ",
+	"proveit-filter-fields": "ਫਿਲਟਰ ਖੇਤਰ",
+	"proveit-insert-button": "ਜੋੜੋ",
 	"proveit-no-references": "ਕੋਈ ਹਵਾਲੇ ਨਹੀਂ ਲੱਭੇ",
-	"proveit-filter-fields": "ਫਿਲਟਰ ਖੇਤਰ"
+	"proveit-no-template": "ਕੋਈ ਫਰਮਾ ਨਹੀਂ",
+	"proveit-reference-content-label": "ਹਵਾਲੇ ਦੀ ਲਿਖ਼ਤ",
+	"proveit-reference-name-label": "ਹਵਾਲੇ ਦਾ ਨਾਂਮ",
+	"proveit-reference-template-label": "ਮੁੱਖ ਫਰਮਾ",
+	"proveit-remove-button": "ਹਟਾਓ",
+	"proveit-update-button": "ਨਵਿਆਉ"
 }

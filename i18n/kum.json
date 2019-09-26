@@ -4,15 +4,15 @@
 			"ArslanX"
 		]
 	},
-	"proveit-reference-template-label": "Аслу уьлгю",
-	"proveit-remove-button": "Тайдырмакъ",
-	"proveit-insert-button": "Гийирмек",
-	"proveit-update-button": "Янгыртмакъ",
-	"proveit-no-template": "Уьлгю ёкъ",
-	"proveit-no-references": "Эниклер табылмагъан",
-	"proveit-today-button": "Бугюн",
-	"proveit-citoid-placeholder": "Байланыв, DOI, ISBN яда PMC/PMID",
+	"proveit-citoid-error": "Янгылыш",
 	"proveit-citoid-load": "Юклемек",
 	"proveit-citoid-loading": "Юклев...",
-	"proveit-citoid-error": "Янгылыш"
+	"proveit-citoid-placeholder": "Байланыв, DOI, ISBN яда PMC/PMID",
+	"proveit-insert-button": "Гийирмек",
+	"proveit-no-references": "Эниклер табылмагъан",
+	"proveit-no-template": "Уьлгю ёкъ",
+	"proveit-reference-template-label": "Аслу уьлгю",
+	"proveit-remove-button": "Тайдырмакъ",
+	"proveit-today-button": "Бугюн",
+	"proveit-update-button": "Янгыртмакъ"
 }

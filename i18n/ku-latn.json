@@ -4,13 +4,13 @@
 			"Bikarhêner"
 		]
 	},
-	"proveit-reference-name-label": "Navê çavkaniyê",
-	"proveit-reference-content-label": "Naveroka çavkaniyê",
-	"proveit-remove-button": "Rake",
-	"proveit-insert-button": "Tevlî bike",
-	"proveit-update-button": "Nû bike",
-	"proveit-today-button": "Îro",
+	"proveit-citoid-error": "Çewtî",
 	"proveit-citoid-load": "Bar bike",
 	"proveit-citoid-loading": "Tê barkirin...",
-	"proveit-citoid-error": "Çewtî"
+	"proveit-insert-button": "Tevlî bike",
+	"proveit-reference-content-label": "Naveroka çavkaniyê",
+	"proveit-reference-name-label": "Navê çavkaniyê",
+	"proveit-remove-button": "Rake",
+	"proveit-today-button": "Îro",
+	"proveit-update-button": "Nû bike"
 }

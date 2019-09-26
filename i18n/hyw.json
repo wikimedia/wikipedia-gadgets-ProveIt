@@ -1,27 +1,29 @@
 {
 	"@metadata": {
 		"authors": [
-			"Armeniki"
+			"Armeniki",
+			"Kareyac"
 		]
 	},
-	"proveit-reference-name-label": "Ծանօթագրութեան անունը",
-	"proveit-reference-content-label": "Ծանօթագրութեան բնաբանը",
-	"proveit-reference-template-label": "Հիմնական կաղապար",
+	"proveit-back-button": "Ետ",
 	"proveit-cite-button": "Եկակոչել",
-	"proveit-remove-button": "Հանել",
-	"proveit-insert-button": "Ներդնել",
-	"proveit-update-button": "Թարմացնել",
-	"proveit-confirm-remove": "Այս կատարումը պիտի հանէ բոլոր ծանօթագրութիւնը եւ եկակոչումները: Վստա՞հ էք:",
-	"proveit-no-template": "Կաղապար չկայ",
-	"proveit-no-references": "Աղբիւրները չը գտնուեցան",
-	"proveit-filter-fields": "Դաշտերի քամոցներ",
-	"proveit-filter-references": "Ծանօթագրութիւնների քամոցներ",
-	"proveit-show-all-button": "Ցուցադրել բոլոր դաշտերը",
-	"proveit-today-button": "Այսօր",
+	"proveit-citoid-error": "Սխալ",
 	"proveit-citoid-label": "Ինքնագործ ծանօթագրութիւն",
-	"proveit-citoid-tooltip": "Մուտքագրէք URL, DOI, ISBN կամ PMC/PMID մը, որպէսզի փորձէք արտածել մանրամասներն ինքնագործ Citoid ծառայութեան միջոցով:",
-	"proveit-citoid-placeholder": "URL, DOI, ISBN կամ PMC/PMID",
 	"proveit-citoid-load": "Բեռնել",
 	"proveit-citoid-loading": "Բեռնաւորութիւն",
-	"proveit-citoid-error": "Սխալ"
+	"proveit-citoid-placeholder": "URL, DOI, ISBN կամ PMC/PMID",
+	"proveit-citoid-tooltip": "Մուտքագրէք URL, DOI, ISBN կամ PMC/PMID մը, որպէսզի փորձէք արտածել մանրամասներն ինքնագործ Citoid ծառայութեան միջոցով:",
+	"proveit-confirm-remove": "Այս կատարումը պիտի հանէ բոլոր ծանօթագրութիւնը եւ եկակոչումները: Վստա՞հ էք:",
+	"proveit-filter-fields": "Դաշտերի քամոցներ",
+	"proveit-filter-references": "Ծանօթագրութիւնների քամոցներ",
+	"proveit-insert-button": "Ներդնել",
+	"proveit-no-references": "Աղբիւրները չը գտնուեցան",
+	"proveit-no-template": "Կաղապար չկայ",
+	"proveit-reference-content-label": "Ծանօթագրութեան բնաբանը",
+	"proveit-reference-name-label": "Ծանօթագրութեան անունը",
+	"proveit-reference-template-label": "Հիմնական կաղապար",
+	"proveit-remove-button": "Հանել",
+	"proveit-show-all-button": "Ցուցադրել բոլոր դաշտերը",
+	"proveit-today-button": "Այսօր",
+	"proveit-update-button": "Թարմացնել"
 }
