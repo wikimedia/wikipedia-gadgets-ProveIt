@@ -1,5 +1,5 @@
 /**
- * ProveIt is a reference manager for Wikipedia (and any other MediaWiki wiki)
+ * ProveIt is a smart and simple reference manager for Wikipedia (and any other MediaWiki wiki)
  * Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
@@ -513,12 +513,12 @@ var ProveIt = {
 				if ( userLanguage in paramData.label ) {
 					paramLabel = paramData.label[ userLanguage ];
 				} else if ( contentLanguage in paramData.label ) {
-					paramLabel = paramData.label[ userLanguage ];
+					paramLabel = paramData.label[ contentLanguage ];
 				}
 			}
 			if ( paramData.description ) {
 				if ( userLanguage in paramData.description ) {
-					paramDescription = paramData.description[ contentLanguage ];
+					paramDescription = paramData.description[ userLanguage ];
 				} else if ( contentLanguage in paramData.description ) {
 					paramDescription = paramData.description[ contentLanguage ];
 				}
