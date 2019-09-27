@@ -13,20 +13,12 @@
 var ProveIt = {
 
 	/**
-	 * Template data for the citation templates of the wiki
+	 * Template data of the citation templates
 	 * Populated on ProveIt.init()
 	 *
 	 * @type {object} map from template name to template data
 	 */
 	templateData: {},
-
-	/**
-	 * Content language of the wiki
-	 * Set on ProveIt.init(), defaults to English
-	 *
-	 * @type {string} content language code
-	 */
-	contentLanguage: 'en',
 
 	/**
 	 * Convenience method to get a ProveIt configuration option
@@ -96,84 +88,106 @@ var ProveIt = {
 		// Remove any previous instance
 		$( '#proveit' ).remove();
 
-		// Only load on wikitext pages
+		// Only continue on wikitext pages
 		var contentModel = mw.config.get( 'wgPageContentModel' );
 		if ( contentModel !== 'wikitext' ) {
 			return;
 		}
 
-		// Only load on supported namespaces
+		// Only continue on supported namespaces
 		var namespace = mw.config.get( 'wgNamespaceNumber' ),
 			namespaces = ProveIt.getOption( 'namespaces' );
 		if ( namespaces && ! namespaces.includes( namespace ) ) {
 			return;
 		}
 
-		// Only load on supported editors
+		// Only continue on supported editors
 		if ( ! ProveIt.getEditor() ) {
 			return;
 		}
 
-		// Get and set the content language
-		ProveIt.contentLanguage = mw.config.get( 'wgContentLanguage' );
+		// If we already have what we need, go straight to building the GUI
+		if ( !$.isEmptyObject( ProveIt.templateData ) ) {
+			ProveIt.buildGUI();
+			return;
+		}
 
-		// Get the latest English messages
-		$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/en.json?format=text', function ( data ) {
-			var englishMessages = JSON.parse( window.atob( data ) );
-			delete englishMessages['@metadata'];
+		// Get the list of citation templates and prepend the namespace
+		var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
+			formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
+			templateNamespace = formattedNamespaces[ 10 ],
+			titles = [];
+		templates.forEach( function ( templateName ) {
+			titles.push( templateNamespace + ':' + templateName );
+		});
 
-			// Get the latest translations to the preferred user language
-			var userLanguage = mw.config.get( 'wgUserLanguage' );
-			$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text', function ( data ) {
-				var translatedMessages = JSON.parse( window.atob( data ) );
-				delete translatedMessages['@metadata'];
+		// Get the template data
+		var api = new mw.Api();
+		api.get({
+			'titles': titles.join( '|' ),
+			'action': 'templatedata',
+			'redirects': true,
+			'includeMissingTitles': true,
+			'format': 'json',
+			'formatversion': 2,
+		}).done( function ( data ) {
 
-				// Merge and set the messages
-				var messages = Object.assign( englishMessages, translatedMessages );
-				mw.messages.set( messages );
+			// Extract and set the template data
+			var templateData, templateTitle, templateName;
+			for ( var id in data.pages ) {
+				templateData = data.pages[ id ];
+				if ( 'missing' in templateData ) {
+					continue;
+				}
+				templateTitle = templateData.title;
+				templateName = templateTitle.substring( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
+				ProveIt.templateData[ templateName ] = templateData;
+			}
 
-				// Get the citation templates
-				var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
-					formattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
-					templateNamespace = formattedNamespaces[ 10 ],
-					titles = [];
-				templates.forEach( function ( templateName ) {
-					titles.push( templateNamespace + ':' + templateName );
+			// Get all the redirects to the citaton templates
+			api.get({
+				'titles': titles.join( '|' ),
+				'action': 'query',
+				'prop': 'redirects',
+				'rdlimit': 'max',
+				'rdnamespace': 10,
+				'format': 'json',
+				'formatversion': 2,
+			}).done( function ( data ) {
+
+				// Map the redirects to the cannonical names
+				var redirects, redirectTitle, redirectName;
+				data.query.pages.forEach( function ( templateData ) {
+					templateTitle = templateData.title;
+					templateName = templateTitle.substring( templateTitle.indexOf( ':' ) + 1 ); // Remove the namespace
+					if ( 'redirects' in templateData ) {
+						redirects = templateData.redirects;
+						redirects.forEach( function ( redirect ) {
+							redirectTitle = redirect.title;
+							redirectName = redirectTitle.substring( redirectTitle.indexOf( ':' ) + 1 ); // Remove the namespace
+							ProveIt.templateData[ redirectName ] = templateName;
+						});
+					}
 				});
 
-				// Get the template data
-				new mw.Api().get({
-					'titles': titles.join( '|' ),
-					'action': 'templatedata',
-					'redirects': true,
-					'includeMissingTitles': true,
-					'format': 'json',
-					'formatversion': 2,
-				}).done( function ( data ) {
+				// Get the latest English messages
+				$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/en.json?format=text', function ( data ) {
+					var englishMessages = JSON.parse( ProveIt.decodeBase64( data ) );
+					delete englishMessages['@metadata'];
 
-					// Extract and set the template data
-					var templateData, templateName;
-					for ( var page in data.pages ) {
-						templateData = data.pages[ page ];
-						if ( 'missing' in templateData ) {
-							continue;
-						}
-						templateName = templateData.title.substring( templateData.title.indexOf( ':' ) + 1 ); // Remove the namespace
-						ProveIt.templateData[ templateName ] = templateData;
-					}
+					// Get the latest translations to the preferred user language
+					var userLanguage = mw.config.get( 'wgUserLanguage' );
+					$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text', function ( data ) {
+						var translatedMessages = JSON.parse( ProveIt.decodeBase64( data ) );
+						delete translatedMessages['@metadata'];
 
-					// Resolve redirects
-					if ( 'redirects' in data ) {
-						for ( var redirect in data.redirects ) {
-							redirect = data.redirects[ redirect ];
-							if ( redirect.to in data.pages ) {
-								ProveIt.templateData[ redirect.from ] = ProveIt.templateData[ redirect.to ];
-							}
-						}
-					}
+						// Merge and set the messages
+						var messages = Object.assign( englishMessages, translatedMessages );
+						mw.messages.set( messages );
 
-					// Finally, build the GUI
-					ProveIt.buildGUI();
+						// Finally, build the GUI
+						ProveIt.buildGUI();
+					});
 				});
 			});
 		});
@@ -285,10 +299,17 @@ var ProveIt = {
 			// Add the list to the GUI and make sure we're at the top
 			$( '#proveit-body' ).html( list ).scrollTop( 0 );
 
-			// Build the footer
-			var footer = $( '#proveit-footer' ),
-				normalizeButton = $( '<button>' ).attr( 'id', 'proveit-normalize-button' ).text( ProveIt.getMessage( 'normalize-button' ) );
-			footer.empty();
+		// If no references are found
+		} else {
+			var div = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( ProveIt.getMessage( 'no-references' ) );
+			$( '#proveit-body' ).html( div );
+		}
+
+		// Build the footer
+		var footer = $( '#proveit-footer' );
+		footer.empty();
+		if ( references.length ) {
+			var normalizeButton = $( '<button>' ).attr( 'id', 'proveit-normalize-button' ).text( ProveIt.getMessage( 'normalize-button' ) );
 			footer.append( normalizeButton );
 			normalizeButton.click( function () {
 				$( this ).remove();
@@ -301,21 +322,14 @@ var ProveIt = {
 					});
 				}, 100 );
 			});
-			if ( references.length > 9 ) {
-				var filterReferences = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-references' ) );
-				footer.prepend( filterReferences );
-				filterReferences.keyup( function () {
-					var filter = $( this ).val().toLowerCase();
-					$( 'li', list ).show().filter( function () {
-						return $( this ).text().toLowerCase().indexOf( filter ) === -1;
-					}).hide();
-				});
-			}
-
-		// If no references are found
-		} else {
-			var div = $( '<div>' ).attr( 'id', 'proveit-no-references-message' ).text( ProveIt.getMessage( 'no-references' ) );
-			$( '#proveit-body' ).html( div );
+			var filterReferences = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-references' ) );
+			footer.prepend( filterReferences );
+			filterReferences.keyup( function () {
+				var filter = $( this ).val().toLowerCase();
+				$( 'li', list ).show().filter( function () {
+					return $( this ).text().toLowerCase().indexOf( filter ) === -1;
+				}).hide();
+			});
 		}
 
 		// Build the header
@@ -377,16 +391,20 @@ var ProveIt = {
 		// Add the template dropdown menu
 		label = $( '<label>' ).text( ProveIt.getMessage( 'reference-template-label' ) );
 		input = $( '<select>' ).attr( 'id', 'proveit-reference-template' );
-		var templateName = ProveIt.getMessage( 'no-template' ),
-			templateOption = $( '<option>' ).text( templateName ).val( '' );
-		input.append( templateOption );
-		for ( templateName in ProveIt.templateData ) {
-			templateOption = $( '<option>' ).text( templateName ).val( templateName );
-			if ( reference.getTemplateName() === templateName ) {
-				templateOption.prop( 'selected', true );
+		var option = $( '<option>' ).text( ProveIt.getMessage( 'no-template' ) ).val( '' );
+		input.append( option );
+		var templateNames = Object.keys( ProveIt.templateData ).sort();
+		templateNames.forEach( function ( templateName ) {
+			var templateData = ProveIt.templateData[ templateName ];
+			if ( typeof templateData === 'string' ) {
+				return;
 			}
-			input.append( templateOption );
-		}
+			option = $( '<option>' ).text( templateName ).val( templateName );
+			if ( reference.getTemplateName() === templateName ) {
+				option.prop( 'selected', true );
+			}
+			input.append( option );
+		});
 		div = $( '<div>' ).append( label, input );
 		form.append( div );
 
@@ -429,7 +447,8 @@ var ProveIt = {
 
 				citoidButton.text( ProveIt.getMessage( 'citoid-loading' ) ).prop( 'disabled', true );
 
-				$.get( '//' + ProveIt.contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodeURIComponent( URI ) ).done( function ( data ) {
+				var contentLanguage = mw.config.get( 'wgContentLanguage' );
+				$.get( '//' + contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodeURIComponent( URI ) ).done( function ( data ) {
 					if ( data instanceof Array && data[0] instanceof Object ) {
 						var citoidData = data[0],
 							reference = event.data,
@@ -482,14 +501,24 @@ var ProveIt = {
 			paramDescription = '';
 
 			// Override with template data
+			var userLanguage = mw.config.get( 'wgUserLanguage' ),
+				contentLanguage = mw.config.get( 'wgContentLanguage' );
 			if ( 'params' in templateData && paramName in templateData.params ) {
 				paramData = templateData.params[ paramName ];
 			}
-			if ( paramData.label && ProveIt.contentLanguage in paramData.label ) {
-				paramLabel = paramData.label[ ProveIt.contentLanguage ];
+			if ( paramData.label ) {
+				if ( userLanguage in paramData.label ) {
+					paramLabel = paramData.label[ userLanguage ];
+				} else if ( contentLanguage in paramData.label ) {
+					paramLabel = paramData.label[ userLanguage ];
+				}
 			}
-			if ( paramData.description && ProveIt.contentLanguage in paramData.description ) {
-				paramDescription = paramData.description[ ProveIt.contentLanguage ];
+			if ( paramData.description ) {
+				if ( userLanguage in paramData.description ) {
+					paramDescription = paramData.description[ contentLanguage ];
+				} else if ( contentLanguage in paramData.description ) {
+					paramDescription = paramData.description[ contentLanguage ];
+				}
 			}
 
 			// Extract the parameter value
@@ -552,7 +581,7 @@ var ProveIt = {
 		}
 
 		// Some citation templates may have no template data defined
-		if ( !paramOrder.length ) {
+		if ( reference.getTemplateName() && !paramOrder.length ) {
 			div = $( '<div>' ).attr( 'id', 'proveit-no-template-data-message' ).text( ProveIt.getMessage( 'no-template-data' ) );
 			form.append( div );
 		}
@@ -577,7 +606,7 @@ var ProveIt = {
 			citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( ProveIt.getMessage( 'cite-button' ) );
 
 		footer.empty();
-		if ( paramOrder.length > 9 ) {
+		if ( paramOrder.length ) {
 			footer.append( filterFields );
 		}
 		if ( $( '.proveit-required, .proveit-suggested' ).length && $( '.proveit-deprecated, .proveit-optional' ).length ) {
@@ -769,6 +798,15 @@ var ProveIt = {
 			fragment.insertContent( replace ); // This also highlights the inserted content
 		}
 	},
+
+	/**
+	 * Helper function to properly decode base64 strings
+	 */
+	decodeBase64: function ( string ) {
+	    return decodeURIComponent( window.atob( string ).split('').map( function( character ) {
+	        return '%' + ( '00' + character.charCodeAt(0).toString(16) ).slice(-2);
+	    }).join('') );
+	}, 
 
 	/**
 	 * Citation class
@@ -1177,9 +1215,9 @@ var ProveIt = {
 		};
 
 		/**
-		 * Extract the template name from the reference wikitext
+		 * Extract the normalized template name from the reference wikitext
 		 *
-		 * @return {string} template name
+		 * @return {string} normalized template name
 		 */
 		this.getTemplateName = function () {
 			var templateWikitext = this.getTemplateWikitext(),
@@ -1189,6 +1227,9 @@ var ProveIt = {
 				templateRegex = new RegExp( '{{\\s*' + templateName + '[\\s|}]', 'i' );
 				templateIndex = templateWikitext.search( templateRegex );
 				if ( templateIndex > -1 ) {
+					if ( typeof ProveIt.templateData[ templateName ] === 'string' ) {
+						templateName = ProveIt.templateData[ templateName ];
+					}
 					return templateName;
 				}
 			}
@@ -1208,7 +1249,7 @@ var ProveIt = {
 		 * |param4 = {{Subtemplate |anon |param=value}}
 		 * }}
 		 *
-		 * @return {object} template parameters
+		 * @return {object} map from parameter name to parameter value
 		 */
 		this.getTemplateParams = function () {
 			var templateParams = {},
