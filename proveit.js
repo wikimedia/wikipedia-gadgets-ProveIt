@@ -177,9 +177,12 @@ var ProveIt = {
 
 					// Get the latest translations to the preferred user language
 					var userLanguage = mw.config.get( 'wgUserLanguage' );
-					$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text', function ( data ) {
-						var translatedMessages = JSON.parse( ProveIt.decodeBase64( data ) );
-						delete translatedMessages['@metadata'];
+					$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text' ).always( function ( data, status ) {
+						var translatedMessages = {};
+						if ( status === 'success' ) {
+							translatedMessages = JSON.parse( ProveIt.decodeBase64( data ) );
+							delete translatedMessages['@metadata'];
+						}
 
 						// Merge and set the messages
 						var messages = Object.assign( englishMessages, translatedMessages );
@@ -765,6 +768,10 @@ var ProveIt = {
 	 * Helper function to search and replace a string in the 2017 wikitext editor
 	 * @copyright Eranroz and Ravid Ziv at https://en.wikipedia.org/wiki/User:%D7%A2%D7%A8%D7%9F/veReplace.js
 	 * @license MIT
+	 * 
+	 * @param {string} string to search
+	 * @param {string} replacement string
+	 * @return {void}
 	 */
 	replace: function ( search, replace ) {
 		// Recursive helper function to extract the paragraph nodes from the 2017 wikitext editor
@@ -801,6 +808,9 @@ var ProveIt = {
 
 	/**
 	 * Helper function to properly decode base64 strings
+	 *
+	 * @param {string} base64 encoded string
+	 * @return {string} decoded string
 	 */
 	decodeBase64: function ( string ) {
 	    return decodeURIComponent( window.atob( string ).split('').map( function( character ) {
