@@ -44,44 +44,44 @@
 }
 
 @-moz-document url-prefix() { 
-	#proveit-reference-form {
+	#proveit-form {
 		margin-bottom: 50px;
 	}
 }
 
-#proveit-reference-list {
+#proveit-list {
 	margin: 0;
 	padding: 0;
 }
 
-#proveit-reference-list .proveit-reference-item {
+#proveit-list .proveit-item {
 	margin: 0;
 	overflow: hidden;
 	padding: 5px 10px;
 }
 
-#proveit-reference-list .proveit-reference-item:nth-child(even) {
+#proveit-list .proveit-item:nth-child(even) {
 	background: #fff;
 }
 
-#proveit-reference-list .proveit-reference-item:hover {
+#proveit-list .proveit-item:hover {
 	background: #ccc;
 	cursor: pointer;
 }
 
-#proveit-reference-list .proveit-reference-item .proveit-reference-number {
-	margin-right: 10px;
+#proveit-list .proveit-item .proveit-reference-number,
+#proveit-list .proveit-item .proveit-reference-arrow {
+	margin-right: .4em;
 }
 
-#proveit-reference-list .proveit-reference-item .proveit-citation {
-	color: blue;
+#proveit-list .proveit-item .proveit-citation-letter {
 	font-size: .9em;
-	margin-left: .5em;
+	margin-right: .5em;
 	position: relative;
 	top: -.5em;
 }
 
-#proveit-reference-list .proveit-reference-item .proveit-reference-template {
+#proveit-list .proveit-item .proveit-template-select {
 	font-weight: bold;
 	margin-right: 10px;
 	white-space: nowrap;
@@ -93,11 +93,11 @@
 	padding: 10px;
 }
 
-#proveit-reference-form div {
+#proveit-form div {
 	position: relative;
 }
 
-#proveit-reference-form label {
+#proveit-form label {
 	box-sizing: border-box;
 	display: inline-block;
 	padding: .4em;
@@ -105,17 +105,17 @@
 	width: 30%;
 }
 
-#proveit-reference-form .proveit-required label {
+#proveit-form .proveit-required label {
 	font-weight: bold;
 }
 
-#proveit-reference-form .proveit-deprecated label {
+#proveit-form .proveit-deprecated label {
 	text-decoration: line-through;
 }
 
-#proveit-reference-form input,
-#proveit-reference-form select,
-#proveit-reference-form textarea {
+#proveit-form input,
+#proveit-form select,
+#proveit-form textarea {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	background: white;
@@ -130,13 +130,13 @@
 	width: 70%;
 }
 
-#proveit-reference-form select {
+#proveit-form select {
 	-moz-appearance: menulist;
 	-webkit-appearance: menulist;
 	padding: .4em .1em;
 }
 
-#proveit-reference-form textarea {
+#proveit-form textarea {
 	height: 60px;
 	resize: vertical;
 }
@@ -145,7 +145,7 @@
 	font-family: monospace !important;
 }
 
-#proveit-reference-form button {
+#proveit-form button {
 	cursor: pointer;
 	position: absolute;
 	top: 3px;
