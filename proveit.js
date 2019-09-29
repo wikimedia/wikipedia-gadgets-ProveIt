@@ -110,11 +110,83 @@ var ProveIt = {
 			return;
 		}
 
-		// If we already have what we need, go straight to building the GUI
-		if ( !$.isEmptyObject( ProveIt.templateData ) ) {
-			ProveIt.buildGUI();
-			return;
+		// Add the basic GUI
+		ProveIt.buildGUI();
+
+		// Remove ProveIt when switching out from the source editor
+		mw.hook( 've.deactivationComplete' ).add( function () {
+			$( '#proveit' ).remove();
+		});
+
+		// When previewing, re-add the ProveIt tag (T154357)
+		if ( mw.config.get( 'wgAction' ) === 'submit' ) {
+			var currentSummary = $( '#wpSummary' ).val(),
+				proveitSummary = ProveIt.getOption( 'summary' );
+			if ( proveitSummary && currentSummary.indexOf( proveitSummary ) > -1 ) {
+				ProveIt.addTag();
+			}
 		}
+	},
+
+	/**
+	 * Build the basic GUI and add it to the DOM
+	 *
+	 * @return {void}
+	 */
+	buildGUI: function () {
+
+		// Define the basic elements
+		var gui = $( '<div>' ).attr( 'id', 'proveit' ),
+			header = $( '<div>' ).attr( 'id', 'proveit-header' ),
+			body = $( '<div>' ).attr( 'id', 'proveit-body' ),
+			footer = $( '<div>' ).attr( 'id', 'proveit-footer' ),
+			logo = $( '<span>' ).attr( 'id', 'proveit-logo' ),
+			logoText = $( '<span>' ).attr( 'id', 'proveit-logo-text' ).text( 'P' ),
+			logoLeftBracket = $( '<span>' ).addClass( 'proveit-logo-bracket' ).text( '[' ),
+			logoRightBracket = $( '<span>' ).addClass( 'proveit-logo-bracket' ).text( ']' );
+
+		// Put everything together and add it to the DOM
+		logo.append( logoLeftBracket, logoText, logoRightBracket );
+		header.append( logo );
+		gui.append( header, body, footer );
+		$( 'body' ).append( gui );
+
+		// Make the GUI draggable
+		gui.draggable({
+			handle: header,
+			containment: 'window',
+			start: function () {
+				gui.css({ 'right': 'auto', 'bottom': 'auto' });
+			}
+		});
+
+		// Show the GUI when the logo is clicked
+		var minimized = true;
+		logo.click( function () {
+			if ( minimized ) {
+				minimized = false;
+				$( '#proveit-logo-text' ).text( 'ProveIt' );
+				$( '#proveit-header button, #proveit-body, #proveit-footer' ).show();
+				if ( $.isEmptyObject( ProveIt.templateData ) ) {
+					ProveIt.realInit();
+				} else if ( $( '#proveit-list' ).length ) {
+					ProveIt.buildList(); // Make sure the list is updated
+				}
+			} else {
+				minimized = true;
+				$( '#proveit-logo-text' ).text( 'P' );
+				$( '#proveit-header button, #proveit-body, #proveit-footer' ).hide();
+				gui.css({ 'top': 'auto', 'left': 'auto', 'right': 0, 'bottom': 0 }); // Reset the position of the gadget
+			}
+		});
+	},
+
+	/**
+	 * Get the template data, redirects and interface messages, and build the reference list for the first time
+	 *
+	 * @return {void}
+	 */
+	realInit: function () {
 
 		// Get the list of template names and prepend the namespace
 		var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
@@ -176,12 +248,14 @@ var ProveIt = {
 
 				// Get the latest English messages
 				$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/en.json?format=text', function ( data ) {
+
 					var englishMessages = JSON.parse( ProveIt.decodeBase64( data ) );
 					delete englishMessages['@metadata'];
 
 					// Get the latest translations to the preferred user language
 					var userLanguage = mw.config.get( 'wgUserLanguage' );
 					$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text' ).always( function ( data, status ) {
+
 						var translatedMessages = {};
 						if ( status === 'success' ) {
 							translatedMessages = JSON.parse( ProveIt.decodeBase64( data ) );
@@ -192,64 +266,12 @@ var ProveIt = {
 						var messages = Object.assign( englishMessages, translatedMessages );
 						mw.messages.set( messages );
 
-						// Finally, build the GUI
-						ProveIt.buildGUI();
+						// Finally, build the list
+						ProveIt.buildList();
 					});
 				});
 			});
 		});
-
-		// Remove ProveIt when switching out from the source editor
-		mw.hook( 've.deactivationComplete' ).add( function () {
-			$( '#proveit' ).remove();
-		});
-
-		// When previewing, re-add the ProveIt tag (T154357)
-		if ( mw.config.get( 'wgAction' ) === 'submit' ) {
-			var currentSummary = $( '#wpSummary' ).val(),
-				proveitSummary = ProveIt.getOption( 'summary' );
-			if ( proveitSummary && currentSummary.indexOf( proveitSummary ) > -1 ) {
-				ProveIt.addTag();
-			}
-		}
-	},
-
-	/**
-	 * Build the GUI and add it to the DOM
-	 *
-	 * @return {void}
-	 */
-	buildGUI: function () {
-
-		// Define the basic elements
-		var gui = $( '<div>' ).attr( 'id', 'proveit' ),
-			header = $( '<div>' ).attr( 'id', 'proveit-header' ),
-			body = $( '<div>' ).attr( 'id', 'proveit-body' ),
-			footer = $( '<div>' ).attr( 'id', 'proveit-footer' ),
-			logo = $( '<div>' ).attr( 'id', 'proveit-logo' ).html( '<span class="proveit-bracket">[</span><span id="proveit-initial">P</span><span id="proveit-non-initial">roveIt</span><span class="proveit-bracket">]</span>');
-
-		// Put everything together and add it to the DOM
-		header.append( logo );
-		gui.append( header, body, footer );
-		$( 'body' ).append( gui );
-
-		// Make the GUI draggable
-		gui.draggable({
-			handle: header,
-			containment: 'window',
-			start: function () {
-				gui.css({ 'right': 'auto', 'bottom': 'auto' });
-			}
-		});
-
-		// Fill the GUI
-		ProveIt.buildList();
-
-		// Minimize the GUI
-		logo.click( function () {
-			$( '#proveit-header button, #proveit-body, #proveit-footer, #proveit-non-initial' ).toggle();
-			gui.css({ 'top': 'auto', 'left': 'auto', 'right': 0, 'bottom': 0 }); // Reset the position of the gadget
-		}).click();
 	},
 
 	/**
@@ -273,33 +295,33 @@ var ProveIt = {
 			});
 
 			// Add the number
-			span = $( '<span>' ).addClass( 'proveit-reference-number' ).text( index + 1 );
+			span = $( '<span>' ).addClass( 'proveit-number' ).text( index + 1 );
 			item.append( span );
 
 			// Add the arrow and letters
 			if ( reference.citations.length ) {
-				span = $( '<span>' ).addClass( 'proveit-reference-arrow' ).text( '↑' );
+				span = $( '<span>' ).addClass( 'proveit-arrow' ).text( '↑' );
 				item.append( span );
 
-				link = $( '<a>' ).addClass( 'proveit-citation-letter' ).text( 'a' );
+				link = $( '<a>' ).addClass( 'proveit-letter' ).text( 'a' );
 				link.click( reference, ProveIt.highlight );
 				item.append( link );
 
 				reference.citations.forEach( function ( citation, i ) {
 					var letter = String.fromCharCode( 98 + i ); // 97 is the ASCII code for 'b'
-					link = $( '<a>' ).addClass( 'proveit-citation-letter' ).text( letter );
+					link = $( '<a>' ).addClass( 'proveit-letter' ).text( letter );
 					link.click( citation, ProveIt.highlight );
 					item.append( link );
 				});
 			} else {
-				link = $( '<a>' ).addClass( 'proveit-reference-arrow' ).text( '↑' );
+				link = $( '<a>' ).addClass( 'proveit-arrow' ).text( '↑' );
 				link.click( reference, ProveIt.highlight );
 				item.append( link );
 			}
 
 			// Add the reference template, if any
 			if ( reference.template ) {
-				span = $( '<span>' ).addClass( 'proveit-template-select' ).text( reference.template.name );
+				span = $( '<span>' ).addClass( 'proveit-template' ).text( reference.template.name );
 				item.append( span );
 			}
 
@@ -325,7 +347,7 @@ var ProveIt = {
 			});
 
 			// Add the template name
-			span = $( '<span>' ).addClass( 'proveit-template-select' ).text( template.name );
+			span = $( '<span>' ).addClass( 'proveit-template' ).text( template.name );
 			item.append( span );
 
 			// Add the reference snippet
@@ -730,6 +752,7 @@ var ProveIt = {
 			$( 'div', fields ).show().filter( function () {
 				return $( this ).text().toLowerCase().indexOf( filter ) === -1;
 			}).hide();
+			$( '#proveit-show-all-button' ).remove();
 		});
 
 		// When a template parameter changes, update the reference content
@@ -1121,7 +1144,7 @@ var ProveIt = {
 		/**
 		 * Get the name out of the wikitext
 		 *
-		 * @return {object} new reference
+		 * @return {string} citation name
 		 */
 		this.getName = function () {
 			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
@@ -1133,7 +1156,7 @@ var ProveIt = {
 		/**
 		 * Get the group out of the wikitext
 		 *
-		 * @return {object} new reference
+		 * @return {string} citation group
 		 */
 		this.getGroup = function () {
 			var match = this.wikitext.match( /<\s*ref[^n]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
@@ -1162,7 +1185,7 @@ var ProveIt = {
 		};
 
 		/**
-		 * Get and set the properties
+		 * Set the properties
 		 */
 		this.name = this.getName();
 		this.group = this.getGroup();
@@ -1292,7 +1315,7 @@ var ProveIt = {
 		};
 
 		/**
-		 * Get the parameter order from the template data and the wikitext
+		 * Get the parameter order for this template
 		 *
 		 * @return {array}
 		 */
@@ -1313,9 +1336,9 @@ var ProveIt = {
 
 
 		/**
-		 * Get the snippet of this reference
+		 * Get the snippet for this reference
 		 *
-		 * @return {string} snippet of this reference
+		 * @return {string} snippet for this reference
 		 */
 		this.getSnippet = function () {
 			if ( this.params ) {
@@ -1364,7 +1387,7 @@ var ProveIt = {
 		};
 
 		/**
-		 * Get and set the properties
+		 * Set the properties
 		 */
 		this.name = this.getName();
 		this.data = this.getData();
@@ -1537,7 +1560,7 @@ var ProveIt = {
 		};
 
 		/**
-		 * Get and set the properties
+		 * Set the properties
 		 */
 		this.name = this.getName();
 		this.group = this.getGroup();

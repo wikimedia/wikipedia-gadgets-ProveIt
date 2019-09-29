@@ -7,13 +7,8 @@
 	z-index: 9;
 }
 
-.skin-monobook #proveit {
-	font-size: 120%;
-}
-
 #proveit-header {
-	background: #f0f0f0;
-	border-bottom: 1px solid #ddd;
+	background: #eee;
 	overflow: hidden;
 }
 
@@ -27,7 +22,7 @@
     height: 43px;
     line-height: 43px;
 }
-.proveit-bracket {
+.proveit-logo-bracket {
     color: yellow;
     font-size: 2.3em;
     font-weight: bold;
@@ -38,20 +33,14 @@
 #proveit-body {
 	background: #f4f4f4;
 	overflow-y: scroll;
-	width: 700px;
 	max-height: 300px;
 	resize: none;
-}
-
-@-moz-document url-prefix() { 
-	#proveit-form {
-		margin-bottom: 50px;
-	}
 }
 
 #proveit-list {
 	margin: 0;
 	padding: 0;
+	width: 700px;
 }
 
 #proveit-list .proveit-item {
@@ -60,7 +49,7 @@
 	padding: 5px 10px;
 }
 
-#proveit-list .proveit-item:nth-child(even) {
+#proveit-list .proveit-item:nth-child(odd) {
 	background: #fff;
 }
 
@@ -69,19 +58,19 @@
 	cursor: pointer;
 }
 
-#proveit-list .proveit-item .proveit-reference-number,
-#proveit-list .proveit-item .proveit-reference-arrow {
+#proveit-list .proveit-item .proveit-number,
+#proveit-list .proveit-item .proveit-arrow {
 	margin-right: .4em;
 }
 
-#proveit-list .proveit-item .proveit-citation-letter {
+#proveit-list .proveit-item .proveit-letter {
 	font-size: .9em;
 	margin-right: .5em;
 	position: relative;
 	top: -.5em;
 }
 
-#proveit-list .proveit-item .proveit-template-select {
+#proveit-list .proveit-item .proveit-template {
 	font-weight: bold;
 	margin-right: 10px;
 	white-space: nowrap;
@@ -91,6 +80,12 @@
 #proveit-no-template-data-message {
 	text-align: center;
 	padding: 10px;
+}
+
+#proveit-form {
+	box-sizing: border-box;
+	padding: 1px;
+	width: 700px;
 }
 
 #proveit-form div {
@@ -119,12 +114,12 @@
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	background: white;
-	border: 1px solid #f4f4f4;
+	border: none;
 	border-radius: 0;
 	box-sizing: border-box;
 	display: inline-block;
 	font: inherit;
-	outline: none;
+	margin: 1px 0;
 	padding: .4em;
 	vertical-align: middle;
 	width: 70%;
@@ -153,21 +148,19 @@
 }
 
 #proveit-footer {
-	background: #f0f0f0;
+	background: #eee;
 	border-spacing: 0;
-	border-top: 1px solid #ddd;
-	box-sizing: border-box;
 	overflow: hidden;
 	text-align: right;
 }
 
 #proveit-footer input {
-	border: 1px solid #ddd;
+	border: none;
 	box-sizing: border-box;
 	float: left;
 	font: inherit;
 	margin: .3em;
-	padding: 9px;
+	padding: 10px;
 	width: 150px;
 }
 
@@ -196,24 +189,25 @@
  * Simple CSS tooltip by Keenan Payne
  * http://www.webdesignerdepot.com/2012/11/how-to-create-a-simple-css3-tooltip/
  */
-#proveit [data-tooltip] {
+#proveit label[data-tooltip] {
     position: relative;
 }
-#proveit [data-tooltip]:hover:after {
+#proveit label[data-tooltip]:hover:after {
     background: #333;
     background: rgba( 0, 0, 0, .8 );
     border-radius: 5px;
+	box-sizing: border-box;
     bottom: 26px;
     color: #fff;
     content: attr(data-tooltip);
     font-weight: normal;
     left: 20%;
-    padding: 5px 15px;
+    padding: 1em;
     position: absolute;
     z-index: 99;
-    width: 220px;
+    width: 300px;
 }
-#proveit [data-tooltip]:hover:before {
+#proveit label[data-tooltip]:hover:before {
     border: solid;
     border-color: #333 transparent;
     border-width: 6px 6px 0 6px;
@@ -222,4 +216,16 @@
     left: 50%;
     position: absolute;
     z-index: 100;
+}
+
+/* Monobook specific */
+.skin-monobook #proveit {
+	font-size: 120%;
+}
+
+/* Firefox specific */
+@-moz-document url-prefix() { 
+	#proveit-form {
+		margin-bottom: 50px;
+	}
 }
