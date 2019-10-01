@@ -160,7 +160,7 @@ var ProveIt = {
 			}
 		});
 
-		// Show the GUI when the logo is clicked
+		// Toggle the GUI when the logo is clicked
 		var minimized = true;
 		logo.click( function () {
 			if ( minimized ) {
@@ -182,7 +182,7 @@ var ProveIt = {
 	},
 
 	/**
-	 * Get the template data, redirects and interface messages, and build the reference list for the first time
+	 * Get the template data, redirects and interface messages, then build the reference list
 	 *
 	 * @return {void}
 	 */
@@ -276,7 +276,7 @@ var ProveIt = {
 
 	/**
 	 * Build the reference list and add it to the GUI
-	 * 
+	 *
 	 * @return {void}
 	 */
 	buildList: function () {
@@ -420,7 +420,7 @@ var ProveIt = {
 
 	/**
 	 * Build the form and add it to the GUI
-	 * 
+	 *
 	 * @param {object} Reference or Template object to fill the form
 	 * @return {void}
 	 */
@@ -464,7 +464,7 @@ var ProveIt = {
 
 	/**
 	 * Build the reference fields and add them to the form
-	 * 
+	 *
 	 * @param {object} reference object to fill the fields
 	 * @return {void}
 	 */
@@ -517,7 +517,7 @@ var ProveIt = {
 
 	/**
 	 * Build the fields for the template parameters and add them to the reference form
-	 * 
+	 *
 	 * @param {object} template object to fill the fields
 	 * @return {void}
 	 */
@@ -556,7 +556,6 @@ var ProveIt = {
 			$.cookie( 'proveit-last-template', template.name ); // Remember the user choice
 			ProveIt.buildTemplateFields( template );
 		});
-
 
 		if ( 'maps' in template.data && 'citoid' in template.data.maps ) {
 			var citoidMap = template.data.maps.citoid;
@@ -621,16 +620,15 @@ var ProveIt = {
 		}
 
 		// Add a field for each parameter
-		var paramData, paramLabel, paramPlaceholder, paramDescription, paramValue,
-			userLanguage = mw.config.get( 'wgUserLanguage' ),
-			contentLanguage = mw.config.get( 'wgContentLanguage' );
+		var userLanguage = mw.config.get( 'wgUserLanguage' ),
+			contentLanguage = mw.config.get( 'wgContentLanguage' ),
+			paramData, paramLabel, paramPlaceholder, paramDescription, paramValue;
 		template.paramOrder.forEach( function ( paramName ) {
 
 			// Defaults
 			paramData = {
 				'label': null,
 				'description': null,
-				'type': null,
 				'required': false,
 				'suggested': false,
 				'deprecated': false,
@@ -784,9 +782,8 @@ var ProveIt = {
 		return references;
 	},
 
-
 	/**
-	 * Parse the given wikitext in search of reference templates and return an array of Template objects
+	 * Parse the given wikitext in search for templates and return an array of Template objects
 	 *
 	 * @return {array} array of Template objects
 	 */
@@ -907,7 +904,7 @@ var ProveIt = {
 	/**
 	 * Insert the given object in the wikitext
 	 *
-	 * @param {object} reference, template or citation to insert, or a jQuery event containing the object 
+	 * @param {object} reference, template or citation, or a jQuery event containing one
 	 * @return {void}
 	 */
 	insert: function ( object ) {
@@ -950,7 +947,7 @@ var ProveIt = {
 	/**
 	 * Update the given object in the wikitext
 	 *
-	 * @param {object} reference, template or citation to update
+	 * @param {object} reference, template or citation, or a jQuery event containing one
 	 * @return {void}
 	 */
 	update: function ( object ) {
@@ -988,7 +985,7 @@ var ProveIt = {
 	/**
 	 * Remove the given object from the wikitext
 	 *
-	 * @param {object} reference, template or citation to remove
+	 * @param {object} reference, template or citation, or a jQuery event containing one
 	 * @return {void}
 	 */
 	remove: function ( object ) {
@@ -1024,7 +1021,7 @@ var ProveIt = {
 	/**
 	 * Highlight the given object in the wikitext
 	 *
-	 * @param {object} reference, template or citation to highlight
+	 * @param {object} reference, template or citation, or a jQuery event containing one
 	 * @return {void}
 	 */
 	highlight: function ( object ) {
@@ -1072,7 +1069,7 @@ var ProveIt = {
 	 * Helper function to search and replace a string in the 2017 wikitext editor
 	 * @copyright Eranroz and Ravid Ziv at https://en.wikipedia.org/wiki/User:%D7%A2%D7%A8%D7%9F/veReplace.js
 	 * @license MIT
-	 * 
+	 *
 	 * @param {string} string to search
 	 * @param {string} replacement string
 	 * @return {void}
@@ -1117,10 +1114,10 @@ var ProveIt = {
 	 * @return {string} decoded string
 	 */
 	decodeBase64: function ( string ) {
-	    return decodeURIComponent( window.atob( string ).split('').map( function( character ) {
-	        return '%' + ( '00' + character.charCodeAt(0).toString(16) ).slice(-2);
-	    }).join('') );
-	}, 
+		return decodeURIComponent( window.atob( string ).split('').map( function( character ) {
+			return '%' + ( '00' + character.charCodeAt(0).toString(16) ).slice(-2);
+		}).join('') );
+	},
 
 	/**
 	 * Citation class
@@ -1334,7 +1331,6 @@ var ProveIt = {
 			return paramOrder;
 		};
 
-
 		/**
 		 * Get the snippet for this reference
 		 *
@@ -1498,7 +1494,6 @@ var ProveIt = {
 			var templates = ProveIt.getTemplates( this.wikitext );
 			return templates.shift();
 		};
-
 
 		/**
 		 * Get all the citations to this reference
