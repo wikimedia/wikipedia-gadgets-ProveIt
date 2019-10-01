@@ -176,8 +176,8 @@ var ProveIt = {
 				minimized = true;
 				$( '#proveit-logo-text' ).text( 'P' );
 				$( '#proveit-header button, #proveit-body, #proveit-footer' ).hide();
-				gui.css({ 'top': 'auto', 'left': 'auto', 'right': 0, 'bottom': 0 }); // Reset the position of the gadget
 			}
+			gui.css({ 'top': 'auto', 'left': 'auto', 'right': 0, 'bottom': 0 }); // Reset the position of the gadget
 		});
 	},
 
@@ -187,6 +187,9 @@ var ProveIt = {
 	 * @return {void}
 	 */
 	realInit: function () {
+
+		// Show a loading hint to the user
+		$( '#proveit-logo-text' ).text( '...' );
 
 		// Get the list of template names and prepend the namespace
 		var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
@@ -256,6 +259,8 @@ var ProveIt = {
 					var userLanguage = mw.config.get( 'wgUserLanguage' );
 					$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text' ).always( function ( data, status ) {
 
+						$( '#proveit-logo-text' ).text( 'ProveIt' );
+
 						var translatedMessages = {};
 						if ( status === 'success' ) {
 							translatedMessages = JSON.parse( ProveIt.decodeBase64( data ) );
@@ -299,10 +304,12 @@ var ProveIt = {
 			item.append( span );
 
 			// Add the arrow and letters
-			if ( reference.citations.length ) {
-				span = $( '<span>' ).addClass( 'proveit-arrow' ).text( '↑' );
-				item.append( span );
+			link = $( '<a>' ).addClass( 'proveit-arrow' ).text( '↑' );
+			link.click( reference, ProveIt.highlight );
+			item.append( link );
 
+			// Add the letters
+			if ( reference.citations.length ) {
 				link = $( '<a>' ).addClass( 'proveit-letter' ).text( 'a' );
 				link.click( reference, ProveIt.highlight );
 				item.append( link );
@@ -313,10 +320,6 @@ var ProveIt = {
 					link.click( citation, ProveIt.highlight );
 					item.append( link );
 				});
-			} else {
-				link = $( '<a>' ).addClass( 'proveit-arrow' ).text( '↑' );
-				link.click( reference, ProveIt.highlight );
-				item.append( link );
 			}
 
 			// Add the reference template, if any
@@ -346,11 +349,15 @@ var ProveIt = {
 				ProveIt.buildForm( template );
 			});
 
+			link = $( '<a>' ).addClass( 'proveit-arrow' ).text( '↓' );
+			link.click( template, ProveIt.highlight );
+			item.append( link );
+
 			// Add the template name
 			span = $( '<span>' ).addClass( 'proveit-template' ).text( template.name );
 			item.append( span );
 
-			// Add the reference snippet
+			// Add the template snippet
 			item.append( template.snippet );
 
 			// Add to the list
@@ -622,8 +629,8 @@ var ProveIt = {
 		// Add a field for each parameter
 		var userLanguage = mw.config.get( 'wgUserLanguage' ),
 			contentLanguage = mw.config.get( 'wgContentLanguage' ),
-			paramData, paramLabel, paramPlaceholder, paramDescription, paramValue;
-		template.paramOrder.forEach( function ( paramName ) {
+			paramData, labelText, labelTooltip, inputValue, inputPlaceholder;
+		template.paramOrder.forEach( function ( inputName ) {
 
 			// Defaults
 			paramData = {
@@ -633,55 +640,77 @@ var ProveIt = {
 				'suggested': false,
 				'deprecated': false,
 			};
-			paramLabel = paramName;
-			paramValue = '';
-			paramPlaceholder = '';
-			paramDescription = '';
+			labelText = inputName;
 
 			// Override with template data
-			if ( 'params' in template.data && paramName in template.data.params ) {
-				paramData = template.data.params[ paramName ];
+			if ( 'params' in template.data && inputName in template.data.params ) {
+				paramData = template.data.params[ inputName ];
 			}
 			if ( paramData.label ) {
 				if ( userLanguage in paramData.label ) {
-					paramLabel = paramData.label[ userLanguage ];
+					labelText = paramData.label[ userLanguage ];
 				} else if ( contentLanguage in paramData.label ) {
-					paramLabel = paramData.label[ contentLanguage ];
+					labelText = paramData.label[ contentLanguage ];
 				}
 			}
 			if ( paramData.description ) {
 				if ( userLanguage in paramData.description ) {
-					paramDescription = paramData.description[ userLanguage ];
+					labelTooltip = paramData.description[ userLanguage ];
 				} else if ( contentLanguage in paramData.description ) {
-					paramDescription = paramData.description[ contentLanguage ];
+					labelTooltip = paramData.description[ contentLanguage ];
 				}
 			}
 
 			// Extract the parameter value
-			if ( paramName in template.params ) {
-				paramValue = template.params[ paramName ];
+			if ( inputName in template.params ) {
+				inputValue = template.params[ inputName ];
 			} else if ( paramData.aliases ) {
 				paramData.aliases.forEach( function ( paramAlias ) {
 					if ( paramAlias in template.params ) {
-						paramValue = template.params[ paramAlias ];
+						inputValue = template.params[ paramAlias ];
 						return;
 					}
 				});
 			}
 
 			// Build the label, input and div
-			label = $( '<label>' ).text( paramLabel );
-			if ( paramDescription ) {
-				label.attr( 'data-tooltip', paramDescription );
+			label = $( '<label>' ).text( labelText );
+			if ( labelTooltip ) {
+				label.attr( 'data-tooltip', labelTooltip );
 			}
 			input = paramData.type === 'content' ? $( '<textarea>' ) : $( '<input>' );
-			input.val( paramValue ).attr({
-				'name': paramName,
-				'placeholder': paramPlaceholder
+			input.val( inputValue ).attr({
+				'name': inputName,
+				'placeholder': inputPlaceholder
 			});
 			div = $( '<div>' ).addClass( 'proveit-template-param' ).append( label, input );
 
-			// If the parameter is a date, add the Today button
+			// If the parameter is of the page type, search the wiki
+			if ( paramData.type === 'wiki-page-name' ) {
+				input.attr( 'list', inputName + '-list' );
+				var list = $( '<datalist>' ).attr( 'id', inputName + '-list' );
+				div.prepend( list );
+				input.keyup( function () {
+					var search = $( this ).val();
+					new mw.Api().get({
+						'action': 'opensearch',
+						'search': search,
+						'limit': 5,
+						'redirects': 'resolve',
+						'format': 'json',
+						'formatversion': 2,
+					}).done( function ( data ) {
+						list.empty();
+						var titles = data[1];
+						titles.forEach( function ( title ) {
+							var option = $( '<option>' ).val( title );
+							list.append( option );
+						});
+					});
+				});
+			}
+
+			// If the parameter is of the date type, add the Today button
 			if ( paramData.type === 'date' ) {
 				button = $( '<button>' ).text( ProveIt.getMessage( 'today-button' ) );
 				div.prepend( button );
@@ -707,7 +736,7 @@ var ProveIt = {
 			}
 
 			// Hide all optional and deprecated parameters, unless they are filled
-			if ( !paramValue && ( div.hasClass( 'proveit-optional' ) || div.hasClass( 'proveit-deprecated' ) ) ) {
+			if ( !inputValue && ( div.hasClass( 'proveit-optional' ) || div.hasClass( 'proveit-deprecated' ) ) ) {
 				div.hide();
 			}
 
