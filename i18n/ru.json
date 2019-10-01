@@ -9,7 +9,6 @@
 			"Okras"
 		]
 	},
-	"proveit-add-button": "Добавить",
 	"proveit-back-button": "Назад",
 	"proveit-cite-button": "Цитировать",
 	"proveit-citoid-error": "Ошибка",
@@ -24,6 +23,7 @@
 	"proveit-insert-button": "Вставить",
 	"proveit-no-references": "Сноски не найдены",
 	"proveit-no-template": "Нет шаблона",
+	"proveit-no-template-data": "Не найдено данных шаблона",
 	"proveit-normalize-button": "Нормализовать все сноски",
 	"proveit-normalize-message": "Нормализация… Это может занять несколько секунд или даже минут.",
 	"proveit-reference-content-label": "Содержание сноски",

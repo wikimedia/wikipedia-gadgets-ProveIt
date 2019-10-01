@@ -3,9 +3,11 @@
 		"authors": [
 			"Zache",
 			"Susannaanas",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Silvonen"
 		]
 	},
+	"proveit-back-button": "Takaisin",
 	"proveit-cite-button": "Viittaa",
 	"proveit-citoid-error": "Virhe",
 	"proveit-citoid-label": "Automaattinen viite",

@@ -4,7 +4,8 @@
 			"Bjankuloski06"
 		]
 	},
-	"proveit-add-button": "Додај",
+	"proveit-add-bibliography-button": "Додај библиографија",
+	"proveit-add-reference-button": "Додај навод",
 	"proveit-back-button": "Назад",
 	"proveit-cite-button": "Наведи",
 	"proveit-citoid-error": "Грешка",
@@ -19,6 +20,7 @@
 	"proveit-insert-button": "Вметни",
 	"proveit-no-references": "Не пронајдов наводи",
 	"proveit-no-template": "Нема шаблон",
+	"proveit-no-template-data": "Не пронајдов шаблонски податоци",
 	"proveit-normalize-button": "Нормализирај ги сите наводи",
 	"proveit-normalize-message": "Нормализирам... ова може да потрае неколку секунди, а можеби и минути!",
 	"proveit-reference-content-label": "Содржина на наводот",

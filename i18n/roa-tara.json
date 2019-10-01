@@ -4,7 +4,8 @@
 			"Joetaras"
 		]
 	},
-	"proveit-add-button": "Aggiunge",
+	"proveit-add-bibliography-button": "Aggiunge 'na bibbliografije",
+	"proveit-add-reference-button": "Aggiunge 'nu referimende",
 	"proveit-back-button": "Rrete",
 	"proveit-cite-button": "Cite",
 	"proveit-citoid-error": "Errore",
@@ -19,6 +20,7 @@
 	"proveit-insert-button": "'Nzerisce",
 	"proveit-no-references": "Nisciune referimende acchiate",
 	"proveit-no-template": "Nisciune template",
+	"proveit-no-template-data": "Nisciune date de template acchiate",
 	"proveit-normalize-button": "Normalizze tutte le refereminde",
 	"proveit-normalize-message": "Stoche a normalizze--- quiste pò purtà 'nu picche de seconde, e ce jè 'na cose minute!",
 	"proveit-reference-content-label": "Condenute de referimende",

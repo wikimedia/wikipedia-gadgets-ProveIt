@@ -7,8 +7,6 @@
 			"Nike"
 		]
 	},
-    "proveit-add-bibliography-button": "Text for the button to add bibliography",
-    "proveit-add-reference-button": "Text for the button to add a new reference bibliography",
 	"proveit-back-button": "Text for the Back button\n{{Identical|Back}}",
 	"proveit-cite-button": "Text for the Cite button\n{{Identical|Cite}}",
 	"proveit-citoid-error": "Generic error message when something went wrong with the Citoid service\n{{Identical|Error}}",
@@ -23,7 +21,6 @@
 	"proveit-insert-button": "Text for the Insert button\n{{Identical|Insert}}",
 	"proveit-no-references": "Text for when no references are found",
 	"proveit-no-template": "Text for the dropdown option corresponding to the references without a template",
-    "proveit-no-template-data": "Text for when no template data is found",
 	"proveit-normalize-button": "Text for the button that normalizes the wikitext of all the references",
 	"proveit-normalize-message": "Text for the notification warning that the normalization process may take some time",
 	"proveit-reference-content-label": "Label for the field of the reference content",

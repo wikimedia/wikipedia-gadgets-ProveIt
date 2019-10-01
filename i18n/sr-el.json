@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Srdjan m",
+			"Zoranzoki21"
+		]
+	},
+	"proveit-back-button": "Nazad",
+	"proveit-cite-button": "Citiraj",
+	"proveit-citoid-error": "Greška",
+	"proveit-citoid-label": "Automatska referenca",
+	"proveit-citoid-load": "Učitaj",
+	"proveit-citoid-loading": "Učitavanje…",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ili PMC/PMID",
+	"proveit-citoid-tooltip": "Unesite URL, DOI, ISBN ili PMC/PMID da biste pokušali da automatski izvučete detalje pomoću usluge Citoid",
+	"proveit-confirm-remove": "Ovime će se takođe ukloniti sve reference i svi njeni navodi ka referenci. Jeste li sigurni?",
+	"proveit-filter-fields": "Filtrirajte polja",
+	"proveit-filter-references": "Filtrirajte reference",
+	"proveit-insert-button": "Umetni",
+	"proveit-no-references": "Reference nisu pronađene",
+	"proveit-no-template": "Nema šablona",
+	"proveit-no-template-data": "Nisu pronađeni podaci o šablonu",
+	"proveit-normalize-button": "Normalizuj sve reference",
+	"proveit-normalize-message": "Normalizovanje... može trajati nekoliko sekundi, pa čak i nekoliko minuta!",
+	"proveit-reference-content-label": "Sadržaj reference",
+	"proveit-reference-group-label": "Grupa referenci",
+	"proveit-reference-name-label": "Ime reference",
+	"proveit-reference-template-label": "Glavni šablon",
+	"proveit-reference-wikitext-label": "Referenca vikiteksta",
+	"proveit-remove-button": "Ukloni",
+	"proveit-show-all-button": "Prikaži sva polja",
+	"proveit-today-button": "Danas",
+	"proveit-update-button": "Ažuriraj"
+}

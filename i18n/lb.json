@@ -5,7 +5,6 @@
 			"Les Meloures"
 		]
 	},
-	"proveit-add-button": "Derbäisetzen",
 	"proveit-back-button": "Zréck",
 	"proveit-cite-button": "Zitéieren",
 	"proveit-citoid-error": "Feeler",
@@ -20,6 +19,7 @@
 	"proveit-insert-button": "Drasetzen",
 	"proveit-no-references": "Keng Referenze fonnt",
 	"proveit-no-template": "Keng Schabloun",
+	"proveit-normalize-button": "All Referenzen normaliséieren",
 	"proveit-reference-content-label": "Referenzinhalt",
 	"proveit-reference-name-label": "Referenznumm",
 	"proveit-reference-template-label": "Haapt-Schabloun",

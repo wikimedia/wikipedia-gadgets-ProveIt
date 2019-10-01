@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Sophivorus",
-			"Metalhead64"
+			"Metalhead64",
+			"Tobi 406"
 		]
 	},
+	"proveit-back-button": "Zurück",
 	"proveit-cite-button": "Zitieren",
 	"proveit-citoid-error": "Fehler",
 	"proveit-citoid-label": "Automatische Referenz",

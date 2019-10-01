@@ -7,7 +7,6 @@
 			"Eduardo Addad de Oliveira"
 		]
 	},
-	"proveit-add-button": "Adicionar",
 	"proveit-back-button": "Voltar",
 	"proveit-cite-button": "Citar",
 	"proveit-citoid-error": "Erro",
@@ -22,6 +21,7 @@
 	"proveit-insert-button": "Inserir",
 	"proveit-no-references": "Nenhuma referência encontrada",
 	"proveit-no-template": "Nenhuma predefinição",
+	"proveit-no-template-data": "Nenhum dado da predefinição encontrada",
 	"proveit-normalize-button": "Normalizar todas as referências",
 	"proveit-normalize-message": "Normalizando ... isso pode levar alguns segundos, até minutos!",
 	"proveit-reference-content-label": "Conteúdo da referência",

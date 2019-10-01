@@ -7,7 +7,8 @@
 			"Tiberius1701"
 		]
 	},
-	"proveit-add-button": "Añadir",
+	"proveit-add-bibliography-button": "Añadir bibliografía",
+	"proveit-add-reference-button": "Añadir referencia",
 	"proveit-back-button": "Volver",
 	"proveit-cite-button": "Citar",
 	"proveit-citoid-error": "Error",
@@ -22,6 +23,7 @@
 	"proveit-insert-button": "Insertar",
 	"proveit-no-references": "No se encontraron referencias",
 	"proveit-no-template": "Sin plantilla",
+	"proveit-no-template-data": "No se han encontrado datos para la plantilla",
 	"proveit-normalize-button": "Normalizar todas las referencias",
 	"proveit-normalize-message": "Normalizando... esto puede demorar varios segundos, ¡incluso minutos!",
 	"proveit-reference-content-label": "Contenido de la referencia",

@@ -12,7 +12,7 @@
 	"proveit-citoid-loading": "Зареждане...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN или PMC/PMID",
 	"proveit-citoid-tooltip": "Въведете URL, DOI, ISBN или PMC/PMID за да опитате да извлечете автоматично детайлите чрез услугата Citoid",
-	"proveit-confirm-remove": "Това ще премахне източникът и всички негови цитирания. Сигурни ли сте?",
+	"proveit-confirm-remove": "Това ще премахне всички цитирания на източника. Сигурни ли сте?",
 	"proveit-filter-fields": "Филтриране на полетата",
 	"proveit-filter-references": "Филтриране на източниците",
 	"proveit-insert-button": "Вмъкване",

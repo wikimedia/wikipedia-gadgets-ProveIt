@@ -6,7 +6,8 @@
 			"Movses"
 		]
 	},
-	"proveit-add-button": "Додати",
+	"proveit-add-bibliography-button": "Додати біблографію",
+	"proveit-add-reference-button": "Додати примітку",
 	"proveit-back-button": "Назад",
 	"proveit-cite-button": "Джерело",
 	"proveit-citoid-error": "Помилка",

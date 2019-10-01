@@ -4,7 +4,8 @@
 			"Kly"
 		]
 	},
-	"proveit-add-button": "新增",
+	"proveit-add-bibliography-button": "新增參考書目",
+	"proveit-add-reference-button": "新增參考資料",
 	"proveit-back-button": "返回",
 	"proveit-cite-button": "引用",
 	"proveit-citoid-error": "錯誤",

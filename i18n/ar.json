@@ -6,7 +6,8 @@
 			"Habib-d"
 		]
 	},
-	"proveit-add-button": "إضافة",
+	"proveit-add-bibliography-button": "أضف ببليوغرافيا",
+	"proveit-add-reference-button": "إضافة مرجع",
 	"proveit-back-button": "رجوع",
 	"proveit-cite-button": "استشهاد",
 	"proveit-citoid-error": "خطأ",
