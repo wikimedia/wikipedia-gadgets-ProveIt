@@ -188,8 +188,7 @@ var ProveIt = {
 	 */
 	realInit: function () {
 
-		// Show a loading hint to the user
-		$( '#proveit-logo-text' ).text( '...' );
+		$( '#proveit-logo-text' ).text( '.' ); // Start loading
 
 		// Get the list of template names and prepend the namespace
 		var templates = ProveIt.getOption( 'templates' ) ? ProveIt.getOption( 'templates' ) : [],
@@ -210,6 +209,8 @@ var ProveIt = {
 			'format': 'json',
 			'formatversion': 2,
 		}).done( function ( data ) {
+
+			$( '#proveit-logo-text' ).text( '..' ); // Still loading
 
 			// Extract and set the template data
 			var templateData, templateTitle, templateName;
@@ -233,6 +234,8 @@ var ProveIt = {
 				'format': 'json',
 				'formatversion': 2,
 			}).done( function ( data ) {
+
+				$( '#proveit-logo-text' ).text( '...' ); // Still loading
 
 				// Map the redirects to the cannonical names
 				var redirects, redirectTitle, redirectName;
@@ -259,7 +262,7 @@ var ProveIt = {
 					var userLanguage = mw.config.get( 'wgUserLanguage' );
 					$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/' + userLanguage + '.json?format=text' ).always( function ( data, status ) {
 
-						$( '#proveit-logo-text' ).text( 'ProveIt' );
+						$( '#proveit-logo-text' ).text( 'ProveIt' ); // Finish loading
 
 						var translatedMessages = {};
 						if ( status === 'success' ) {
@@ -323,7 +326,7 @@ var ProveIt = {
 			}
 
 			// Add the reference template, if any
-			if ( reference.template ) {
+			if ( reference.template.name ) {
 				span = $( '<span>' ).addClass( 'proveit-template' ).text( reference.template.name );
 				item.append( span );
 			}
@@ -461,9 +464,7 @@ var ProveIt = {
 		// Add the relevant fields and buttons
 		if ( object instanceof ProveIt.Reference ) {
 			ProveIt.buildReferenceFields( object );
-			if ( object.template ) {
-				ProveIt.buildTemplateFields( object.template );
-			}
+			ProveIt.buildTemplateFields( object.template );
 		} else {
 			ProveIt.buildTemplateFields( object );
 		}
@@ -497,17 +498,12 @@ var ProveIt = {
 		div = $( '<div>' ).append( label, input );
 		fields.append( div );
 
-		// When the reference content changes, update the parameter fields
-		input.keyup( function () {
+		// When the reference content changes, update the template fields
+		input.change( function () {
 			var content = $( this ).val(),
 				wikitext = '<ref>' + content + '</ref>',
 				reference = new ProveIt.Reference( wikitext );
-			$( '.proveit-template-param input' ).each( function () {
-				var paramName = $( this ).attr( 'name' );
-				if ( paramName in reference.template.params ) {
-					$( this ).val( reference.template.params[ paramName ] );
-				}
-			});
+			ProveIt.buildTemplateFields( reference.template );
 		});
 
 		// Add the fields to the form
@@ -525,24 +521,27 @@ var ProveIt = {
 	/**
 	 * Build the fields for the template parameters and add them to the reference form
 	 *
-	 * @param {object} template object to fill the fields
+	 * @param {object} template object to fill the fields, if any
 	 * @return {void}
 	 */
 	buildTemplateFields: function ( template ) {
 		var fields = $( '<div>' ).attr( 'id', 'proveit-template-fields' ),
 			label, input, option, button, div;
 
-		// Add the template select menu and the empty option
-		option = $( '<option>' ).text( ProveIt.getMessage( 'no-template' ) ).val( '' );
+		// Add the template select menu
 		label = $( '<label>' ).text( ProveIt.getMessage( 'reference-template-label' ) );
 		input = $( '<select>' ).attr( 'id', 'proveit-template-select' );
+		div = $( '<div>' ).append( label, input );
+		fields.append( div );
+
+		// Add the empty option
+		option = $( '<option>' ).text( ProveIt.getMessage( 'no-template' ) ).val( '' );
 		input.append( option );
 
 		// Add an option for each template
 		var templateNames = Object.keys( ProveIt.templateData ).sort();
 		templateNames.forEach( function ( templateName ) {
-			var templateData = ProveIt.templateData[ templateName ];
-			if ( typeof templateData === 'string' ) {
+			if ( typeof ProveIt.templateData[ templateName ] === 'string' ) {
 				return;
 			}
 			option = $( '<option>' ).text( templateName ).val( templateName );
@@ -551,21 +550,17 @@ var ProveIt = {
 			}
 			input.append( option );
 		});
-		div = $( '<div>' ).append( label, input );
-		fields.append( div );
 
-		// When the template changes, update the template fields
+		// When the template select changes, update the template fields
 		input.change( template, function ( event ) {
-			var template = event.data;
-			template.name = $( this ).val();
-			template.data = template.getData();
-			template.paramOrder = template.getParamOrder();
-			$.cookie( 'proveit-last-template', template.name ); // Remember the user choice
+			var template = event.data,
+				wikitext = template.buildWikitext();
+			template = new ProveIt.Template( wikitext );
+			$.cookie( 'proveit-last-template', template.name ); // Remember the new choice
 			ProveIt.buildTemplateFields( template );
 		});
 
 		if ( 'maps' in template.data && 'citoid' in template.data.maps ) {
-			var citoidMap = template.data.maps.citoid;
 
 			// Add the Citoid field
 			button = $( '<button>' ).text( ProveIt.getMessage( 'citoid-load' ) );
@@ -577,45 +572,53 @@ var ProveIt = {
 			// When the Citoid button is clicked, try to extract the reference data automatically via the Citoid service
 			button.click( function () {
 				var button = $( this ),
-					URI = button.siblings( 'input' ).val();
-				if ( !URI ) {
-					return; // Do nothing
+					query = button.siblings( 'input' ).val();
+
+				// We need a query
+				if ( !query ) {
+					return;
 				}
 
+				// Show the loading message
 				button.text( ProveIt.getMessage( 'citoid-loading' ) ).prop( 'disabled', true );
 
+				// Get the data
 				var contentLanguage = mw.config.get( 'wgContentLanguage' );
-				$.get( '//' + contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodeURIComponent( URI ) ).done( function ( data ) {
-					if ( data instanceof Array && data[0] instanceof Object ) {
+				$.get( '//' + contentLanguage + '.wikipedia.org/api/rest_v1/data/citation/mediawiki/' + encodeURIComponent( query ) ).done( function ( data ) {
 
-						// Recursive helper function
-						function setParamValue( paramName, paramValue ) {
-							if ( typeof paramName === 'string' && typeof paramValue === 'string' && paramName in template.data.params ) {
-								$( '.proveit-template-param input[name="' + paramName + '"]' ).val( paramValue );
-							} else if ( paramName instanceof Array && paramValue instanceof Array ) {
-								for ( var i = 0; i < paramName.length; i++ ) {
-									setParamValue( paramName[ i ], paramValue[ i ] );
-								}
+					// Recursive helper function
+					function setParamValue( paramName, paramValue ) {
+						if ( typeof paramName === 'string' && typeof paramValue === 'string' ) {
+							$( '.proveit-template-param [name="' + paramName + '"]' ).val( paramValue );
+						} else if ( paramName instanceof Array && paramValue instanceof Array ) {
+							for ( var i in paramName ) {
+								setParamValue( paramName[ i ], paramValue[ i ] );
 							}
 						}
-
-						var citoidData = data[0],
-							paramName, paramValue;
-						for ( var citoidKey in citoidData ) {
-							paramName = citoidMap[ citoidKey ];
-							paramValue = citoidData[ citoidKey ];
-							setParamValue( paramName, paramValue );
-						}
-						button.text( ProveIt.getMessage( 'citoid-load' ) ).prop( 'disabled', false );
-
-						// Update the reference content too
-						if ( $( '#proveit-reference-content' ).length ) {
-							var content = $( '#proveit-reference-content' ).val(),
-								reference = new ProveIt.Reference( '<ref>' + content + '</ref>' );
-							content = reference.buildContent();
-							$( '#proveit-reference-content' ).val( content );
-						}
 					}
+
+					// Fill the template fields
+					var citoidMap = template.data.maps.citoid,
+						citoidData = data[0],
+						paramName, paramValue;
+					for ( var citoidKey in citoidData ) {
+						paramName = citoidMap[ citoidKey ];
+						paramValue = citoidData[ citoidKey ];
+						setParamValue( paramName, paramValue );
+					}
+
+					// Reset the button
+					button.text( ProveIt.getMessage( 'citoid-load' ) ).prop( 'disabled', false );
+
+					// Update the reference content too
+					if ( $( '#proveit-reference-content' ).length ) {
+						var content = $( '#proveit-reference-content' ).val(),
+							wikitext = '<ref>' + content + '</ref>',
+							reference = new ProveIt.Reference( wikitext );
+						content = reference.buildContent();
+						$( '#proveit-reference-content' ).val( content );
+					}
+
 				// @todo For some reason this isn't firing
 				}).fail( function () {
 					button.text( ProveIt.getMessage( 'citoid-error' ) );
@@ -632,7 +635,7 @@ var ProveIt = {
 			paramData, labelText, labelTooltip, inputValue, inputPlaceholder;
 		template.paramOrder.forEach( function ( inputName ) {
 
-			// Defaults
+			// Reset defaults
 			paramData = {
 				'label': null,
 				'description': null,
@@ -641,6 +644,9 @@ var ProveIt = {
 				'deprecated': false,
 			};
 			labelText = inputName;
+			labelTooltip = null;
+			inputValue = null,
+			inputPlaceholder = null;
 
 			// Override with template data
 			if ( 'params' in template.data && inputName in template.data.params ) {
@@ -784,9 +790,9 @@ var ProveIt = {
 
 		// When a template parameter changes, update the reference content
 		if ( $( '#proveit-reference-content' ).length ) {
-			var content = $( '#proveit-reference-content' ).val();
-			$( '.proveit-template-param input' ).keyup( function () {
-				var wikitext = '<ref>' + content + '</ref>',
+			$( 'select, input, textarea', '#proveit-template-fields' ).change( function () {
+				var content = $( '#proveit-reference-content' ).val(),
+					wikitext = '<ref>' + content + '</ref>',
 					reference = new ProveIt.Reference( wikitext );
 				content = reference.buildContent();
 				$( '#proveit-reference-content' ).val( content );
@@ -1185,7 +1191,7 @@ var ProveIt = {
 		 * @return {string} citation group
 		 */
 		this.getGroup = function () {
-			var match = this.wikitext.match( /<\s*ref[^n]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
+			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
 				return match[1];
 			}
@@ -1391,7 +1397,7 @@ var ProveIt = {
 				var paramName,
 					paramValue;
 				templateWikitext = '{{' + templateName;
-				$( '.proveit-template-param input' ).each( function () {
+				$( 'input, textarea', '.proveit-template-param' ).each( function () {
 					paramName = $( this ).attr( 'name' );
 					paramValue = $( this ).val();
 					if ( paramName && paramValue ) {
@@ -1471,7 +1477,7 @@ var ProveIt = {
 		 * @return {string} snippet of this reference
 		 */
 		this.getSnippet = function () {
-			if ( this.template ) {
+			if ( this.template.snippet ) {
 				return this.template.snippet;
 			}
 			if ( this.content.length > 100 ) {
@@ -1508,20 +1514,23 @@ var ProveIt = {
 		 * @return {object} new reference
 		 */
 		this.getGroup = function () {
-			var match = this.wikitext.match( /<\s*ref[^n]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
+			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
 				return match[1];
 			}
 		};
 
 		/**
-		 * Got the reference template
+		 * Get the reference template
 		 *
 		 * @return {object} reference template
 		 */
 		this.getTemplate = function () {
 			var templates = ProveIt.getTemplates( this.wikitext );
-			return templates.shift();
+			if ( templates.length ) {
+				return templates[0];
+			}
+			return new ProveIt.Template('');
 		};
 
 		/**
