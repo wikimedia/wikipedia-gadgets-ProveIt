@@ -1242,17 +1242,21 @@ var ProveIt = {
 		 * @return {string} normalized template name
 		 */
 		this.getName = function () {
-			var regex, index;
-			for ( this.name in ProveIt.templateData ) {
-				regex = new RegExp( '{{\\s*' + this.name + '[\\s|}]', 'i' );
+			var name = '',
+				regex, index;
+			for ( var templateName in ProveIt.templateData ) {
+				regex = new RegExp( '{{\\s*' + templateName + '[\\s|}]', 'i' );
 				index = this.wikitext.search( regex );
 				if ( index > -1 ) {
-					if ( typeof ProveIt.templateData[ this.name ] === 'string' ) {
-						this.name = ProveIt.templateData[ this.name ];
+					name = templateName;
+					if ( typeof ProveIt.templateData[ name ] === 'string' ) {
+						name = ProveIt.templateData[ name ];
+						break;
 					}
-					return this.name;
+					break;
 				}
 			}
+			return name;
 		};
 
 		/**
@@ -1372,11 +1376,9 @@ var ProveIt = {
 		 * @return {string} snippet for this reference
 		 */
 		this.getSnippet = function () {
-			if ( this.params ) {
-				for ( var param in this.params ) {
-					if ( param in this.data.params && this.data.params[ param ].required ) {
-						return this.params[ param ];
-					}
+			for ( var param in this.params ) {
+				if ( 'params' in this.data && param in this.data.params && this.data.params[ param ].required ) {
+					return this.params[ param ];
 				}
 			}
 			if ( this.wikitext.length > 100 ) {
