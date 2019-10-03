@@ -2,9 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Bulgu",
-			"Trockya"
+			"Trockya",
+			"BaRaN6161 TURK"
 		]
 	},
+	"proveit-add-bibliography-button": "Kaynakça ekle",
+	"proveit-add-reference-button": "Referans ekle",
+	"proveit-back-button": "Geri",
 	"proveit-cite-button": "Alıntı yap",
 	"proveit-citoid-error": "Hata",
 	"proveit-citoid-label": "Otomatik kaynak",
@@ -12,15 +16,20 @@
 	"proveit-citoid-loading": "Yükleniyor...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN  ya da PMC/PMID",
 	"proveit-citoid-tooltip": "Citoid hizmetiyle ayrıntıları otomatik olarak çıkarmayı denemek için bir URL, DOI, ISBN veya PMC/PMID girin.",
-	"proveit-confirm-remove": "Kaynak ve ondan yapılan tüm alıntılamalar silinecek. Emin misiniz?",
+	"proveit-confirm-remove": "Bu aynı zamanda referanstaki tüm alıntıları da kaldıracaktır. Emin misiniz?",
 	"proveit-filter-fields": "Alanları filtrele",
 	"proveit-filter-references": "Kaynakları filtrele",
 	"proveit-insert-button": "Ekle",
 	"proveit-no-references": "Kaynak bulunamadı",
 	"proveit-no-template": "Şablon yok",
+	"proveit-no-template-data": "Şablon verisi bulunamadı",
+	"proveit-normalize-button": "Her şeyi normalleştir",
+	"proveit-normalize-message": "Normalleştirme... bu birkaç saniye, hatta dakikalar alabilir!",
 	"proveit-reference-content-label": "Kaynak içeriği",
+	"proveit-reference-group-label": "Referans grubu",
 	"proveit-reference-name-label": "Kaynak adı",
 	"proveit-reference-template-label": "Ana şablon",
+	"proveit-reference-wikitext-label": "Referans wiki metni",
 	"proveit-remove-button": "Kaldır",
 	"proveit-show-all-button": "Tüm alanları göster",
 	"proveit-today-button": "Bugün",

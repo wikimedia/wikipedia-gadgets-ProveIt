@@ -9,6 +9,8 @@
 			"Okras"
 		]
 	},
+	"proveit-add-bibliography-button": "Добавить библиографию",
+	"proveit-add-reference-button": "Добавить сноску",
 	"proveit-back-button": "Назад",
 	"proveit-cite-button": "Цитировать",
 	"proveit-citoid-error": "Ошибка",
