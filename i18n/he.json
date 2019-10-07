@@ -5,6 +5,8 @@
 			"Strayblues"
 		]
 	},
+	"proveit-add-bibliography-button": "הוספת ביבליוגרפיה",
+	"proveit-add-reference-button": "הוספת מקור",
 	"proveit-back-button": "חזרה",
 	"proveit-cite-button": "ציטוט",
 	"proveit-citoid-error": "שגיאה",
@@ -19,6 +21,7 @@
 	"proveit-insert-button": "הוספה",
 	"proveit-no-references": "לא נמצאו הפניות",
 	"proveit-no-template": "אין תבנית",
+	"proveit-no-template-data": "לא נמצאו נתוני תבנית",
 	"proveit-normalize-button": "נרמול כל ההפניות",
 	"proveit-normalize-message": "מתבצע נרמול… פעולה זו עשויה לארוך מספר שניות ואף דקות!",
 	"proveit-reference-content-label": "תוכן הפניה",

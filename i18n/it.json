@@ -4,7 +4,8 @@
 			"Sophivorus",
 			"Beta16",
 			"Selven",
-			"Ontsed"
+			"Ontsed",
+			"JackLantern"
 		]
 	},
 	"proveit-back-button": "Indietro",
@@ -21,10 +22,12 @@
 	"proveit-insert-button": "Inserisci",
 	"proveit-no-references": "Nessun riferimento trovato",
 	"proveit-no-template": "Senza template",
+	"proveit-normalize-message": "Normalizzazione... questo potrebbe richiedere alcuni secondi, anche minuti!",
 	"proveit-reference-content-label": "Contenuti di riferimento",
 	"proveit-reference-group-label": "Gruppo di riferimento",
 	"proveit-reference-name-label": "Nome di riferimento",
 	"proveit-reference-template-label": "Template principale",
+	"proveit-reference-wikitext-label": "Wikitesto della nota",
 	"proveit-remove-button": "Rimuovi",
 	"proveit-show-all-button": "Mostra tutti i campi",
 	"proveit-today-button": "Oggi",
