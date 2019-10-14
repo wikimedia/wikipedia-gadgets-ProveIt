@@ -3,7 +3,8 @@
 		"authors": [
 			"Bulgu",
 			"Trockya",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Grkn gll"
 		]
 	},
 	"proveit-add-bibliography-button": "Kaynakça ekle",
@@ -26,7 +27,7 @@
 	"proveit-normalize-button": "Her şeyi normalleştir",
 	"proveit-normalize-message": "Normalleştirme... bu birkaç saniye, hatta dakikalar alabilir!",
 	"proveit-reference-content-label": "Kaynak içeriği",
-	"proveit-reference-group-label": "Referans grubu",
+	"proveit-reference-group-label": "Kaynak grubu",
 	"proveit-reference-name-label": "Kaynak adı",
 	"proveit-reference-template-label": "Ana şablon",
 	"proveit-reference-wikitext-label": "Referans wiki metni",
