@@ -827,7 +827,7 @@ console.log( object );
 			templateName, templateRegex, templateMatch, templateWikitext, templateStart, templateEnd, templateDepth, template;
 
 		for ( templateName in ProveIt.templateData ) {
-			templateRegex = new RegExp( '{{\\s*' + templateName + '[\\s|}]', 'ig' );
+			templateRegex = new RegExp( '{{\\s*' + templateName + '\\s*[|}]', 'ig' );
 			while ( ( templateMatch = templateRegex.exec( wikitext ) ) !== null ) {
 				templateWikitext = templateMatch[0];
 				templateStart = templateMatch.index;
@@ -1245,7 +1245,7 @@ console.log( object );
 			var name = '',
 				regex, index;
 			for ( var templateName in ProveIt.templateData ) {
-				regex = new RegExp( '{{\\s*' + templateName + '[\\s|}]', 'i' );
+				regex = new RegExp( '{{\\s*' + templateName + '\\s*[|}]', 'i' );
 				index = this.wikitext.search( regex );
 				if ( index > -1 ) {
 					name = templateName;
