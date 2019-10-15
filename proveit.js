@@ -436,7 +436,7 @@ var ProveIt = {
 	 */
 	buildForm: function ( object ) {
 		var form = $( '<div>' ).attr( 'id', 'proveit-form' ); // Yea it's not a <form>, for easier styling
-
+console.log( object );
 		// Add the form to the GUI and make sure we're at the top
 		$( '#proveit-body' ).html( form ).scrollTop( 0 );
 
@@ -1307,6 +1307,7 @@ var ProveIt = {
 					paramNumber++;
 					paramName = paramNumber;
 					paramValue = paramString;
+					params[ paramName ] = paramValue;
 					continue;
 				}
 
@@ -1403,11 +1404,8 @@ var ProveIt = {
 					paramName = $( this ).attr( 'name' );
 					paramValue = $( this ).val();
 					if ( paramName && paramValue ) {
-						if ( this.data && this.data.format === 'block' ) {
-							templateWikitext += '\r\n| ' + paramName + '=' + paramValue;
-						} else {
-							templateWikitext += ' |' + paramName + '=' + paramValue;
-						}
+						templateWikitext += ( this.data && this.data.format === 'block' ) ? '\r\n| ' : ' |';
+						templateWikitext += $.isNumeric( paramName ) ? paramValue : paramName + '=' + paramValue;
 					}
 				});
 				if ( this.data && this.data.format === 'block' ) {
