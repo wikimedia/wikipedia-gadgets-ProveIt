@@ -7,6 +7,7 @@
 			"Silvonen"
 		]
 	},
+	"proveit-add-reference-button": "Lisää viite",
 	"proveit-back-button": "Takaisin",
 	"proveit-cite-button": "Viittaa",
 	"proveit-citoid-error": "Virhe",
@@ -25,6 +26,7 @@
 	"proveit-reference-group-label": "Viiteryhmä",
 	"proveit-reference-name-label": "Viitteen nimi",
 	"proveit-reference-template-label": "Viitemalline",
+	"proveit-reference-wikitext-label": "Viiteteksti",
 	"proveit-remove-button": "Poista viite",
 	"proveit-show-all-button": "Näytä kaikki",
 	"proveit-today-button": "Tänään",
