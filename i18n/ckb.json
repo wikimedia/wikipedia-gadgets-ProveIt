@@ -6,6 +6,7 @@
 			"ئارام بکر"
 		]
 	},
+	"proveit-add-reference-button": "زیادکردنی سەرچاوە",
 	"proveit-back-button": "گەڕانەوە",
 	"proveit-cite-button": "ھێنانەوەی سەرچاوە",
 	"proveit-citoid-error": "ھەڵە",
@@ -20,6 +21,7 @@
 	"proveit-insert-button": "تێخستن",
 	"proveit-no-references": "ھیچ سەرچاوەیەک نەدۆزرایەوە",
 	"proveit-no-template": "داڕێژە نییە",
+	"proveit-no-template-data": "ھیچ دراوەیەکی داڕێژە نەدۆزرایەوە",
 	"proveit-normalize-button": "ئاساییکردنەوەی ھەموو سەرچاوەکان",
 	"proveit-normalize-message": "ئاساییکردنەوە... لەوانەیە ئەمە چەند چرکەیەک بخایەنێت، ھەتا چەند خولەکێک!",
 	"proveit-reference-content-label": "ناوەڕۆکی سەرچاوە",
