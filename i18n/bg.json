@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"StanProg",
-			"Vodnokon4e"
+			"Vodnokon4e",
+			"Ted Masters"
 		]
 	},
+	"proveit-add-bibliography-button": "Добавяне на библиография",
+	"proveit-add-reference-button": "Добавяне на източник",
 	"proveit-back-button": "Назад",
 	"proveit-cite-button": "Цитиране",
 	"proveit-citoid-error": "Грешка",
@@ -19,9 +22,14 @@
 	"proveit-insert-button": "Вмъкване",
 	"proveit-no-references": "Не са намерени източници",
 	"proveit-no-template": "Без шаблон",
+	"proveit-no-template-data": "Шаблонът няма данни",
+	"proveit-normalize-button": "Нормализиране на всичко",
+	"proveit-normalize-message": "Нормализиране... може да отнеме няколко секунди, дори минути!",
 	"proveit-reference-content-label": "Съдържание на източника",
+	"proveit-reference-group-label": "Група източници",
 	"proveit-reference-name-label": "Име на източника",
 	"proveit-reference-template-label": "Главен шаблон",
+	"proveit-reference-wikitext-label": "Уикитекст на източника",
 	"proveit-remove-button": "Премахване",
 	"proveit-show-all-button": "Показване на всички полета",
 	"proveit-today-button": "Днес",
