@@ -959,9 +959,13 @@ window.ProveIt = {
 				ve.init.target.getSurface().getModel().getFragment().collapseToEnd().insertContent( wikitext ).collapseToEnd().select();
 				break;
 		}
-		object.wikitext = wikitext;
-		if ( object instanceof ProveIt.Reference || object instanceof ProveIt.Template ) {
-			ProveIt.buildForm( object ); // Changes the Insert button for Update
+		if ( object instanceof ProveIt.Reference ) {
+			var reference = new ProveIt.Reference( wikitext );
+			ProveIt.buildForm( reference ); // Changes the Insert button for Update
+		}
+		if ( object instanceof ProveIt.Template ) {
+			var template = new ProveIt.Template( wikitext );
+			ProveIt.buildForm( template ); // Changes the Insert button for Update
 		}
 		ProveIt.addTag();
 		ProveIt.addSummary();
