@@ -1265,8 +1265,8 @@ window.ProveIt = {
 			var params = {};
 
 			// Remove the outer braces and split by pipe
-			// knowing that we may match pipes inside wikilinks or subtemplates, like so:
-			// {{Cite book |title=[[Foo|Bar]] |year={{AD|123}} }}
+			// knowing that we may match pipes inside complex titles, wikilinks or subtemplates, like so:
+			// {{Cite book |title=Some|Title |author=[[Foo|Bar]] |year={{AD|123}} }}
 			var paramArray = this.wikitext.substring( 2, this.wikitext.length - 2 ).split( '|' );
 
 			// Drop the template name
@@ -1529,7 +1529,7 @@ window.ProveIt = {
 		this.getCitations = function () {
 			var citations = [],
 				wikitext = ProveIt.getWikitext(),
-				citationRegex = new RegExp( '<\s*ref[^/]*\/>', 'ig' ),
+				citationRegex = new RegExp( '<\s*ref[^/]*/>', 'ig' ),
 				citationMatch, citationWikitext, citationIndex, citationNameMatch, citationName, citation;
 			while ( ( citationMatch = citationRegex.exec( wikitext ) ) !== null ) {
 				citationWikitext = citationMatch[ 0 ];

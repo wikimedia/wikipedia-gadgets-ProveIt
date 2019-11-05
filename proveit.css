@@ -32,8 +32,9 @@
 
 #proveit-body {
 	background: #f4f4f4;
-	overflow-y: scroll;
+	display: none;
 	max-height: 300px;
+	overflow-y: scroll;
 	resize: none;
 }
 
@@ -150,6 +151,7 @@
 #proveit-footer {
 	background: #eee;
 	border-spacing: 0;
+	display: none;
 	overflow: hidden;
 	text-align: right;
 }
