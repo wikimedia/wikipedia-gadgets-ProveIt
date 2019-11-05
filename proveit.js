@@ -265,7 +265,7 @@ window.ProveIt = {
 						}
 
 						// Merge and set the messages
-						var messages = Object.assign( englishMessages, translatedMessages );
+						var messages = $.extend( {}, englishMessages, translatedMessages );
 						mw.messages.set( messages );
 
 						// Finally, build the list
