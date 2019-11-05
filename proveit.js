@@ -207,7 +207,7 @@ window.ProveIt = {
 			redirects: true,
 			includeMissingTitles: true,
 			format: 'json',
-			formatversion: 2,
+			formatversion: 2
 		} ).done( function ( data ) {
 
 			$( '#proveit-logo-text' ).text( '..' ); // Still loading
@@ -232,7 +232,7 @@ window.ProveIt = {
 				rdlimit: 'max',
 				rdnamespace: 10,
 				format: 'json',
-				formatversion: 2,
+				formatversion: 2
 			} ).done( function ( data ) {
 
 				$( '#proveit-logo-text' ).text( '...' ); // Still loading
@@ -643,7 +643,7 @@ window.ProveIt = {
 				description: null,
 				required: false,
 				suggested: false,
-				deprecated: false,
+				deprecated: false
 			};
 			labelText = inputName;
 			labelTooltip = null;
@@ -706,7 +706,7 @@ window.ProveIt = {
 						limit: 5,
 						redirects: 'resolve',
 						format: 'json',
-						formatversion: 2,
+						formatversion: 2
 					} ).done( function ( data ) {
 						$list.empty();
 						var titles = data[ 1 ];
@@ -1085,7 +1085,7 @@ window.ProveIt = {
 				if ( editor === 'codemirror' ) {
 					$( '#wpTextbox1' ).textSelection( 'setSelection', {
 						start: index,
-						end: index + object.wikitext.length,
+						end: index + object.wikitext.length
 					} );
 				} else {
 					var textbox = $( '#wpTextbox1' ).trigger( 'focus' )[ 0 ];

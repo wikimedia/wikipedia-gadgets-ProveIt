@@ -9,7 +9,6 @@
 		"ve": "readonly"
 	},
 	"rules": {
-		"comma-dangle": "off",
 		"max-len": "off",
 		"mediawiki/msg-doc": "off",
 		"no-alert": "off",
