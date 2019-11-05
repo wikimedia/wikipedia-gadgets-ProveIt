@@ -162,7 +162,7 @@ window.ProveIt = {
 
 		// Toggle the GUI when the logo is clicked
 		var minimized = true;
-		$logo.click( function () {
+		$logo.on( 'click', function () {
 			if ( minimized ) {
 				minimized = false;
 				$( '#proveit-logo-text' ).text( 'ProveIt' );
@@ -296,7 +296,7 @@ window.ProveIt = {
 			references = ProveIt.getReferences( wikitext );
 		references.forEach( function ( reference, index ) {
 			$item = $( '<li>' ).addClass( 'proveit-item' );
-			$item.click( reference, function ( event ) {
+			$item.on( 'click', reference, function ( event ) {
 				var reference = event.data;
 				ProveIt.highlight( reference );
 				ProveIt.buildForm( reference );
@@ -308,19 +308,19 @@ window.ProveIt = {
 
 			// Add the arrow and letters
 			$link = $( '<a>' ).addClass( 'proveit-arrow' ).text( '↑' );
-			$link.click( reference, ProveIt.highlight );
+			$link.on( 'click', reference, ProveIt.highlight );
 			$item.append( $link );
 
 			// Add the letters
 			if ( reference.citations.length ) {
 				$link = $( '<a>' ).addClass( 'proveit-letter' ).text( 'a' );
-				$link.click( reference, ProveIt.highlight );
+				$link.on( 'click', reference, ProveIt.highlight );
 				$item.append( $link );
 
 				reference.citations.forEach( function ( citation, i ) {
 					var letter = String.fromCharCode( 98 + i ); // 97 is the ASCII code for 'b'
 					$link = $( '<a>' ).addClass( 'proveit-letter' ).text( letter );
-					$link.click( citation, ProveIt.highlight );
+					$link.on( 'click', citation, ProveIt.highlight );
 					$item.append( $link );
 				} );
 			}
@@ -346,14 +346,14 @@ window.ProveIt = {
 		var templates = ProveIt.getTemplates( wikitext );
 		templates.forEach( function ( template ) {
 			$item = $( '<li>' ).addClass( 'proveit-item' );
-			$item.click( template, function ( event ) {
+			$item.on( 'click', template, function ( event ) {
 				var template = event.data;
 				ProveIt.highlight( template );
 				ProveIt.buildForm( template );
 			} );
 
 			$link = $( '<a>' ).addClass( 'proveit-arrow' ).text( '↓' );
-			$link.click( template, ProveIt.highlight );
+			$link.on( 'click', template, ProveIt.highlight );
 			$item.append( $link );
 
 			// Add the template name
@@ -381,7 +381,7 @@ window.ProveIt = {
 		if ( references.length || templates.length ) {
 			var $normalizeButton = $( '<button>' ).attr( 'id', 'proveit-normalize-button' ).text( ProveIt.getMessage( 'normalize-button' ) );
 			$footer.append( $normalizeButton );
-			$normalizeButton.click( function () {
+			$normalizeButton.on( 'click', function () {
 				$( this ).remove();
 				mw.notify( ProveIt.getMessage( 'normalize-message' ) );
 				setTimeout( function () {
@@ -398,7 +398,7 @@ window.ProveIt = {
 			} );
 			var $filterReferences = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-references' ) );
 			$footer.prepend( $filterReferences );
-			$filterReferences.keyup( function () {
+			$filterReferences.on( 'keyup', function () {
 				var filter = $( this ).val().toLowerCase();
 				$( 'li', $list ).show().filter( function () {
 					return $( this ).text().toLowerCase().indexOf( filter ) === -1;
@@ -414,13 +414,13 @@ window.ProveIt = {
 		$header.prepend( $addReferenceButton, $addBibliographyButton );
 
 		// Bind events
-		$addReferenceButton.click( function () {
+		$addReferenceButton.on( 'click', function () {
 			var templateName = $.cookie( 'proveit-last-template' ), // Remember the last choice
 				wikitext = templateName ? '<ref>{{' + templateName + '}}</ref>' : '<ref></ref>',
 				reference = new ProveIt.Reference( wikitext );
 			ProveIt.buildForm( reference );
 		} );
-		$addBibliographyButton.click( function () {
+		$addBibliographyButton.on( 'click', function () {
 			var templateName = $.cookie( 'proveit-last-template' ), // Remember the last choice
 				wikitext = templateName ? '{{' + templateName + '}}' : '',
 				template = new ProveIt.Template( wikitext );
@@ -447,13 +447,13 @@ window.ProveIt = {
 			$backButton = $( '<button>' ).text( ProveIt.getMessage( 'back-button' ) );
 		$( 'button', $header ).remove();
 		$header.prepend( $backButton );
-		$backButton.click( ProveIt.buildList );
+		$backButton.on( 'click', ProveIt.buildList );
 
 		// Build the footer
 		var $footer = $( '#proveit-footer' ),
-			$insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( ProveIt.getMessage( 'insert-button' ) ).click( object, ProveIt.insert ).addClass( 'progressive' ),
-			$updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( ProveIt.getMessage( 'update-button' ) ).click( object, ProveIt.update ).addClass( 'progressive' ),
-			$removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( ProveIt.getMessage( 'remove-button' ) ).click( object, ProveIt.remove );
+			$insertButton = $( '<button>' ).attr( 'id', 'proveit-insert-button' ).text( ProveIt.getMessage( 'insert-button' ) ).on( 'click', object, ProveIt.insert ).addClass( 'progressive' ),
+			$updateButton = $( '<button>' ).attr( 'id', 'proveit-update-button' ).text( ProveIt.getMessage( 'update-button' ) ).on( 'click', object, ProveIt.update ).addClass( 'progressive' ),
+			$removeButton = $( '<button>' ).attr( 'id', 'proveit-remove-button' ).text( ProveIt.getMessage( 'remove-button' ) ).on( 'click', object, ProveIt.remove );
 		$footer.empty();
 
 		// Add the Insert button or the Remove and Update buttons
@@ -501,7 +501,7 @@ window.ProveIt = {
 		$fields.append( $div );
 
 		// When the reference content changes, update the template fields
-		$input.change( function () {
+		$input.on( 'change', function () {
 			var content = $( this ).val(),
 				wikitext = '<ref>' + content + '</ref>',
 				reference = new ProveIt.Reference( wikitext );
@@ -514,7 +514,7 @@ window.ProveIt = {
 
 		// Add the footer buttons
 		var $buttons = $( '<span>' ).attr( 'id', 'proveit-reference-buttons' ),
-			$citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( ProveIt.getMessage( 'cite-button' ) ).click( reference, reference.insertCitation );
+			$citeButton = $( '<button>' ).attr( 'id', 'proveit-cite-button' ).text( ProveIt.getMessage( 'cite-button' ) ).on( 'click', reference, reference.insertCitation );
 		$buttons.append( $citeButton );
 		$( '#proveit-reference-buttons' ).remove();
 		$( '#proveit-footer' ).prepend( $buttons );
@@ -554,7 +554,7 @@ window.ProveIt = {
 		} );
 
 		// When the template select changes, update the template fields
-		$input.change( template, function ( event ) {
+		$input.on( 'change', template, function ( event ) {
 			var template = event.data,
 				wikitext = template.buildWikitext();
 			template = new ProveIt.Template( wikitext );
@@ -572,7 +572,7 @@ window.ProveIt = {
 			$fields.append( $div );
 
 			// When the Citoid button is clicked, try to extract the reference data automatically via the Citoid service
-			$button.click( function () {
+			$button.on( 'click', function () {
 				var $button = $( this ),
 					query = $button.siblings( 'input' ).val();
 
@@ -698,7 +698,7 @@ window.ProveIt = {
 				$input.attr( 'list', inputName + '-list' );
 				var $list = $( '<datalist>' ).attr( 'id', inputName + '-list' );
 				$div.prepend( $list );
-				$input.keyup( function () {
+				$input.on( 'keyup', function () {
 					var search = $( this ).val();
 					new mw.Api().get( {
 						action: 'opensearch',
@@ -722,7 +722,7 @@ window.ProveIt = {
 			if ( paramData.type === 'date' ) {
 				$button = $( '<button>' ).text( ProveIt.getMessage( 'today-button' ) );
 				$div.prepend( $button );
-				$button.click( $input, function ( event ) {
+				$button.on( 'click', $input, function ( event ) {
 					var input = event.data,
 						date = new Date(),
 						yyyy = date.getFullYear(),
@@ -778,11 +778,11 @@ window.ProveIt = {
 		$( '#proveit-footer' ).prepend( $buttons );
 
 		// Bind events
-		$showAllButton.click( function () {
+		$showAllButton.on( 'click', function () {
 			$( '.proveit-deprecated, .proveit-optional' ).show();
 			$( this ).remove();
 		} );
-		$filterFields.keyup( function () {
+		$filterFields.on( 'keyup', function () {
 			var filter = $( this ).val().toLowerCase();
 			$( 'div', $fields ).show().filter( function () {
 				return $( this ).text().toLowerCase().indexOf( filter ) === -1;
@@ -792,7 +792,7 @@ window.ProveIt = {
 
 		// When a template parameter changes, update the reference content
 		if ( $( '#proveit-reference-content' ).length ) {
-			$( 'select, input, textarea', '#proveit-template-fields' ).change( function () {
+			$( 'select, input, textarea', '#proveit-template-fields' ).on( 'change', function () {
 				var content = $( '#proveit-reference-content' ).val(),
 					wikitext = '<ref>' + content + '</ref>',
 					reference = new ProveIt.Reference( wikitext );
@@ -1088,7 +1088,7 @@ window.ProveIt = {
 						end: index + object.wikitext.length,
 					} );
 				} else {
-					var textbox = $( '#wpTextbox1' ).focus()[ 0 ];
+					var textbox = $( '#wpTextbox1' ).trigger( 'focus' )[ 0 ];
 					textbox.value = wikitext.substring( 0, index + object.wikitext.length );
 					textbox.scrollTop = textbox.scrollHeight;
 					textbox.value = wikitext;

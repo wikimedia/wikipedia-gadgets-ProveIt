@@ -14,7 +14,6 @@
 		"mediawiki/msg-doc": "off",
 		"no-alert": "off",
 		"no-jquery/no-class-state": "off",
-		"no-jquery/no-event-shorthand": "off",
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/no-is-numeric": "off",
 		"no-restricted-properties": "off",
