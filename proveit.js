@@ -10,7 +10,7 @@
  * the Creative Commons Attribution/Share-Alike License 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
  * and the GNU General Public License 2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
-var ProveIt = {
+window.ProveIt = {
 
 	/**
 	 * Template data of the templates
@@ -436,7 +436,9 @@ var ProveIt = {
 	 */
 	buildForm: function ( object ) {
 		var form = $( '<div>' ).attr( 'id', 'proveit-form' ); // Yea it's not a <form>, for easier styling
-console.log( object );
+
+		// eslint-disable-next-line no-console
+		console.log( object );
 		// Add the form to the GUI and make sure we're at the top
 		$( '#proveit-body' ).html( form ).scrollTop( 0 );
 
@@ -568,7 +570,7 @@ console.log( object );
 			input = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'citoid-placeholder' ) );
 			div = $( '<div>' ).append( button, label, input );
 			fields.append( div );
-	
+
 			// When the Citoid button is clicked, try to extract the reference data automatically via the Citoid service
 			button.click( function () {
 				var button = $( this ),
@@ -645,7 +647,7 @@ console.log( object );
 			};
 			labelText = inputName;
 			labelTooltip = null;
-			inputValue = null,
+			inputValue = null;
 			inputPlaceholder = null;
 
 			// Override with template data
@@ -943,7 +945,7 @@ console.log( object );
 	 * @return {void}
 	 */
 	insert: function ( object ) {
-		if ( object instanceof jQuery.Event ) {
+		if ( object instanceof $.Event ) {
 			object = object.data;
 		}
 
@@ -986,7 +988,7 @@ console.log( object );
 	 * @return {void}
 	 */
 	update: function ( object ) {
-		if ( object instanceof jQuery.Event ) {
+		if ( object instanceof $.Event ) {
 			object = object.data;
 		}
 		var wikitext = object.buildWikitext();
@@ -1024,7 +1026,7 @@ console.log( object );
 	 * @return {void}
 	 */
 	remove: function ( object ) {
-		if ( object instanceof jQuery.Event ) {
+		if ( object instanceof $.Event ) {
 			object = object.data;
 		}
 
@@ -1060,7 +1062,7 @@ console.log( object );
 	 * @return {void}
 	 */
 	highlight: function ( object ) {
-		if ( object instanceof jQuery.Event ) {
+		if ( object instanceof $.Event ) {
 			object.stopPropagation();
 			object = object.data;
 		}
@@ -1611,5 +1613,3 @@ mw.loader.using([
 	'jquery.textSelection',
 	'jquery.ui.draggable'
 ], ProveIt.init );
-
-/* global mw, ve, $, jQuery */
