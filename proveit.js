@@ -156,7 +156,7 @@ window.ProveIt = {
 			handle: header,
 			containment: 'window',
 			start: function () {
-				gui.css( { 'right': 'auto', 'bottom': 'auto' } );
+				gui.css( { right: 'auto', bottom: 'auto' } );
 			}
 		} );
 
@@ -177,7 +177,7 @@ window.ProveIt = {
 				$( '#proveit-logo-text' ).text( 'P' );
 				$( '#proveit-header button, #proveit-body, #proveit-footer' ).hide();
 			}
-			gui.css( { 'top': 'auto', 'left': 'auto', 'right': 0, 'bottom': 0 } ); // Reset the position of the gadget
+			gui.css( { top: 'auto', left: 'auto', right: 0, bottom: 0 } ); // Reset the position of the gadget
 		} );
 	},
 
@@ -202,12 +202,12 @@ window.ProveIt = {
 		// Get the template data
 		var api = new mw.Api();
 		api.get( {
-			'titles': titles.join( '|' ),
-			'action': 'templatedata',
-			'redirects': true,
-			'includeMissingTitles': true,
-			'format': 'json',
-			'formatversion': 2,
+			titles: titles.join( '|' ),
+			action: 'templatedata',
+			redirects: true,
+			includeMissingTitles: true,
+			format: 'json',
+			formatversion: 2,
 		} ).done( function ( data ) {
 
 			$( '#proveit-logo-text' ).text( '..' ); // Still loading
@@ -226,13 +226,13 @@ window.ProveIt = {
 
 			// Get all the redirects to the citaton templates
 			api.get( {
-				'titles': titles.join( '|' ),
-				'action': 'query',
-				'prop': 'redirects',
-				'rdlimit': 'max',
-				'rdnamespace': 10,
-				'format': 'json',
-				'formatversion': 2,
+				titles: titles.join( '|' ),
+				action: 'query',
+				prop: 'redirects',
+				rdlimit: 'max',
+				rdnamespace: 10,
+				format: 'json',
+				formatversion: 2,
 			} ).done( function ( data ) {
 
 				$( '#proveit-logo-text' ).text( '...' ); // Still loading
@@ -639,11 +639,11 @@ window.ProveIt = {
 
 			// Reset defaults
 			paramData = {
-				'label': null,
-				'description': null,
-				'required': false,
-				'suggested': false,
-				'deprecated': false,
+				label: null,
+				description: null,
+				required: false,
+				suggested: false,
+				deprecated: false,
 			};
 			labelText = inputName;
 			labelTooltip = null;
@@ -688,8 +688,8 @@ window.ProveIt = {
 			}
 			input = paramData.type === 'content' ? $( '<textarea>' ) : $( '<input>' );
 			input.val( inputValue ).attr( {
-				'name': inputName,
-				'placeholder': inputPlaceholder
+				name: inputName,
+				placeholder: inputPlaceholder
 			} );
 			div = $( '<div>' ).addClass( 'proveit-template-param' ).append( label, input );
 
@@ -701,12 +701,12 @@ window.ProveIt = {
 				input.keyup( function () {
 					var search = $( this ).val();
 					new mw.Api().get( {
-						'action': 'opensearch',
-						'search': search,
-						'limit': 5,
-						'redirects': 'resolve',
-						'format': 'json',
-						'formatversion': 2,
+						action: 'opensearch',
+						search: search,
+						limit: 5,
+						redirects: 'resolve',
+						format: 'json',
+						formatversion: 2,
 					} ).done( function ( data ) {
 						list.empty();
 						var titles = data[ 1 ];
@@ -877,10 +877,10 @@ window.ProveIt = {
 					return; // Don't add it twice
 				}
 				var tagInput = $( '<input>' ).attr( {
-					'id': 'wpChangeTags',
-					'type': 'hidden',
-					'name': 'wpChangeTags',
-					'value': tag
+					id: 'wpChangeTags',
+					type: 'hidden',
+					name: 'wpChangeTags',
+					value: tag
 				} );
 				$( '#editform' ).prepend( tagInput );
 				break;
@@ -964,8 +964,8 @@ window.ProveIt = {
 					}
 				}
 				$( '#wpTextbox1' ).textSelection( 'encapsulateSelection', {
-					'peri': wikitext,
-					'replace': true
+					peri: wikitext,
+					replace: true
 				} );
 				break;
 
@@ -1084,8 +1084,8 @@ window.ProveIt = {
 				// @todo For some reason textSelection() works with CodeMirror but not without
 				if ( editor === 'codemirror' ) {
 					$( '#wpTextbox1' ).textSelection( 'setSelection', {
-						'start': index,
-						'end': index + object.wikitext.length,
+						start: index,
+						end: index + object.wikitext.length,
 					} );
 				} else {
 					var textbox = $( '#wpTextbox1' ).focus()[ 0 ];

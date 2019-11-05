@@ -21,7 +21,6 @@
 		"no-restricted-syntax": "off",
 		"no-useless-escape": "off",
 		"one-var": "off",
-		"quote-props": "off",
 		"valid-jsdoc": "off",
 		"vars-on-top": "off"
 	}
