@@ -39,6 +39,7 @@ window.ProveIt = {
 	 * @return {string} Message value
 	 */
 	getMessage: function ( key ) {
+		// eslint-disable-next-line mediawiki/msg-doc
 		return mw.message( 'proveit-' + key );
 	},
 

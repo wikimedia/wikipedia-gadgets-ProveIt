@@ -10,7 +10,6 @@
 	},
 	"rules": {
 		"max-len": "off",
-		"mediawiki/msg-doc": "off",
 		"no-alert": "off",
 		"no-jquery/no-class-state": "off",
 		"no-jquery/no-global-selector": "off",
