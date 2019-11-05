@@ -1289,6 +1289,10 @@ window.ProveIt = {
 					continue;
 				}
 
+				if ( paramName === 'title' ) {
+					
+				}
+
 				// If we reach this point and there's no equal sign, it's an anonymous parameter
 				indexOfEqual = paramString.indexOf( '=' );
 				if ( indexOfEqual === -1 ) {
@@ -1529,7 +1533,7 @@ window.ProveIt = {
 		this.getCitations = function () {
 			var citations = [],
 				wikitext = ProveIt.getWikitext(),
-				citationRegex = new RegExp( '<\s*ref[^/]*/>', 'ig' ),
+				citationRegex = new RegExp( '<ref[^/]*/>', 'ig' ),
 				citationMatch, citationWikitext, citationIndex, citationNameMatch, citationName, citation;
 			while ( ( citationMatch = citationRegex.exec( wikitext ) ) !== null ) {
 				citationWikitext = citationMatch[ 0 ];
