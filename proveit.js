@@ -542,9 +542,11 @@ window.ProveIt = {
 
 		// When the template select changes, update the template fields
 		$input.on( 'change', template, function ( event ) {
-			var template = event.data,
-				wikitext = template.buildWikitext();
-			template = new ProveIt.Template( wikitext );
+			var template = event.data;
+			template.name = $( this ).val();
+			template.data = template.getData();
+			template.params = template.getParams();
+			template.paramOrder = template.getParamOrder();
 			$.cookie( 'proveit-last-template', template.name ); // Remember the new choice
 			ProveIt.buildTemplateFields( template );
 		} );
@@ -1523,7 +1525,7 @@ window.ProveIt = {
 		this.getCitations = function () {
 			var citations = [],
 				wikitext = ProveIt.getWikitext(),
-				citationRegex = new RegExp( '<\s*ref[^\/]*\/>', 'ig' ),
+				citationRegex = new RegExp( '<\s*ref[^/]*\/>', 'ig' ),
 				citationMatch, citationWikitext, citationIndex, citationNameMatch, citationName, citation;
 			while ( ( citationMatch = citationRegex.exec( wikitext ) ) !== null ) {
 				citationWikitext = citationMatch[ 0 ];
@@ -1548,7 +1550,7 @@ window.ProveIt = {
 		this.buildWikitext = function () {
 			var name = $( '#proveit-reference-name' ).val(),
 				group = $( '#proveit-reference-group' ).val(),
-				content = this.buildContent(),
+				content = $( '#proveit-reference-content' ).val(),
 				wikitext = '<ref';
 			if ( name ) {
 				wikitext += ' name="' + name + '"';
@@ -1566,9 +1568,11 @@ window.ProveIt = {
 		 * @return {string} Reference content
 		 */
 		this.buildContent = function () {
-			var content = $( '#proveit-reference-content' ).val();
-			if ( this.template ) {
-				content = content.replace( this.template.wikitext, this.template.buildWikitext() );
+			var content = $( '#proveit-reference-content' ).val(),
+				template = new ProveIt.Template( '' ),
+				templateWikitext = template.buildWikitext();
+			if ( templateWikitext ) {
+				content = content.replace( this.template.wikitext, templateWikitext );
 			}
 			content = content.trim();
 			return content;
