@@ -16,7 +16,7 @@ window.ProveIt = {
 	 * Template data of the templates
 	 * Populated on ProveIt.init()
 	 *
-	 * @type {object} map from template name to template data
+	 * @type {Object} Map from template name to template data
 	 */
 	templateData: {},
 
@@ -24,8 +24,8 @@ window.ProveIt = {
 	 * Convenience method to get a ProveIt configuration option
 	 * Configuration options are set from the loader of the wiki, not here
 	 *
-	 * @param {string} option key without the "proveit-" prefix
-	 * @return {string} option value
+	 * @param {string} key Option key without the "proveit-" prefix
+	 * @return {string} Option value
 	 */
 	getOption: function ( key ) {
 		return mw.config.get( 'proveit-' + key );
@@ -35,8 +35,8 @@ window.ProveIt = {
 	 * Convenience method to get a ProveIt interface message
 	 * Interface messages are set on ProveIt.init()
 	 *
-	 * @param {string} message key without the "proveit-" prefix
-	 * @return {string} message value
+	 * @param {string} key Message key without the "proveit-" prefix
+	 * @return {string} Message value
 	 */
 	getMessage: function ( key ) {
 		return mw.message( 'proveit-' + key );
@@ -45,7 +45,7 @@ window.ProveIt = {
 	/**
 	 * Convenience method to detect the current editor
 	 *
-	 * @return {string|null} name of the current editor ('core', 'wikieditor', 'codemirror' or '2017') or null if it's not supported
+	 * @return {string|null} Name of the current editor ('core', 'wikieditor', 'codemirror' or '2017') or null if it's not supported
 	 */
 	getEditor: function () {
 		if ( window.ve && ve.init && ve.init.target && ve.init.target.active ) {
@@ -69,7 +69,7 @@ window.ProveIt = {
 	/**
 	 * Convenience method to get the wikitext of the current page
 	 *
-	 * @return {string} wikitext of the current page
+	 * @return {string} Wikitext of the current page
 	 */
 	getWikitext: function () {
 		switch ( ProveIt.getEditor() ) {
@@ -84,8 +84,6 @@ window.ProveIt = {
 
 	/**
 	 * Initialization script
-	 *
-	 * @return {void}
 	 */
 	init: function () {
 
@@ -130,8 +128,6 @@ window.ProveIt = {
 
 	/**
 	 * Build the basic GUI and add it to the DOM
-	 *
-	 * @return {void}
 	 */
 	buildGUI: function () {
 
@@ -183,8 +179,6 @@ window.ProveIt = {
 
 	/**
 	 * Get the template data, redirects and interface messages, then build the reference list
-	 *
-	 * @return {void}
 	 */
 	realInit: function () {
 
@@ -284,8 +278,6 @@ window.ProveIt = {
 
 	/**
 	 * Build the reference list and add it to the GUI
-	 *
-	 * @return {void}
 	 */
 	buildList: function () {
 		var $list = $( '<ol>' ).attr( 'id', 'proveit-list' ),
@@ -431,8 +423,7 @@ window.ProveIt = {
 	/**
 	 * Build the form and add it to the GUI
 	 *
-	 * @param {object} Reference or Template object to fill the form
-	 * @return {void}
+	 * @param {ProveIt.Reference|ProveIt.Template} object Reference or Template object to fill the form
 	 */
 	buildForm: function ( object ) {
 		var $form = $( '<div>' ).attr( 'id', 'proveit-form' ); // Yea it's not a <form>, for easier styling
@@ -475,8 +466,7 @@ window.ProveIt = {
 	/**
 	 * Build the reference fields and add them to the form
 	 *
-	 * @param {object} reference object to fill the fields
-	 * @return {void}
+	 * @param {ProveIt.Reference} reference Reference object to fill the fields
 	 */
 	buildReferenceFields: function ( reference ) {
 		var $fields = $( '<div>' ).attr( 'id', 'proveit-reference-fields' ),
@@ -523,8 +513,7 @@ window.ProveIt = {
 	/**
 	 * Build the fields for the template parameters and add them to the reference form
 	 *
-	 * @param {object} template object to fill the fields, if any
-	 * @return {void}
+	 * @param {ProveIt.Template} template Template object to fill the fields, if any
 	 */
 	buildTemplateFields: function ( template ) {
 		var $fields = $( '<div>' ).attr( 'id', 'proveit-template-fields' ),
@@ -805,7 +794,8 @@ window.ProveIt = {
 	/**
 	 * Parse the given wikitext in search for references and return an array of Reference objects
 	 *
-	 * @return {array} array of Reference objects
+	 * @param {string} wikitext
+	 * @return {ProveIt.Reference[]} Array of Reference objects
 	 */
 	getReferences: function ( wikitext ) {
 		var references = [],
@@ -822,7 +812,8 @@ window.ProveIt = {
 	/**
 	 * Parse the given wikitext in search for templates and return an array of Template objects
 	 *
-	 * @return {array} array of Template objects
+	 * @param {string} wikitext
+	 * @return {ProveIt.Template[]} Array of Template objects
 	 */
 	getTemplates: function ( wikitext ) {
 		var templates = [],
@@ -861,8 +852,6 @@ window.ProveIt = {
 
 	/**
 	 * Add the ProveIt revision tag
-	 *
-	 * @return {void}
 	 */
 	addTag: function () {
 		var tag = ProveIt.getOption( 'tag' );
@@ -895,8 +884,6 @@ window.ProveIt = {
 
 	/**
 	 * Add the ProveIt edit summary
-	 *
-	 * @return {void}
 	 */
 	addSummary: function () {
 		var proveitSummary = ProveIt.getOption( 'summary' );
@@ -941,8 +928,7 @@ window.ProveIt = {
 	/**
 	 * Insert the given object in the wikitext
 	 *
-	 * @param {object} reference, template or citation, or a jQuery event containing one
-	 * @return {void}
+	 * @param {jQuery.Event|ProveIt.Reference|ProveIt.Template|ProveIt.Citation} object Reference, template or citation, or a jQuery event containing one
 	 */
 	insert: function ( object ) {
 		if ( object instanceof $.Event ) {
@@ -984,8 +970,7 @@ window.ProveIt = {
 	/**
 	 * Update the given object in the wikitext
 	 *
-	 * @param {object} reference, template or citation, or a jQuery event containing one
-	 * @return {void}
+	 * @param {jQuery.Event|ProveIt.Reference|ProveIt.Template|ProveIt.Citation} object Reference, template or citation, or a jQuery event containing one
 	 */
 	update: function ( object ) {
 		if ( object instanceof $.Event ) {
@@ -1022,8 +1007,7 @@ window.ProveIt = {
 	/**
 	 * Remove the given object from the wikitext
 	 *
-	 * @param {object} reference, template or citation, or a jQuery event containing one
-	 * @return {void}
+	 * @param {jQuery.Event|ProveIt.Reference|ProveIt.Template|ProveIt.Citation} object Reference, template or citation, or a jQuery event containing one
 	 */
 	remove: function ( object ) {
 		if ( object instanceof $.Event ) {
@@ -1058,8 +1042,7 @@ window.ProveIt = {
 	/**
 	 * Highlight the given object in the wikitext
 	 *
-	 * @param {object} reference, template or citation, or a jQuery event containing one
-	 * @return {void}
+	 * @param {jQuery.Event|ProveIt.Reference|ProveIt.Template|ProveIt.Citation} object Reference, template or citation, or a jQuery event containing one
 	 */
 	highlight: function ( object ) {
 		if ( object instanceof $.Event ) {
@@ -1107,9 +1090,8 @@ window.ProveIt = {
 	 * @copyright Eranroz and Ravid Ziv at https://en.wikipedia.org/wiki/User:%D7%A2%D7%A8%D7%9F/veReplace.js
 	 * @license MIT
 	 *
-	 * @param {string} string to search
-	 * @param {string} replacement string
-	 * @return {void}
+	 * @param {string} search String to search
+	 * @param {string} replace Replacement string
 	 */
 	replace: function ( search, replace ) {
 		// Recursive helper function to extract the paragraph nodes from the 2017 wikitext editor
@@ -1147,8 +1129,8 @@ window.ProveIt = {
 	/**
 	 * Helper function to decode base64 strings
 	 *
-	 * @param {string} base64 encoded string
-	 * @return {string} decoded string
+	 * @param {string} string Base64 encoded string
+	 * @return {string} Decoded string
 	 */
 	decodeBase64: function ( string ) {
 		return decodeURIComponent( window.atob( string ).split( '' ).map( function ( character ) {
@@ -1160,8 +1142,8 @@ window.ProveIt = {
 	 * Citation class
 	 *
 	 * @class
-	 * @param {string} citation wikitext
-	 * @param {int} citation index in the page wikitext
+	 * @param {string} wikitext Citation wikitext
+	 * @param {number} index Citation index in the page wikitext
 	 */
 	Citation: function ( wikitext, index ) {
 
@@ -1229,7 +1211,7 @@ window.ProveIt = {
 	 * Template class
 	 *
 	 * @class
-	 * @param {string} template wikitext
+	 * @param {string} wikitext Template wikitext
 	 */
 	Template: function ( wikitext ) {
 
@@ -1273,7 +1255,7 @@ window.ProveIt = {
 		 * |param4 = {{Subtemplate |anon |param=value}}
 		 * }}
 		 *
-		 * @return {object} map from parameter name to parameter value
+		 * @return {Object} Map from parameter name to parameter value
 		 */
 		this.getParams = function () {
 			var params = {};
@@ -1343,7 +1325,7 @@ window.ProveIt = {
 		/**
 		 * Get the template data for this template
 		 *
-		 * @return {object} template data
+		 * @return {Object} Template data
 		 */
 		this.getData = function () {
 			var data = {};
@@ -1356,7 +1338,7 @@ window.ProveIt = {
 		/**
 		 * Get the parameter order for this template
 		 *
-		 * @return {array}
+		 * @return {Array}
 		 */
 		this.getParamOrder = function () {
 			var paramOrder = [];
@@ -1376,7 +1358,7 @@ window.ProveIt = {
 		/**
 		 * Get the snippet for this reference
 		 *
-		 * @return {string} snippet for this reference
+		 * @return {string} Snippet for this reference
 		 */
 		this.getSnippet = function () {
 			for ( var param in this.params ) {
@@ -1433,8 +1415,8 @@ window.ProveIt = {
 	 * Reference class
 	 *
 	 * @class
-	 * @param {string} reference wikitext
-	 * @param {int} reference index
+	 * @param {string} wikitext Reference wikitext
+	 * @param {number} index Reference index
 	 */
 	Reference: function ( wikitext, index ) {
 
@@ -1451,7 +1433,7 @@ window.ProveIt = {
 		/**
 		 * Insert a <ref> for this reference
 		 *
-		 * @return {void}
+		 * @param {jQuery.Event} event
 		 */
 		this.insertCitation = function ( event ) {
 			var reference = event.data,
@@ -1501,7 +1483,7 @@ window.ProveIt = {
 		/**
 		 * Get the name out of the wikitext
 		 *
-		 * @return {object} new reference
+		 * @return {string} New reference
 		 */
 		this.getName = function () {
 			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
@@ -1513,7 +1495,7 @@ window.ProveIt = {
 		/**
 		 * Get the group out of the wikitext
 		 *
-		 * @return {object} new reference
+		 * @return {string} New reference
 		 */
 		this.getGroup = function () {
 			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
@@ -1525,7 +1507,7 @@ window.ProveIt = {
 		/**
 		 * Get the reference template
 		 *
-		 * @return {object} reference template
+		 * @return {ProveIt.Template} Reference template
 		 */
 		this.getTemplate = function () {
 			var templates = ProveIt.getTemplates( this.wikitext );
@@ -1538,7 +1520,7 @@ window.ProveIt = {
 		/**
 		 * Get all the citations to this reference
 		 *
-		 * @return {array} array of Citation objects
+		 * @return {ProveIt.Citation[]} Array of Citation objects
 		 */
 		this.getCitations = function () {
 			var citations = [],
@@ -1563,7 +1545,7 @@ window.ProveIt = {
 		/**
 		 * Build the wikitext out of the form
 		 *
-		 * @return {string} reference wikitext
+		 * @return {string} Reference wikitext
 		 */
 		this.buildWikitext = function () {
 			var name = $( '#proveit-reference-name' ).val(),
@@ -1583,7 +1565,7 @@ window.ProveIt = {
 		/**
 		 * Build the content out of the form
 		 *
-		 * @return {string} reference content
+		 * @return {string} Reference content
 		 */
 		this.buildContent = function () {
 			var content = $( '#proveit-reference-content' ).val();
