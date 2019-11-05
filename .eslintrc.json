@@ -10,7 +10,6 @@
 	},
 	"rules": {
 		"comma-dangle": "off",
-		"computed-property-spacing": "off",
 		"max-len": "off",
 		"mediawiki/msg-doc": "off",
 		"no-alert": "off",
@@ -20,13 +19,9 @@
 		"no-jquery/variable-pattern": "off",
 		"no-restricted-properties": "off",
 		"no-restricted-syntax": "off",
-		"no-trailing-spaces": "off",
 		"no-useless-escape": "off",
 		"one-var": "off",
 		"quote-props": "off",
-		"space-before-function-paren": "off",
-		"space-in-parens": "off",
-		"space-unary-ops": "off",
 		"valid-jsdoc": "off",
 		"vars-on-top": "off"
 	}

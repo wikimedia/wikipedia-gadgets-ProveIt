@@ -101,12 +101,12 @@ window.ProveIt = {
 		// Only continue on supported namespaces
 		var namespace = mw.config.get( 'wgNamespaceNumber' ),
 			namespaces = ProveIt.getOption( 'namespaces' );
-		if ( namespaces && ! namespaces.includes( namespace ) ) {
+		if ( namespaces && !namespaces.includes( namespace ) ) {
 			return;
 		}
 
 		// Only continue on supported editors
-		if ( ! ProveIt.getEditor() ) {
+		if ( !ProveIt.getEditor() ) {
 			return;
 		}
 
@@ -116,7 +116,7 @@ window.ProveIt = {
 		// Remove ProveIt when switching out from the source editor
 		mw.hook( 've.deactivationComplete' ).add( function () {
 			$( '#proveit' ).remove();
-		});
+		} );
 
 		// When previewing, re-add the ProveIt tag (T154357)
 		if ( mw.config.get( 'wgAction' ) === 'submit' ) {
@@ -152,13 +152,13 @@ window.ProveIt = {
 		$( 'body' ).append( gui );
 
 		// Make the GUI draggable
-		gui.draggable({
+		gui.draggable( {
 			handle: header,
 			containment: 'window',
 			start: function () {
-				gui.css({ 'right': 'auto', 'bottom': 'auto' });
+				gui.css( { 'right': 'auto', 'bottom': 'auto' } );
 			}
-		});
+		} );
 
 		// Toggle the GUI when the logo is clicked
 		var minimized = true;
@@ -177,8 +177,8 @@ window.ProveIt = {
 				$( '#proveit-logo-text' ).text( 'P' );
 				$( '#proveit-header button, #proveit-body, #proveit-footer' ).hide();
 			}
-			gui.css({ 'top': 'auto', 'left': 'auto', 'right': 0, 'bottom': 0 }); // Reset the position of the gadget
-		});
+			gui.css( { 'top': 'auto', 'left': 'auto', 'right': 0, 'bottom': 0 } ); // Reset the position of the gadget
+		} );
 	},
 
 	/**
@@ -197,18 +197,18 @@ window.ProveIt = {
 			titles = [];
 		templates.forEach( function ( templateName ) {
 			titles.push( templateNamespace + ':' + templateName );
-		});
+		} );
 
 		// Get the template data
 		var api = new mw.Api();
-		api.get({
+		api.get( {
 			'titles': titles.join( '|' ),
 			'action': 'templatedata',
 			'redirects': true,
 			'includeMissingTitles': true,
 			'format': 'json',
 			'formatversion': 2,
-		}).done( function ( data ) {
+		} ).done( function ( data ) {
 
 			$( '#proveit-logo-text' ).text( '..' ); // Still loading
 
@@ -225,7 +225,7 @@ window.ProveIt = {
 			}
 
 			// Get all the redirects to the citaton templates
-			api.get({
+			api.get( {
 				'titles': titles.join( '|' ),
 				'action': 'query',
 				'prop': 'redirects',
@@ -233,7 +233,7 @@ window.ProveIt = {
 				'rdnamespace': 10,
 				'format': 'json',
 				'formatversion': 2,
-			}).done( function ( data ) {
+			} ).done( function ( data ) {
 
 				$( '#proveit-logo-text' ).text( '...' ); // Still loading
 
@@ -248,15 +248,15 @@ window.ProveIt = {
 							redirectTitle = redirect.title;
 							redirectName = redirectTitle.substring( redirectTitle.indexOf( ':' ) + 1 ); // Remove the namespace
 							ProveIt.templateData[ redirectName ] = templateName;
-						});
+						} );
 					}
-				});
+				} );
 
 				// Get the latest English messages
 				$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/i18n/en.json?format=text', function ( data ) {
 
 					var englishMessages = JSON.parse( ProveIt.decodeBase64( data ) );
-					delete englishMessages['@metadata'];
+					delete englishMessages[ '@metadata' ];
 
 					// Get the latest translations to the preferred user language
 					var userLanguage = mw.config.get( 'wgUserLanguage' );
@@ -267,7 +267,7 @@ window.ProveIt = {
 						var translatedMessages = {};
 						if ( status === 'success' ) {
 							translatedMessages = JSON.parse( ProveIt.decodeBase64( data ) );
-							delete translatedMessages['@metadata'];
+							delete translatedMessages[ '@metadata' ];
 						}
 
 						// Merge and set the messages
@@ -276,10 +276,10 @@ window.ProveIt = {
 
 						// Finally, build the list
 						ProveIt.buildList();
-					});
-				});
-			});
-		});
+					} );
+				} );
+			} );
+		} );
 	},
 
 	/**
@@ -300,7 +300,7 @@ window.ProveIt = {
 				var reference = event.data;
 				ProveIt.highlight( reference );
 				ProveIt.buildForm( reference );
-			});
+			} );
 
 			// Add the number
 			span = $( '<span>' ).addClass( 'proveit-number' ).text( index + 1 );
@@ -322,7 +322,7 @@ window.ProveIt = {
 					link = $( '<a>' ).addClass( 'proveit-letter' ).text( letter );
 					link.click( citation, ProveIt.highlight );
 					item.append( link );
-				});
+				} );
 			}
 
 			// Add the reference template, if any
@@ -336,13 +336,13 @@ window.ProveIt = {
 
 			// Add to the list
 			list.append( item );
-		});
+		} );
 
 		// Build a list item for each template
 		// First remove the references from the wikitext to avoid matching the templates again
 		references.forEach( function ( reference ) {
 			wikitext = wikitext.replace( reference.wikitext, '' );
-		});
+		} );
 		var templates = ProveIt.getTemplates( wikitext );
 		templates.forEach( function ( template ) {
 			item = $( '<li>' ).addClass( 'proveit-item' );
@@ -350,7 +350,7 @@ window.ProveIt = {
 				var template = event.data;
 				ProveIt.highlight( template );
 				ProveIt.buildForm( template );
-			});
+			} );
 
 			link = $( '<a>' ).addClass( 'proveit-arrow' ).text( '↓' );
 			link.click( template, ProveIt.highlight );
@@ -365,7 +365,7 @@ window.ProveIt = {
 
 			// Add to the list
 			list.append( item );
-		});
+		} );
 
 		if ( references.length || templates.length ) {
 			// Add the list to the GUI and make sure we're at the top
@@ -388,22 +388,22 @@ window.ProveIt = {
 					references.forEach( function ( reference ) {
 						ProveIt.buildForm( reference ); // There's no current way to avoid going through the interface, but the user doesn't notice
 						ProveIt.update( reference );
-					});
+					} );
 					templates.forEach( function ( template ) {
 						ProveIt.buildForm( template ); // There's no current way to avoid going through the interface, but the user doesn't notice
 						ProveIt.update( template );
-					});
+					} );
 					ProveIt.buildList();
 				}, 100 );
-			});
+			} );
 			var filterReferences = $( '<input>' ).attr( 'placeholder', ProveIt.getMessage( 'filter-references' ) );
 			footer.prepend( filterReferences );
 			filterReferences.keyup( function () {
 				var filter = $( this ).val().toLowerCase();
 				$( 'li', list ).show().filter( function () {
 					return $( this ).text().toLowerCase().indexOf( filter ) === -1;
-				}).hide();
-			});
+				} ).hide();
+			} );
 		}
 
 		// Build the header
@@ -419,13 +419,13 @@ window.ProveIt = {
 				wikitext = templateName ? '<ref>{{' + templateName + '}}</ref>' : '<ref></ref>',
 				reference = new ProveIt.Reference( wikitext );
 			ProveIt.buildForm( reference );
-		});
+		} );
 		addBibliographyButton.click( function () {
 			var templateName = $.cookie( 'proveit-last-template' ), // Remember the last choice
 				wikitext = templateName ? '{{' + templateName + '}}' : '',
 				template = new ProveIt.Template( wikitext );
 			ProveIt.buildForm( template );
-		});
+		} );
 	},
 
 	/**
@@ -506,7 +506,7 @@ window.ProveIt = {
 				wikitext = '<ref>' + content + '</ref>',
 				reference = new ProveIt.Reference( wikitext );
 			ProveIt.buildTemplateFields( reference.template );
-		});
+		} );
 
 		// Add the fields to the form
 		$( '#proveit-reference-fields' ).remove();
@@ -551,7 +551,7 @@ window.ProveIt = {
 				option.prop( 'selected', true );
 			}
 			input.append( option );
-		});
+		} );
 
 		// When the template select changes, update the template fields
 		input.change( template, function ( event ) {
@@ -560,7 +560,7 @@ window.ProveIt = {
 			template = new ProveIt.Template( wikitext );
 			$.cookie( 'proveit-last-template', template.name ); // Remember the new choice
 			ProveIt.buildTemplateFields( template );
-		});
+		} );
 
 		if ( 'maps' in template.data && 'citoid' in template.data.maps ) {
 
@@ -601,7 +601,7 @@ window.ProveIt = {
 
 					// Fill the template fields
 					var citoidMap = template.data.maps.citoid,
-						citoidData = data[0],
+						citoidData = data[ 0 ],
 						paramName, paramValue;
 					for ( var citoidKey in citoidData ) {
 						paramName = citoidMap[ citoidKey ];
@@ -622,13 +622,13 @@ window.ProveIt = {
 					}
 
 				// @todo For some reason this isn't firing
-				}).fail( function () {
+				} ).fail( function () {
 					button.text( ProveIt.getMessage( 'citoid-error' ) );
 					setTimeout( function () {
 						button.text( ProveIt.getMessage( 'citoid-load' ) ).prop( 'disabled', false );
 					}, 3000 );
-				});
-			});
+				} );
+			} );
 		}
 
 		// Add a field for each parameter
@@ -678,7 +678,7 @@ window.ProveIt = {
 						inputValue = template.params[ paramAlias ];
 						return;
 					}
-				});
+				} );
 			}
 
 			// Build the label, input and div
@@ -687,10 +687,10 @@ window.ProveIt = {
 				label.attr( 'data-tooltip', labelTooltip );
 			}
 			input = paramData.type === 'content' ? $( '<textarea>' ) : $( '<input>' );
-			input.val( inputValue ).attr({
+			input.val( inputValue ).attr( {
 				'name': inputName,
 				'placeholder': inputPlaceholder
-			});
+			} );
 			div = $( '<div>' ).addClass( 'proveit-template-param' ).append( label, input );
 
 			// If the parameter is of the page type, search the wiki
@@ -700,22 +700,22 @@ window.ProveIt = {
 				div.prepend( list );
 				input.keyup( function () {
 					var search = $( this ).val();
-					new mw.Api().get({
+					new mw.Api().get( {
 						'action': 'opensearch',
 						'search': search,
 						'limit': 5,
 						'redirects': 'resolve',
 						'format': 'json',
 						'formatversion': 2,
-					}).done( function ( data ) {
+					} ).done( function ( data ) {
 						list.empty();
-						var titles = data[1];
+						var titles = data[ 1 ];
 						titles.forEach( function ( title ) {
 							var option = $( '<option>' ).val( title );
 							list.append( option );
-						});
-					});
-				});
+						} );
+					} );
+				} );
 			}
 
 			// If the parameter is of the date type, add the Today button
@@ -729,7 +729,7 @@ window.ProveIt = {
 						mm = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ),
 						dd = ( '0' + date.getDate() ).slice( -2 );
 					input.val( yyyy + '-' + mm + '-' + dd );
-				});
+				} );
 			}
 
 			// Mark the div according to the parameter status
@@ -750,7 +750,7 @@ window.ProveIt = {
 
 			// Add the div to the table
 			fields.append( div );
-		});
+		} );
 
 		// Some reference templates may have no template data
 		if ( !template.data || 'notemplatedata' in template.data ) {
@@ -781,14 +781,14 @@ window.ProveIt = {
 		showAllButton.click( function () {
 			$( '.proveit-deprecated, .proveit-optional' ).show();
 			$( this ).remove();
-		});
+		} );
 		filterFields.keyup( function () {
 			var filter = $( this ).val().toLowerCase();
 			$( 'div', fields ).show().filter( function () {
 				return $( this ).text().toLowerCase().indexOf( filter ) === -1;
-			}).hide();
+			} ).hide();
 			$( '#proveit-show-all-button' ).remove();
-		});
+		} );
 
 		// When a template parameter changes, update the reference content
 		if ( $( '#proveit-reference-content' ).length ) {
@@ -798,7 +798,7 @@ window.ProveIt = {
 					reference = new ProveIt.Reference( wikitext );
 				content = reference.buildContent();
 				$( '#proveit-reference-content' ).val( content );
-			});
+			} );
 		}
 	},
 
@@ -814,7 +814,7 @@ window.ProveIt = {
 			matches.forEach( function ( match ) {
 				var reference = new ProveIt.Reference( match );
 				references.push( reference );
-			});
+			} );
 		}
 		return references;
 	},
@@ -831,7 +831,7 @@ window.ProveIt = {
 		for ( templateName in ProveIt.templateData ) {
 			templateRegex = new RegExp( '{{\\s*' + templateName + '\\s*[|}]', 'ig' );
 			while ( ( templateMatch = templateRegex.exec( wikitext ) ) !== null ) {
-				templateWikitext = templateMatch[0];
+				templateWikitext = templateMatch[ 0 ];
 				templateStart = templateMatch.index;
 				// Figure out the templateEnd by searching for the closing "}}"
 				// knowing that there may be subtemplates, like so:
@@ -876,12 +876,12 @@ window.ProveIt = {
 				if ( $( '#wpChangeTags' ).length > 0 ) {
 					return; // Don't add it twice
 				}
-				var tagInput = $( '<input>' ).attr({
+				var tagInput = $( '<input>' ).attr( {
 					'id': 'wpChangeTags',
 					'type': 'hidden',
 					'name': 'wpChangeTags',
 					'value': tag
-				});
+				} );
 				$( '#editform' ).prepend( tagInput );
 				break;
 
@@ -933,7 +933,7 @@ window.ProveIt = {
 						summary = proveitSummary;
 					}
 					summaryTextarea.val( summary );
-				});
+				} );
 				break;
 		}
 	},
@@ -966,7 +966,7 @@ window.ProveIt = {
 				$( '#wpTextbox1' ).textSelection( 'encapsulateSelection', {
 					'peri': wikitext,
 					'replace': true
-				});
+				} );
 				break;
 
 			case '2017':
@@ -997,7 +997,7 @@ window.ProveIt = {
 		if ( object instanceof ProveIt.Reference ) {
 			object.citations.forEach( function ( citation ) {
 				ProveIt.update( citation );
-			});
+			} );
 		}
 
 		switch ( ProveIt.getEditor() ) {
@@ -1034,7 +1034,7 @@ window.ProveIt = {
 		if ( object instanceof ProveIt.Reference && object.citations.length && confirm( ProveIt.getMessage( 'confirm-remove' ) ) ) {
 			object.citations.forEach( function ( citation ) {
 				ProveIt.remove( citation );
-			});
+			} );
 		}
 
 		switch ( ProveIt.getEditor() ) {
@@ -1086,9 +1086,9 @@ window.ProveIt = {
 					$( '#wpTextbox1' ).textSelection( 'setSelection', {
 						'start': index,
 						'end': index + object.wikitext.length,
-					});
+					} );
 				} else {
-					var textbox = $( '#wpTextbox1' ).focus()[0];
+					var textbox = $( '#wpTextbox1' ).focus()[ 0 ];
 					textbox.value = wikitext.substring( 0, index + object.wikitext.length );
 					textbox.scrollTop = textbox.scrollHeight;
 					textbox.value = wikitext;
@@ -1116,11 +1116,11 @@ window.ProveIt = {
 		function getParagraphNodes( node ) {
 			var nodes = [];
 			for ( var i = 0; i < node.children.length; i++ ) {
-				if ( node.children[i].type === 'paragraph') {
-					nodes.push( node.children[i] );
+				if ( node.children[ i ].type === 'paragraph' ) {
+					nodes.push( node.children[ i ] );
 				}
-				if ( node.children[i].children ) {
-					nodes.concat( getParagraphNodes( node.children[i] ) );
+				if ( node.children[ i ].children ) {
+					nodes.concat( getParagraphNodes( node.children[ i ] ) );
 				}
 			}
 			return nodes;
@@ -1129,7 +1129,7 @@ window.ProveIt = {
 			paragraphNodes = getParagraphNodes( documentNode ),
 			surfaceModel = ve.init.target.getSurface().getModel();
 		for ( var i = 0; i < paragraphNodes.length; i++ ) {
-			var node = paragraphNodes[i],
+			var node = paragraphNodes[ i ],
 				nodeRange = node.getRange(),
 				nodeText = surfaceModel.getLinearFragment( nodeRange ).getText(),
 				index = nodeText.indexOf( search );
@@ -1151,9 +1151,9 @@ window.ProveIt = {
 	 * @return {string} decoded string
 	 */
 	decodeBase64: function ( string ) {
-		return decodeURIComponent( window.atob( string ).split('').map( function( character ) {
-			return '%' + ( '00' + character.charCodeAt(0).toString(16) ).slice(-2);
-		}).join('') );
+		return decodeURIComponent( window.atob( string ).split( '' ).map( function ( character ) {
+			return '%' + ( '00' + character.charCodeAt( 0 ).toString( 16 ) ).slice( -2 );
+		} ).join( '' ) );
 	},
 
 	/**
@@ -1183,7 +1183,7 @@ window.ProveIt = {
 		this.getName = function () {
 			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
-				return match[1];
+				return match[ 1 ];
 			}
 		};
 
@@ -1195,7 +1195,7 @@ window.ProveIt = {
 		this.getGroup = function () {
 			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
-				return match[1];
+				return match[ 1 ];
 			}
 		};
 
@@ -1369,7 +1369,7 @@ window.ProveIt = {
 			paramOrder = paramOrder.concat( paramNames );
 			paramOrder = paramOrder.filter( function ( item, index ) {
 				return paramOrder.indexOf( item ) === index; // Remove duplicates
-			});
+			} );
 			return paramOrder;
 		};
 
@@ -1409,7 +1409,7 @@ window.ProveIt = {
 						templateWikitext += ( this.data && this.data.format === 'block' ) ? '\r\n| ' : ' |';
 						templateWikitext += $.isNumeric( paramName ) ? paramValue : paramName + '=' + paramValue;
 					}
-				});
+				} );
 				if ( this.data && this.data.format === 'block' ) {
 					templateWikitext += '\r\n}}';
 				} else {
@@ -1495,7 +1495,7 @@ window.ProveIt = {
 		 */
 		this.getContent = function () {
 			var match = this.wikitext.match( />([\s\S]*)<\s*\/\s*ref\s*>/i );
-			return match[1];
+			return match[ 1 ];
 		};
 
 		/**
@@ -1506,7 +1506,7 @@ window.ProveIt = {
 		this.getName = function () {
 			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
-				return match[1];
+				return match[ 1 ];
 			}
 		};
 
@@ -1518,7 +1518,7 @@ window.ProveIt = {
 		this.getGroup = function () {
 			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
-				return match[1];
+				return match[ 1 ];
 			}
 		};
 
@@ -1530,9 +1530,9 @@ window.ProveIt = {
 		this.getTemplate = function () {
 			var templates = ProveIt.getTemplates( this.wikitext );
 			if ( templates.length ) {
-				return templates[0];
+				return templates[ 0 ];
 			}
-			return new ProveIt.Template('');
+			return new ProveIt.Template( '' );
 		};
 
 		/**
@@ -1546,11 +1546,11 @@ window.ProveIt = {
 				citationRegex = new RegExp( '<\s*ref[^\/]*\/>', 'ig' ),
 				citationMatch, citationWikitext, citationIndex, citationNameMatch, citationName, citation;
 			while ( ( citationMatch = citationRegex.exec( wikitext ) ) !== null ) {
-				citationWikitext = citationMatch[0];
+				citationWikitext = citationMatch[ 0 ];
 				citationIndex = citationMatch.index;
 				citationNameMatch = citationWikitext.match( /name\s*=\s*["']?([^"'>]+)["']?/i );
 				if ( citationNameMatch ) {
-					citationName = citationNameMatch[1];
+					citationName = citationNameMatch[ 1 ];
 					if ( citationName === this.name ) {
 						citation = new ProveIt.Citation( citationWikitext, citationIndex );
 						citations.push( citation );
@@ -1606,7 +1606,7 @@ window.ProveIt = {
 	}
 };
 
-mw.loader.using([
+mw.loader.using( [
 	'mediawiki.api',
 	'mediawiki.util',
 	'jquery.cookie',
