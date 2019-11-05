@@ -16,7 +16,6 @@
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/no-is-numeric": "off",
 		"no-restricted-properties": "off",
-		"no-restricted-syntax": "off",
 		"no-useless-escape": "off",
 		"one-var": "off",
 		"valid-jsdoc": "off",

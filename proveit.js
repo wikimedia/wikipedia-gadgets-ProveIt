@@ -101,7 +101,7 @@ window.ProveIt = {
 		// Only continue on supported namespaces
 		var namespace = mw.config.get( 'wgNamespaceNumber' ),
 			namespaces = ProveIt.getOption( 'namespaces' );
-		if ( namespaces && !namespaces.includes( namespace ) ) {
+		if ( namespaces && namespaces.indexOf( namespace ) === -1 ) {
 			return;
 		}
 
@@ -1329,7 +1329,7 @@ window.ProveIt = {
 					var paramAliases;
 					for ( var param in this.data.params ) {
 						paramAliases = this.data.params[ param ].aliases;
-						if ( paramAliases.includes( paramName ) ) {
+						if ( paramAliases.indexOf( paramName ) !== -1 ) {
 							paramName = param;
 							break;
 						}
