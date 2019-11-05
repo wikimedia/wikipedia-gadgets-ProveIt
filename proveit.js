@@ -1140,52 +1140,51 @@ window.ProveIt = {
 	 * Citation class
 	 *
 	 * @class
+	 * @param {string} wikitext Citation wikitext
+	 * @param {number} index Citation index in the page wikitext
 	 */
-	Citation: class {
+	Citation: function ( wikitext, index ) {
 
 		/**
-		 * Constructor
-		 *
-		 * @param {string} wikitext Citation wikitext
-		 * @param {number} index Citation index in the page wikitext
+		 * Citation wikitext
 		 */
-		constructor( wikitext, index ) {
-			this.wikitext = wikitext;
-			this.index = index;
-			this.name = this.getName();
-			this.group = this.getGroup();
-		}
+		this.wikitext = wikitext;
+
+		/**
+		 * Citation index in the page wikitext
+		 */
+		this.index = index;
 
 		/**
 		 * Get the name out of the wikitext
 		 *
 		 * @return {string} citation name
 		 */
-		getName() {
+		this.getName = function () {
 			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
 				return match[ 1 ];
 			}
-		}
+		};
 
 		/**
 		 * Get the group out of the wikitext
 		 *
 		 * @return {string} citation group
 		 */
-		getGroup() {
+		this.getGroup = function () {
 			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
 				return match[ 1 ];
 			}
-		}
+		};
 
 		/**
 		 * Build the wikitext out of the form
 		 *
 		 * @return {string} citation wikitext
 		 */
-		buildWikitext() {
+		this.buildWikitext = function () {
 			var name = $( '#proveit-reference-name' ).val(),
 				group = $( '#proveit-reference-group' ).val(),
 				wikitext = '<ref';
@@ -1197,36 +1196,34 @@ window.ProveIt = {
 			}
 			wikitext += ' />';
 			return wikitext;
-		}
+		};
+
+		/**
+		 * Set the properties
+		 */
+		this.name = this.getName();
+		this.group = this.getGroup();
 	},
 
 	/**
 	 * Template class
 	 *
 	 * @class
+	 * @param {string} wikitext Template wikitext
 	 */
-	Template: class {
+	Template: function ( wikitext ) {
 
 		/**
-		 * Constructor
-		 *
-		 * @param {string} wikitext Template wikitext
+		 * Template wikitext
 		 */
-		constructor( wikitext, index ) {
-			this.wikitext = wikitext;
-			this.name = this.getName();
-			this.data = this.getData();
-			this.params = this.getParams();
-			this.paramOrder = this.getParamOrder();
-			this.snippet = this.getSnippet();
-		}
+		this.wikitext = wikitext;
 
 		/**
 		 * Extract the normalized template name from the reference wikitext
 		 *
 		 * @return {string} normalized template name
 		 */
-		getName() {
+		this.getName = function () {
 			var name = '',
 				regex, index;
 			for ( var templateName in ProveIt.templateData ) {
@@ -1242,7 +1239,7 @@ window.ProveIt = {
 				}
 			}
 			return name;
-		}
+		};
 
 		/**
 		 * Extract the normalized template parameters from the reference wikitext
@@ -1258,7 +1255,7 @@ window.ProveIt = {
 		 *
 		 * @return {Object} Map from parameter name to parameter value
 		 */
-		getParams() {
+		this.getParams = function () {
 			var params = {};
 
 			// Remove the outer braces and split by pipe
@@ -1321,27 +1318,27 @@ window.ProveIt = {
 				params[ paramName ] = paramValue;
 			}
 			return params;
-		}
+		};
 
 		/**
 		 * Get the template data for this template
 		 *
 		 * @return {Object} Template data
 		 */
-		getData() {
+		this.getData = function () {
 			var data = {};
 			if ( this.name in ProveIt.templateData ) {
 				data = ProveIt.templateData[ this.name ];
 			}
 			return data;
-		}
+		};
 
 		/**
 		 * Get the parameter order for this template
 		 *
 		 * @return {Array}
 		 */
-		getParamOrder() {
+		this.getParamOrder = function () {
 			var paramOrder = [];
 			if ( 'paramOrder' in this.data ) {
 				paramOrder = this.data.paramOrder;
@@ -1354,14 +1351,14 @@ window.ProveIt = {
 				return paramOrder.indexOf( item ) === index; // Remove duplicates
 			} );
 			return paramOrder;
-		}
+		};
 
 		/**
 		 * Get the snippet for this reference
 		 *
 		 * @return {string} Snippet for this reference
 		 */
-		getSnippet() {
+		this.getSnippet = function () {
 			for ( var param in this.params ) {
 				if ( 'params' in this.data && param in this.data.params && this.data.params[ param ].required ) {
 					return this.params[ param ];
@@ -1371,14 +1368,14 @@ window.ProveIt = {
 				return this.wikitext.substring( 0, 100 ).trim() + '...';
 			}
 			return this.wikitext;
-		}
+		};
 
 		/**
 		 * Build the template wikitext out of the template form
 		 *
 		 * @return {string} template wikitext
 		 */
-		buildWikitext() {
+		this.buildWikitext = function () {
 			var templateWikitext = '',
 				templateName = $( '#proveit-template-select' ).val();
 			if ( templateName ) {
@@ -1400,39 +1397,43 @@ window.ProveIt = {
 				}
 			}
 			return templateWikitext;
-		}
+		};
+
+		/**
+		 * Set the properties
+		 */
+		this.name = this.getName();
+		this.data = this.getData();
+		this.params = this.getParams();
+		this.paramOrder = this.getParamOrder();
+		this.snippet = this.getSnippet();
 	},
 
 	/**
 	 * Reference class
 	 *
 	 * @class
+	 * @param {string} wikitext Reference wikitext
+	 * @param {number} index Reference index
 	 */
-	Reference: class {
+	Reference: function ( wikitext, index ) {
 
 		/**
-		 * Constructor
-		 *
-		 * @param {string} wikitext Reference wikitext
-		 * @param {number} index Reference index
+		 * Reference wikitext
 		 */
-		constructor( wikitext, index ) {
-			this.wikitext = wikitext;
-			this.index = index;
-			this.name = this.getName();
-			this.group = this.getGroup();
-			this.content = this.getContent();
-			this.template = this.getTemplate();
-			this.snippet = this.getSnippet();
-			this.citations = this.getCitations();
-		}
+		this.wikitext = wikitext;
+
+		/**
+		 * Reference index
+		 */
+		this.index = index;
 
 		/**
 		 * Insert a <ref> for this reference
 		 *
 		 * @param {jQuery.Event} event
 		 */
-		cite( event ) {
+		this.cite = function ( event ) {
 			var reference = event.data,
 				name = $( '#proveit-reference-name' ).val();
 
@@ -1450,14 +1451,14 @@ window.ProveIt = {
 			ProveIt.insert( citation );
 			ProveIt.update( reference );
 			ProveIt.highlight( citation );
-		}
+		};
 
 		/**
 		 * Get the snippet for this reference
 		 *
 		 * @return {string} snippet of this reference
 		 */
-		getSnippet() {
+		this.getSnippet = function () {
 			if ( this.template.snippet ) {
 				return this.template.snippet;
 			}
@@ -1465,61 +1466,61 @@ window.ProveIt = {
 				return this.content.substring( 0, 100 ).trim() + '...';
 			}
 			return this.content;
-		}
+		};
 
 		/**
 		 * Get the content out of the reference wikitext
 		 *
 		 * @return {string} reference content
 		 */
-		getContent() {
+		this.getContent = function () {
 			var match = this.wikitext.match( />([\s\S]*)<\s*\/\s*ref\s*>/i );
 			return match[ 1 ];
-		}
+		};
 
 		/**
 		 * Get the name out of the wikitext
 		 *
 		 * @return {string} New reference
 		 */
-		getName() {
+		this.getName = function () {
 			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
 				return match[ 1 ];
 			}
-		}
+		};
 
 		/**
 		 * Get the group out of the wikitext
 		 *
 		 * @return {string} New reference
 		 */
-		getGroup() {
+		this.getGroup = function () {
 			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
 			if ( match ) {
 				return match[ 1 ];
 			}
-		}
+		};
 
 		/**
 		 * Get the reference template
 		 *
 		 * @return {ProveIt.Template} Reference template
 		 */
-		getTemplate() {
+		this.getTemplate = function () {
 			var templates = ProveIt.getTemplates( this.wikitext );
 			if ( templates.length ) {
 				return templates[ 0 ];
 			}
 			return new ProveIt.Template( '' );
-		}
+		};
 
 		/**
 		 * Get all the citations to this reference
 		 *
 		 * @return {ProveIt.Citation[]} Array of Citation objects
 		 */
-		getCitations() {
+		this.getCitations = function () {
 			var citations = [],
 				wikitext = ProveIt.getWikitext(),
 				citationRegex = new RegExp( '<\s*ref[^\/]*\/>', 'ig' ),
@@ -1537,14 +1538,14 @@ window.ProveIt = {
 				}
 			}
 			return citations;
-		}
+		};
 
 		/**
 		 * Build the wikitext out of the form
 		 *
 		 * @return {string} Reference wikitext
 		 */
-		buildWikitext() {
+		this.buildWikitext = function () {
 			var name = $( '#proveit-reference-name' ).val(),
 				group = $( '#proveit-reference-group' ).val(),
 				content = this.buildContent(),
@@ -1557,21 +1558,31 @@ window.ProveIt = {
 			}
 			wikitext += '>' + content + '</ref>';
 			return wikitext;
-		}
+		};
 
 		/**
 		 * Build the content out of the form
 		 *
 		 * @return {string} Reference content
 		 */
-		buildContent() {
+		this.buildContent = function () {
 			var content = $( '#proveit-reference-content' ).val();
 			if ( this.template ) {
 				content = content.replace( this.template.wikitext, this.template.buildWikitext() );
 			}
 			content = content.trim();
 			return content;
-		}
+		};
+
+		/**
+		 * Set the properties
+		 */
+		this.name = this.getName();
+		this.group = this.getGroup();
+		this.content = this.getContent();
+		this.template = this.getTemplate();
+		this.snippet = this.getSnippet();
+		this.citations = this.getCitations();
 	}
 };
 
