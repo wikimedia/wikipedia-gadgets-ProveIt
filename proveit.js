@@ -1287,10 +1287,6 @@ window.ProveIt = {
 					continue;
 				}
 
-				if ( paramName === 'title' ) {
-					
-				}
-
 				// If we reach this point and there's no equal sign, it's an anonymous parameter
 				indexOfEqual = paramString.indexOf( '=' );
 				if ( indexOfEqual === -1 ) {
