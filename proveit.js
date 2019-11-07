@@ -1368,7 +1368,7 @@ window.ProveIt = {
 		 */
 		this.getSnippet = function () {
 			for ( var param in this.params ) {
-				if ( 'params' in this.data && param in this.data.params && this.data.params[ param ].required ) {
+				if ( 'params' in this.data && param in this.data.params && this.data.params[ param ].required && this.data.params[ param ].type === 'string' ) {
 					return this.params[ param ];
 				}
 			}
