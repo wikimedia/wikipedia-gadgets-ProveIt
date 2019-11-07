@@ -1515,7 +1515,7 @@ window.ProveIt = {
 			var template = new ProveIt.Template( '' ),
 				templates = ProveIt.getTemplates( this.wikitext );
 			if ( templates.length ) {
-				template = templates[0];
+				template = templates[ 0 ];
 			}
 			return template;
 		};
