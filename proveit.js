@@ -382,7 +382,7 @@ window.ProveIt = {
 						ProveIt.update( reference );
 					} );
 					templates.forEach( function ( template ) {
-						ProveIt.buildForm( template ); // There's no current way to avoid going through the interface, but the user doesn't notice
+						ProveIt.buildForm( template );
 						ProveIt.update( template );
 					} );
 					ProveIt.buildList();
@@ -491,9 +491,8 @@ window.ProveIt = {
 		// When the reference content changes, update the template fields
 		$input.on( 'change', function () {
 			var content = $( this ).val(),
-				wikitext = '<ref>' + content + '</ref>',
-				reference = new ProveIt.Reference( wikitext );
-			ProveIt.buildTemplateFields( reference.template );
+				dummy = new ProveIt.Reference( '<ref>' + content + '</ref>' );
+			ProveIt.buildTemplateFields( dummy.template );
 		} );
 
 		// Add the fields to the form
@@ -604,9 +603,8 @@ window.ProveIt = {
 					// Update the reference content too
 					if ( $( '#proveit-reference-content' ).length ) {
 						var content = $( '#proveit-reference-content' ).val(),
-							wikitext = '<ref>' + content + '</ref>',
-							reference = new ProveIt.Reference( wikitext );
-						content = reference.buildContent();
+							dummy = new ProveIt.Reference( '<ref>' + content + '</ref>' );
+						content = dummy.buildContent();
 						$( '#proveit-reference-content' ).val( content );
 					}
 
@@ -783,9 +781,8 @@ window.ProveIt = {
 		if ( $( '#proveit-reference-content' ).length ) {
 			$( 'select, input, textarea', '#proveit-template-fields' ).on( 'change', function () {
 				var content = $( '#proveit-reference-content' ).val(),
-					wikitext = '<ref>' + content + '</ref>',
-					reference = new ProveIt.Reference( wikitext );
-				content = reference.buildContent();
+					dummy = new ProveIt.Reference( '<ref>' + content + '</ref>' );
+				content = dummy.buildContent();
 				$( '#proveit-reference-content' ).val( content );
 			} );
 		}
@@ -1084,7 +1081,8 @@ window.ProveIt = {
 				break;
 
 			case '2017':
-				ProveIt.replace( object.wikitext, object.wikitext ); // @todo Find a better way
+				// @todo Find a way to highlight the right occurrence
+				ProveIt.replace( object.wikitext, object.wikitext );
 				break;
 		}
 	},
@@ -1518,11 +1516,12 @@ window.ProveIt = {
 		 * @return {ProveIt.Template} Reference template
 		 */
 		this.getTemplate = function () {
-			var templates = ProveIt.getTemplates( this.wikitext );
+			var template = new ProveIt.Template( '' ),
+				templates = ProveIt.getTemplates( this.wikitext );
 			if ( templates.length ) {
-				return templates[ 0 ];
+				template = templates[0];
 			}
-			return new ProveIt.Template( '' );
+			return template;
 		};
 
 		/**
@@ -1558,7 +1557,7 @@ window.ProveIt = {
 		this.buildWikitext = function () {
 			var name = $( '#proveit-reference-name' ).val(),
 				group = $( '#proveit-reference-group' ).val(),
-				content = $( '#proveit-reference-content' ).val(),
+				content = this.buildContent(),
 				wikitext = '<ref';
 			if ( name ) {
 				wikitext += ' name="' + name + '"';
@@ -1577,11 +1576,8 @@ window.ProveIt = {
 		 */
 		this.buildContent = function () {
 			var content = $( '#proveit-reference-content' ).val(),
-				template = new ProveIt.Template( '' ),
-				templateWikitext = template.buildWikitext();
-			if ( templateWikitext ) {
-				content = content.replace( this.template.wikitext, templateWikitext );
-			}
+				dummy = new ProveIt.Reference( '<ref>' + content + '</ref>' );
+			content = content.replace( dummy.template.wikitext, this.template.buildWikitext() );
 			content = content.trim();
 			return content;
 		};
