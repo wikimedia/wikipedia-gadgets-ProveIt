@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Red Winged Duck"
+			"Red Winged Duck",
+			"Renessaince"
 		]
 	},
+	"proveit-add-bibliography-button": "Дадаць бібліяграфію",
 	"proveit-cite-button": "Цытаваць",
 	"proveit-citoid-error": "Памылка",
 	"proveit-citoid-label": "Аўтаматычная зноска",
@@ -11,7 +13,7 @@
 	"proveit-citoid-loading": "Загрузка…",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN ці PMC/PMID",
 	"proveit-citoid-tooltip": "Увядзіце URL, DOI, ISBN ці PMC/PMID, каб паспрабаваць атрымаць падрабязнасьці аўтаматычна праз сэрвіс Citoid",
-	"proveit-confirm-remove": "Гэта выдаліць крыніцу і ўсе яе цытаты. Вы ўпэўненыя?",
+	"proveit-confirm-remove": "Гэта таксама выдаліць усе спасылкі на зноску. Працягнуць?",
 	"proveit-filter-fields": "Фільтар палёў",
 	"proveit-filter-references": "Фільтар крыніц",
 	"proveit-insert-button": "Уставіць",
