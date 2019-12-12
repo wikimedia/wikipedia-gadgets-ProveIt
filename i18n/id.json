@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hidayatsrf"
+			"Hidayatsrf",
+			"RaymondSutanto94"
 		]
 	},
+	"proveit-add-bibliography-button": "Tambahkan bibliografi",
+	"proveit-add-reference-button": "Tambah rujukan",
+	"proveit-back-button": "Kembali",
 	"proveit-cite-button": "Kutip",
 	"proveit-citoid-error": "Kesalahan",
 	"proveit-citoid-label": "Referensi otomatis",

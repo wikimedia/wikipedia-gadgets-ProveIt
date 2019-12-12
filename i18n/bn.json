@@ -8,6 +8,8 @@
 			"Nokib Sarkar"
 		]
 	},
+	"proveit-add-bibliography-button": "গ্রন্থপঞ্জী যোগ করুন",
+	"proveit-add-reference-button": "তথ্যসূত্র যোগ করুন",
 	"proveit-back-button": "পেছন",
 	"proveit-cite-button": "উদ্ধৃত করুন",
 	"proveit-citoid-error": "ত্রুটি",
@@ -22,6 +24,7 @@
 	"proveit-insert-button": "সন্নিবেশ করুন",
 	"proveit-no-references": "কোন তথ্যসূত্র পাওয়া যায়নি",
 	"proveit-no-template": "কোন টেমপ্লেট নেই",
+	"proveit-no-template-data": "কোন টেমপ্লেট উপাত্ত পাওয়া যায়নি",
 	"proveit-normalize-button": "সমস্ত তথ্যসূত্র স্বাভাবিক করুন",
 	"proveit-normalize-message": "স্বাভাবিকীকরণ করা হচ্ছে... এটি কয়েক সেকেন্ড, এমনকি কয়েক মিনিট সময় নিতে পারে!",
 	"proveit-reference-content-label": "তথ্যসূত্রের বিষয়বস্তু",
