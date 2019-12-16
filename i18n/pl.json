@@ -6,9 +6,12 @@
 			"Chrumps",
 			"InternerowyGołąb",
 			"Sp5uhe",
-			"Rail"
+			"Rail",
+			"WaldiSt"
 		]
 	},
+	"proveit-add-bibliography-button": "Dodaj bibliografię",
+	"proveit-add-reference-button": "Dodaj referencję",
 	"proveit-back-button": "Cofnij",
 	"proveit-cite-button": "Wstaw przypis",
 	"proveit-citoid-error": "Błąd",
@@ -17,7 +20,7 @@
 	"proveit-citoid-loading": "Ładowanie...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN lub PMC/PMID",
 	"proveit-citoid-tooltip": "Wprowadź URL, DOI, ISBN lub PMC/PMID, aby spróbować wypełnić szczegóły automatycznie z wykorzystaniem serwisu Citoid",
-	"proveit-confirm-remove": "Zostanie usunięte źródło i wszystkie cytaty. czy jesteś pewien?",
+	"proveit-confirm-remove": "Spowoduje to również usunięcie wszystkich cytowań z referencji. Czy jesteś pewien?",
 	"proveit-filter-fields": "Filtrowanie pól",
 	"proveit-filter-references": "Filtruj przypisy",
 	"proveit-insert-button": "Wstaw",
