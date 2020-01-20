@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"沈澄心"
 		]
 	},
 	"proveit-add-bibliography-button": "新增參考書目",
@@ -22,7 +23,7 @@
 	"proveit-no-template": "沒有模板",
 	"proveit-no-template-data": "找不到模板資料",
 	"proveit-normalize-button": "正規化所有參考資料",
-	"proveit-normalize-message": "正在正規化…這可能會花費幾秒鐘或是幾分鐘時間！",
+	"proveit-normalize-message": "正在正規化……這可能會花費幾秒鐘或是幾分鐘時間！",
 	"proveit-reference-content-label": "參考資料內容",
 	"proveit-reference-group-label": "參考資料群組",
 	"proveit-reference-name-label": "參考資料名稱",
