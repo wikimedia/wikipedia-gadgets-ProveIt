@@ -3,9 +3,11 @@
 		"authors": [
 			"Épine",
 			"Aram",
-			"ئارام بکر"
+			"ئارام بکر",
+			"Arya sarhan"
 		]
 	},
+	"proveit-add-bibliography-button": "دانانی چاووگنامە",
 	"proveit-add-reference-button": "زیادکردنی سەرچاوە",
 	"proveit-back-button": "گەڕانەوە",
 	"proveit-cite-button": "ھێنانەوەی سەرچاوە",
@@ -27,7 +29,7 @@
 	"proveit-reference-content-label": "ناوەڕۆکی سەرچاوە",
 	"proveit-reference-group-label": "گرووپی سەرچاوە",
 	"proveit-reference-name-label": "ناوی سەرچاوە",
-	"proveit-reference-template-label": "داڕێژەی سەرەکی",
+	"proveit-reference-template-label": "داڕێژە",
 	"proveit-reference-wikitext-label": "ویکیدەقی سەرچاوە",
 	"proveit-remove-button": "لابردن",
 	"proveit-show-all-button": "پیشاندانی ھەموو خانەکان",
