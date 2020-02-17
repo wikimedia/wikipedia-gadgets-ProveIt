@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joanmp17"
+		]
+	},
+	"proveit-back-button": "ሕቖ",
+	"proveit-citoid-error": "ጌጋ",
+	"proveit-citoid-load": "ጸዓነ",
+	"proveit-citoid-loading": "ጽዕነት...",
+	"proveit-remove-button": "ኣልግስ",
+	"proveit-today-button": "ሎሚ",
+	"proveit-update-button": "ኣሐዲስ"
+}

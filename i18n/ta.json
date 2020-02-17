@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dineshkumar Ponnusamy"
+			"Dineshkumar Ponnusamy",
+			"Balajijagadesh"
 		]
 	},
+	"proveit-add-reference-button": "மேற்கோளைச் சேர்",
+	"proveit-back-button": "பின்செல்க",
 	"proveit-cite-button": "குறிப்புகள்",
 	"proveit-citoid-error": "பிழை",
 	"proveit-citoid-label": "தானியக்க மேற்கோள்",
@@ -17,9 +20,12 @@
 	"proveit-insert-button": "நுழை",
 	"proveit-no-references": "மேற்கோள்கள் எதுவும் இல்லை",
 	"proveit-no-template": "வார்ப்புரு இல்லை",
+	"proveit-no-template-data": "வார்ப்புரு தரவு காணப்படவில்லை",
 	"proveit-reference-content-label": "மேற்கோள் உள்ளடக்கம்",
+	"proveit-reference-group-label": "மேற்கோள் குழு",
 	"proveit-reference-name-label": "மேற்கோளின் பெயர்",
 	"proveit-reference-template-label": "முதன்மை வார்ப்புரு",
+	"proveit-reference-wikitext-label": "மேற்கோள் விக்கியுரை",
 	"proveit-remove-button": "நீக்குக",
 	"proveit-show-all-button": "அனைத்து பகுதிகளையும் காண்பி",
 	"proveit-today-button": "இன்று",
