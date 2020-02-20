@@ -3,10 +3,11 @@
 		"authors": [
 			"Liuxinyu970226",
 			"VulpesVulpes825",
-			"沈澄心"
+			"沈澄心",
+			"荣智浩"
 		]
 	},
-	"proveit-add-bibliography-button": "添加参考书目",
+	"proveit-add-bibliography-button": "添加参考文献",
 	"proveit-add-reference-button": "添加参考文献",
 	"proveit-back-button": "返回",
 	"proveit-cite-button": "引用",
@@ -21,14 +22,14 @@
 	"proveit-filter-references": "过滤参考资料",
 	"proveit-insert-button": "插入",
 	"proveit-no-references": "未找到参考资料",
-	"proveit-no-template": "无模板",
+	"proveit-no-template": "无可用模板",
 	"proveit-no-template-data": "未找到模板数据",
-	"proveit-normalize-button": "正规化所有参考文献",
-	"proveit-normalize-message": "正在正规化……这可能要花费几秒钟或几分钟时间！",
+	"proveit-normalize-button": "标准化所有参考文献",
+	"proveit-normalize-message": "正在标准化……这可能要花费几秒钟或几分钟时间！",
 	"proveit-reference-content-label": "参考资料内容",
 	"proveit-reference-group-label": "参照组",
 	"proveit-reference-name-label": "参考资料名称",
-	"proveit-reference-template-label": "主模板",
+	"proveit-reference-template-label": "模板",
 	"proveit-reference-wikitext-label": "参考资料wiki语法",
 	"proveit-remove-button": "移除",
 	"proveit-show-all-button": "显示所有字段",
