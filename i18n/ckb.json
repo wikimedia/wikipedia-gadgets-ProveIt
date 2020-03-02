@@ -4,7 +4,8 @@
 			"Épine",
 			"Aram",
 			"ئارام بکر",
-			"Arya sarhan"
+			"Arya sarhan",
+			"Kurd"
 		]
 	},
 	"proveit-add-bibliography-button": "دانانی چاووگنامە",
@@ -24,13 +25,13 @@
 	"proveit-no-references": "ھیچ سەرچاوەیەک نەدۆزرایەوە",
 	"proveit-no-template": "داڕێژە نییە",
 	"proveit-no-template-data": "ھیچ دراوەیەکی داڕێژە نەدۆزرایەوە",
-	"proveit-normalize-button": "ئاساییکردنەوەی ھەموو سەرچاوەکان",
+	"proveit-normalize-button": "ئاساییکردنەوەی ھەمووشتێک",
 	"proveit-normalize-message": "ئاساییکردنەوە... لەوانەیە ئەمە چەند چرکەیەک بخایەنێت، ھەتا چەند خولەکێک!",
 	"proveit-reference-content-label": "ناوەڕۆکی سەرچاوە",
 	"proveit-reference-group-label": "گرووپی سەرچاوە",
 	"proveit-reference-name-label": "ناوی سەرچاوە",
 	"proveit-reference-template-label": "داڕێژە",
-	"proveit-reference-wikitext-label": "ویکیدەقی سەرچاوە",
+	"proveit-reference-wikitext-label": "سەرچاوەی ویکیدەق",
 	"proveit-remove-button": "لابردن",
 	"proveit-show-all-button": "پیشاندانی ھەموو خانەکان",
 	"proveit-today-button": "ئەمڕۆ",
