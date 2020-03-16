@@ -7,6 +7,7 @@
 			"An13sa"
 		]
 	},
+	"proveit-back-button": "Atzera",
 	"proveit-cite-button": "Erreferentzia",
 	"proveit-citoid-error": "Akatsa",
 	"proveit-citoid-label": "Erreferentzia automatikoa",
@@ -20,10 +21,12 @@
 	"proveit-insert-button": "Txertatu",
 	"proveit-no-references": "Ez da erreferentziarik aurkitu",
 	"proveit-no-template": "Txantiloirik gabe",
+	"proveit-normalize-button": "Dena normalizatu",
 	"proveit-reference-content-label": "Erreferentziaren edukia",
 	"proveit-reference-group-label": "Erreferentzia taldea",
 	"proveit-reference-name-label": "Erreferentziaren izena",
 	"proveit-reference-template-label": "Txantiloi nagusia",
+	"proveit-reference-wikitext-label": "Erreferentzia-wikitestua",
 	"proveit-remove-button": "Kendu",
 	"proveit-show-all-button": "Eremu guztiak erakutsi",
 	"proveit-today-button": "Gaur",
