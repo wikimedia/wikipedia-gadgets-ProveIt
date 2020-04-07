@@ -853,16 +853,22 @@ window.ProveIt = {
 			case 'core':
 			case 'wikieditor':
 			case 'codemirror':
-				if ( $( '#wpChangeTags' ).length > 0 ) {
-					return; // Don't add it twice
+				var $tagInput = $( '#wpChangeTags' );
+				// Don't add it twice
+				if ( !$tagInput.data( 'proveit' ) ) {
+					if ( $tagInput.length ) {
+						$tagInput.val( $tagInput.val() + ',' + tag );
+					} else {
+						$tagInput = $( '<input>' ).attr( {
+							id: 'wpChangeTags',
+							type: 'hidden',
+							name: 'wpChangeTags',
+							value: tag
+						} );
+						$( '#editform' ).prepend( $tagInput );
+					}
+					$tagInput.data( 'proveit', true );
 				}
-				var $tagInput = $( '<input>' ).attr( {
-					id: 'wpChangeTags',
-					type: 'hidden',
-					name: 'wpChangeTags',
-					value: tag
-				} );
-				$( '#editform' ).prepend( $tagInput );
 				break;
 
 			case '2017':
