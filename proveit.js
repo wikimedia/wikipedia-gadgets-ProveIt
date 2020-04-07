@@ -73,14 +73,7 @@ window.ProveIt = {
 	 * @return {string} Wikitext of the current page
 	 */
 	getWikitext: function () {
-		switch ( ProveIt.getEditor() ) {
-			case 'core':
-			case 'wikieditor':
-			case 'codemirror':
-				return $( '#wpTextbox1' ).val();
-			case '2017':
-				return $( '.ve-ce-documentNode' ).text(); // Crude, but effective
-		}
+		return $( '#wpTextbox1' ).textSelection( 'getContents' );
 	},
 
 	/**
@@ -933,30 +926,16 @@ window.ProveIt = {
 			object = object.data;
 		}
 
-		var wikitext = object.buildWikitext(),
-			editor = ProveIt.getEditor();
+		var wikitext = object.buildWikitext();
 
-		switch ( editor ) {
-			case 'core':
-			case 'wikieditor':
-			case 'codemirror':
-				if ( object instanceof ProveIt.Citation ) {
-					if ( editor === 'codemirror' ) {
-						// @todo Find a way to get the caret position when CodeMirror is on
-					} else {
-						object.index = $( '#wpTextbox1' ).prop( 'selectionStart' );
-					}
-				}
-				$( '#wpTextbox1' ).textSelection( 'encapsulateSelection', {
-					peri: wikitext,
-					replace: true
-				} );
-				break;
-
-			case '2017':
-				ve.init.target.getSurface().getModel().getFragment().collapseToEnd().insertContent( wikitext ).collapseToEnd().select();
-				break;
+		if ( object instanceof ProveIt.Citation ) {
+			object.index = $( '#wpTextbox1' ).textSelection( 'getCaretPosition' );
 		}
+		$( '#wpTextbox1' ).textSelection( 'encapsulateSelection', {
+			peri: wikitext,
+			replace: true
+		} );
+
 		if ( object instanceof ProveIt.Reference ) {
 			var reference = new ProveIt.Reference( wikitext );
 			ProveIt.buildForm( reference ); // Changes the Insert button for Update
@@ -987,19 +966,8 @@ window.ProveIt = {
 			} );
 		}
 
-		switch ( ProveIt.getEditor() ) {
-			case 'core':
-			case 'wikieditor':
-			case 'codemirror':
-				var oldWikitext = $( '#wpTextbox1' ).val(),
-					newWikitext = oldWikitext.replace( object.wikitext, wikitext );
-				$( '#wpTextbox1' ).val( newWikitext );
-				break;
+		ProveIt.replace( object.wikitext, wikitext );
 
-			case '2017':
-				ProveIt.replace( object.wikitext, wikitext );
-				break;
-		}
 		object.wikitext = wikitext;
 		ProveIt.highlight( object );
 		ProveIt.addTag();
@@ -1023,19 +991,8 @@ window.ProveIt = {
 			} );
 		}
 
-		switch ( ProveIt.getEditor() ) {
-			case 'core':
-			case 'wikieditor':
-			case 'codemirror':
-				var oldWikitext = $( '#wpTextbox1' ).val(),
-					newWikitext = oldWikitext.replace( object.wikitext, '' );
-				$( '#wpTextbox1' ).val( newWikitext );
-				break;
+		ProveIt.replace( object.wikitext, '' );
 
-			case '2017':
-				ProveIt.replace( object.wikitext, '' );
-				break;
-		}
 		ProveIt.addTag();
 		ProveIt.addSummary();
 		ProveIt.buildList();
@@ -1052,80 +1009,41 @@ window.ProveIt = {
 			object = object.data;
 		}
 
-		var editor = ProveIt.getEditor();
-		switch ( editor ) {
+		var wikitext = ProveIt.getWikitext(),
+			index = wikitext.indexOf( object.wikitext );
 
-			case 'core':
-			case 'wikieditor':
-			case 'codemirror':
-				var wikitext = ProveIt.getWikitext(),
-					index = wikitext.indexOf( object.wikitext );
-
-				// Make sure we're highlighting the right occurrence
-				if ( object.index ) {
-					index = wikitext.indexOf( object.wikitext, object.index );
-				}
-
-				// @todo For some reason textSelection() works with CodeMirror but not without
-				if ( editor === 'codemirror' ) {
-					$( '#wpTextbox1' ).textSelection( 'setSelection', {
-						start: index,
-						end: index + object.wikitext.length
-					} );
-				} else {
-					var textbox = $( '#wpTextbox1' ).trigger( 'focus' )[ 0 ];
-					textbox.value = wikitext.substring( 0, index + object.wikitext.length );
-					textbox.scrollTop = textbox.scrollHeight;
-					textbox.value = wikitext;
-					textbox.setSelectionRange( index, index + object.wikitext.length );
-				}
-				break;
-
-			case '2017':
-				// @todo Find a way to highlight the right occurrence
-				ProveIt.replace( object.wikitext, object.wikitext );
-				break;
+		// Make sure we're highlighting the right occurrence
+		if ( object.index ) {
+			index = wikitext.indexOf( object.wikitext, object.index );
 		}
+
+		$( '#wpTextbox1' )
+			// Focus for wikieditor
+			.trigger( 'focus' )
+			.textSelection( 'setSelection', {
+				start: index,
+				end: index + object.wikitext.length
+			} )
+			.textSelection( 'scrollToCaretPosition' );
 	},
 
 	/**
-	 * Helper function to search and replace a string in the 2017 wikitext editor
-	 * @copyright Eranroz and Ravid Ziv at https://en.wikipedia.org/wiki/User:%D7%A2%D7%A8%D7%9F/veReplace.js
-	 * @license MIT
+	 * Helper function to search and replace a string in the editor (first match only)
 	 *
 	 * @param {string} search String to search
 	 * @param {string} replace Replacement string
 	 */
 	replace: function ( search, replace ) {
-		// Recursive helper function to extract the paragraph nodes from the 2017 wikitext editor
-		function getParagraphNodes( node ) {
-			var nodes = [];
-			for ( var i = 0; i < node.children.length; i++ ) {
-				if ( node.children[ i ].type === 'paragraph' ) {
-					nodes.push( node.children[ i ] );
-				}
-				if ( node.children[ i ].children ) {
-					nodes.concat( getParagraphNodes( node.children[ i ] ) );
-				}
-			}
-			return nodes;
-		}
-		var documentNode = ve.init.target.getSurface().getModel().getDocument().getDocumentNode(),
-			paragraphNodes = getParagraphNodes( documentNode ),
-			surfaceModel = ve.init.target.getSurface().getModel();
-		for ( var i = 0; i < paragraphNodes.length; i++ ) {
-			var node = paragraphNodes[ i ],
-				nodeRange = node.getRange(),
-				nodeText = surfaceModel.getLinearFragment( nodeRange ).getText(),
-				index = nodeText.indexOf( search );
-			if ( index === -1 ) {
-				continue;
-			}
-			var start = nodeRange.from + index,
-				end = start + search.length,
-				rangeToRemove = new ve.Range( start, end ),
-				fragment = surfaceModel.getLinearFragment( rangeToRemove );
-			fragment.insertContent( replace ); // This also highlights the inserted content
+		var wikitext = ProveIt.getWikitext(),
+			start = wikitext.indexOf( search );
+
+		if ( start !== -1 ) {
+			$( '#wpTextbox1' )
+				.textSelection( 'setSelection', {
+					start: start,
+					end: start + search.length
+				} )
+				.textSelection( 'replaceSelection', replace );
 		}
 	},
 
@@ -1591,10 +1509,10 @@ window.ProveIt = {
 	}
 };
 
-mw.loader.using( [
+$.when( mw.loader.using( [
 	'mediawiki.api',
 	'mediawiki.util',
 	'jquery.cookie',
 	'jquery.textSelection',
-	'jquery.ui.draggable'
-], ProveIt.init );
+	'jquery.ui'
+] ), $.ready ).then( ProveIt.init );
