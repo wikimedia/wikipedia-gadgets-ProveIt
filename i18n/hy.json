@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Aram1985",
-			"Kareyac",
-			"GeoO"
+			"GeoO",
+			"Kareyac"
 		]
 	},
+	"proveit-back-button": "Հետ",
 	"proveit-cite-button": "Քաղվածք",
 	"proveit-citoid-error": "Սխալ",
 	"proveit-citoid-label": "Ինքնաշխատ ծանոթագրություն",

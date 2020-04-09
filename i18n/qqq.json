@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sophivorus",
 			"Liuxinyu970226",
+			"Nike",
 			"Robby",
-			"Nike"
+			"Sophivorus"
 		]
 	},
 	"proveit-back-button": "Text for the Back button\n{{Identical|Back}}",

@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iniquity",
-			"Facenapalm",
 			"Av6",
+			"Facenapalm",
+			"Iniquity",
 			"Movses",
-			"Saimongoltinio",
-			"Okras"
+			"Okras",
+			"Saimongoltinio"
 		]
 	},
 	"proveit-add-bibliography-button": "Добавить библиографию",

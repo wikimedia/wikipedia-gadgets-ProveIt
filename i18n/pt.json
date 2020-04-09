@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sophivorus",
-			"He7d3r",
-			"Hamilton Abreu",
-			"MokaAkashiyaPT",
 			"Athena in Wonderland",
-			"Mansil alfalb"
+			"Hamilton Abreu",
+			"He7d3r",
+			"Mansil alfalb",
+			"MokaAkashiyaPT",
+			"Sophivorus"
 		]
 	},
 	"proveit-add-bibliography-button": "Adicionar bibliografia",

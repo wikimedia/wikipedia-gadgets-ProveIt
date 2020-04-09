@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zache",
-			"Susannaanas",
 			"Pyscowicz",
-			"Silvonen"
+			"Silvonen",
+			"Susannaanas",
+			"Zache"
 		]
 	},
 	"proveit-add-reference-button": "Lisää viite",
