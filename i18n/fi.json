@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Majavah",
 			"Pyscowicz",
 			"Silvonen",
 			"Susannaanas",
 			"Zache"
 		]
 	},
+	"proveit-add-bibliography-button": "Lisää bibliografia",
 	"proveit-add-reference-button": "Lisää viite",
 	"proveit-back-button": "Takaisin",
 	"proveit-cite-button": "Viittaa",
@@ -16,12 +18,15 @@
 	"proveit-citoid-loading": "Ladataan...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN tai PMC/PMID",
 	"proveit-citoid-tooltip": "Hae viitteen tietoja URL, DOI, ISBN tai PMC/PMID tunnisteella",
-	"proveit-confirm-remove": "Oletko varma, että haluat poistaa viitteen?",
+	"proveit-confirm-remove": "Tämä poistaa kaikki viittaukset tähän lähteeseen. Ok?",
 	"proveit-filter-fields": "Suodata kenttiä",
 	"proveit-filter-references": "Suodata viitteitä",
 	"proveit-insert-button": "Lisää viite",
 	"proveit-no-references": "Artikkelissa ei ole viitteitä.",
 	"proveit-no-template": "Ilman viitemallinetta",
+	"proveit-no-template-data": "Mallineen dataa ei löytynyt",
+	"proveit-normalize-button": "Normalisoi kaikki",
+	"proveit-normalize-message": "Normalisoidaan... tässä voi mennä sekunteja, jopa minuutteja!",
 	"proveit-reference-content-label": "Viitteen sisältö",
 	"proveit-reference-group-label": "Viiteryhmä",
 	"proveit-reference-name-label": "Viitteen nimi",
