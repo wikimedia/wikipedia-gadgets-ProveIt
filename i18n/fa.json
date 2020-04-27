@@ -9,6 +9,8 @@
 			"Yoosef Pooranvary"
 		]
 	},
+	"proveit-add-bibliography-button": "افزودن کتاب‌شناسی",
+	"proveit-add-reference-button": "افزودن مرجع",
 	"proveit-back-button": "بازگشت",
 	"proveit-cite-button": "یادکرد",
 	"proveit-citoid-error": "خطا",
@@ -23,6 +25,7 @@
 	"proveit-insert-button": "درج",
 	"proveit-no-references": "منبع یافت نشد",
 	"proveit-no-template": "بدون الگو",
+	"proveit-no-template-data": "داده‌ای مربوط به الگو یافته نشد",
 	"proveit-normalize-button": "معمولی‌سازی تمام ارجاع‌ها",
 	"proveit-normalize-message": "در حال معمولی‌سازی... این فرایند ممکن است چند ثانیه و حتی چند دقیقه طول بکشد!",
 	"proveit-reference-content-label": "متن منبع",
