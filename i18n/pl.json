@@ -6,8 +6,10 @@
 			"InternerowyGołąb",
 			"Michał Sobkowski",
 			"Rail",
+			"Rainbow P",
 			"Sp5uhe",
-			"WaldiSt"
+			"WaldiSt",
+			"Woytecr"
 		]
 	},
 	"proveit-add-bibliography-button": "Dodaj bibliografię",
@@ -26,9 +28,14 @@
 	"proveit-insert-button": "Wstaw",
 	"proveit-no-references": "Nie znaleziono źródła",
 	"proveit-no-template": "Brak szablonu",
+	"proveit-no-template-data": "Nie znaleziono danych o szablonie",
+	"proveit-normalize-button": "Normalizuj wszystko",
+	"proveit-normalize-message": "Normalizowanie... to może zająć kilka sekund, nawet minut!",
 	"proveit-reference-content-label": "Kod źródłowy przypisu",
+	"proveit-reference-group-label": "Grupa przypisów",
 	"proveit-reference-name-label": "Nazwa przypisu",
 	"proveit-reference-template-label": "Główny szablon",
+	"proveit-reference-wikitext-label": "Wikikod przypisu",
 	"proveit-remove-button": "Usuń",
 	"proveit-show-all-button": "Pokaż wszystkie pola",
 	"proveit-today-button": "Dzisiaj",
