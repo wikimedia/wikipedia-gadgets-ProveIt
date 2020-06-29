@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fierodelveneto"
+		]
+	},
+	"proveit-add-bibliography-button": "Xonta biografia",
+	"proveit-add-reference-button": "Xonta notasion",
+	"proveit-back-button": "Indrio",
+	"proveit-cite-button": "Çita",
+	"proveit-citoid-error": "Eror",
+	"proveit-citoid-label": "Rifarimento automàdego",
+	"proveit-citoid-load": "Carga",
+	"proveit-citoid-loading": "Drio cargar...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-citoid-tooltip": "Inserisi URL, DOI, ISBN o PMC/PMID par proar a estrar detaji automàdeghi traerso el servìsio Citoid",
+	"proveit-confirm-remove": "Sto cuà el cavarà via anca tute łe çitasion al rifarimento. Va bon?",
+	"proveit-filter-fields": "Canpi filtro",
+	"proveit-filter-references": "Filtra rifarimenti",
+	"proveit-insert-button": "Xonta",
+	"proveit-no-references": "Nisun rifarimento catà",
+	"proveit-no-template": "Sensa modeło",
+	"proveit-no-template-data": "Nisun modeło catà",
+	"proveit-normalize-button": "Normałixa tuto",
+	"proveit-normalize-message": "Normałixasion... Sto cuà el podaria dimandar calche segondo, anca minuti!",
+	"proveit-reference-content-label": "Contegnui de rifarimento",
+	"proveit-reference-group-label": "Grupo de rifarimento",
+	"proveit-reference-name-label": "Nome de rifarimento",
+	"proveit-reference-template-label": "Modeło",
+	"proveit-reference-wikitext-label": "Wikitesto de ła notasion",
+	"proveit-remove-button": "Cava",
+	"proveit-show-all-button": "Mostra tuti i canpi",
+	"proveit-today-button": "Uncó",
+	"proveit-update-button": "Ajorna"
+}
