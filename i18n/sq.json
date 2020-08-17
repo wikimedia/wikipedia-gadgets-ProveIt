@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Klein Muçi"
+		]
+	},
+	"proveit-add-bibliography-button": "Shto vepra bibliografike",
+	"proveit-add-reference-button": "Shto referime",
+	"proveit-back-button": "Kthehu pas",
+	"proveit-cite-button": "Cito",
+	"proveit-citoid-error": "Gabim",
+	"proveit-citoid-label": "Referim automatik",
+	"proveit-citoid-load": "Ngarko",
+	"proveit-citoid-loading": "Duke ngarkuar...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN, PMC/PMID",
+	"proveit-citoid-tooltip": "Vendos një URL, DOI, ISBN ose PMC/PMID për t'u përpjekur të nxirren hollësirat automatikisht me anë të shërbimit të citimit",
+	"proveit-confirm-remove": "Kjo do të heqë të gjitha citimet nga referimi. Dakord?",
+	"proveit-filter-fields": "Filtro fushat e parametrave",
+	"proveit-filter-references": "Filtro referimet",
+	"proveit-insert-button": "Fute",
+	"proveit-no-references": "Nuk u gjetën referime",
+	"proveit-no-template": "Nuk ka një stampë citimi",
+	"proveit-no-template-data": "Nuk u gjetën të dhëna për stampën",
+	"proveit-normalize-button": "Standardizo gjithçka",
+	"proveit-normalize-message": "Duke standardizuar... Kjo mund të marrë ca sekonda, ndonjëherë dhe minuta.",
+	"proveit-reference-content-label": "Përmbajtja e referimit",
+	"proveit-reference-group-label": "Grupi i referimeve",
+	"proveit-reference-name-label": "Emri i referimit",
+	"proveit-reference-template-label": "Stampa",
+	"proveit-reference-wikitext-label": "Kodi burimor i referimit",
+	"proveit-remove-button": "Hiqe",
+	"proveit-show-all-button": "Shfaq të gjitha fushat e parametrave",
+	"proveit-today-button": "Sot",
+	"proveit-update-button": "Përditëso"
+}
