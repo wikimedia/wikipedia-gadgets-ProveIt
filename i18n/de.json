@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Elliot",
 			"Metalhead64",
 			"Sophivorus",
 			"Tobi 406"
 		]
 	},
+	"proveit-add-bibliography-button": "Literaturverzeichnis hinzufügen",
+	"proveit-add-reference-button": "Referenz hinzufügen",
 	"proveit-back-button": "Zurück",
 	"proveit-cite-button": "Zitieren",
 	"proveit-citoid-error": "Fehler",
@@ -20,9 +23,14 @@
 	"proveit-insert-button": "Einfügen",
 	"proveit-no-references": "Keine Einzelnachweise gefunden",
 	"proveit-no-template": "Keine Vorlage",
+	"proveit-no-template-data": "Keine Vorlagendaten gefunden",
+	"proveit-normalize-button": "Alles normalisieren",
+	"proveit-normalize-message": "Normalisiert... dies kann einige Sekunden, sogar Minuten dauern!",
 	"proveit-reference-content-label": "Inhalt des Einzelnachweises",
+	"proveit-reference-group-label": "Verweisgruppe",
 	"proveit-reference-name-label": "Name des Einzelnachweises",
 	"proveit-reference-template-label": "Hauptvorlage",
+	"proveit-reference-wikitext-label": "Wixitext Verweis",
 	"proveit-remove-button": "Entfernen",
 	"proveit-show-all-button": "Alle Felder anzeigen",
 	"proveit-today-button": "Heute",
