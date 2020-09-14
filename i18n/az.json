@@ -3,10 +3,12 @@
 		"authors": [
 			"Cekli829",
 			"Neriman2003",
-			"Serkanland"
+			"Serkanland",
+			"Şeyx Şamil"
 		]
 	},
-	"proveit-cite-button": "İstinad",
+	"proveit-add-reference-button": "İstinad əlavə et",
+	"proveit-cite-button": "Sitat ver",
 	"proveit-citoid-error": "Xəta",
 	"proveit-citoid-label": "Avtomatik istinad",
 	"proveit-citoid-load": "Yüklə",
@@ -19,11 +21,12 @@
 	"proveit-insert-button": "Yerləşdir",
 	"proveit-no-references": "İstinadlar tapılmadı",
 	"proveit-no-template": "Şablon yoxdur",
+	"proveit-normalize-button": "Hər şeyi normallaşdır",
 	"proveit-reference-content-label": "İstinad məzmunu",
 	"proveit-reference-name-label": "İstinad adı",
-	"proveit-reference-template-label": "Əsas şablon",
+	"proveit-reference-template-label": "Şablon",
 	"proveit-remove-button": "Çıxar",
 	"proveit-show-all-button": "Bütün süzgəcləri göstər",
-	"proveit-today-button": "Bugün",
+	"proveit-today-button": "Bu gün",
 	"proveit-update-button": "Yenilə"
 }
