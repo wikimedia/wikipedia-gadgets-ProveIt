@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Akmaie Ajam",
 			"Hidayatsrf",
 			"RaymondSutanto94"
 		]
@@ -15,15 +16,20 @@
 	"proveit-citoid-loading": "Memuat...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN atau PMC/PMID",
 	"proveit-citoid-tooltip": "Masukan URL, DOI, ISBN atau PMC/PMID untuk mencoba mengekstrak detail secara otomatis melalui layanan citoid",
-	"proveit-confirm-remove": "Ini akan menghapus referensi dan semua kutipanya. Apakah Anda yakin?",
+	"proveit-confirm-remove": "Ini akan menghapus referensi dan semua kutipannya. Apakah Anda yakin?",
 	"proveit-filter-fields": "Saring form",
 	"proveit-filter-references": "Saring referensi",
 	"proveit-insert-button": "Sisipkan",
 	"proveit-no-references": "Tidak ada referensi ditemukan",
 	"proveit-no-template": "Templat tidak ada",
+	"proveit-no-template-data": "Tidak ada data templat yang ditemukan",
+	"proveit-normalize-button": "Normalisasikan semuanya",
+	"proveit-normalize-message": "Normalisasi ... ini mungkin memerlukan beberapa detik, atau beberapa menit.",
 	"proveit-reference-content-label": "Teks referensi",
+	"proveit-reference-group-label": "Grup referensi",
 	"proveit-reference-name-label": "Nomor referensi",
 	"proveit-reference-template-label": "Templat utama",
+	"proveit-reference-wikitext-label": "Referensikan teks wiki",
 	"proveit-remove-button": "Hapus",
 	"proveit-show-all-button": "Tampilkan semua form",
 	"proveit-today-button": "Hari ini",
