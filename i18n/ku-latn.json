@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bikarhêner"
+			"Bikarhêner",
+			"Biyolojiyabikurdi"
 		]
 	},
+	"proveit-cite-button": "Çavkanî",
 	"proveit-citoid-error": "Çewtî",
 	"proveit-citoid-load": "Bar bike",
 	"proveit-citoid-loading": "Tê barkirin...",
