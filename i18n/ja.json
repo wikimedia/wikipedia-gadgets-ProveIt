@@ -6,6 +6,9 @@
 			"ネイ"
 		]
 	},
+	"proveit-add-bibliography-button": "文献一覧を追加",
+	"proveit-add-reference-button": "参考文献を追加",
+	"proveit-back-button": "戻る",
 	"proveit-cite-button": "追加",
 	"proveit-citoid-error": "エラー",
 	"proveit-citoid-label": "自動生成",
@@ -13,7 +16,7 @@
 	"proveit-citoid-loading": "生成中...",
 	"proveit-citoid-placeholder": "URL、DOI、ISBNまたはPMC/PMIDを入力してください",
 	"proveit-citoid-tooltip": "URL、DOI、ISBNまたはPMC/PMIDを入力することで、Citoidサービスで出典の詳細を抽出できます",
-	"proveit-confirm-remove": "この脚注をこのページから全て除去します。続行しますか？",
+	"proveit-confirm-remove": "これは典拠への参照もすべて除去します。続行しますか？",
 	"proveit-filter-fields": "引数を検索",
 	"proveit-filter-references": "脚注を検索",
 	"proveit-insert-button": "追加",
@@ -26,6 +29,7 @@
 	"proveit-reference-group-label": "脚注グループ名",
 	"proveit-reference-name-label": "出典名",
 	"proveit-reference-template-label": "使用テンプレート",
+	"proveit-reference-wikitext-label": "参考資料のウィキ文",
 	"proveit-remove-button": "除去",
 	"proveit-show-all-button": "全ての引数を表示",
 	"proveit-today-button": "今日",
