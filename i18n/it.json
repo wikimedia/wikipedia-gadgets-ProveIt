@@ -4,10 +4,13 @@
 			"Beta16",
 			"JackLantern",
 			"Ontsed",
+			"Sakretsu",
 			"Selven",
 			"Sophivorus"
 		]
 	},
+	"proveit-add-bibliography-button": "Aggiungi bibliografia",
+	"proveit-add-reference-button": "Aggiungi nota",
 	"proveit-back-button": "Indietro",
 	"proveit-cite-button": "Cita",
 	"proveit-citoid-error": "Errore",
