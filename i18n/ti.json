@@ -5,10 +5,13 @@
 		]
 	},
 	"proveit-back-button": "ተመለስ",
+	"proveit-cite-button": "ጥቐስ",
 	"proveit-citoid-error": "ጌጋ",
 	"proveit-citoid-load": "ጸዓን",
 	"proveit-citoid-loading": "ይጽዕን ኣሎ...",
+	"proveit-insert-button": "ኣእትው",
+	"proveit-reference-template-label": "ሞደል",
 	"proveit-remove-button": "ኣልግስ",
 	"proveit-today-button": "ሎሚ",
-	"proveit-update-button": "ኣሐዲስ"
+	"proveit-update-button": "ኣሓድስ"
 }
