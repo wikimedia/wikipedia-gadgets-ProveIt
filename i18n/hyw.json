@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Armeniki",
-			"Kareyac"
+			"Kareyac",
+			"Շահէն"
 		]
 	},
+	"proveit-add-reference-button": "Աւելցնել ծանօթագրութիւն",
 	"proveit-back-button": "Ետ",
 	"proveit-cite-button": "Եկակոչել",
 	"proveit-citoid-error": "Սխալ",

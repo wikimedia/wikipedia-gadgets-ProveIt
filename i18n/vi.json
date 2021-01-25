@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Leducthn",
+			"Nghiemtrongdai VN",
 			"Nguyễn Mạnh An",
 			"Trần Nguyễn Minh Huy"
 		]
@@ -28,7 +29,7 @@
 	"proveit-reference-content-label": "Nội dung tham khảo",
 	"proveit-reference-group-label": "Nhóm tham khảo",
 	"proveit-reference-name-label": "Tên tham khảo",
-	"proveit-reference-template-label": "Bản mẫu chính",
+	"proveit-reference-template-label": "Bản mẫu",
 	"proveit-reference-wikitext-label": "Chú thích wikitext",
 	"proveit-remove-button": "Loại bỏ",
 	"proveit-show-all-button": "Hiện tất cả ô điền",

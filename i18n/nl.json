@@ -3,6 +3,7 @@
 		"authors": [
 			"Elroy",
 			"Mainframe98",
+			"Mar(c)",
 			"Marcelhospers",
 			"Optilete",
 			"Siebrand",
@@ -27,7 +28,7 @@
 	"proveit-reference-content-label": "Referentie inhoud",
 	"proveit-reference-group-label": "Referentiegroep",
 	"proveit-reference-name-label": "Referentie naam",
-	"proveit-reference-template-label": "Hoofdsjabloon",
+	"proveit-reference-template-label": "Sjabloon",
 	"proveit-remove-button": "Verwijderen",
 	"proveit-show-all-button": "Toon alle velden",
 	"proveit-today-button": "Vandaag",
