@@ -6,7 +6,8 @@
 			"Iniquity",
 			"Movses",
 			"Okras",
-			"Saimongoltinio"
+			"Saimongoltinio",
+			"Wileyfoxyx"
 		]
 	},
 	"proveit-add-bibliography-button": "Добавить библиографию",
@@ -26,12 +27,12 @@
 	"proveit-no-references": "Сноски не найдены",
 	"proveit-no-template": "Нет шаблона",
 	"proveit-no-template-data": "Не найдено данных шаблона",
-	"proveit-normalize-button": "Нормализовать все сноски",
+	"proveit-normalize-button": "Нормализовать всё",
 	"proveit-normalize-message": "Нормализация… Это может занять несколько секунд или даже минут.",
 	"proveit-reference-content-label": "Содержание сноски",
 	"proveit-reference-group-label": "Группа сносок",
 	"proveit-reference-name-label": "Имя сноски",
-	"proveit-reference-template-label": "Основной шаблон",
+	"proveit-reference-template-label": "Шаблон",
 	"proveit-reference-wikitext-label": "Викитекст сноски",
 	"proveit-remove-button": "Удалить",
 	"proveit-show-all-button": "Показать все поля",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Choomaq",
 			"Movses",
-			"Piramidion"
+			"Piramidion",
+			"Renamerr"
 		]
 	},
 	"proveit-add-bibliography-button": "Додати біблографію",
@@ -23,12 +24,12 @@
 	"proveit-no-references": "Не знайдено приміток",
 	"proveit-no-template": "Немає шаблону",
 	"proveit-no-template-data": "Не знайдено даних шаблону",
-	"proveit-normalize-button": "Нормалізація усіх приміток",
+	"proveit-normalize-button": "Нормалізувати все",
 	"proveit-normalize-message": "Відбувається нормалізація. Зазвичай це відбувається протягом секунд, втім може зайняти і декілька хвилин!",
 	"proveit-reference-content-label": "Вміст примітки",
 	"proveit-reference-group-label": "Група приміток",
 	"proveit-reference-name-label": "Назва примітки",
-	"proveit-reference-template-label": "Основний шаблон",
+	"proveit-reference-template-label": "Шаблон",
 	"proveit-reference-wikitext-label": "Зразковий вікітекст",
 	"proveit-remove-button": "Вилучити",
 	"proveit-show-all-button": "Показати всі поля",

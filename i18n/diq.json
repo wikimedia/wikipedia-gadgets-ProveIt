@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"1917 Ekim Devrimi",
 			"Mirzali",
 			"Orbot707"
 		]
@@ -22,12 +23,12 @@
 	"proveit-no-references": "Çımeyi nêvêniyayi",
 	"proveit-no-template": "Şablon çıniyo",
 	"proveit-no-template-data": "Dayiyê şabloni nêvêniyayi.",
-	"proveit-normalize-button": "Referansan pêro normalize kerê",
+	"proveit-normalize-button": "Pêroyın normal kerê",
 	"proveit-normalize-message": "Beno normalize... no çend saniyeyi ya zi çend deqiqeyi beno ke bıramo!",
 	"proveit-reference-content-label": "Zerrekê çımeyi",
 	"proveit-reference-group-label": "Gruba referansi",
 	"proveit-reference-name-label": "Nameyê çımeyi",
-	"proveit-reference-template-label": "Şablono serên",
+	"proveit-reference-template-label": "Şablon",
 	"proveit-reference-wikitext-label": "Nusteyê referansi",
 	"proveit-remove-button": "Wedare",
 	"proveit-show-all-button": "Cayanê pêroyıne bıvêne",
