@@ -4,10 +4,8 @@
 			"Manik Soren"
 		]
 	},
-	"proveit-list-tab": "ᱛᱟᱹᱞᱠᱟᱹ ($1)",
-	"proveit-add-tab": "ᱥᱮᱞᱮᱫ",
-	"proveit-remove-button": "ᱚᱪᱚᱜ",
+	"proveit-citoid-loading": "ᱦᱤᱡᱩᱜᱠᱟᱱᱟ...",
 	"proveit-insert-button": "ᱵᱚᱞᱚ",
-	"proveit-today-button": "ᱛᱤᱦᱤᱧ",
-	"proveit-citoid-loading": "ᱦᱤᱡᱩᱜᱠᱟᱱᱟ..."
+	"proveit-remove-button": "ᱚᱪᱚᱜ",
+	"proveit-today-button": "ᱛᱤᱦᱤᱧ"
 }
