@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"David1010",
+			"Გიო ოქრო"
+		]
+	},
+	"proveit-add-bibliography-button": "ბიბლიოგრაფიის დამატება",
+	"proveit-add-reference-button": "სქოლიოს დამატები",
+	"proveit-back-button": "უკან",
+	"proveit-cite-button": "ციტირება",
+	"proveit-citoid-error": "შეცდომა",
+	"proveit-citoid-label": "ავტომატური სქოლიო",
+	"proveit-citoid-load": "ჩატვირთვა",
+	"proveit-citoid-loading": "იტვირთება...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ან PMC/PMID",
+	"proveit-citoid-tooltip": "შეიყვანეთ URL (ბმული), DOI, ISBN ან PMC/PMID რათა Citoid-ის საშუალებით მოხდეს დეტალების ავტომატური შევსების ცდა",
+	"proveit-confirm-remove": "ეს ასევე სქოლიოდან მოაშორებს ყველა ბმულს. თანახმა ხართ?",
+	"proveit-filter-fields": "ველების გაფილტვრა",
+	"proveit-filter-references": "სქოლიოების გაფილტვრა",
+	"proveit-insert-button": "ჩასმა",
+	"proveit-no-references": "სქოლიო ვერ მოიძებნა",
+	"proveit-no-template": "არ არის თარგი",
+	"proveit-no-template-data": "ვერ მოიძებნა თარგის მონაცემები",
+	"proveit-normalize-button": "ყველაფრის ნორმალიზება",
+	"proveit-normalize-message": "მიმდინარეობს ნორმალიზება... ამას შეიძლება რამდენიმე წამი, ან წუთი დასჭირდეს!",
+	"proveit-reference-content-label": "სქოლიოს შინაარსი",
+	"proveit-reference-group-label": "სქოლიოების ჯგუფი",
+	"proveit-reference-name-label": "სქოლიოს სახელი",
+	"proveit-reference-template-label": "თარგი",
+	"proveit-reference-wikitext-label": "სქოლიოს ვიკიტექსტი",
+	"proveit-remove-button": "წაშლა",
+	"proveit-show-all-button": "ყველა ველის ჩვენება",
+	"proveit-today-button": "დღეს",
+	"proveit-update-button": "განახლება"
+}
