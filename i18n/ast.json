@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tokvo",
 			"Xuacu"
 		]
 	},
@@ -26,7 +27,7 @@
 	"proveit-reference-content-label": "Conteníu de la referencia",
 	"proveit-reference-group-label": "Grupu de la referencia",
 	"proveit-reference-name-label": "Nome de la referencia",
-	"proveit-reference-template-label": "Plantía principal",
+	"proveit-reference-template-label": "Plantía",
 	"proveit-reference-wikitext-label": "Testu wiki de la referencia",
 	"proveit-remove-button": "Desaniciar",
 	"proveit-show-all-button": "Amosar tolos campos",
