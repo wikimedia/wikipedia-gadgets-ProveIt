@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aefgh39622"
+			"Aefgh39622",
+			"Prame Tan"
 		]
 	},
+	"proveit-add-bibliography-button": "เพิ่มบรรณานุกรม",
+	"proveit-add-reference-button": "เพิ่มแหล่งอ้างอิง",
+	"proveit-back-button": "กลับ",
 	"proveit-cite-button": "อ้างอิง",
 	"proveit-citoid-error": "ข้อผิดพลาด",
 	"proveit-citoid-label": "รายการอ้างอิงอัตโนมัติ",
@@ -11,15 +15,20 @@
 	"proveit-citoid-loading": "กำลังโหลด...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN หรือ PMC/PMID",
 	"proveit-citoid-tooltip": "ป้อน URL, DOI, ISBN หรือ PMC/PMID เพื่อลองแยกรายละเอียดอัตโนมัติผ่านบริการ Citoid",
-	"proveit-confirm-remove": "การดำเนินการนี้จะลบรายการอ้างอิงทั้งหมด คุณแน่ใจหรือไม่?",
+	"proveit-confirm-remove": "การดำเนินการนี้จะลบการอ้างอิงทั้งหมดที่อ้างอิงแหล่งอ้างอิงนี้ คุณแน่ใจหรือไม่?",
 	"proveit-filter-fields": "กรองเขตข้อมูล",
 	"proveit-filter-references": "กรองรายการอ้างอิง",
 	"proveit-insert-button": "แทรก",
 	"proveit-no-references": "ไม่พบรายการอ้างอิง",
 	"proveit-no-template": "ไม่มีแม่แบบ",
+	"proveit-no-template-data": "ไม่พบข้อมูลแม่แบบ",
+	"proveit-normalize-button": "ปรับข้อความทั้งหมดให้เป็นบรรทัดฐาน",
+	"proveit-normalize-message": "กำลังทำให้เป็นบรรทัดฐาน...ขั้นตอนนี้อาจใช้เวลาหลายวินาที หรือแม้กระทั่งหลายนาที!",
 	"proveit-reference-content-label": "เนื้อหาอ้างอิง",
+	"proveit-reference-group-label": "กลุ่มแหล่งอ้างอิง",
 	"proveit-reference-name-label": "ชื่อแหล่งอ้างอิง",
-	"proveit-reference-template-label": "แม่แบบหลัก",
+	"proveit-reference-template-label": "แม่แบบ",
+	"proveit-reference-wikitext-label": "อ้างอิงไปวิกิข้อความ",
 	"proveit-remove-button": "ลบออก",
 	"proveit-show-all-button": "แสดงเขตข้อมูลทั้งหมด",
 	"proveit-today-button": "วันนี้",
