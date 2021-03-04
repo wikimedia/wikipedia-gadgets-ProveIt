@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Habib-d",
+			"Meno25",
 			"Mido",
 			"ديفيد"
 		]
@@ -23,12 +24,12 @@
 	"proveit-no-references": "لم يتم العثور على مراجع",
 	"proveit-no-template": "لا يوجد قالب",
 	"proveit-no-template-data": "لم يتم العثور على بيانات القالب",
-	"proveit-normalize-button": "تطبيع جميع المراجع",
+	"proveit-normalize-button": "تطبيع كل شيء",
 	"proveit-normalize-message": "جارٍ التطبيع... قد يستغرق هذا عدة ثوانٍ، حتى دقائق!",
 	"proveit-reference-content-label": "محتوى المرجع",
 	"proveit-reference-group-label": "المجموعة المرجعية",
 	"proveit-reference-name-label": "اسم المرجع",
-	"proveit-reference-template-label": "القالب الرئيسي",
+	"proveit-reference-template-label": "القالب",
 	"proveit-reference-wikitext-label": "نص الويكي للمرجع",
 	"proveit-remove-button": "إزالة",
 	"proveit-show-all-button": "عرض جميع الحقول",

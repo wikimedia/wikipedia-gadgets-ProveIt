@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jaroslav.micek"
+		]
+	},
+	"proveit-add-bibliography-button": "Pridať bibliografiu",
+	"proveit-add-reference-button": "Pridať odkaz",
+	"proveit-back-button": "Späť",
+	"proveit-cite-button": "Citovať",
+	"proveit-citoid-error": "Chyba",
+	"proveit-citoid-label": "Automatický odkaz",
+	"proveit-citoid-load": "Načítať",
+	"proveit-citoid-loading": "Načítava sa...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN alebo PMC/PMID",
+	"proveit-citoid-tooltip": "Zadajte URL, DOI, ISBN alebo PMC/PMID ak chcete skúsiť vypísať detaily automaticky prostredníctvom služby Citoid",
+	"proveit-confirm-remove": "Toto vymaže aj všetky citácie k danému odkazu. Ok?",
+	"proveit-filter-fields": "Filtrovanie polí",
+	"proveit-filter-references": "Filtrovanie odkazov",
+	"proveit-insert-button": "Vložiť",
+	"proveit-no-references": "Neboli nájdené žiadne odkazy",
+	"proveit-no-template": "Žiadna šablóna",
+	"proveit-no-template-data": "Nebola nájdená žiadna šablóna",
+	"proveit-normalize-button": "Všetko normalizovať",
+	"proveit-normalize-message": "Normalizovanie...toto môže trvať niekoľko sekúnd až minút!",
+	"proveit-reference-content-label": "Obsah odkazu",
+	"proveit-reference-group-label": "Odkazová skupina",
+	"proveit-reference-name-label": "Názov odkazu",
+	"proveit-reference-template-label": "Šablóna",
+	"proveit-reference-wikitext-label": "Odkaz na wikitext",
+	"proveit-remove-button": "Odstrániť",
+	"proveit-show-all-button": "Ukázať všetky políčka",
+	"proveit-today-button": "Dnes",
+	"proveit-update-button": "Aktualizovať"
+}
