@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Elliot",
+			"FF11",
 			"Metalhead64",
 			"Sophivorus",
 			"Tobi 406"
@@ -29,7 +30,7 @@
 	"proveit-reference-content-label": "Inhalt des Einzelnachweises",
 	"proveit-reference-group-label": "Verweisgruppe",
 	"proveit-reference-name-label": "Name des Einzelnachweises",
-	"proveit-reference-template-label": "Hauptvorlage",
+	"proveit-reference-template-label": "Vorlage",
 	"proveit-reference-wikitext-label": "Wixitext Verweis",
 	"proveit-remove-button": "Entfernen",
 	"proveit-show-all-button": "Alle Felder anzeigen",

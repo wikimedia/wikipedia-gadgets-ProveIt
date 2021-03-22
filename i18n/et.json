@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adeliine",
 			"Cumbril",
 			"H2kks",
 			"Pikne"
@@ -23,12 +24,12 @@
 	"proveit-no-references": "Ühtegi viidet ei leitud",
 	"proveit-no-template": "Mall puudub",
 	"proveit-no-template-data": "Malliandmeid ei leitud",
-	"proveit-normalize-button": "Korrasta kõik viited",
+	"proveit-normalize-button": "Korrasta kõik",
 	"proveit-normalize-message": "Korrastan... See võib võtta mitu sekundit või isegi minutit!",
 	"proveit-reference-content-label": "Viite sisu",
 	"proveit-reference-group-label": "Viiterühm",
 	"proveit-reference-name-label": "Viite nimi",
-	"proveit-reference-template-label": "Põhimall",
+	"proveit-reference-template-label": "Mall",
 	"proveit-reference-wikitext-label": "Viite vikitekst",
 	"proveit-remove-button": "Eemalda",
 	"proveit-show-all-button": "Kuva kõik väljad",
