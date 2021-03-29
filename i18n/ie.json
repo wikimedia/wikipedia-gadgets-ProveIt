@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mithridates"
+		]
+	},
+	"proveit-add-bibliography-button": "Adjunter bibliofrafie",
+	"proveit-add-reference-button": "Adjunter referentie",
+	"proveit-back-button": "Retro",
+	"proveit-cite-button": "Citar",
+	"proveit-citoid-error": "Error",
+	"proveit-citoid-label": "Automatic referencie",
+	"proveit-citoid-load": "Cargar",
+	"proveit-citoid-loading": "Cargant...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-insert-button": "Inserter",
+	"proveit-normalize-button": "Normalisar tot",
+	"proveit-reference-wikitext-label": "Referentiar wikitextu",
+	"proveit-remove-button": "Remover",
+	"proveit-show-all-button": "Monstrar omni campes",
+	"proveit-today-button": "Hodie",
+	"proveit-update-button": "Actualisar"
+}

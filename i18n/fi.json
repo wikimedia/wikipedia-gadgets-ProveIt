@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Joquliina",
 			"Majavah",
 			"Pyscowicz",
 			"Silvonen",
@@ -30,7 +31,7 @@
 	"proveit-reference-content-label": "Viitteen sisältö",
 	"proveit-reference-group-label": "Viiteryhmä",
 	"proveit-reference-name-label": "Viitteen nimi",
-	"proveit-reference-template-label": "Viitemalline",
+	"proveit-reference-template-label": "Malline",
 	"proveit-reference-wikitext-label": "Viiteteksti",
 	"proveit-remove-button": "Poista viite",
 	"proveit-show-all-button": "Näytä kaikki",
