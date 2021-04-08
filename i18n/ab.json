@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Pupsik-ipa",
 			"Абухба Андрей",
 			"Андрей"
 		]
@@ -8,8 +9,8 @@
 	"proveit-citoid-error": "Агха",
 	"proveit-citoid-load": "Иҭагалатәуп",
 	"proveit-citoid-loading": "Аҭагалара...",
-	"proveit-citoid-placeholder": "Азхьарҧш, DOI, ISBN ма PMC/PMID",
-	"proveit-no-references": "Ахыҵхырҭақәа ҧшаам",
+	"proveit-citoid-placeholder": "Азхьарԥш, DOI, ISBN ма PMC/PMID",
+	"proveit-no-references": "Ахыҵхырҭақәа ԥшаам",
 	"proveit-no-template": "Ашаблон ыҟам",
 	"proveit-reference-template-label": "Ихадоу ашаблон",
 	"proveit-remove-button": "Ианыхтәуп",
