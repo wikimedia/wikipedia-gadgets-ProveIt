@@ -7,6 +7,8 @@
 			"Theklan"
 		]
 	},
+	"proveit-add-bibliography-button": "Bibliografia gehitu",
+	"proveit-add-reference-button": "Erreferentzia gehitu",
 	"proveit-back-button": "Atzera",
 	"proveit-cite-button": "Erreferentzia",
 	"proveit-citoid-error": "Akatsa",
@@ -21,11 +23,13 @@
 	"proveit-insert-button": "Txertatu",
 	"proveit-no-references": "Ez da erreferentziarik aurkitu",
 	"proveit-no-template": "Txantiloirik gabe",
+	"proveit-no-template-data": "Txantiloi informaziorik ez dago",
 	"proveit-normalize-button": "Dena normalizatu",
+	"proveit-normalize-message": "Normalizatzen...honek denbora dexente eraman dezake!",
 	"proveit-reference-content-label": "Erreferentziaren edukia",
 	"proveit-reference-group-label": "Erreferentzia taldea",
 	"proveit-reference-name-label": "Erreferentziaren izena",
-	"proveit-reference-template-label": "Txantiloi nagusia",
+	"proveit-reference-template-label": "Txantiloia",
 	"proveit-reference-wikitext-label": "Erreferentzia-wikitestua",
 	"proveit-remove-button": "Kendu",
 	"proveit-show-all-button": "Eremu guztiak erakutsi",
