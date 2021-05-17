@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jopparn",
 			"WikiPhoenix"
 		]
 	},
@@ -26,7 +27,7 @@
 	"proveit-reference-content-label": "Källhänvisningsinnehåll",
 	"proveit-reference-group-label": "Referensgrupp",
 	"proveit-reference-name-label": "Referensnamn",
-	"proveit-reference-template-label": "Huvudmall",
+	"proveit-reference-template-label": "Mall",
 	"proveit-reference-wikitext-label": "Referenswikitext",
 	"proveit-remove-button": "Ta bort",
 	"proveit-show-all-button": "Visa alla fält",
