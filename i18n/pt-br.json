@@ -4,6 +4,7 @@
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Felipe L. Ewald",
+			"Isabelle Belato",
 			"Tks4Fish",
 			"WikiUser22222"
 		]
@@ -18,7 +19,7 @@
 	"proveit-citoid-loading": "Carregando...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN ou PMC/PMID",
 	"proveit-citoid-tooltip": "Digite um URL, DOI, ISBN ou PMC/PMID para tentar extrair os detalhes automaticamente através do serviço Citoid",
-	"proveit-confirm-remove": "Isso também removerá todas as citações da referência. OK?",
+	"proveit-confirm-remove": "Isso também removerá todas as citações à referência. OK?",
 	"proveit-filter-fields": "Filtrar campos",
 	"proveit-filter-references": "Filtrar referências",
 	"proveit-insert-button": "Inserir",
@@ -26,7 +27,7 @@
 	"proveit-no-template": "Nenhuma predefinição",
 	"proveit-no-template-data": "Nenhum dado da predefinição encontrada",
 	"proveit-normalize-button": "Normalizar tudo",
-	"proveit-normalize-message": "Normalizando ... isso pode levar alguns segundos, até minutos!",
+	"proveit-normalize-message": "Normalizando... isso pode levar alguns segundos, ou até minutos!",
 	"proveit-reference-content-label": "Conteúdo da referência",
 	"proveit-reference-group-label": "Grupo da referência",
 	"proveit-reference-name-label": "Nome da referência",
