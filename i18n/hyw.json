@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Armeniki",
+			"Azniv Stepanian",
 			"Kareyac",
 			"Շահէն"
 		]
@@ -24,7 +25,7 @@
 	"proveit-reference-content-label": "Ծանօթագրութեան բնաբանը",
 	"proveit-reference-name-label": "Ծանօթագրութեան անունը",
 	"proveit-reference-template-label": "Հիմնական կաղապար",
-	"proveit-remove-button": "Հանել",
+	"proveit-remove-button": "Հեռացնել",
 	"proveit-show-all-button": "Ցուցադրել բոլոր դաշտերը",
 	"proveit-today-button": "Այսօր",
 	"proveit-update-button": "Թարմացնել"
