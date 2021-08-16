@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Liuxinyu970226",
 			"Nike",
 			"Robby",
@@ -26,7 +27,7 @@
 	"proveit-reference-content-label": "Label for the field of the reference content",
 	"proveit-reference-group-label": "Label for the field of the reference group",
 	"proveit-reference-name-label": "Label for the field of the reference name",
-	"proveit-reference-template-label": "Label for the field of the main template of the reference",
+	"proveit-reference-template-label": "Label for the field of the main template of the reference.\n\n{{Identical|Template}}",
 	"proveit-reference-wikitext-label": "Label for the field of the wikitext of the reference",
 	"proveit-remove-button": "Text for the Remove button\n{{Identical|Remove}}",
 	"proveit-show-all-button": "Text for the button that shows all parameter fields",
