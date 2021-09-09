@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"proveit-add-bibliography-button": "Adder bibliographia",
+	"proveit-add-reference-button": "Adder referentia",
+	"proveit-back-button": "Retornar",
+	"proveit-cite-button": "Citar",
+	"proveit-citoid-error": "Error",
+	"proveit-citoid-label": "Referentia automatic",
+	"proveit-citoid-load": "Cargar",
+	"proveit-citoid-loading": "Carga…",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN o PMC/PMID",
+	"proveit-citoid-tooltip": "Entra un URL, DOI, ISBN o PMC/PMID pro tentar extraher le detalios automaticamente a transverso le servicio Citoid",
+	"proveit-confirm-remove": "Isto removera etiam tote le citationes al referentia. OK?",
+	"proveit-filter-fields": "Filtrar campos",
+	"proveit-filter-references": "Filtrar referentias",
+	"proveit-insert-button": "Inserer",
+	"proveit-no-references": "Nulle referentia trovate",
+	"proveit-no-template": "Nulle patrono",
+	"proveit-no-template-data": "Nulle datos de patrono trovate",
+	"proveit-normalize-button": "Normalisar toto",
+	"proveit-normalize-message": "Normalisation in curso… isto pote prender plure secundas, mesmo minutas!",
+	"proveit-reference-content-label": "Contento del referentia",
+	"proveit-reference-group-label": "Gruppo del referentia",
+	"proveit-reference-name-label": "Nomine del referentia",
+	"proveit-reference-template-label": "Patrono",
+	"proveit-reference-wikitext-label": "Wikitexto del referentia",
+	"proveit-remove-button": "Remover",
+	"proveit-show-all-button": "Monstrar tote le campos",
+	"proveit-today-button": "Hodie",
+	"proveit-update-button": "Actualisar"
+}
