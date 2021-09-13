@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
+			"Tranve",
 			"VulpesVulpes825",
 			"沈澄心",
 			"荣智浩"
@@ -30,7 +31,7 @@
 	"proveit-reference-group-label": "参照组",
 	"proveit-reference-name-label": "参考资料名称",
 	"proveit-reference-template-label": "模板",
-	"proveit-reference-wikitext-label": "参考资料wiki语法",
+	"proveit-reference-wikitext-label": "参考资料的wikitext",
 	"proveit-remove-button": "移除",
 	"proveit-show-all-button": "显示所有字段",
 	"proveit-today-button": "今天",
