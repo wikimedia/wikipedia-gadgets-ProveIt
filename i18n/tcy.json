@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"BHARATHESHA ALASANDEMAJALU",
+			"Chidananda Kampa",
 			"Lokesha kunchadka"
 		]
 	},
+	"proveit-add-reference-button": "ಉಲ್ಲೇಕೊ ಸೇರಾಲೆ",
+	"proveit-back-button": "ಪಿರ",
 	"proveit-cite-button": "ನಗರ",
 	"proveit-citoid-error": "ದೋಷ",
 	"proveit-citoid-label": "ಅಟೊಮೆಟಿಕ್ ರಿಪ್ರೇಶ್",
@@ -19,8 +22,9 @@
 	"proveit-no-references": "ಒವೆ ಉಲ್ಲೇಕೊಲು ತೋಜಾತ್ ಬರ್ಪುಜ್ಜಿ",
 	"proveit-no-template": "ಟೆಂಪ್ಲೆಟ್ ಇಜ್ಜಿ",
 	"proveit-reference-content-label": "ಉಲ್ಲೇಕೊತ ವಿಸಯೊ",
+	"proveit-reference-group-label": "ಉಲ್ಲೇಕೊ ಗುಂಪು",
 	"proveit-reference-name-label": "ಉಲ್ಲೇಕೊತ ಪುದಾರ್",
-	"proveit-reference-template-label": "ಮುಖ್ಯ ಟೆಂಪ್ಲೇಟ್",
+	"proveit-reference-template-label": "ಟೆಂಪ್ಲೇಟ್",
 	"proveit-remove-button": "ದೆಪ್ಪುಲೆ",
 	"proveit-show-all-button": "ಪೂರಾಯಿನ್ ತೊಜಾಲೆ",
 	"proveit-today-button": "ಇನಿ",
