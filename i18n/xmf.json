@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Narazeni"
+		]
+	},
+	"proveit-add-bibliography-button": "ბიბლიოგრაფიაშ გეძინა",
+	"proveit-add-reference-button": "სქოლიოშ გეძინა",
+	"proveit-back-button": "უკახლე",
+	"proveit-cite-button": "ციტირაფა",
+	"proveit-citoid-error": "ჩილათა",
+	"proveit-citoid-label": "ავტომატური სქოლიო",
+	"proveit-citoid-load": "დინოხარგუა",
+	"proveit-citoid-loading": "იხარგუაფუ...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ვარ-და PMC/PMID",
+	"proveit-insert-button": "ინოხუნაფა",
+	"proveit-show-all-button": "არძა ვეშ ძირაფა",
+	"proveit-today-button": "ამდღა",
+	"proveit-update-button": "გოახალაფა"
+}
