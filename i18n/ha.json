@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gwanki",
 			"Omar Ali"
 		]
 	},
@@ -9,10 +10,10 @@
 	"proveit-back-button": "baya",
 	"proveit-cite-button": "yabo",
 	"proveit-citoid-error": "kuskure",
-	"proveit-citoid-label": "atomatik manazarta",
-	"proveit-citoid-load": "dauka",
-	"proveit-citoid-loading": "lodin",
-	"proveit-citoid-placeholder": "URL, DOI, ISBN or PMC/PMID",
+	"proveit-citoid-label": "manazartar automatik",
+	"proveit-citoid-load": "lodawa",
+	"proveit-citoid-loading": "lodin...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ko PMC/PMID",
 	"proveit-citoid-tooltip": "ka shigar da URL, DOI, ISBN or PMC/PMID to try to extract the details automatically through the Citoid service",
 	"proveit-confirm-remove": "wanmnan dik zai cire yabon da akama wannan manazartan. Ok?",
 	"proveit-filter-fields": "matatan filaye",
