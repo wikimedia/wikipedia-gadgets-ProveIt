@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Beta16",
 			"JackLantern",
 			"Ontsed",
@@ -25,6 +26,7 @@
 	"proveit-insert-button": "Inserisci",
 	"proveit-no-references": "Nessun riferimento trovato",
 	"proveit-no-template": "Senza template",
+	"proveit-no-template-data": "Nessun dato di template trovato",
 	"proveit-normalize-button": "Normalizza tutto",
 	"proveit-normalize-message": "Normalizzazione... questo potrebbe richiedere alcuni secondi, anche minuti!",
 	"proveit-reference-content-label": "Contenuti di riferimento",
