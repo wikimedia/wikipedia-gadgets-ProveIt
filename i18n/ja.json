@@ -4,11 +4,12 @@
 			"Afaz",
 			"LaMagiaaa",
 			"Omotecho",
+			"カッパ鳥",
 			"ネイ"
 		]
 	},
-	"proveit-add-bibliography-button": "文献一覧を追加",
-	"proveit-add-reference-button": "参考文献を追加",
+	"proveit-add-bibliography-button": "参考文献を追加",
+	"proveit-add-reference-button": "脚注を追加",
 	"proveit-back-button": "戻る",
 	"proveit-cite-button": "追加",
 	"proveit-citoid-error": "エラー",
