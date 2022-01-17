@@ -4,6 +4,7 @@
 			"Leducthn",
 			"Nghiemtrongdai VN",
 			"Nguyễn Mạnh An",
+			"TARGET6tidiem",
 			"Trần Nguyễn Minh Huy"
 		]
 	},
@@ -24,7 +25,7 @@
 	"proveit-no-references": "Không tìm thấy tham khảo",
 	"proveit-no-template": "Không có bản mẫu",
 	"proveit-no-template-data": "Không tìm thấy dữ liệu bản mẫu",
-	"proveit-normalize-button": "Bình thường hóa mọi thứ",
+	"proveit-normalize-button": "Bình thường hóa tất cả mọi thứ",
 	"proveit-normalize-message": "Bình thường hóa ... việc này có thể mất vài giây, thậm chí vài phút!",
 	"proveit-reference-content-label": "Nội dung tham khảo",
 	"proveit-reference-group-label": "Nhóm tham khảo",

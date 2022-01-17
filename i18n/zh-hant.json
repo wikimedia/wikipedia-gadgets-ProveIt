@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
+			"Tranve",
 			"沈澄心"
 		]
 	},
@@ -28,7 +29,7 @@
 	"proveit-reference-group-label": "參考資料群組",
 	"proveit-reference-name-label": "參考資料名稱",
 	"proveit-reference-template-label": "模板",
-	"proveit-reference-wikitext-label": "參考資料 wiki 語法",
+	"proveit-reference-wikitext-label": "參考資料 wikitext",
 	"proveit-remove-button": "移除",
 	"proveit-show-all-button": "顯示所有欄位",
 	"proveit-today-button": "今日",
