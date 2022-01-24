@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bugoslav"
+			"Bugoslav",
+			"Ponor"
 		]
 	},
 	"proveit-cite-button": "Navedi",
-	"proveit-citoid-error": "Pogrješka",
+	"proveit-citoid-error": "Pogreška",
 	"proveit-citoid-label": "Automatska referencija",
 	"proveit-citoid-load": "Učitaj",
 	"proveit-citoid-loading": "Učitavam...",
