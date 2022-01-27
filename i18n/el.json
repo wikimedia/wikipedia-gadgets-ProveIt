@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"C messier",
 			"NikosLikomitros",
 			"Nikosgranturismogt"
 		]
 	},
+	"proveit-add-bibliography-button": "Προσθήκη βιβλιογραφίας",
+	"proveit-add-reference-button": "Προσθήκη παραπομπής",
+	"proveit-back-button": "Πίσω",
 	"proveit-cite-button": "Παραπομπή",
 	"proveit-citoid-error": "Σφάλμα",
 	"proveit-citoid-label": "Αυτόματη αναφορά",
@@ -12,15 +16,17 @@
 	"proveit-citoid-loading": "Φόρτωση σε εξέλιξη...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN ή PMID",
 	"proveit-citoid-tooltip": "Εισάγετε ένα URL, DOI, ISBN ή PMC/PMID για να προσπαθήσετε να εξάγετε αυτόματα τις λεπτομέρειες μέσω της υπηρεσίας Citoid",
-	"proveit-confirm-remove": "Αυτό θα αφαιρέσει την αναφορά και όλες τις παραπομπές της. Είστε σίγουρος;",
+	"proveit-confirm-remove": "Αυτό θα αφαιρέσει επίσης όλες τις αναφορές στην παραπομπή. ΟΚ;",
 	"proveit-filter-fields": "Φιλτράρισμα πεδίων",
 	"proveit-filter-references": "Φιλτράρισμα αναφορών",
 	"proveit-insert-button": "Εισαγωγή",
 	"proveit-no-references": "Δεν βρέθηκαν αναφορές",
 	"proveit-no-template": "Χωρίς πρότυπο",
+	"proveit-no-template-data": "Δεν βρέθηκαν δεδομένα προτύπου",
 	"proveit-reference-content-label": "Περιεχόμενο αναφοράς",
+	"proveit-reference-group-label": "Ομάδα παραπομπών",
 	"proveit-reference-name-label": "Όνομα αναφοράς",
-	"proveit-reference-template-label": "Κύριο πρότυπο",
+	"proveit-reference-template-label": "Πρότυπο",
 	"proveit-remove-button": "Αφαίρεση",
 	"proveit-show-all-button": "Εμφάνιση όλων των πεδίων",
 	"proveit-today-button": "Σήμερα",
