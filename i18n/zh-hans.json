@@ -6,11 +6,12 @@
 			"VulpesVulpes825",
 			"列维劳德",
 			"沈澄心",
-			"荣智浩"
+			"荣智浩",
+			"魔琴"
 		]
 	},
-	"proveit-add-bibliography-button": "添加参考文献",
-	"proveit-add-reference-button": "添加参考文献",
+	"proveit-add-bibliography-button": "添加参考书目",
+	"proveit-add-reference-button": "添加参考资料",
 	"proveit-back-button": "返回",
 	"proveit-cite-button": "引用",
 	"proveit-citoid-error": "错误",
