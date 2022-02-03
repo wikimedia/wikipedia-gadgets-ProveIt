@@ -17,7 +17,7 @@
 	"proveit-citoid-error": "Erreur",
 	"proveit-citoid-label": "Référence automatique",
 	"proveit-citoid-load": "Charger",
-	"proveit-citoid-loading": "Chargement...",
+	"proveit-citoid-loading": "Chargement en cours...",
 	"proveit-citoid-placeholder": "URL, DOI, ISBN ou PMC/PMID",
 	"proveit-citoid-tooltip": "Saisir une URL, DOI, ISBN ou PMC/PMID afin de tenter d’extraire automatiquement les détails via le service Citoid.",
 	"proveit-confirm-remove": "Cela supprimera aussi tous les renvois à la référence. Poursuivre ?",
