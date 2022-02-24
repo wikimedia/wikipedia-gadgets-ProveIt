@@ -3,7 +3,8 @@
 		"authors": [
 			"Aram1985",
 			"GeoO",
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"proveit-add-bibliography-button": "Ավելացնել մատենագիտություն",
@@ -17,8 +18,8 @@
 	"proveit-citoid-placeholder": "URL, DOI, ISBN կամ PMC/PMID",
 	"proveit-citoid-tooltip": "Մուտքագրեք URL, DOI, ISBN կամ PMC/PMID, որպեսզի փորձեք արտածել մանրամասներն ինքնաշխատ Citoid ծառայության միջոցով",
 	"proveit-confirm-remove": "Կհեռացվեն աղբյուրն ու բոլոր մեջբերումները: Վստա՞հ եք:",
-	"proveit-filter-fields": "Դաշտերի ֆիլտրեր",
-	"proveit-filter-references": "Ծանոթագրությունների ֆիլտր",
+	"proveit-filter-fields": "Դաշտերի զտիչներ",
+	"proveit-filter-references": "Ծանոթագրությունների զտիչ",
 	"proveit-insert-button": "Ներդնել",
 	"proveit-no-references": "Աղբյուրները չեն գտնվել",
 	"proveit-no-template": "Կաղապար չկա",
