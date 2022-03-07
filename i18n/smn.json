@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Seipinne",
+			"Yupik"
+		]
+	},
+	"proveit-cite-button": "Čuujoot",
+	"proveit-citoid-label": "Automaatlâš käldeečujos",
+	"proveit-citoid-load": "Luođii",
+	"proveit-citoid-loading": "Luođiimin...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN teikkâ PMC/PMID",
+	"proveit-citoid-tooltip": "Uusâ käldeečujos tiäđuid URL, DOI, ISBN teikkâ PMC/PMID tubdâldâssáin",
+	"proveit-confirm-remove": "Taat sikko puoh käldeečujosijd taam kälden. Ok?",
+	"proveit-filter-fields": "Sillii kiedijd",
+	"proveit-filter-references": "Sillii käldeečujosijd",
+	"proveit-insert-button": "Lasseet käldeečuijoos",
+	"proveit-no-references": "Artikkâlist iä lah käldeečujoseh",
+	"proveit-no-template": "Käldeemyensterttáá",
+	"proveit-no-template-data": "Myenster data ij kavnum",
+	"proveit-reference-content-label": "Käldee siskáldâs",
+	"proveit-reference-group-label": "Čujosjuávkku",
+	"proveit-reference-name-label": "Käldeečujos nommâ",
+	"proveit-reference-template-label": "Myenster",
+	"proveit-reference-wikitext-label": "Čujostekstâ",
+	"proveit-remove-button": "Siho käldeečuijoos",
+	"proveit-show-all-button": "Čääiti puoh",
+	"proveit-today-button": "Onne",
+	"proveit-update-button": "Peivid käldeečuijoos"
+}
