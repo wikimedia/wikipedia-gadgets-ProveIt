@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chaduvari"
+		]
+	},
+	"proveit-add-bibliography-button": "గ్రంథసూచీని చేర్చు",
+	"proveit-add-reference-button": "మూలాన్ని చేర్చు",
+	"proveit-back-button": "వెనక్కి",
+	"proveit-cite-button": "ఉల్లేఖించండి",
+	"proveit-citoid-error": "లోపం",
+	"proveit-citoid-label": "ఆటోమాటిక్ ఉల్లేఖన",
+	"proveit-citoid-load": "లోడుచెయ్యి",
+	"proveit-citoid-loading": "లోడవుతోంది...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN, PMC/PMID",
+	"proveit-citoid-tooltip": "Citoid సేవ ద్వారా వివరాలను ఆటోమాటిగ్గా వెలికితీసేందుకు URL, DOI, ISBN, PMC/PMID లలో ఏదో ఒకదాన్ని ఇవ్వండి",
+	"proveit-confirm-remove": "దీంతో, ఈ మూలానికి సంబంధించిన ఉల్లేఖనలన్నిటినీ తీసేస్తుంది. సరేనా?",
+	"proveit-filter-fields": "ఫీల్డులను వడపోయండి",
+	"proveit-filter-references": "మూలాలను వడపోయండి",
+	"proveit-insert-button": "చొప్పించు",
+	"proveit-no-references": "మూలాలేమీ కనబడలేదు",
+	"proveit-no-template": "మూస లేదు",
+	"proveit-no-template-data": "మూస డేటా ఏదీ కనబడలేదు",
+	"proveit-normalize-button": "అన్నిటినీ నార్మలైజు చెయ్యి",
+	"proveit-normalize-message": "నార్మలైజు చేస్తున్నాం... దీనికి కొన్ని సెకండ్లు పడుతుంది, నిమిషాలైనా పట్టవచ్చు!",
+	"proveit-reference-content-label": "మూలం కంటెంటు",
+	"proveit-reference-group-label": "మూలాల గుంపు",
+	"proveit-reference-name-label": "మూలం పేరు",
+	"proveit-reference-template-label": "మూస",
+	"proveit-reference-wikitext-label": "మూలం వికీటెక్స్టు",
+	"proveit-remove-button": "తీసివెయ్యి",
+	"proveit-show-all-button": "ఫీల్డులన్నిటినీ చూపించు",
+	"proveit-today-button": "ఈరోజు",
+	"proveit-update-button": "తాజాకరించు"
+}
