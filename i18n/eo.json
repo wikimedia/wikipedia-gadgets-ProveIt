@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirin"
+			"Mirin",
+			"Robin van der Vliet"
 		]
 	},
+	"proveit-add-bibliography-button": "Aldoni bibliografion",
+	"proveit-add-reference-button": "Aldoni referencon",
+	"proveit-back-button": "Reveni",
 	"proveit-cite-button": "Citi",
 	"proveit-citoid-error": "Eraro",
 	"proveit-citoid-label": "Aŭtomata referenco",
@@ -11,16 +15,20 @@
 	"proveit-citoid-loading": "Ŝarganta...",
 	"proveit-citoid-placeholder": "Reteja adreso, DOI, ISBN aŭ PMC/PMID",
 	"proveit-citoid-tooltip": "Enigu retejan adreson, DOI, ISBN aŭ PMC/PMID, por provi aŭtomate ekstrakti detalojn per la servo Citoid",
-	"proveit-confirm-remove": "Tio forigos la referencon kaj ĉiujn de ĝiaj citaĵoj. Ĉu vi certas?",
+	"proveit-confirm-remove": "Ĉi tio forigos ankaŭ ĉiujn citaĵojn al la referenco. Ĉu vi certas?",
 	"proveit-filter-fields": "Filtri kampojn",
 	"proveit-filter-references": "Filtri referencojn",
 	"proveit-insert-button": "Enmeti",
 	"proveit-no-references": "Neniu referenco trovita",
 	"proveit-no-template": "Neniu ŝablono",
+	"proveit-no-template-data": "Ŝablonaj datumoj ne trovitaj",
+	"proveit-normalize-button": "Normigi ĉion",
+	"proveit-normalize-message": "Normigado... Ĉi tio povas daŭri kelkajn sekundojn, eĉ minutojn!",
 	"proveit-reference-content-label": "Enhavo de referenco",
 	"proveit-reference-group-label": "Referencaro",
 	"proveit-reference-name-label": "Nomo de referenco",
-	"proveit-reference-template-label": "Ĉefŝablono",
+	"proveit-reference-template-label": "Ŝablono",
+	"proveit-reference-wikitext-label": "Vikiteksto de referenco",
 	"proveit-remove-button": "Forigi",
 	"proveit-show-all-button": "Montri ĉiujn kampojn",
 	"proveit-today-button": "Hodiaŭ",
