@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fulup",
-			"Gwenn-Ael"
+			"Gwenn-Ael",
+			"Y-M D"
 		]
 	},
 	"proveit-add-bibliography-button": "Ouzhpennañ ul levrlennadur",
@@ -27,7 +28,7 @@
 	"proveit-reference-content-label": "Danvez an daveenn",
 	"proveit-reference-group-label": "Strollad-dave",
 	"proveit-reference-name-label": "Anv an daveenn",
-	"proveit-reference-template-label": "Patrom pennañ",
+	"proveit-reference-template-label": "Patrom",
 	"proveit-reference-wikitext-label": "Wikitestenn an daveenn",
 	"proveit-remove-button": "Dilemel",
 	"proveit-show-all-button": "Diskwel an holl vaeziennoù",
