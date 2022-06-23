@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Anamdas",
+			"AnupamM",
 			"CX Zoom",
 			"Gopalindians",
 			"Nilesh shukla",
@@ -25,7 +26,7 @@
 	"proveit-insert-button": "जोड़ें",
 	"proveit-no-references": "कोई भी सन्दर्भ नहीं मिला",
 	"proveit-no-template": "साँचा नहीं",
-	"proveit-normalize-button": "सभी सन्दर्भों को सामान्य करें",
+	"proveit-normalize-button": "सब कुछ सामान्य करें",
 	"proveit-normalize-message": "सामान्य हो रहा है... इसमें कई सेकंड लग सकते हैं, मिनट भी!",
 	"proveit-reference-content-label": "सन्दर्भ की सामग्री",
 	"proveit-reference-name-label": "सन्दर्भ का नाम",
