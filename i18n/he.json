@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Strayblues",
 			"YaronSh"
 		]
@@ -23,7 +24,7 @@
 	"proveit-no-template": "אין תבנית",
 	"proveit-no-template-data": "לא נמצאו נתוני תבנית",
 	"proveit-normalize-button": "נרמול של הכול",
-	"proveit-normalize-message": "מתבצע נרמול… פעולה זו עשויה לארוך מספר שניות ואף דקות!",
+	"proveit-normalize-message": "מתבצע נרמול... הפעולה הזאת עשויה לארוך כמה שניות ואף דקות!",
 	"proveit-reference-content-label": "תוכן הפניה",
 	"proveit-reference-group-label": "קבוצת התייחסות",
 	"proveit-reference-name-label": "שם הפניה",
