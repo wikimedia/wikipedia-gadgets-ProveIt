@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Lakejason0",
 			"Liuxinyu970226",
+			"Stang",
 			"Tranve",
 			"VulpesVulpes825",
 			"列维劳德",
@@ -16,8 +18,8 @@
 	"proveit-cite-button": "引用",
 	"proveit-citoid-error": "错误",
 	"proveit-citoid-label": "自动参考",
-	"proveit-citoid-load": "载入",
-	"proveit-citoid-loading": "正在载入...",
+	"proveit-citoid-load": "加载",
+	"proveit-citoid-loading": "正在加载...",
 	"proveit-citoid-placeholder": "URL、DOI、ISBN或PMC/PMID",
 	"proveit-citoid-tooltip": "输入URL、DOI、ISBN或PMC/PMID尝试自动通过Citoid服务提取详情",
 	"proveit-confirm-remove": "这也将移除参考资料的所有引文。您确定么？",
