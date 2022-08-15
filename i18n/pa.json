@@ -1,18 +1,28 @@
 {
 	"@metadata": {
 		"authors": [
+			"AnupamM",
 			"Sony dandiwal"
 		]
 	},
+	"proveit-add-bibliography-button": "ਪੁਸਤਕ ਸੂਚੀ ਸ਼ਾਮਲ ਕਰੋ",
+	"proveit-back-button": "ਪਿੱਛੇ",
 	"proveit-cite-button": "ਹਵਾਲਾ",
+	"proveit-citoid-error": "ਗਲਤੀ",
+	"proveit-citoid-load": "ਲੋਡ ਕਰੋ",
+	"proveit-citoid-loading": "ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ਜਾਂ PMC/PMID",
 	"proveit-confirm-remove": "ਇਸ ਨਾਲ ਹਵਾਲਾ ਅਤੇ ਬਾਕੀ ਲਿਖ਼ਤ ਮਿਟ ਸਕਦੀ ਹੈ। ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇਹ ਚਾਹੁੰਦੇ ਹੋ?",
 	"proveit-filter-fields": "ਫਿਲਟਰ ਖੇਤਰ",
 	"proveit-insert-button": "ਜੋੜੋ",
 	"proveit-no-references": "ਕੋਈ ਹਵਾਲੇ ਨਹੀਂ ਲੱਭੇ",
 	"proveit-no-template": "ਕੋਈ ਫਰਮਾ ਨਹੀਂ",
+	"proveit-no-template-data": "ਕੋਈ ਟੈਮਪਲੇਟ ਡੇਟਾ ਨਹੀਂ ਮਿਲਿਆ",
 	"proveit-reference-content-label": "ਹਵਾਲੇ ਦੀ ਲਿਖ਼ਤ",
 	"proveit-reference-name-label": "ਹਵਾਲੇ ਦਾ ਨਾਂਮ",
 	"proveit-reference-template-label": "ਮੁੱਖ ਫਰਮਾ",
 	"proveit-remove-button": "ਹਟਾਓ",
+	"proveit-show-all-button": "ਸਾਰੇ ਖੇਤਰ ਦਿਖਾਓ",
+	"proveit-today-button": "ਅੱਜ",
 	"proveit-update-button": "ਨਵਿਆਉ"
 }
