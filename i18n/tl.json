@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"GinawaSaHapon"
+		]
+	},
+	"proveit-add-bibliography-button": "Magdagdag ng sanggunian",
+	"proveit-add-reference-button": "Sumangguni",
+	"proveit-back-button": "Balik",
+	"proveit-cite-button": "Magsipi",
+	"proveit-citoid-error": "Error",
+	"proveit-citoid-label": "Kusang sanggunian",
+	"proveit-citoid-load": "I-load",
+	"proveit-citoid-loading": "Nilo-load...",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN, o PMC/PMID",
+	"proveit-citoid-tooltip": "Ilagay ang URL, DOI, ISBN, o PMC/PMID para subukang kunin ang mga detalye nang kusa sa pamamagitan ng serbisyo ng Citoid",
+	"proveit-confirm-remove": "Tatanggalin din nito ang lahat ng mga pagsipi sa sanggunian. Sige lang?",
+	"proveit-filter-fields": "I-filter ang mga field",
+	"proveit-filter-references": "I-filter ang mga sanggunian",
+	"proveit-insert-button": "Magsingit",
+	"proveit-no-references": "Walang nakitang sanggunian",
+	"proveit-no-template": "Walang padron",
+	"proveit-no-template-data": "Walang nakitang data ng padron",
+	"proveit-normalize-button": "I-normalize lahat",
+	"proveit-normalize-message": "Nino-normalize... baka tumagal ito nang ilang segundo, o minuto!",
+	"proveit-reference-content-label": "Nilalaman ng sanggunian",
+	"proveit-reference-group-label": "Grupo ng sanggunian",
+	"proveit-reference-name-label": "Pangalan ng sanggunian",
+	"proveit-reference-template-label": "Padron",
+	"proveit-reference-wikitext-label": "Wikitext ng sanggunian",
+	"proveit-remove-button": "Tanggalin",
+	"proveit-show-all-button": "Ipakita lahat ng field",
+	"proveit-today-button": "Ngayon",
+	"proveit-update-button": "I-update"
+}
