@@ -892,31 +892,19 @@ window.ProveIt = {
 			case 'wikieditor':
 			case 'codemirror':
 				var $summaryTextarea = $( '#wpSummary' ),
-					summary = $summaryTextarea.val();
-				if ( summary.indexOf( proveitSummary ) > -1 ) {
-					return; // Don't add it twice
+					currentSummary = $summaryTextarea.val();
+				if ( !currentSummary ) {
+					$summaryTextarea.val( proveitSummary );
 				}
-				if ( summary ) {
-					summary += ( summary.substr( -3 ) === '*/ ' ? '' : '- ' ) + proveitSummary;
-				} else {
-					summary = proveitSummary;
-				}
-				$summaryTextarea.val( summary );
 				break;
 
 			case '2017':
 				$( document ).on( 'focus', '.ve-ui-mwSaveDialog-summary textarea', function () {
 					var $summaryTextarea = $( this ),
-						summary = $summaryTextarea.val();
-					if ( summary.indexOf( proveitSummary ) > -1 ) {
-						return; // Don't add it twice
+						currentSummary = $summaryTextarea.val();
+					if ( !currentSummary ) {
+						$summaryTextarea.val( proveitSummary );
 					}
-					if ( summary ) {
-						summary += ( summary.substr( -3 ) === '*/ ' ? '' : '- ' ) + proveitSummary;
-					} else {
-						summary = proveitSummary;
-					}
-					$summaryTextarea.val( summary );
 				} );
 				break;
 		}
@@ -1090,7 +1078,16 @@ window.ProveIt = {
 		 * @return {string} citation name
 		 */
 		this.getName = function () {
-			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
+			// Match <ref name="Foo">, <ref name="Foo's">
+			var match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*"([^">]+)"[^>]*>/i );
+			if ( !match ) {
+				// Match <ref name='Foo'>, <ref name='The "Foo"'>
+				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*'([^'>]+)'[^>]*>/i );
+			}
+			if ( !match ) {
+				// Match <ref name=Foo>, <ref name=Foo's> and <ref name=The"Foo"> 
+				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*([^ >]+)[^>]*>/i );
+			}
 			if ( match ) {
 				return match[ 1 ];
 			}
@@ -1102,7 +1099,16 @@ window.ProveIt = {
 		 * @return {string} citation group
 		 */
 		this.getGroup = function () {
-			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
+			// Match <ref group="Foo">, <ref group="Foo's">
+			var match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*"([^">]+)"[^>]*>/i );
+			if ( !match ) {
+				// Match <ref group='Foo'>, <ref group='The "Foo"'>
+				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*'([^'>]+)'[^>]*>/i );
+			}
+			if ( !match ) {
+				// Match <ref group=Foo>, <ref group=Foo's> and <ref group=The"Foo"> 
+				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*([^ >]+)[^>]*>/i );
+			}
 			if ( match ) {
 				return match[ 1 ];
 			}
@@ -1413,7 +1419,16 @@ window.ProveIt = {
 		 * @return {string} New reference
 		 */
 		this.getName = function () {
-			var match = this.wikitext.match( /<\s*ref[^n]*name\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
+			// Match <ref name="Foo">, <ref name="Foo's">
+			var match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*"([^">]+)"[^>]*>/i );
+			if ( !match ) {
+				// Match <ref name='Foo'>, <ref name='The "Foo"'>
+				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*'([^'>]+)'[^>]*>/i );
+			}
+			if ( !match ) {
+				// Match <ref name=Foo>, <ref name=Foo's> and <ref name=The"Foo"> 
+				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*([^ >]+)[^>]*>/i );
+			}
 			if ( match ) {
 				return match[ 1 ];
 			}
@@ -1425,7 +1440,16 @@ window.ProveIt = {
 		 * @return {string} New reference
 		 */
 		this.getGroup = function () {
-			var match = this.wikitext.match( /<\s*ref[^g]*group\s*=\s*["']?([^"'>]+)["']?[^>]*>/i );
+			// Match <ref group="Foo">, <ref group="Foo's">
+			var match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*"([^">]+)"[^>]*>/i );
+			if ( !match ) {
+				// Match <ref group='Foo'>, <ref group='The "Foo"'>
+				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*'([^'>]+)'[^>]*>/i );
+			}
+			if ( !match ) {
+				// Match <ref group=Foo>, <ref group=Foo's> and <ref group=The"Foo"> 
+				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*([^ >]+)[^>]*>/i );
+			}
 			if ( match ) {
 				return match[ 1 ];
 			}
@@ -1458,7 +1482,13 @@ window.ProveIt = {
 			while ( ( citationMatch = citationRegex.exec( wikitext ) ) !== null ) {
 				citationWikitext = citationMatch[ 0 ];
 				citationIndex = citationMatch.index;
-				citationNameMatch = citationWikitext.match( /name\s*=\s*["']?([^"'>]+)["']?/i );
+				citationNameMatch = citationWikitext.match( /name\s*=\s*"([^">]+)"/i );
+				if ( !citationNameMatch ) {
+					citationNameMatch = citationWikitext.match( /name\s*=\s*'([^'>]+)'/i );
+				}
+				if ( !citationNameMatch ) {
+					citationNameMatch = citationWikitext.match( /name\s*=\s*([^ >]+)/i );
+				}
 				if ( citationNameMatch ) {
 					citationName = citationNameMatch[ 1 ];
 					if ( citationName === this.name ) {
