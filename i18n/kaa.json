@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajiniyaz Nurniyazov"
+		]
+	},
+	"proveit-add-bibliography-button": "Ómirbayan qosıw",
+	"proveit-add-reference-button": "Silteme qosıw",
+	"proveit-back-button": "Artqa",
+	"proveit-cite-button": "Citata keltiriw",
+	"proveit-citoid-error": "Qátelik",
+	"proveit-citoid-label": "Avtomatlıq silteme",
+	"proveit-citoid-load": "Júklew",
+	"proveit-citoid-loading": "Júklenbekte…",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN yamasa PMC/PMID",
+	"proveit-citoid-tooltip": "Citoid xızmeti arqalı avtomatikalıq túrde kóbirek maǵlıwmat alıw ushın URL, DOI, ISBN yamasa PMC/PMID  kirgiziń",
+	"proveit-confirm-remove": "Bul, sonıń menen birge, siltemege tiyisli barlıq citatalardı alıp taslaydı. Boladıma?",
+	"proveit-filter-fields": "Filtrlew maydanları",
+	"proveit-filter-references": "Filtr sazlamaları",
+	"proveit-insert-button": "Kirgiziw",
+	"proveit-no-references": "Heshqanday silteme tabılmadı",
+	"proveit-no-template": "Shablon joq",
+	"proveit-no-template-data": "Shablon maǵlıwmatları tabılmadı",
+	"proveit-normalize-button": "Hámme nárseni normaǵa alıp keliw",
+	"proveit-normalize-message": "Normallastırıw... bul bir neshe sekund, hátte minutalar alıwı múmkin!",
+	"proveit-reference-content-label": "Silteme quramı",
+	"proveit-reference-group-label": "Silteme toparı",
+	"proveit-reference-name-label": "Silteme ataması",
+	"proveit-reference-template-label": "Shablon",
+	"proveit-reference-wikitext-label": "Silteme Wikiteskti",
+	"proveit-remove-button": "Alıp taslaw",
+	"proveit-show-all-button": "Barlıq maydanlardı kórsetiw",
+	"proveit-today-button": "Búgin",
+	"proveit-update-button": "Jańalaw"
+}
