@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"C messier",
+			"Jimkats",
 			"NikosLikomitros",
 			"Nikosgranturismogt"
 		]
@@ -23,6 +24,8 @@
 	"proveit-no-references": "Δεν βρέθηκαν αναφορές",
 	"proveit-no-template": "Χωρίς πρότυπο",
 	"proveit-no-template-data": "Δεν βρέθηκαν δεδομένα προτύπου",
+	"proveit-normalize-button": "Κανονικοποιήστε τα πάντα",
+	"proveit-normalize-message": "Κανονικοποίηση... αυτό μπορεί να διαρκέσει αρκετά δευτερόλεπτα, ακόμη και λεπτά!",
 	"proveit-reference-content-label": "Περιεχόμενο αναφοράς",
 	"proveit-reference-group-label": "Ομάδα παραπομπών",
 	"proveit-reference-name-label": "Όνομα αναφοράς",
