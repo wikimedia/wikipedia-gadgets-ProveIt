@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bikarhêner",
-			"Biyolojiyabikurdi"
+			"Biyolojiyabikurdi",
+			"Ghybu"
 		]
 	},
 	"proveit-add-bibliography-button": "Bîbliyografî tevlî bike",
@@ -32,5 +33,5 @@
 	"proveit-remove-button": "Rake",
 	"proveit-show-all-button": "Hemû qadan nîşan bide",
 	"proveit-today-button": "Îro",
-	"proveit-update-button": "Nû bike"
+	"proveit-update-button": "Rojane bike"
 }
