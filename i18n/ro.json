@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Matrafox",
+			"NGC 54",
 			"Octav53ian"
 		]
 	},
@@ -19,7 +20,7 @@
 	"proveit-filter-fields": "Filtrați câmpurile",
 	"proveit-filter-references": "Filtrați referințele",
 	"proveit-insert-button": "Inserați",
-	"proveit-no-references": "Nu au fost referințe găsite.",
+	"proveit-no-references": "Nicio referință găsită",
 	"proveit-no-template": "Fără șablon",
 	"proveit-no-template-data": "Fără dată de șabloane găsită",
 	"proveit-normalize-button": "Normalizați totul",
