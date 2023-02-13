@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200",
+			"Zygimantus"
+		]
+	},
+	"proveit-add-bibliography-button": "Pridėti bibliografiją",
+	"proveit-add-reference-button": "Pridėti šaltinį",
+	"proveit-back-button": "Atgal",
+	"proveit-cite-button": "Cituoti",
+	"proveit-citoid-error": "Klaida",
+	"proveit-citoid-label": "Automatinis šaltinis",
+	"proveit-citoid-load": "Įkelti",
+	"proveit-citoid-loading": "Įkeliama…",
+	"proveit-citoid-placeholder": "URL, DOI, ISBN ar PMC/PMID",
+	"proveit-citoid-tooltip": "Įveskite URL, DOI, ISBN arba PMC/PMID, norėdami automatiškai įkelti šaltinio detales per Citoid paslaugą",
+	"proveit-confirm-remove": "Tai pašalins visas nuorodas į šaltinį. Tęsti?",
+	"proveit-filter-fields": "Filtruoti laukus",
+	"proveit-filter-references": "Filtruoti šaltinius",
+	"proveit-insert-button": "Įterpti",
+	"proveit-no-references": "Šaltinių nerasta",
+	"proveit-no-template": "Be šablono",
+	"proveit-no-template-data": "Nerasta jokių šablonų duomenų",
+	"proveit-normalize-button": "Viską normalizuoti",
+	"proveit-normalize-message": "Normalizuojama... tai gali užtrukti kelias sekundes ar minutes!",
+	"proveit-reference-content-label": "Šaltinio turinys",
+	"proveit-reference-group-label": "Šaltinio grupė",
+	"proveit-reference-name-label": "Šaltinio pavadinimas",
+	"proveit-reference-template-label": "Šablonas",
+	"proveit-reference-wikitext-label": "Šaltinio vikitekstas",
+	"proveit-remove-button": "Pašalinti",
+	"proveit-show-all-button": "Rodyti visus laukelius",
+	"proveit-today-button": "Šiandien",
+	"proveit-update-button": "Atnaujinti"
+}
