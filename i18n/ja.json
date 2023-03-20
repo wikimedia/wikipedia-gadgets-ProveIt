@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Afaz",
+			"Kokage si",
 			"LaMagiaaa",
 			"Omotecho",
 			"カッパ鳥",
@@ -31,7 +32,7 @@
 	"proveit-reference-group-label": "脚注グループ名",
 	"proveit-reference-name-label": "出典名",
 	"proveit-reference-template-label": "テンプレート",
-	"proveit-reference-wikitext-label": "参考資料のウィキ文",
+	"proveit-reference-wikitext-label": "参考資料のウィキテキスト",
 	"proveit-remove-button": "除去",
 	"proveit-show-all-button": "全ての引数を表示",
 	"proveit-today-button": "今日",
