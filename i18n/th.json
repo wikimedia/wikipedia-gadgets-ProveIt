@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Aefgh39622",
+			"Patsagorn Y.",
 			"Prame Tan"
 		]
 	},
@@ -23,12 +24,12 @@
 	"proveit-no-template": "ไม่มีแม่แบบ",
 	"proveit-no-template-data": "ไม่พบข้อมูลแม่แบบ",
 	"proveit-normalize-button": "ปรับข้อความทั้งหมดให้เป็นบรรทัดฐาน",
-	"proveit-normalize-message": "กำลังทำให้เป็นบรรทัดฐาน...ขั้นตอนนี้อาจใช้เวลาหลายวินาที หรือแม้กระทั่งหลายนาที!",
+	"proveit-normalize-message": "การทำให้เป็นมาตรฐาน... อาจใช้เวลาหลายวินาทีหรือแม้แต่นาที!",
 	"proveit-reference-content-label": "เนื้อหาอ้างอิง",
 	"proveit-reference-group-label": "กลุ่มแหล่งอ้างอิง",
 	"proveit-reference-name-label": "ชื่อแหล่งอ้างอิง",
 	"proveit-reference-template-label": "แม่แบบ",
-	"proveit-reference-wikitext-label": "อ้างอิงไปวิกิข้อความ",
+	"proveit-reference-wikitext-label": "ข้อความวิกิของข้อความอ้างอิง",
 	"proveit-remove-button": "ลบออก",
 	"proveit-show-all-button": "แสดงเขตข้อมูลทั้งหมด",
 	"proveit-today-button": "วันนี้",
