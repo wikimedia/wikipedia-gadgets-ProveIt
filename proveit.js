@@ -127,8 +127,8 @@ window.ProveIt = {
 	 * Load CSS directly from Wikimedia repository and add it to the DOM
 	 */
 	loadCSS: function () {
-		$.get( 'https://gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/proveit.css?format=text', function ( data ) {
-			var css = ProveIt.decodeBase64( data );
+		$.get( '//gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/proveit.css?format=text', function ( data ) {
+			var css = atob( data );
 			var $style = $( '<style>' ).html( css );
 			$( 'head' ).append( $style );
 		} );
@@ -1057,6 +1057,7 @@ window.ProveIt = {
 
 	/**
 	 * Helper function to decode base64 strings
+	 * See https://stackoverflow.com/questions/30106476
 	 *
 	 * @param {string} string Base64 encoded string
 	 * @return {string} Decoded string

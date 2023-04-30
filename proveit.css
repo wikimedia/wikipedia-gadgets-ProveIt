@@ -1,7 +1,7 @@
 #proveit {
 	background: white;
 	font-size: .8em;
-	position: fixed;
+	position: fixed !important; /* !important to override jQuery UI draggable */
 	right: 0;
 	bottom: 0;
 	z-index: 9;
