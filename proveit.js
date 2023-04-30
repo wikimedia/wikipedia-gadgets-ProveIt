@@ -1,10 +1,10 @@
 /**
- * ProveIt is a smart and simple reference manager for Wikipedia (and any other MediaWiki wiki)
- * Documentation at https://commons.wikimedia.org/wiki/Help:Gadget-ProveIt
+ * ProveIt is a reference manager for Wikipedia (and any other MediaWiki wiki)
+ * Documentation at https://www.mediawiki.org/wiki/ProveIt
  *
  * Copyright 2008-2011 Georgia Tech Research Corporation, Atlanta, GA 30332-0415, ALL RIGHTS RESERVED
  * Copyright 2011- Matthew Flaschen
- * Rewritten, internationalized, improved and maintained by Sophivorus since 2014
+ * Rewritten, internationalized, improved and maintained by Felipe Schenone (User:Sophivorus) since 2014
  *
  * ProveIt is available under the GNU Free Documentation License (http://www.gnu.org/copyleft/fdl.html),
  * the Creative Commons Attribution/Share-Alike License 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
@@ -14,7 +14,7 @@ window.ProveIt = {
 
 	/**
 	 * Template data of the templates
-	 * Populated on ProveIt.realInit()
+	 * Populated from ProveIt.realInit()
 	 *
 	 * @type {Object} Map from template name to template data
 	 */
@@ -33,7 +33,7 @@ window.ProveIt = {
 
 	/**
 	 * Convenience method to get a ProveIt interface message
-	 * Interface messages are set on ProveIt.init()
+	 * Interface messages are set from ProveIt.init()
 	 *
 	 * @param {string} key Message key without the "proveit-" prefix
 	 * @return {string} Message value
@@ -53,13 +53,13 @@ window.ProveIt = {
 			if ( ve.init.target.getSurface().getMode() === 'source' ) {
 				return '2017'; // 2017 wikitext editor
 			}
-			return; // Visual editor
+			return; // Visual editor (not supported)
 		}
 		var action = mw.config.get( 'wgAction' );
 		if ( action === 'edit' || action === 'submit' ) {
 			if ( mw.user.options.get( 'usebetatoolbar' ) === 1 ) {
 				if ( $( '.CodeMirror' ).length ) {
-					return 'codemirror';
+					return 'codemirror'; // CodeMirror
 				}
 				return 'wikieditor'; // WikiEditor
 			}
@@ -102,6 +102,9 @@ window.ProveIt = {
 			return;
 		}
 
+		// Load the CSS
+		ProveIt.loadCSS();
+
 		// Add the basic GUI
 		ProveIt.buildGUI();
 
@@ -118,6 +121,17 @@ window.ProveIt = {
 				ProveIt.addTag();
 			}
 		}
+	},
+
+	/**
+	 * Load CSS directly from Wikimedia repository and add it to the DOM
+	 */
+	loadCSS: function () {
+		$.get( 'https://gerrit.wikimedia.org/r/plugins/gitiles/wikipedia/gadgets/ProveIt/+/master/proveit.css?format=text', function ( data ) {
+			var css = ProveIt.decodeBase64( data );
+			var $style = $( '<style>' ).html( css );
+			$( 'head' ).append( $style );
+		} );
 	},
 
 	/**
@@ -1085,7 +1099,7 @@ window.ProveIt = {
 				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*'([^'>]+)'[^>]*>/i );
 			}
 			if ( !match ) {
-				// Match <ref name=Foo>, <ref name=Foo's> and <ref name=The"Foo"> 
+				// Match <ref name=Foo>, <ref name=Foo's> and <ref name=The"Foo">
 				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*([^ >]+)[^>]*>/i );
 			}
 			if ( match ) {
@@ -1106,7 +1120,7 @@ window.ProveIt = {
 				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*'([^'>]+)'[^>]*>/i );
 			}
 			if ( !match ) {
-				// Match <ref group=Foo>, <ref group=Foo's> and <ref group=The"Foo"> 
+				// Match <ref group=Foo>, <ref group=Foo's> and <ref group=The"Foo">
 				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*([^ >]+)[^>]*>/i );
 			}
 			if ( match ) {
@@ -1181,11 +1195,11 @@ window.ProveIt = {
 		 *
 		 * A complex template wikitext may be:
 		 * {{Cite book
-		 * |anonymous parameter
-		 * |param1 = value
-		 * |param2 = http://example.com?query=string
-		 * |param3 = [[Some|link]]
-		 * |param4 = {{Subtemplate |anon |param=value}}
+		 * | anonymous parameter
+		 * | param1 = value
+		 * | param2 = http://example.com?query=string
+		 * | param3 = [[Some|link]]
+		 * | param4 = {{Subtemplate|anon|param=value}}
 		 * }}
 		 *
 		 * @return {Object} Map from parameter name to parameter value
@@ -1426,7 +1440,7 @@ window.ProveIt = {
 				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*'([^'>]+)'[^>]*>/i );
 			}
 			if ( !match ) {
-				// Match <ref name=Foo>, <ref name=Foo's> and <ref name=The"Foo"> 
+				// Match <ref name=Foo>, <ref name=Foo's> and <ref name=The"Foo">
 				match = this.wikitext.match( /<\s*ref[^>]+name\s*=\s*([^ >]+)[^>]*>/i );
 			}
 			if ( match ) {
@@ -1447,7 +1461,7 @@ window.ProveIt = {
 				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*'([^'>]+)'[^>]*>/i );
 			}
 			if ( !match ) {
-				// Match <ref group=Foo>, <ref group=Foo's> and <ref group=The"Foo"> 
+				// Match <ref group=Foo>, <ref group=Foo's> and <ref group=The"Foo">
 				match = this.wikitext.match( /<\s*ref[^>]+group\s*=\s*([^ >]+)[^>]*>/i );
 			}
 			if ( match ) {
