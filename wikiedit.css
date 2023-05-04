@@ -1,0 +1,19 @@
+.wikiedit-button {
+    color: #a2a9b1;
+    cursor: pointer;
+}
+.wikiedit-button:hover {
+    color: #202122;
+}
+
+.wikiedit-form {
+    font-family: monospace;
+	overflow: hidden;
+	padding: .2em;
+}
+.wikiedit-form-footer {
+    margin: .2em 0;
+}
+.wikiedit-form-submit {
+    margin-right: .2em;
+}
